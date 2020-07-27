@@ -60,6 +60,10 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
+      - name: Lint
+        run: |
+          bundle exec rubocop
+
       - name: Build and run tests
         env:
           RAILS_ENV: test
