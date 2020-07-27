@@ -1,0 +1,152 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  Include:
+    - "**/Rakefile"
+    - "**/config.ru"
+    - "app/**/*.rb"
+    - "spec/**/*.rb"
+    - "config/**/*.rb"
+    - "Gemfile"
+  Exclude:
+    - "db/**/*"
+    - "script/**/*"
+    - "bin/**/*"
+    - "vendor/**/*"
+    - "node_modules/**/*"
+  TargetRubyVersion: 2.6.6
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - is_
+    - have_
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+    - lib/tasks/**/*.rake
+    - config/routes.rb
+    - config/environments/**/*.rb
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*.rb
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+# New cops
+
+Lint/DuplicateElsifCondition: { Enabled: true }
+Lint/MixedRegexpCaptureTypes: { Enabled: true }
+Style/AccessorGrouping: { Enabled: true }
+Style/ArrayCoercion: { Enabled: true }
+Style/BisectedAttrAccessor: { Enabled: true }
+Style/CaseLikeIf: { Enabled: true }
+Style/HashAsLastArrayItem: { Enabled: true }
+Style/HashLikeCase: { Enabled: true }
+Style/RedundantAssignment: { Enabled: true }
+Style/RedundantFetchBlock: { Enabled: true }
+Style/RedundantFileExtensionInRequire: { Enabled: true }
+Style/RedundantRegexpCharacterClass: { Enabled: true }
+Style/RedundantRegexpEscape: { Enabled: true }
+Performance/AncestorsInclude: { Enabled: true }
+Performance/BigDecimalWithNumericArgument: { Enabled: true }
+Performance/RedundantSortBlock: { Enabled: true }
+Performance/RedundantStringChars: { Enabled: true }
+Performance/ReverseFirst: { Enabled: true }
+Performance/SortReverse: { Enabled: true }
+Performance/Squeeze: { Enabled: true }
+Performance/StringInclude: { Enabled: true }
+Rails/ActiveRecordCallbacksOrder: { Enabled: true }
+Rails/FindById: { Enabled: true }
+Rails/Inquiry: { Enabled: true }
+Rails/MailerName: { Enabled: true }
+Rails/MatchRoute: { Enabled: true }
+Rails/NegateInclude: { Enabled: true }
+Rails/Pluck: { Enabled: true }
+Rails/PluckInWhere: { Enabled: true }
+Rails/RenderInline: { Enabled: true }
+Rails/RenderPlainText: { Enabled: true }
+Rails/ShortI18n: { Enabled: true }
+Rails/WhereExists: { Enabled: true }
