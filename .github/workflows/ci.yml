@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+        - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USERNAME: postgres
+          POSTGRES_HOSTNAME: 0.0.0.0
+          POSTGRES_DB: bookclub-test
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.*
+
+      - name: Setup Chromedriver
+        uses: nanasess/setup-chromedriver@master
+
+      - name: Cache ruby deps
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+            path: node_modules
+            key: ${{ runner.os }}-build-node_modules-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
+
+      - name: Install javascript deps
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+
+      - name: Install ruby deps
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Build and run tests
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/bookclub-test
+        run: |
+          bundle exec rails db:migrate
+          bundle exec rails test
