@@ -31,7 +31,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-        redirect_to @book, notice: 'Book was successfully updated.'
+        redirect_to books_path, notice: 'Book was successfully updated.'
     else
         render :edit
     end
