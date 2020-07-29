@@ -7,8 +7,7 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1
-  def show
-  end
+  def show; end
 
   # GET /books/new
   def new
@@ -16,8 +15,7 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /books
   def create

@@ -17,6 +17,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "rspec-rails", "~> 4.0.1"
+  gem 'rails-controller-testing'
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
