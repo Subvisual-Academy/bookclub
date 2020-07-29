@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Books</h1>
+<hr>
+
+<br/>
+<table>
+  <thead>
+    <tr class="Table">
+      <th class="Table-head">Image</th>
+      <th class="Table-head">Title</th>
+      <th class="Table-head">Author</th>
+      <th class="Table-head">Synopsis</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr class="Table">
+        <td class="Table-body"><img class="Table-image" src="<%= book.image %>"  alt="book image"/></td>
+        <td class="Table-body"><%= book.title %></td>
+        <td class="Table-body"><%= book.author %></td>
+        <td class="Table-body"><%= book.synopsis %></td>
+        <td class="Table-body"><%= link_to 'Show', book %></td>
+        <td class="Table-body"><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td class="Table-body"><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Book', new_book_path %>
