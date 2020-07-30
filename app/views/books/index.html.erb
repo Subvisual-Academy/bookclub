@@ -4,9 +4,9 @@
 <hr>
 
 <br/>
-<table>
+<table class="Table">
   <thead>
-    <tr class="Table">
+    <tr>
       <th>Image</th>
       <th>Title</th>
       <th>Author</th>
@@ -17,7 +17,7 @@
 
   <tbody>
     <% @books.each do |book| %>
-      <tr class="Table">
+      <tr>
         <td><img src="<%= book.image %>"  alt="book image"/></td>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
