@@ -2,37 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-body {
-    background-color: #fff;
-    color: #333;
-    margin: 33px; }
-
-body, p, ol, ul, td {
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px; }
-
-th {
-    padding-bottom: 5px; 
-    text-align: center;
-}
-
-.Table-body{
-    padding-right: 10px;
-}
-
-.Table-image{
-    height: 50%;
-}
-
-.Table-head{
-    padding: 0 20px 10px 0;
-}
-
-.Field{
+.Books-Field{
     padding: 10px;
 }
 
-.Actions{
+.Books-Actions{
     padding: 5px;
 }
