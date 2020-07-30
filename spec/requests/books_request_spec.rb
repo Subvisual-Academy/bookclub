@@ -52,19 +52,27 @@ RSpec.describe "Books", type: :request do
 
       post books_path, params: { book: { author: book.author, synopsis: book.synopsis, image: book.image}}
 
-      expect(response).to render_template(:new)
+      expect(response).to render_template('new')
     end
   end
 
   describe 'PATCH #create' do
 
-    it 'redirects to books_path on on successful patch' do
+    it 'redirects to books_path on a successful patch' do
       book = Book.create( title: 'title', author: 'author',synopsis: 'synopsis', image: 'image.png')
 
       put book_path(book) , params: { book: { title: 'new_title', author: 'author', synopsis: 'synopsis',
                                                            image: 'image.png'} }
 
       expect(response).to redirect_to(books_path)
+    end
+
+    it 'renders the edit template on an unsuccessful patch' do
+      book = Book.create(title: 'title', author: 'author',synopsis: 'synopsis', image: 'image.png')
+
+      put book_path(book) , params: { book: {synopsis: ''} }
+
+      expect(response).to render_template('edit')
     end
 
     it 'updates parameter on successful patch' do
