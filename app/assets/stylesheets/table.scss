@@ -1,21 +1,14 @@
-.Table-body{
-    padding-right: 10px;
-}
+.Table{
+    th {
+        padding: 0 20px 10px 0; 
+        text-align: center;
+    }
 
-.Table-image{
-    height: 50%;
-}
+    td {
+        padding-right: 10px;
+    }
 
-.Table-head{
-    padding: 0 20px 10px 0;
+    img{
+        height: 50%;
+    }
 }
-
-th {
-    padding-bottom: 5px; 
-    text-align: center;
-}
-
-td {
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px; }
