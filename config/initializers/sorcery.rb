@@ -231,7 +231,6 @@ Rails.application.config.sorcery.configure do |config|
   # config.discord.scope = "email guilds"
   # --- user config ---
   config.user_config do |user|
-    user.username_attribute_names = [:username]
     # -- core --
     # Specify username attributes, for example: [:username, :email].
     # Default: `[:email]`
