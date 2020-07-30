@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: %i[new create destroy]
   get "/log_in", to: "sessions#new", as: :log_in
+  post "log_in" => "sessions#create"
   delete "/log_out", to: "sessions#destroy", as: :log_out
 
 

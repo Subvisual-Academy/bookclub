@@ -24,10 +24,13 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
+
   config.define_derived_metadata(file_path: Regexp.new("/spec/components/")) do |metadata|
     metadata[:type] = :component
   end
 
+  config.include AuthHelpers::Request, type: :request
+  config.include AuthHelpers::Feature, type: :feature
   config.include TransactionalCapybara::AjaxHelpers, type: :feature
   config.include Capybara::RSpecMatchers, type: :component
 end

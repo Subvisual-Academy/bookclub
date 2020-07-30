@@ -1,8 +1,12 @@
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    if current_user
+      redirect_to(root_path)
+    end
+  end
 
   def create
-    if login(params[:name], params[:password])
+    if login(params[:email], params[:password])
       redirect_back_or_to root_path
     else
       flash.now[:warning] = "E-mail and/or password is incorrect."
