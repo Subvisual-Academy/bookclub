@@ -13,9 +13,9 @@
     <nav>
       <div id="navbar">
         <ul>
-          <% if current_user %>
-            <p>Logged in</p>
-          <% else %>
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Very Secret Page', secret_path %></li>
+          <% if !current_user %>
             <li><%= link_to 'Log In', log_in_path %></li>
           <% end %>
         </ul>
