@@ -52,13 +52,12 @@ RSpec.describe "Books", type: :request do
 
     it "returns bad_request if create is unsuccessful" do
       book_params = attributes_for(:book, title: nil)
-      
+
       post books_path, params: { book: book_params }
 
       expect(response).to have_http_status(:bad_request)
     end
   end
-
 
   describe "PATCH #update" do
     it "redirects to books_path on a successful patch" do
@@ -104,9 +103,9 @@ RSpec.describe "Books", type: :request do
 
     it "destroys a book" do
       book = create(:book)
-    
+
       delete book_path(book)
-    
+
       expect(Book.count).to eq(0)
     end
   end
