@@ -56,6 +56,4 @@ RSpec.feature "Authentication", js: true do
     expect(page).to have_current_path(root_path)
     expect(page).to have_content("Log In")
   end
-
-
 end
