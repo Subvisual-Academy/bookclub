@@ -11,9 +11,8 @@ class SessionsController < ApplicationController
     if login(params[:email], params[:password])
       redirect_back_or_to root_path
     else
-      flash.now[:alert] = "E-mail and/or password is incorrect."
-
-      render "new", status: :unauthorized
+      flash[:alert] = "Incorrect email/password"
+      redirect_to log_in_path, status: :unauthorized
     end
   end
 

@@ -14,7 +14,7 @@ module AuthHelpers
       current_page.visit log_in_path
       current_page.fill_in("Email", with: user.email)
       current_page.fill_in("Password", with: "foobar")
-      current_page.click_on("Login")
+      current_page.click_on("LOG IN")
       current_page.has_content?(user.email)
     end
 

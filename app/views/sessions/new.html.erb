@@ -1,14 +1,16 @@
 <h1>Log In</h1>
 <%= form_with model: @user, url: log_in_path, method: :post do |f|  %>
-  <div>
+  <div class="Users-Field">
     <%= label_tag :email %>
     <%= email_field_tag :email, nil, required: true %>
   </div>
 
-  <div>
+  <div class="Users-Field">
     <%= label_tag :password %>
     <%= password_field_tag :password, nil, required: true %>
   </div>
 
-  <%= submit_tag 'Log In' %>
+  <div class="Users-Actions">
+    <%= submit_tag 'LOG IN' %>
+  </div>
 <% end %>

@@ -9,14 +9,52 @@ RSpec.feature "Authentication", js: true do
 
   it "logins the user with correct credentials" do
     user = create(:user)
-
     visit log_in_path
     fill_in("Email", with: user.email)
     fill_in("Password", with: "foobar")
-    click_on("Log in")
+    click_on("LOG IN")
 
-    expect(page).to have_content("Logout")
-    expect(current_path).to eq(root_path)
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content("Log Out")
+  end
+
+  it "rejects the user's login if the password is bad" do
+    user = create(:user)
+
+    visit log_in_path
+    fill_in("Email", with: user.email)
+    fill_in("Password", with: "bad password")
+    click_on("LOG IN")
+
+    expect(page).to have_current_path(log_in_path)
+    expect(page).to have_content("Incorrect email/password")
+    expect(page).to have_content("Email")
+    expect(page).to have_content("Password")
+  end
+
+  it "rejects the user's login if the email is bad" do
+    user = create(:user)
+
+    visit log_in_path
+    fill_in("Email", with: "#{user.email}.bad")
+    fill_in("Password", with: "bad password")
+    click_on("LOG IN")
+
+    expect(page).to have_current_path(log_in_path)
+    expect(page).to have_content("Incorrect email/password")
+    expect(page).to have_content("Email")
+    expect(page).to have_content("Password")
+  end
+
+  it "logs out the user" do
+    user = create(:user)
+    log_in_user(user)
+
+    visit root_path
+    click_on("Log Out")
+
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content("Log In")
   end
 
 
