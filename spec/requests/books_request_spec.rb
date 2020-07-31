@@ -1,4 +1,5 @@
 require "rails_helper"
+include ActionView::Helpers::SanitizeHelper
 
 RSpec.describe "Books", type: :request do
   describe "GET #index" do
@@ -8,8 +9,8 @@ RSpec.describe "Books", type: :request do
       get books_path
 
       list.each do |book|
-        expect(response.body).to include(book.title)
-        expect(response.body).to include(book.author)
+        expect(sanitize(response.body)).to include(book.title)
+        expect(sanitize(response.body)).to include(book.author)
         expect(response.body).to include(book.synopsis)
         expect(response.body).to include(book.image)
       end
