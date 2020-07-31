@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path, notice: "Book was successfully created."
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
@@ -31,7 +31,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to books_path, notice: "Book was successfully updated."
     else
-      render :edit
+      render :edit, status: :bad_request
     end
   end
 

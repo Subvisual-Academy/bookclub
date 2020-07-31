@@ -31,24 +31,36 @@ RSpec.describe "Books", type: :request do
 
   describe "POST #create" do
     it "redirects to books_path on a successful creation" do
-      book = build(:book)
+      book_params = attributes_for(:book)
 
-      post books_path, params: { book: { title: book.title, author: book.author, synopsis: book.synopsis, image: book.image } }
+      post books_path, params: { book: book_params }
 
       expect(response).to redirect_to(books_path)
     end
 
-    it "renders the new template if create is unsuccessful" do
-      book = build(:book)
+    it "creates a book with the correct params" do
+      book_params = attributes_for(:book)
 
-      post books_path, params: { book: { author: book.author, synopsis: book.synopsis, image: book.image } }
+      post books_path, params: { book: book_params }
 
-      expect(response).to render_template("new")
+      created_book = Book.last
+      expect(created_book.title).to eq(book_params[:title])
+      expect(created_book.author).to eq(book_params[:author])
+      expect(created_book.synopsis).to eq(book_params[:synopsis])
+      expect(created_book.image).to eq(book_params[:image])
+    end
+
+    it "returns bad_request if create is unsuccessful" do
+      book_params = attributes_for(:book, title: nil)
+      
+      post books_path, params: { book: book_params }
+
+      expect(response).to have_http_status(:bad_request)
     end
   end
 
 
-  describe "PATCH #create" do
+  describe "PATCH #update" do
     it "redirects to books_path on a successful patch" do
       book = create(:book)
 
@@ -58,21 +70,26 @@ RSpec.describe "Books", type: :request do
       expect(response).to redirect_to(books_path)
     end
 
-    it "renders the edit template on an unsuccessful patch" do
+    it "returns bad_request on an unsuccessful patch" do
       book = create(:book)
+      book_params = attributes_for(:book, title: nil)
 
-      put book_path(book), params: { book: { synopsis: "" } }
+      put book_path(book), params: { book: book_params }
 
-      expect(response).to render_template("edit")
+      expect(response).to have_http_status(:bad_request)
     end
 
     it "updates parameter on successful patch" do
       book = create(:book)
+      book_params = attributes_for(:book, title: "new_title")
 
-      put book_path(book), params: { book: { title: "new_title", author: "author", synopsis: "synopsis",
-                                             image: "image.png" } }
+      put book_path(book), params: { book: book_params }
 
-      expect(Book.find(book.id).title).to eq("new_title")
+      book.reload
+      expect(book.title).to eq(book_params[:title])
+      expect(book.author).to eq(book_params[:author])
+      expect(book.synopsis).to eq(book_params[:synopsis])
+      expect(book.image).to eq(book_params[:image])
     end
   end
 
@@ -83,6 +100,14 @@ RSpec.describe "Books", type: :request do
       delete book_path(book)
 
       expect(response).to redirect_to(books_path)
+    end
+
+    it "destroys a book" do
+      book = create(:book)
+    
+      delete book_path(book)
+    
+      expect(Book.count).to eq(0)
     end
   end
 end
