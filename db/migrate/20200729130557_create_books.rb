@@ -6,7 +6,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.text :synopsis, null:false
       t.string :image, null:false
 
-      t.timestamps null:false
+      t.timestamps
     end
   end
 end
