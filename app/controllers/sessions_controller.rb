@@ -3,20 +3,23 @@ class SessionsController < ApplicationController
     if current_user
       redirect_to(root_path)
     end
+
+    @user = User.new
   end
 
   def create
     if login(params[:email], params[:password])
       redirect_back_or_to root_path
     else
-      flash.now[:warning] = "E-mail and/or password is incorrect."
-      render "new"
+      flash.now[:alert] = "E-mail and/or password is incorrect."
+
+      render "new", status: :unauthorized
     end
   end
 
   def destroy
     logout
-    flash[:success] = "See you!"
-    redirect_to root_path
+
+    redirect_to(root_path, notice: "Logged out!")
   end
 end
