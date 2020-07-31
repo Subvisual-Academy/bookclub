@@ -1,7 +1,7 @@
 require "rails_helper"
-include ActionView::Helpers::SanitizeHelper
 
 RSpec.describe "Books", type: :request do
+  include ActionView::Helpers::SanitizeHelper
   describe "GET #index" do
     it "displays all books' parameters" do
       list = create_list(:book, 3)
