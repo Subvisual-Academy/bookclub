@@ -3,34 +3,34 @@ require "rails_helper"
 RSpec.describe "Sessions", type: :request do
   describe "GET #new" do
     it "has a 200 status code" do
-      get log_in_path
+      get login_path
 
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(:ok)
     end
 
     it "redirects to root_path if already logged in" do
       user = create(:user)
-      log_in_user(user)
+      login_user(user)
 
-      get log_in_path
+      get login_path
 
       expect(response).to redirect_to(root_path)
     end
   end
 
   describe "POST #create" do
-    it "redirects to root_path on a successful log_in" do
+    it "redirects to root_path on a successful login" do
       user = create(:user)
 
-      post log_in_path, params: { email: user.email, password: "foobar" }
+      post login_path, params: { email: user.email, password: "foobar" }
 
       expect(response).to redirect_to(root_path)
     end
 
-    it "return bad_request if log_in is bad" do
+    it "return bad_request if login is bad" do
       user = create(:user)
 
-      post log_in_path, params: { email: user.email, password: "bad_password" }
+      post login_path, params: { email: user.email, password: "bad_password" }
 
       expect(response).to have_http_status(:unauthorized)
     end
@@ -39,9 +39,9 @@ RSpec.describe "Sessions", type: :request do
   describe "DELETE #destroy" do
     it "sends user to root_path after logging out" do
       user = create(:user)
-      log_in_user(user)
+      login_user(user)
 
-      delete log_out_path
+      delete logout_path
 
       expect(response).to redirect_to(root_path)
     end

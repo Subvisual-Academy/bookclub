@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Authentication", js: true do
-  it "Has the log_in option on root_path" do
+  it "Has the login option on root_path" do
     visit root_path
 
     expect(page).to have_content("Log In")
@@ -9,7 +9,8 @@ RSpec.feature "Authentication", js: true do
 
   it "logins the user with correct credentials" do
     user = create(:user)
-    visit log_in_path
+
+    visit login_path
     fill_in("Email", with: user.email)
     fill_in("Password", with: "foobar")
     click_on("LOG IN")
@@ -21,12 +22,12 @@ RSpec.feature "Authentication", js: true do
   it "rejects the user's login if the password is bad" do
     user = create(:user)
 
-    visit log_in_path
+    visit login_path
     fill_in("Email", with: user.email)
     fill_in("Password", with: "bad password")
     click_on("LOG IN")
 
-    expect(page).to have_current_path(log_in_path)
+    expect(page).to have_current_path(login_path)
     expect(page).to have_content("Incorrect email/password")
     expect(page).to have_content("Email")
     expect(page).to have_content("Password")
@@ -35,12 +36,12 @@ RSpec.feature "Authentication", js: true do
   it "rejects the user's login if the email is bad" do
     user = create(:user)
 
-    visit log_in_path
+    visit login_path
     fill_in("Email", with: "#{user.email}.bad")
     fill_in("Password", with: "bad password")
     click_on("LOG IN")
 
-    expect(page).to have_current_path(log_in_path)
+    expect(page).to have_current_path(login_path)
     expect(page).to have_content("Incorrect email/password")
     expect(page).to have_content("Email")
     expect(page).to have_content("Password")
@@ -48,7 +49,7 @@ RSpec.feature "Authentication", js: true do
 
   it "logs out the user" do
     user = create(:user)
-    log_in_user(user)
+    login_user(user)
 
     visit root_path
     click_on("Log Out")

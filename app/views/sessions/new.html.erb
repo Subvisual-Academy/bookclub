@@ -1,5 +1,5 @@
 <h1>Log In</h1>
-<%= form_with model: @user, url: log_in_path, method: :post do |f|  %>
+<%= form_with model: @user, url: login_path, method: :post do |f|  %>
   <div class="Users-Field">
     <%= label_tag :email %>
     <%= email_field_tag :email, nil, required: true %>

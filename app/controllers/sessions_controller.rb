@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :require_login, only: %i[destroy]
+
   def new
     if current_user
       redirect_to(root_path)
@@ -12,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_back_or_to root_path
     else
       flash[:alert] = "Incorrect email/password"
-      redirect_to log_in_path, status: :unauthorized
+      redirect_to login_path, status: :unauthorized
     end
   end
 
