@@ -28,6 +28,8 @@ RSpec.configure do |config|
     metadata[:type] = :component
   end
 
+  config.include AuthHelpers::Request, type: :request
+  config.include AuthHelpers::Feature, type: :feature
   config.include TransactionalCapybara::AjaxHelpers, type: :feature
   config.include Capybara::RSpecMatchers, type: :component
 end
