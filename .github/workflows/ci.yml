@@ -70,4 +70,4 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/bookclub-test
         run: |
           bundle exec rails db:migrate
-          bundle exec rails test
+          bundle exec rake spec
