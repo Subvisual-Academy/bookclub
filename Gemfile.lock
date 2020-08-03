@@ -95,6 +95,7 @@ GEM
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
+    foreman (0.87.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.5)
@@ -282,6 +283,7 @@ DEPENDENCIES
   database_cleaner-active_record
   factory_bot_rails
   faker
+  foreman
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
