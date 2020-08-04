@@ -11,7 +11,6 @@ RSpec.describe "Books", type: :request do
       list.each do |book|
         expect(sanitize(response.body)).to include(book.title)
         expect(sanitize(response.body)).to include(book.author)
-        expect(response.body).to include(book.synopsis)
         expect(response.body).to include(book.image)
       end
     end
@@ -30,68 +29,39 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "POST #create" do
-    it "redirects to books_path on a successful creation" do
-      book_params = attributes_for(:book)
+  describe "POST #create", :vcr do
+    let(:google_response) do
+      VCR.use_cassette("google/book") { GoogleBooks.get_info_by_isbn("9781448103690") }
+    end
 
-      post books_path, params: { book: book_params }
+    it "redirects to books_path on a successful creation" do
+      post books_path, params: { isbn: "9781448103690" }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
-      book_params = attributes_for(:book)
+      title = google_response["items"][0]["volumeInfo"]["title"]
+      author = google_response["items"][0]["volumeInfo"]["authors"][0]
+      synopsis = google_response["items"][0]["volumeInfo"]["description"]
+      image = google_response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]
 
-      post books_path, params: { book: book_params }
+      post books_path, params: { isbn: "9781448103690" }
 
       created_book = Book.last
-      expect(created_book.title).to eq(book_params[:title])
-      expect(created_book.author).to eq(book_params[:author])
-      expect(created_book.synopsis).to eq(book_params[:synopsis])
-      expect(created_book.image).to eq(book_params[:image])
+      expect(created_book.title).to eq(title)
+      expect(created_book.author).to eq(author)
+      expect(created_book.synopsis).to eq(synopsis)
+      expect(created_book.image).to eq(image)
     end
 
     it "returns bad_request if create is unsuccessful" do
-      book_params = attributes_for(:book, title: nil)
-
-      post books_path, params: { book: book_params }
+      post books_path, params: { isbn: "no-isbn" }
 
       expect(response).to have_http_status(:bad_request)
     end
   end
 
-  describe "PATCH #update" do
-    it "redirects to books_path on a successful patch" do
-      book = create(:book)
-
-      put book_path(book), params: { book: { title: "new_title", author: "author", synopsis: "synopsis",
-                                             image: "image.png" } }
-
-      expect(response).to redirect_to(books_path)
-    end
-
-    it "returns bad_request on an unsuccessful patch" do
-      book = create(:book)
-      book_params = attributes_for(:book, title: nil)
-
-      put book_path(book), params: { book: book_params }
-
-      expect(response).to have_http_status(:bad_request)
-    end
-
-    it "updates parameter on successful patch" do
-      book = create(:book)
-      book_params = attributes_for(:book, title: "new_title")
-
-      put book_path(book), params: { book: book_params }
-
-      book.reload
-      expect(book.title).to eq(book_params[:title])
-      expect(book.author).to eq(book_params[:author])
-      expect(book.synopsis).to eq(book_params[:synopsis])
-      expect(book.image).to eq(book_params[:image])
-    end
-  end
 
   describe "DELETE #destroy" do
     it "redirects to books_path on a successful delete" do

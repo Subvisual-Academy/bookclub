@@ -7,31 +7,26 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def new
-    @book = Book.new
-  end
-
-  def edit
-    @book = Book.find(params[:id])
-  end
+  def new; end
 
   def create
-    @book = Book.new(book_params)
+    response = GoogleBooks.get_info_by_isbn(params[:isbn])
 
-    if @book.save
-      redirect_to books_path, notice: "Book was successfully created."
-    else
+    if response["totalItems"].zero?
+      flash[:alert] = "Nonexistent ISBN"
       render :new, status: :bad_request
-    end
-  end
-
-  def update
-    @book = Book.find(params[:id])
-
-    if @book.update(book_params)
-      redirect_to books_path, notice: "Book was successfully updated."
     else
-      render :edit, status: :bad_request
+      title = response["items"][0]["volumeInfo"]["title"]
+      author = response["items"][0]["volumeInfo"]["authors"][0]
+      synopsis = response["items"][0]["volumeInfo"]["description"]
+      image = response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]
+      @book = Book.new(title: title, author: author, synopsis: synopsis, image: image)
+
+      if @book.save
+        redirect_to books_path, notice: "Book was successfully created."
+      else
+        render :new, status: :bad_request
+      end
     end
   end
 
@@ -41,11 +36,5 @@ class BooksController < ApplicationController
     @book.destroy
 
     redirect_to books_url, notice: "Book was successfully destroyed."
-  end
-
-  private
-
-  def book_params
-    params.require(:book).permit(:title, :author, :synopsis, :image)
   end
 end
