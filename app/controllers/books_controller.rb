@@ -13,20 +13,14 @@ class BooksController < ApplicationController
     response = GoogleBooks.get_info_by_isbn(params[:isbn])
 
     if response["totalItems"].zero?
-      flash[:alert] = "Nonexistent ISBN"
-      render :new, status: :bad_request
+      redirect_to new_book_path, status: :bad_request,
+                                 notice: "Book was not successfully created."
     else
-      title = response["items"][0]["volumeInfo"]["title"]
-      author = response["items"][0]["volumeInfo"]["authors"][0]
-      synopsis = response["items"][0]["volumeInfo"]["description"]
-      image = response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]
-      @book = Book.new(title: title, author: author, synopsis: synopsis, image: image)
+      @book = create_book_from_response(response)
 
-      if @book.save
-        redirect_to books_path, notice: "Book was successfully created."
-      else
-        render :new, status: :bad_request
-      end
+      @book.save
+
+      redirect_to books_path, notice: "Book was successfully created."
     end
   end
 
@@ -36,5 +30,30 @@ class BooksController < ApplicationController
     @book.destroy
 
     redirect_to books_url, notice: "Book was successfully destroyed."
+  end
+
+  private
+
+  def create_book_from_response(response)
+    Book.new(title: return_title_from_response(response),
+             author: return_author_from_response(response),
+             synopsis: return_synopsis_from_response(response),
+             image: return_image_from_response(response))
+  end
+
+  def return_title_from_response(response)
+    response["items"][0]["volumeInfo"]["title"]
+  end
+
+  def return_author_from_response(response)
+    response["items"][0]["volumeInfo"]["authors"][0]
+  end
+
+  def return_synopsis_from_response(response)
+    response["items"][0]["volumeInfo"]["description"]
+  end
+
+  def return_image_from_response(response)
+    response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]
   end
 end

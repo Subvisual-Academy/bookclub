@@ -62,7 +62,6 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-
   describe "DELETE #destroy" do
     it "redirects to books_path on a successful delete" do
       book = create(:book)
