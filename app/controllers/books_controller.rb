@@ -18,8 +18,8 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path, notice: "Book was successfully created."
     else
-      redirect_to new_book_path, status: :bad_request,
-                                 notice: "Book was not successfully created."
+      flash.now[:notice] = "The ISBN is invalid"
+      render new_book_path, status: :bad_request
     end
   end
 

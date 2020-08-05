@@ -31,11 +31,9 @@ RSpec.describe "Books", type: :request do
   end
 
   describe "POST #create", :vcr do
-    let(:api_created_book) do
-      VCR.use_cassette("google/book") do
-        hash = CreateBookFromIsbn.new(isbn: 9781448103690)
-        hash.execute
-      end
+    VCR.use_cassette("google/book") do
+      hash = CreateBookFromIsbn.new(isbn: 9781448103690)
+      hash.execute
     end
 
     it "redirects to books_path on a successful creation" do
@@ -48,11 +46,11 @@ RSpec.describe "Books", type: :request do
       post books_path, params: { book: { isbn: "9781448103690" } }
 
       created_book = Book.last
-      expect(created_book.title).to eq(api_created_book.title)
-      expect(created_book.author).to eq(api_created_book.author)
-      expect(created_book.synopsis).to eq(api_created_book.synopsis)
-      expect(created_book.image).to eq(api_created_book.image)
-      expect(created_book.isbn).to eq(api_created_book.isbn)
+      expect(created_book.title).to eq("Kafka on the Shore")
+      expect(created_book.author).to eq("Haruki Murakami")
+      expect(created_book.synopsis).to eq("Kafka Tamura runs away from home at fifteen, under the shadow of his father's dark prophesy. The aging Nakata, tracker of lost cats, who never recovered from a bizarre childhood affliction, finds his pleasantly simplified life suddenly turned upside down. As their parallel odysseys unravel, cats converse with people; fish tumble from the sky; a ghost-like pimp deploys a Hegel-spouting girl of the night; a forest harbours soldiers apparently un-aged since World War II. There is a savage killing, but the identity of both victim and killer is a riddle - one of many which combine to create an elegant and dreamlike masterpiece. 'Wonderful... Magical and outlandish' Daily Mail 'Hypnotic, spellbinding' The Times 'Cool, fluent and addictive' Daily Telegraph")
+      expect(created_book.image).to eq("http://books.google.com/books/content?id=L6AtuutQHpwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api")
+      expect(created_book.isbn).to eq("9781448103690")
     end
 
     it "returns bad_request if create is unsuccessful" do
