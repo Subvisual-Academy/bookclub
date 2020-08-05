@@ -9,9 +9,9 @@ RSpec.describe "Books", type: :request do
       get books_path
 
       list.each do |book|
-        expect(sanitize(response.body)).to include(book.title)
-        expect(sanitize(response.body)).to include(book.author)
-        expect(response.body).to include(book.synopsis)
+        expect(response_text).to include(book.title)
+        expect(response_text).to include(book.author)
+        expect(response_text).to include(book.synopsis)
         expect(response.body).to include(book.image)
       end
     end
@@ -23,9 +23,9 @@ RSpec.describe "Books", type: :request do
 
       get book_path(book)
 
-      expect(response.body).to include(book.title)
-      expect(response.body).to include(book.author)
-      expect(response.body).to include(book.synopsis)
+      expect(response_text).to include(book.title)
+      expect(response_text).to include(book.author)
+      expect(response_text).to include(book.synopsis)
       expect(response.body).to include(book.image)
     end
   end
