@@ -7,15 +7,16 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def new; end
+  def new
+    @book = Book.new
+  end
 
   def create
-    hash = CreateBookFromIsbn.new(isbn: params[:isbn])
+    hash = CreateBookFromIsbn.new(isbn: params[:book][:isbn])
     @book = hash.execute
 
     if @book.save
       redirect_to books_path, notice: "Book was successfully created."
-
     else
       redirect_to new_book_path, status: :bad_request,
                                  notice: "Book was not successfully created."

@@ -26,6 +26,7 @@ RSpec.describe "Books", type: :request do
       expect(response_text).to include(book.author)
       expect(response_text).to include(book.synopsis)
       expect(response.body).to include(book.image)
+      expect(response.body).to include(book.isbn)
     end
   end
 
@@ -38,23 +39,24 @@ RSpec.describe "Books", type: :request do
     end
 
     it "redirects to books_path on a successful creation" do
-      post books_path, params: { isbn: "9781448103690" }
+      post books_path, params: { book: { isbn: "9781448103690" } }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
-      post books_path, params: { isbn: "9781448103690" }
+      post books_path, params: { book: { isbn: "9781448103690" } }
 
       created_book = Book.last
       expect(created_book.title).to eq(api_created_book.title)
       expect(created_book.author).to eq(api_created_book.author)
       expect(created_book.synopsis).to eq(api_created_book.synopsis)
       expect(created_book.image).to eq(api_created_book.image)
+      expect(created_book.isbn).to eq(api_created_book.isbn)
     end
 
     it "returns bad_request if create is unsuccessful" do
-      post books_path, params: { isbn: "no-isbn" }
+      post books_path, params: { book: { isbn: "no-isbn" } }
 
       expect(response).to have_http_status(:bad_request)
     end

@@ -1,5 +1,4 @@
-<%= form_with(url: books_path) do |form| %>
-
+<%= form_with(model: book, url: books_path) do |form| %>
   <div class="Books-Field">
     <%= form.label :isbn %>
     <%= form.text_field :isbn %>

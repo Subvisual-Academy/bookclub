@@ -4,5 +4,6 @@ FactoryBot.define do
     author { Faker::Book.author }
     synopsis { "synopsis" }
     image { "image.png" }
+    isbn { "1400079276" }
   end
 end

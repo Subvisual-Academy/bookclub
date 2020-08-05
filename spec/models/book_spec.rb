@@ -25,5 +25,11 @@ RSpec.describe Book, type: :model do
 
       expect(book).not_to be_valid
     end
+
+    it "ensure isbn presence" do
+      book = build(:book, isbn: nil)
+
+      expect(book).not_to be_valid
+    end
   end
 end

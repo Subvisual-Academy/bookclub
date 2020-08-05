@@ -7,8 +7,8 @@ class CreateBookFromIsbn
     response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{@isbn}")
     response.parsed_response
 
-    if response["totalItems"].zero?
-      Book.new
+    if response["totalItems"].zero? || @isbn.eql?("")
+      Book.new(isbn: @isbn)
     else
       create_book_from_response(response)
     end
@@ -20,7 +20,8 @@ class CreateBookFromIsbn
     Book.new(title: return_title_from_response(response),
              author: return_author_from_response(response),
              synopsis: return_synopsis_from_response(response),
-             image: return_image_from_response(response))
+             image: return_image_from_response(response),
+             isbn: @isbn)
   end
 
   def return_title_from_response(response)
