@@ -19,6 +19,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
+      Slack_Notifier.ping "A ata do bookclub já está disponível em: http://example.com"
       redirect_to books_path, notice: "Book was successfully created."
     else
       render :new, status: :bad_request
