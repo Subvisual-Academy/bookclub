@@ -13,7 +13,7 @@ class BooksController < ApplicationController
 
   def create
     hash = CreateBookFromIsbn.new(isbn: params[:book][:isbn])
-    @book = hash.execute
+    @book = hash.perform
 
     if @book.save
       redirect_to books_path, notice: "Book was successfully created."

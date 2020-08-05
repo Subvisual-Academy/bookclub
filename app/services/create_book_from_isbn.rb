@@ -3,7 +3,7 @@ class CreateBookFromIsbn
     @isbn = isbn
   end
 
-  def execute
+  def perform
     response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{@isbn}")
     response.parsed_response
 
