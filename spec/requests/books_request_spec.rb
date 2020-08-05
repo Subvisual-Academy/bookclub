@@ -44,7 +44,6 @@ RSpec.describe "Books", type: :request do
     end
 
     it "creates a book with the correct params" do
-
       post books_path, params: { isbn: "9781448103690" }
 
       created_book = Book.last

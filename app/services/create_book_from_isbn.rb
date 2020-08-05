@@ -1,5 +1,4 @@
 class CreateBookFromIsbn
-
   def initialize(isbn: nil)
     @isbn = isbn
   end
@@ -39,6 +38,4 @@ class CreateBookFromIsbn
   def return_image_from_response(response)
     response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"]
   end
-
 end
-
