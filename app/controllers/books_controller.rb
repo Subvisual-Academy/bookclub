@@ -12,10 +12,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    hash = CreateBookFromIsbn.new(isbn: params[:book][:isbn])
-    @book = hash.perform
+    create_book_from_isbn = CreateBookFromIsbn.new(isbn: params[:book][:isbn])
+    @book = create_book_from_isbn.perform
 
-    if @book.save
+    if create_book_from_isbn.successful?
       redirect_to books_path, notice: "Book was successfully created."
     else
       flash.now[:notice] = "The ISBN is invalid"

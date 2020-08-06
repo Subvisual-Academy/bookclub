@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Wed, 05 Aug 2020 20:21:32 GMT
+      - Thu, 06 Aug 2020 10:01:39 GMT
       Server:
       - ESF
       Cache-Control:
@@ -149,5 +149,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Wed, 05 Aug 2020 20:21:32 GMT
+  recorded_at: Thu, 06 Aug 2020 10:01:39 GMT
 recorded_with: VCR 6.0.0

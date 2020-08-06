@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :book do
-    sequence(:title) { Faker::Book.title }
+    title { Faker::Book.title }
     author { Faker::Book.author }
-    synopsis { "synopsis" }
-    image { "image.png" }
-    isbn { "1400079276" }
+    synopsis { Faker::Lorem.paragraph_by_chars }
+    image { Faker::LoremPixel.image }
+    isbn { Faker::Code.isbn }
   end
 end

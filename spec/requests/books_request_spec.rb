@@ -31,11 +31,6 @@ RSpec.describe "Books", type: :request do
   end
 
   describe "POST #create", :vcr do
-    VCR.use_cassette("google/book") do
-      hash = CreateBookFromIsbn.new(isbn: 9781448103690)
-      hash.perform
-    end
-
     it "redirects to books_path on a successful creation" do
       post books_path, params: { book: { isbn: "9781448103690" } }
 

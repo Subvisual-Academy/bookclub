@@ -1,27 +1,37 @@
 class CreateBookFromIsbn
   def initialize(isbn: nil)
     @isbn = isbn
+    @book = Book.new(isbn: @isbn)
   end
 
   def perform
+    return @book if @isbn.blank?
+
     response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{@isbn}")
     response.parsed_response
 
-    if response["totalItems"].zero? || @isbn.eql?("")
-      Book.new(isbn: @isbn)
-    else
-      create_book_from_response(response)
-    end
+    fill_in_book_details(response)
+  end
+
+  def successful?
+    @book.valid? && @book.persisted?
   end
 
   private
 
-  def create_book_from_response(response)
-    Book.new(title: return_title_from_response(response),
-             author: return_author_from_response(response),
-             synopsis: return_synopsis_from_response(response),
-             image: return_image_from_response(response),
-             isbn: @isbn)
+  def fill_in_book_details(response)
+    unless response["totalItems"].zero?
+      fill_book_from_response(response)
+      @book.save
+    end
+    @book
+  end
+
+  def fill_book_from_response(response)
+    @book.title = return_title_from_response(response)
+    @book.author = return_author_from_response(response)
+    @book.synopsis = return_synopsis_from_response(response)
+    @book.image = return_image_from_response(response)
   end
 
   def return_title_from_response(response)
