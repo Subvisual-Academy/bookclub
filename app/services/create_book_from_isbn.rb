@@ -7,7 +7,11 @@ class CreateBookFromIsbn
   def perform
     return @book if @isbn.blank?
 
-    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{@isbn}")
+    normalized_isbn = StdNum::ISBN.normalize(@isbn)
+
+    return @book if normalized_isbn.nil?
+
+    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{normalized_isbn}")
     response.parsed_response
 
     fill_in_book_details(response)
