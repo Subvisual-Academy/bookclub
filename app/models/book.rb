@@ -3,4 +3,5 @@ class Book < ApplicationRecord
   validates :author, presence: true
   validates :synopsis, presence: true
   validates :image, presence: true
+  validates :isbn, presence: true
 end

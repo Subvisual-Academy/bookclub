@@ -11,7 +11,6 @@ RSpec.describe "Books", type: :request do
       list.each do |book|
         expect(response_text).to include(book.title)
         expect(response_text).to include(book.author)
-        expect(response_text).to include(book.synopsis)
         expect(response.body).to include(book.image)
       end
     end
@@ -27,69 +26,32 @@ RSpec.describe "Books", type: :request do
       expect(response_text).to include(book.author)
       expect(response_text).to include(book.synopsis)
       expect(response.body).to include(book.image)
+      expect(response.body).to include(book.isbn)
     end
   end
 
-  describe "POST #create" do
+  describe "POST #create", :vcr do
     it "redirects to books_path on a successful creation" do
-      book_params = attributes_for(:book)
-
-      post books_path, params: { book: book_params }
+      post books_path, params: { book: { isbn: "9781448103690" } }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
-      book_params = attributes_for(:book)
-
-      post books_path, params: { book: book_params }
+      post books_path, params: { book: { isbn: "9781448103690" } }
 
       created_book = Book.last
-      expect(created_book.title).to eq(book_params[:title])
-      expect(created_book.author).to eq(book_params[:author])
-      expect(created_book.synopsis).to eq(book_params[:synopsis])
-      expect(created_book.image).to eq(book_params[:image])
+      expect(created_book.title).to eq("Kafka on the Shore")
+      expect(created_book.author).to eq("Haruki Murakami")
+      expect(created_book.synopsis).to eq("Kafka Tamura runs away from home at fifteen, under the shadow of his father's dark prophesy. The aging Nakata, tracker of lost cats, who never recovered from a bizarre childhood affliction, finds his pleasantly simplified life suddenly turned upside down. As their parallel odysseys unravel, cats converse with people; fish tumble from the sky; a ghost-like pimp deploys a Hegel-spouting girl of the night; a forest harbours soldiers apparently un-aged since World War II. There is a savage killing, but the identity of both victim and killer is a riddle - one of many which combine to create an elegant and dreamlike masterpiece. 'Wonderful... Magical and outlandish' Daily Mail 'Hypnotic, spellbinding' The Times 'Cool, fluent and addictive' Daily Telegraph")
+      expect(created_book.image).to eq("http://books.google.com/books/content?id=L6AtuutQHpwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api")
+      expect(created_book.isbn).to eq("9781448103690")
     end
 
     it "returns bad_request if create is unsuccessful" do
-      book_params = attributes_for(:book, title: nil)
-
-      post books_path, params: { book: book_params }
+      post books_path, params: { book: { isbn: "no-isbn" } }
 
       expect(response).to have_http_status(:bad_request)
-    end
-  end
-
-  describe "PATCH #update" do
-    it "redirects to books_path on a successful patch" do
-      book = create(:book)
-
-      put book_path(book), params: { book: { title: "new_title", author: "author", synopsis: "synopsis",
-                                             image: "image.png" } }
-
-      expect(response).to redirect_to(books_path)
-    end
-
-    it "returns bad_request on an unsuccessful patch" do
-      book = create(:book)
-      book_params = attributes_for(:book, title: nil)
-
-      put book_path(book), params: { book: book_params }
-
-      expect(response).to have_http_status(:bad_request)
-    end
-
-    it "updates parameter on successful patch" do
-      book = create(:book)
-      book_params = attributes_for(:book, title: "new_title")
-
-      put book_path(book), params: { book: book_params }
-
-      book.reload
-      expect(book.title).to eq(book_params[:title])
-      expect(book.author).to eq(book_params[:author])
-      expect(book.synopsis).to eq(book_params[:synopsis])
-      expect(book.image).to eq(book_params[:image])
     end
   end
 
