@@ -5,8 +5,6 @@ class CreateBookFromIsbn
   end
 
   def perform
-    return @book if @isbn.blank?
-
     normalized_isbn = StdNum::ISBN.normalize(@isbn)
 
     return @book if normalized_isbn.nil?

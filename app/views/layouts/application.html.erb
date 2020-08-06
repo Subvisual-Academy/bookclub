@@ -20,6 +20,7 @@
           <% else %>
             <li><%= link_to 'Log In', login_path %></li>
           <% end %>
+          <li><%= link_to 'Books', books_path %></li>
         </ul>
       </div>
     </nav>
@@ -29,7 +30,8 @@
           <%= value %>
         </div>
       <% end %>
-
+      <hr>
+      <br>
       <%= yield %>
     </div>
   </body>
