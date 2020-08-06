@@ -6,6 +6,7 @@ ruby "2.6.6"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "httparty", "~> 0.13.7"
 gem "jbuilder", "~> 2.7"
+gem "library_stdnums", "~> 1.6"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
@@ -13,7 +14,6 @@ gem "sass-rails", ">= 6"
 gem "sorcery"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
-gem 'library_stdnums', '~> 1.6'
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
