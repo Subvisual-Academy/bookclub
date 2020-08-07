@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     @book = create_book_from_isbn.perform
 
     if create_book_from_isbn.successful?
-      SlackNotifier.publish
+      SlackNotifier.publish # TODO: move this to bookclub session controller
       redirect_to books_path, notice: "Book was successfully created."
     else
       flash.now[:notice] = "The ISBN is invalid"
