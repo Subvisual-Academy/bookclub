@@ -32,6 +32,7 @@ RSpec.describe "Books", type: :request do
 
   describe "POST #create" do
     it "redirects to books_path on a successful creation" do
+      allow(SlackNotifier).to receive(:publish).and_return(nil)
       book_params = attributes_for(:book)
 
       post books_path, params: { book: book_params }
@@ -40,6 +41,7 @@ RSpec.describe "Books", type: :request do
     end
 
     it "creates a book with the correct params" do
+      allow(SlackNotifier).to receive(:publish).and_return(nil)
       book_params = attributes_for(:book)
 
       post books_path, params: { book: book_params }
