@@ -11,28 +11,16 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  def edit
-    @book = Book.find(params[:id])
-  end
-
   def create
-    @book = Book.new(book_params)
+    create_book_from_isbn = CreateBookFromIsbn.new(isbn: params[:book][:isbn])
+    @book = create_book_from_isbn.perform
 
-    if @book.save
+    if create_book_from_isbn.successful?
       SlackNotifier.publish
       redirect_to books_path, notice: "Book was successfully created."
     else
-      render :new, status: :bad_request
-    end
-  end
-
-  def update
-    @book = Book.find(params[:id])
-
-    if @book.update(book_params)
-      redirect_to books_path, notice: "Book was successfully updated."
-    else
-      render :edit, status: :bad_request
+      flash.now[:notice] = "The ISBN is invalid"
+      render new_book_path, status: :bad_request
     end
   end
 
@@ -42,11 +30,5 @@ class BooksController < ApplicationController
     @book.destroy
 
     redirect_to books_url, notice: "Book was successfully destroyed."
-  end
-
-  private
-
-  def book_params
-    params.require(:book).permit(:title, :author, :synopsis, :image)
   end
 end

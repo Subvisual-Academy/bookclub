@@ -7,6 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 require "database_cleaner"
 require "capybara/rspec"
+require "vcr"
 Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
@@ -18,6 +19,13 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = "spec/vcr"
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.ignore_localhost = true
 end
 
 RSpec.configure do |config|
@@ -32,6 +40,7 @@ RSpec.configure do |config|
   config.include AuthHelpers::Feature, type: :feature
   config.include TransactionalCapybara::AjaxHelpers, type: :feature
   config.include Capybara::RSpecMatchers, type: :component
+  config.include HtmlHelpers, type: :request
 end
 
 Shoulda::Matchers.configure do |config|
