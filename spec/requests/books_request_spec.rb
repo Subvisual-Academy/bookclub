@@ -32,12 +32,16 @@ RSpec.describe "Books", type: :request do
 
   describe "POST #create", :vcr do
     it "redirects to books_path on a successful creation" do
+      allow(SlackNotifier).to receive(:publish).and_return(nil)
+
       post books_path, params: { book: { isbn: "9781448103690" } }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
+      allow(SlackNotifier).to receive(:publish).and_return(nil)
+
       post books_path, params: { book: { isbn: "9781448103690" } }
 
       created_book = Book.last
