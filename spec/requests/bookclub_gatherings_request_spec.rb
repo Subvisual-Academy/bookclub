@@ -87,7 +87,7 @@ RSpec.describe "BookclubGatherings", type: :request do
       expect(response).to redirect_to(bookclub_gatherings_path)
     end
 
-    it "creates a book with the correct params" do
+    it "creates a bookclub_gathering with the correct params" do
       book = create(:book)
       user = create(:user)
       login_user(user)
