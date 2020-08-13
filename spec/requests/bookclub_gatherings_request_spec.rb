@@ -131,5 +131,29 @@ RSpec.describe "BookclubGatherings", type: :request do
 
       expect(response).to redirect_to(bookclub_gathering_path(gathering))
     end
+
+    it "updates parameter on successful patch" do
+      user = create(:user)
+      login_user(user)
+      gathering = create(:bookclub_gathering, :has_special_presentation)
+      bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
+      
+      put bookclub_gathering_path(gathering), params: { bookclub_gathering: bookclub_gathering_params}
+
+      gathering.reload
+      expect(gathering.date).to eq(bookclub_gathering_params[:date])
+      expect(gathering.special_presentation).to eq(bookclub_gathering_params[:special_presentation])
+    end
+
+    it "returns bad_request on an unsuccessful patch" do
+      user = create(:user)
+      login_user(user)
+      gathering = create(:bookclub_gathering, :has_special_presentation)
+      bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
+      
+      put bookclub_gathering_path(gathering), params: { bookclub_gathering: {date: 1}}
+      
+      expect(response).to have_http_status(:bad_request)
+    end
   end
 end
