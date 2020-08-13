@@ -1,7 +1,9 @@
 class BookclubGatheringsController < ApplicationController
   before_action :require_login, only: %i[new edit create update destroy]
   def index
-    @bookclub_gatherings = BookclubGathering.all
+    @bookclub_gatherings = BookclubGathering.order("date DESC")
+    @first_year = @bookclub_gatherings.last.date.year
+    @last_year = @bookclub_gatherings.first.date.year
   end
 
   def show

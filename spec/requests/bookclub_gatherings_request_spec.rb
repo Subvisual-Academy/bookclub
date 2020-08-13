@@ -9,8 +9,8 @@ RSpec.describe "BookclubGatherings", type: :request do
     get bookclub_gatherings_path
 
     bookclub_gatherings_list.each do |bookclub_gathering|
-      expect(response_text).to include(bookclub_gathering.date.to_s)
-      expect(response_text).to include(bookclub_gathering.special_presentation)
+      expect(response_text).to include(Date::MONTHNAMES[bookclub_gathering.date.month])
+      expect(response_text).to include(bookclub_gathering.date.year.to_s)
     end
   end
 
