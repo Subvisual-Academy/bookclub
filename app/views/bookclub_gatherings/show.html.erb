@@ -1,0 +1,23 @@
+<p>
+  <strong>Date:</strong>
+  <%= @bookclub_gathering.date %>
+</p>
+
+<h2>Presentations</h2>
+<%= render @bookclub_gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == false} %>
+
+<p>
+  <% unless @bookclub_gathering.special_presentation.blank? %>
+    <b>Special presentation:   <%= @bookclub_gathering.special_presentation %></b>
+  <% end %>
+    <%= render @bookclub_gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == true} %>
+
+</p>
+
+<br>
+
+<%= link_to 'Back', bookclub_gatherings_path %>
+<% if current_user %> |
+  <%= link_to 'Edit', edit_bookclub_gathering_path(@bookclub_gathering) %> |
+  <%= link_to 'Delete', @bookclub_gathering, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

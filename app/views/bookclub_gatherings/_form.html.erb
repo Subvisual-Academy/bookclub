@@ -1,0 +1,46 @@
+<%= form_with(model: bookclub_gathering, local: true) do |form| %>
+  <% if bookclub_gathering.errors.any? %>
+    <div>
+      <h2><%= pluralize(bookclub_gathering.errors.count, "error") %> prohibited this todo_list from being saved:</h2>
+
+      <ul>
+        <% bookclub_gathering.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+    <br>
+    <%= form.label :special_presentation %>
+    <%= form.text_field :special_presentation %>
+
+  </div>
+
+  <h1>Presentations</h1>
+  <div data-controller="nested-form">
+    <!-- template for form for creating a new task -->
+    <template data-target='nested-form.template'>
+      <%= form.fields_for :book_presentations, BookPresentation.new, child_index: 'TEMPLATE_RECORD' do |book_presentation| %>
+        <%= render 'book_presentation_fields', form: book_presentation %>
+        <br>
+      <% end %>
+    </template>
+
+    <!-- Displaying existing tasks -->
+    <%= form.fields_for :book_presentations do |book_presentation2| %>
+      <%= render 'book_presentation_fields', form: book_presentation2 %>
+    <% end %>
+
+    <div data-target="nested-form.add_item">
+      <%= link_to "Add Presentation", "#", data: { action: "nested-form#add_association" } %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

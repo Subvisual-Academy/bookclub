@@ -1,0 +1,16 @@
+<div class='nested-fields'>
+  <div class='form-group'>
+    <%= form.hidden_field :_destroy %>
+    <%= form.label :user %>
+    <%= form.select :user_id, User.all.map {|u| [u.name,u.id]} %>
+    <br>
+    <%= form.label :book %>
+    <%= form.select :book_id, Book.all.map {|b| [b.title, b.id]} %>
+    <br>
+    <%= form.label :belongs_special_presentation %>
+    <%= form.check_box :belongs_special_presentation %>
+    <small>
+      <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %>
+    </small>
+  </div>
+</div>
