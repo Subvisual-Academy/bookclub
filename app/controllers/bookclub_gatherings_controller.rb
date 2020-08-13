@@ -18,7 +18,7 @@ class BookclubGatheringsController < ApplicationController
 
   def create
     @bookclub_gathering = BookclubGathering.new(bookclub_gathering_params)
-    
+
     if @bookclub_gathering.save
       SlackNotifier.publish(root_url, @bookclub_gathering.date, bookclub_gathering_path(@bookclub_gathering))
       redirect_to bookclub_gatherings_path, notice: "Gathering was successfully created."

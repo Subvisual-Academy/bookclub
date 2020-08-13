@@ -20,5 +20,4 @@ RSpec.describe BookclubGathering, type: :model do
                                                       "book_id" => 1,
                                                       "belongs_special_presentation" => true })).to be_truthy
   end
-
 end

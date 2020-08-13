@@ -38,8 +38,6 @@ RSpec.describe "BookclubGatherings", type: :request do
   end
 
   it "displays the bookclub gathering form for logged in users" do
-    #todo mover para as features
-#       expect(page).to have_selector("input[value='John']")
     user = create(:user)
     login_user(user)
 
@@ -59,7 +57,6 @@ RSpec.describe "BookclubGatherings", type: :request do
 
       expect(response).to redirect_to(login_path)
     end
-
 
     it "displays bookclub gathering prameters to logged user" do
       user = create(:user)
@@ -82,7 +79,7 @@ RSpec.describe "BookclubGatherings", type: :request do
       login_user(user)
       allow(SlackNotifier).to receive(:publish).and_return(nil)
       bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
-      book_presentation_params = {"1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true}}
+      book_presentation_params = { "1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true } }
       bookclub_gathering_params["book_presentations_attributes"] = book_presentation_params
 
       post bookclub_gatherings_path, params: { bookclub_gathering: bookclub_gathering_params }
@@ -96,7 +93,7 @@ RSpec.describe "BookclubGatherings", type: :request do
       login_user(user)
       allow(SlackNotifier).to receive(:publish).and_return(nil)
       bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
-      book_presentation_params = {"1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true}}
+      book_presentation_params = { "1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true } }
       bookclub_gathering_params["book_presentations_attributes"] = book_presentation_params
 
       post bookclub_gatherings_path, params: { bookclub_gathering: bookclub_gathering_params }
@@ -113,8 +110,8 @@ RSpec.describe "BookclubGatherings", type: :request do
       user = create(:user)
       login_user(user)
       allow(SlackNotifier).to receive(:publish).and_return(nil)
-      
-      post bookclub_gatherings_path, params: { bookclub_gathering: {date: ""} }
+
+      post bookclub_gatherings_path, params: { bookclub_gathering: { date: "" } }
 
       expect(response).to have_http_status(:bad_request)
     end
@@ -126,8 +123,8 @@ RSpec.describe "BookclubGatherings", type: :request do
       login_user(user)
       gathering = create(:bookclub_gathering, :has_special_presentation)
       bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
-      
-      put bookclub_gathering_path(gathering), params: { bookclub_gathering: bookclub_gathering_params}
+
+      put bookclub_gathering_path(gathering), params: { bookclub_gathering: bookclub_gathering_params }
 
       expect(response).to redirect_to(bookclub_gathering_path(gathering))
     end
@@ -137,8 +134,8 @@ RSpec.describe "BookclubGatherings", type: :request do
       login_user(user)
       gathering = create(:bookclub_gathering, :has_special_presentation)
       bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
-      
-      put bookclub_gathering_path(gathering), params: { bookclub_gathering: bookclub_gathering_params}
+
+      put bookclub_gathering_path(gathering), params: { bookclub_gathering: bookclub_gathering_params }
 
       gathering.reload
       expect(gathering.date).to eq(bookclub_gathering_params[:date])
@@ -149,11 +146,32 @@ RSpec.describe "BookclubGatherings", type: :request do
       user = create(:user)
       login_user(user)
       gathering = create(:bookclub_gathering, :has_special_presentation)
-      bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
-      
-      put bookclub_gathering_path(gathering), params: { bookclub_gathering: {date: 1}}
-      
+
+      put bookclub_gathering_path(gathering), params: { bookclub_gathering: { date: 1 } }
+
       expect(response).to have_http_status(:bad_request)
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "redirects to bookclub_gatherings_path on a successful delete" do
+      user = create(:user)
+      login_user(user)
+      bookclub_gathering = create(:bookclub_gathering)
+
+      delete bookclub_gathering_path(bookclub_gathering)
+
+      expect(response).to redirect_to(bookclub_gatherings_path)
+    end
+
+    it "destroys a bookclub_gathering" do
+      user = create(:user)
+      login_user(user)
+      bookclub_gathering = create(:bookclub_gathering)
+
+      delete bookclub_gathering_path(bookclub_gathering)
+
+      expect(BookclubGathering.count).to eq(0)
     end
   end
 end

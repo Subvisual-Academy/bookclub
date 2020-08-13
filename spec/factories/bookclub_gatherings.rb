@@ -10,6 +10,5 @@ FactoryBot.define do
         create(:book_presentation, :belong_to_special_presentation, bookclub_gathering: bookclub_gathering)
       end
     end
-
   end
 end
