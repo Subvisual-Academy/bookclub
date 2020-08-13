@@ -18,13 +18,13 @@ class BookclubGatheringsController < ApplicationController
 
   def create
     @bookclub_gathering = BookclubGathering.new(bookclub_gathering_params)
-
+    
     if @bookclub_gathering.save
       SlackNotifier.publish(root_url, @bookclub_gathering.date, bookclub_gathering_path(@bookclub_gathering))
       redirect_to bookclub_gatherings_path, notice: "Gathering was successfully created."
     else
       flash.now[:notice] = "Invalid field"
-      render new_book_path, status: :bad_request
+      render new_bookclub_gathering_path, status: :bad_request
     end
   end
 

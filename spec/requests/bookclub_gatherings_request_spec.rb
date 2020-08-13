@@ -77,14 +77,59 @@ RSpec.describe "BookclubGatherings", type: :request do
 
   describe "POST #create" do
     it "redirects to bookclub_gatherings_path on a successful creation" do
+      book = create(:book)
       user = create(:user)
       login_user(user)
       allow(SlackNotifier).to receive(:publish).and_return(nil)
       bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
+      book_presentation_params = {"1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true}}
+      bookclub_gathering_params["book_presentations_attributes"] = book_presentation_params
 
       post bookclub_gatherings_path, params: { bookclub_gathering: bookclub_gathering_params }
 
       expect(response).to redirect_to(bookclub_gatherings_path)
+    end
+
+    it "creates a book with the correct params" do
+      book = create(:book)
+      user = create(:user)
+      login_user(user)
+      allow(SlackNotifier).to receive(:publish).and_return(nil)
+      bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
+      book_presentation_params = {"1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true}}
+      bookclub_gathering_params["book_presentations_attributes"] = book_presentation_params
+
+      post bookclub_gatherings_path, params: { bookclub_gathering: bookclub_gathering_params }
+
+      created_gathering = BookclubGathering.last
+      expect(created_gathering.date).to eq(bookclub_gathering_params[:date])
+      expect(created_gathering.special_presentation).to eq(bookclub_gathering_params[:special_presentation])
+      expect(created_gathering.book_presentations[0].user_id).to eq(book_presentation_params["1"][:user_id])
+      expect(created_gathering.book_presentations[0].book_id).to eq(book_presentation_params["1"][:book_id])
+      expect(created_gathering.book_presentations[0].belongs_special_presentation).to eq(book_presentation_params["1"][:belongs_special_presentation])
+    end
+
+    it "returns bad_request if create is unsuccessful" do
+      user = create(:user)
+      login_user(user)
+      allow(SlackNotifier).to receive(:publish).and_return(nil)
+      
+      post bookclub_gatherings_path, params: { bookclub_gathering: {date: ""} }
+
+      expect(response).to have_http_status(:bad_request)
+    end
+  end
+
+  describe "PUT #update" do
+    it "redirects to bookclub_gathering_path on a successful update" do
+      user = create(:user)
+      login_user(user)
+      gathering = create(:bookclub_gathering, :has_special_presentation)
+      bookclub_gathering_params = attributes_for(:bookclub_gathering, :has_special_presentation)
+      
+      put bookclub_gathering_path(gathering), params: { bookclub_gathering: bookclub_gathering_params}
+
+      expect(response).to redirect_to(bookclub_gathering_path(gathering))
     end
   end
 end
