@@ -1,4 +1,4 @@
-class BookclubGathering < ApplicationRecord
+class Gathering < ApplicationRecord
   validates :date, presence: true
 
   has_many :book_presentations, dependent: :destroy

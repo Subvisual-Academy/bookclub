@@ -1,0 +1,19 @@
+<% unless @last_year == 0 %>
+  <% ((@last_year).downto(@first_year)).each do |year| %>
+    <p><%= year %></p>
+    <% filter_by_year(@gatherings, year).each do |gathering| %>
+      <%= link_to Date::MONTHNAMES[gathering.date.month], gathering %>
+      <% if current_user %> |
+        <%= link_to 'Edit', edit_gathering_path(gathering) %> |
+        <%= link_to 'Delete', gathering, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <br>
+    <% end %>
+  <% end %>
+<% end %>
+
+<br>
+
+<% if current_user %>
+  <%= link_to 'New Gathering', new_gathering_path %>
+<% end %>

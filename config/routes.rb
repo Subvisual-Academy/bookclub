@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :books, only: %i[index show new create destroy]
 
-  resources :bookclub_gatherings
+  resources :gatherings
 
   get "/login", to: "sessions#new", as: :login
   post "login" => "sessions#create"

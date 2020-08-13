@@ -1,10 +1,10 @@
-<%= form_with(model: bookclub_gathering, local: true) do |form| %>
-  <% if bookclub_gathering.errors.any? %>
+<%= form_with(model: gathering, local: true) do |form| %>
+  <% if gathering.errors.any? %>
     <div>
-      <h2><%= pluralize(bookclub_gathering.errors.count, "error") %> prohibited this todo_list from being saved:</h2>
+      <h2><%= pluralize(gathering.errors.count, "error") %> prohibited this gathering from being saved:</h2>
 
       <ul>
-        <% bookclub_gathering.errors.full_messages.each do |message| %>
+        <% gathering.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

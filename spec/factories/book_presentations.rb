@@ -3,7 +3,7 @@ FactoryBot.define do
     user { create(:user) }
     book { create(:book) }
     belongs_special_presentation { false }
-    bookclub_gathering { create(:bookclub_gathering) }
+    gathering { create(:gathering) }
 
     trait(:belong_to_special_presentation) { belongs_special_presentation { true } }
   end

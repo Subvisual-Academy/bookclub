@@ -1,0 +1,23 @@
+<p>
+  <strong>Date:</strong>
+  <%= @gathering.date %>
+</p>
+
+<h2>Presentations</h2>
+<%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == false} %>
+
+<p>
+  <% unless @gathering.special_presentation.blank? %>
+    <b>Special presentation:   <%= @gathering.special_presentation %></b>
+  <% end %>
+    <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == true} %>
+
+</p>
+
+<br>
+
+<%= link_to 'Back', gatherings_path %>
+<% if current_user %> |
+  <%= link_to 'Edit', edit_gathering_path(@gathering) %> |
+  <%= link_to 'Delete', @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+<% end %>
