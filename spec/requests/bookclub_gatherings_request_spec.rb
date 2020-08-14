@@ -73,13 +73,16 @@ RSpec.describe "Gatherings", type: :request do
   end
 
   describe "POST #create" do
+    before(:all) do
+      @user = create(:user)
+      login_user(@user)
+    end
+
     it "redirects to gatherings_path on a successful creation" do
       book = create(:book)
-      user = create(:user)
-      login_user(user)
       allow(SlackNotifier).to receive(:publish).and_return(nil)
       gathering_params = attributes_for(:gathering, :has_special_presentation)
-      book_presentation_params = { "1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true } }
+      book_presentation_params = { "1" => { user_id: @user.id, book_id: book.id, belongs_special_presentation: true } }
       gathering_params["book_presentations_attributes"] = book_presentation_params
 
       post gatherings_path, params: { gathering: gathering_params }
@@ -89,11 +92,9 @@ RSpec.describe "Gatherings", type: :request do
 
     it "creates a gathering with the correct params" do
       book = create(:book)
-      user = create(:user)
-      login_user(user)
       allow(SlackNotifier).to receive(:publish).and_return(nil)
       gathering_params = attributes_for(:gathering, :has_special_presentation)
-      book_presentation_params = { "1" => { user_id: user.id, book_id: book.id, belongs_special_presentation: true } }
+      book_presentation_params = { "1" => { user_id: @user.id, book_id: book.id, belongs_special_presentation: true } }
       gathering_params["book_presentations_attributes"] = book_presentation_params
 
       post gatherings_path, params: { gathering: gathering_params }
@@ -107,8 +108,6 @@ RSpec.describe "Gatherings", type: :request do
     end
 
     it "returns bad_request if create is unsuccessful" do
-      user = create(:user)
-      login_user(user)
       allow(SlackNotifier).to receive(:publish).and_return(nil)
 
       post gatherings_path, params: { gathering: { date: "" } }
@@ -118,9 +117,11 @@ RSpec.describe "Gatherings", type: :request do
   end
 
   describe "PUT #update" do
+    before(:all) do
+      login_user(create(:user))
+    end
+
     it "redirects to gathering_path on a successful update" do
-      user = create(:user)
-      login_user(user)
       gathering = create(:gathering, :has_special_presentation)
       gathering_params = attributes_for(:gathering, :has_special_presentation)
 
@@ -130,8 +131,6 @@ RSpec.describe "Gatherings", type: :request do
     end
 
     it "updates parameter on successful patch" do
-      user = create(:user)
-      login_user(user)
       gathering = create(:gathering, :has_special_presentation)
       gathering_params = attributes_for(:gathering, :has_special_presentation)
 
@@ -143,8 +142,6 @@ RSpec.describe "Gatherings", type: :request do
     end
 
     it "returns bad_request on an unsuccessful patch" do
-      user = create(:user)
-      login_user(user)
       gathering = create(:gathering, :has_special_presentation)
 
       put gathering_path(gathering), params: { gathering: { date: 1 } }
@@ -154,9 +151,11 @@ RSpec.describe "Gatherings", type: :request do
   end
 
   describe "DELETE #destroy" do
+    before(:all) do
+      login_user(create(:user))
+    end
+
     it "redirects to gatherings_path on a successful delete" do
-      user = create(:user)
-      login_user(user)
       gathering = create(:gathering)
 
       delete gathering_path(gathering)
@@ -165,8 +164,6 @@ RSpec.describe "Gatherings", type: :request do
     end
 
     it "destroys a gathering" do
-      user = create(:user)
-      login_user(user)
       gathering = create(:gathering)
 
       delete gathering_path(gathering)
