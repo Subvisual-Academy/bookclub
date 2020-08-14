@@ -31,6 +31,9 @@ RSpec.describe "Books", type: :request do
   end
 
   describe "POST #create", :vcr do
+    before(:all) do
+      login_user(create(:user))
+    end
     it "redirects to books_path on a successful creation" do
       allow(SlackNotifier).to receive(:publish).and_return(nil)
 
@@ -60,7 +63,11 @@ RSpec.describe "Books", type: :request do
   end
 
   describe "DELETE #destroy" do
+    before(:all) do
+      login_user(create(:user))
+    end
     it "redirects to books_path on a successful delete" do
+
       book = create(:book)
 
       delete book_path(book)

@@ -15,12 +15,15 @@
         <td><%= book.title %></td>
         <td><%= book.author %></td>
         <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user %>
+          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Book', new_book_path %>
+<% if current_user %>
+  <%= link_to 'New Book', new_book_path %>
+<% end %>
