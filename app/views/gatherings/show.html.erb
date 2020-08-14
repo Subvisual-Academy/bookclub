@@ -1,22 +1,25 @@
-<p>
-  <strong>Date:</strong>
-  <%= @gathering.date %>
-</p>
-
-<h2>Presentations</h2>
-<%= render @gathering.book_presentations.reject { |presentation|  presentation.belongs_special_presentation} %>
-
-<p>
-  <% unless @gathering.special_presentation.blank? %>
-    <b>Special presentation:   <%= @gathering.special_presentation %></b>
+<div class="gatherings-Sec">
+  <%= link_to 'Back', gatherings_path %>
+</div>
+<div class="gatherings-Main">
+  <h1>
+    <strong><%= Date::MONTHNAMES[@gathering.date.month] %></strong>
+  </h1>
+  <hr>
+  <h2>Book Mentions</h2>
+  <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == false} %>
+  <h2>
+    <% unless @gathering.special_presentation.blank? %>
+      Special Presentation
+    <% end %>
+  </h2>
+  <h3>
+    <%= @gathering.special_presentation %>
+  </h3>
+    <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == true} %>
+  <br>
+  <% if current_user %> |
+    <%= link_to 'Edit', edit_gathering_path(@gathering) %> |
+    <%= link_to 'Delete', @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
   <% end %>
-    <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation} %>
-</p>
-
-<br>
-
-<%= link_to 'Back', gatherings_path %>
-<% if current_user %> |
-  <%= link_to 'Edit', edit_gathering_path(@gathering) %> |
-  <%= link_to 'Delete', @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
-<% end %>
+</div>
