@@ -9,31 +9,55 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
-    <nav>
-      <div id="navbar">
-        <ul>
-          <li><%= link_to 'Home', root_path %></li>
-          <% if current_user %>
-            <li><span><%= current_user.email %></span></li>
-            <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'Log In', login_path %></li>
-          <% end %>
-          <li><%= link_to 'Books', books_path %></li>
-          <li><%= link_to 'Bookclub Gatherings', gatherings_path %></li>
-        </ul>
+  <div class="full-height-grow">
+    <header class="main-header">
+      <div class="container">
+        <nav class="header-nav">
+          <div class="bookclub-brand">
+            <%= link_to 'BookClub', root_path %>
+          </div>
+        </nav>
+        <nav class="header-nav">
+          <ul>
+            <li>
+              <div class="nav-link">
+                <%= image_tag 'books.svg', alt: "Icon of a book" %>
+                <%= link_to 'Books', books_path %>
+              </div>
+            </li>
+            <li>
+              <div class="nav-link">
+                <%= image_tag 'gatherings.svg', alt: "Icon of a list" %>
+                <%= link_to 'Gatherings', gatherings_path %>
+              </div>
+            </li>
+            <li>
+              <div class="login-btn">
+                <%= image_tag 'user.svg', alt: "Icon of an user" %>
+                <% if current_user %>
+                  <%= link_to 'Log Out', logout_path, method: :delete %>
+                <% else %>
+                  <%= link_to 'Log In', login_path %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </nav>
-    <div>
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-          <%= value %>
-        </div>
-      <% end %>
-      <hr>
-      <br>
-      <%= yield %>
-    </div>
+    </header>
+  </div>
+
+  <div>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= yield %>
+
   </body>
 </html>

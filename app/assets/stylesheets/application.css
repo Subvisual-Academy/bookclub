@@ -14,10 +14,101 @@
  *= require_self
  */
 
- body {
-    background-color: #fff;
-    color: #333;
-    margin: 33px; 
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px; }
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2rem;
+    min-height: 100vh;
+}
+
+.full-height-grow {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header {
+    height: 70px;
+    background-color:  #2E47D1;
+    font-weight: bold;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    margin-right: .75rem;
+}
+
+.nav-link img {
+    width: 1em;
+    margin-right: .25rem;
+}
+
+
+.login-btn {
+    border: 3px solid white;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-right: .75rem;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.login-btn img {
+    width: 1em;
+    margin-right: .25rem;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    flex-grow: 1;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-nav a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.header-nav a:hover  {
+    color: #adadad;
+}
+
+.bookclub-brand {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-size: 2rem;
+    align-items: center;
+}
