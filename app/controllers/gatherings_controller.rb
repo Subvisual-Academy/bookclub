@@ -1,5 +1,6 @@
 class GatheringsController < ApplicationController
   before_action :require_login, only: %i[new edit create update destroy]
+
   def index
     @gatherings = Gathering.order("date DESC")
     if @gatherings.empty?
