@@ -67,7 +67,6 @@ RSpec.describe "Books", type: :request do
       login_user(create(:user))
     end
     it "redirects to books_path on a successful delete" do
-
       book = create(:book)
 
       delete book_path(book)
