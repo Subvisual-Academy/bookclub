@@ -56,6 +56,6 @@ class GatheringsController < ApplicationController
     params.require(:gathering).
       permit(:date, :special_presentation,
              book_presentations_attributes: %i[_destroy id gathering_id
-                                               user_id book_id belongs_special_presentation])
+                                               user_id book_id special])
   end
 end

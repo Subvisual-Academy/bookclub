@@ -4,13 +4,13 @@
 </p>
 
 <h2>Presentations</h2>
-<%= render @gathering.book_presentations.reject { |presentation|  presentation.belongs_special_presentation} %>
+<%= render @gathering.book_presentations.reject { |presentation|  presentation.special} %>
 
 <p>
   <% unless @gathering.special_presentation.blank? %>
     <b>Special presentation:   <%= @gathering.special_presentation %></b>
   <% end %>
-    <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation} %>
+    <%= render @gathering.book_presentations.select { |presentation|  presentation.special} %>
 </p>
 
 <br>

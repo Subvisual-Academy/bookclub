@@ -11,13 +11,13 @@ RSpec.describe Gathering, type: :model do
     anaf_book_presentations = Gathering.nested_attributes_options[:book_presentations]
     expect(anaf_book_presentations[:reject_if].call({ "user_id" => "",
                                                       "book_id" => 1,
-                                                      "belongs_special_presentation" => true })).to be_truthy
+                                                      "special" => true })).to be_truthy
   end
 
   it "rejects blank user_id field" do
     anaf_book_presentations = Gathering.nested_attributes_options[:book_presentations]
     expect(anaf_book_presentations[:reject_if].call({ "user_id" => "",
                                                       "book_id" => 1,
-                                                      "belongs_special_presentation" => true })).to be_truthy
+                                                      "special" => true })).to be_truthy
   end
 end

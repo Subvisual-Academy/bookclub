@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_105153) do
     t.bigint "gathering_id", null: false
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
-    t.boolean "belongs_special_presentation", default: false
+    t.boolean "special", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_book_presentations_on_book_id"

@@ -7,8 +7,8 @@
     <%= form.label :book %>
     <%= form.select :book_id, Book.all.map {|b| [b.title, b.id]} %>
     <br>
-    <%= form.label :belongs_special_presentation %>
-    <%= form.check_box :belongs_special_presentation %>
+    <%= form.label :special %>
+    <%= form.check_box :special %>
     <small>
       <%= link_to "Remove", "#", data: { action: "click->nested-form#removeAssociation" } %>
     </small>
