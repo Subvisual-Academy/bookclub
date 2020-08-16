@@ -1,19 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+
+
 .gatherings-Main{
-    padding: 1% 20% 1% 20%;
+    padding: 3% 30% 1% 30%;
     hr {
-        width: 80%;
+        width: 100%;
         margin: 3% 0 0 0;
         border: 1px solid #EDF0F7;
-    }
-    h1{
-        font-family: Playfair Display;
-        color: #1B60F3;
-        font-size: 1.4em;
     }
 
     h2 {
         color: #1B60F3;
-        font-family: Open Sans;
+        font-family: Open Sans, serif;
+        font-weight: 600;
         font-style: normal;
         font-size: 1.2em;
     }
@@ -24,9 +23,68 @@
         font-style: normal;
     }
 
+    ul {
+      list-style: none;
+    }
+}
+
+.gatherings-Main-h1 {
+  font-family: "Playfair Display", Sans-Serif;
+  color: #1B60F3;
+  font-size: 2em;
+}
+
+.gatherings-Main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gatherings-resize-img{  /* wasn't finding a way of doing it with flexbox */
+  height: 40px;
+  width: 40px;
+}
+
+.gatherings-Main-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.gatherings-Main-header-left-img {
+  padding-right: 10px;
 }
 
 .gatherings-Sec{
-    text-decoration: none;
-    color: #1F29A4;
+    width: 100%;
+    max-width: 1200px;
+    align-items: center;
+    display: flex;
+    margin-top: 1.5em;
+    padding: 0 7em;
+    position: fixed;
+    max-height: 100px
+}
+.gatherings-Sec-img{
+  margin-right: 0.5em;
+  display: flex;
+  max-height: 10%;
+  max-width: 10%;
+}
+
+
+.gatherings-Sec-link{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #1F29A4;
+}
+
+.gatherings-Main-header-container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.gatherings-Ul{
+  margin-top: 0;
 }

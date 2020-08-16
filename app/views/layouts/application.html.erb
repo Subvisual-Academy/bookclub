@@ -4,14 +4,17 @@
     <title>Bookclub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+    </style>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
 
   <body>
-  <div class="full-height-grow">
     <header class="main-header">
       <div class="container">
         <nav class="header-nav">
@@ -23,23 +26,20 @@
           <ul>
             <li>
               <div class="nav-link">
-                <%= image_tag 'books.svg', alt: "Icon of a book" %>
-                <%= link_to 'Books', books_path %>
+                <%= link_to (image_tag 'books.svg', alt: "Icon of a book") +'Books', books_path %>
               </div>
             </li>
             <li>
               <div class="nav-link">
-                <%= image_tag 'gatherings.svg', alt: "Icon of a list" %>
-                <%= link_to 'Gatherings', gatherings_path %>
+                <%= link_to (image_tag 'gatherings.svg', alt: "Icon of a list") + 'Gatherings', gatherings_path  %>
               </div>
             </li>
             <li>
               <div class="login-btn">
-                <%= image_tag 'user.svg', alt: "Icon of an user" %>
                 <% if current_user %>
-                  <%= link_to 'Log Out', logout_path, method: :delete %>
+                  <%= link_to (image_tag 'user.svg', alt: "Icon of an user")+'Log Out', logout_path, method: :delete %>
                 <% else %>
-                  <%= link_to 'Log In', login_path %>
+                  <%= link_to (image_tag 'user.svg', alt: "Icon of an user")+'Log In', login_path %>
                 <% end %>
               </div>
             </li>
@@ -47,17 +47,17 @@
         </nav>
       </div>
     </header>
-  </div>
 
-  <div>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <%= value %>
-      </div>
-    <% end %>
-  </div>
+    <div>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
 
-  <%= yield %>
-
+    <div class="main-body">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,25 +1,31 @@
 <div class="gatherings-Sec">
-  <%= link_to 'Back', gatherings_path %>
+  <%= link_to (image_tag 'arrow.svg', alt: "back arrow", class: "gatherings-Sec-img" )+
+                  "Back", gatherings_path, class: "gatherings-Sec-link" %>
 </div>
+
 <div class="gatherings-Main">
-  <h1>
+  <h1 class="gatherings-Main-h1">
     <strong><%= Date::MONTHNAMES[@gathering.date.month] %></strong>
   </h1>
   <hr>
-  <h2>Book Mentions</h2>
-  <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == false} %>
-  <h2>
-    <% unless @gathering.special_presentation.blank? %>
-      Special Presentation
-    <% end %>
-  </h2>
+  <div class="gatherings-Main-header">
+    <h2>Book Mentions</h2>
+
+    <div class="gatherings-Main-header-left">
+      <% if current_user %>
+        <%= link_to (image_tag 'trash.svg', alt: "edit", class: "gatherings-resize-img gatherings-Main-header-left-img"), @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+        <%= link_to (image_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_gathering_path(@gathering) %>
+      <% end %>
+    </div>
+  </div>
+  <ul class="gatherings-Ul">
+    <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == false} %>
+  </ul>
   <h3>
     <%= @gathering.special_presentation %>
   </h3>
+  <ul class="gatherings-Ul">
     <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == true} %>
+  </ul>
   <br>
-  <% if current_user %> |
-    <%= link_to 'Edit', edit_gathering_path(@gathering) %> |
-    <%= link_to 'Delete', @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
-  <% end %>
 </div>
