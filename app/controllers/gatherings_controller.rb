@@ -19,9 +19,8 @@ class GatheringsController < ApplicationController
 
   def create
     @gathering = Gathering.new(gathering_params)
-
     if @gathering.save
-      SlackNotifier.publish(root_url, @gathering.date, gathering_path(@gathering))
+      SlackNotifier.publish(@gathering.date, gathering_url(@gathering))
       redirect_to gatherings_path, notice: "Gathering was successfully created."
     else
       flash.now[:notice] = "Invalid field"
