@@ -4,4 +4,7 @@ class Book < ApplicationRecord
   validates :synopsis, presence: true
   validates :image, presence: true
   validates :isbn, presence: true
+
+  has_many :book_presentations, dependent: :destroy
+  has_many :users, through: :book_presentations
 end

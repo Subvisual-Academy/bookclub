@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_135739) do
+ActiveRecord::Schema.define(version: 2020_08_11_105153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "book_presentations", force: :cascade do |t|
+    t.bigint "gathering_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.boolean "special", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_presentations_on_book_id"
+    t.index ["gathering_id"], name: "index_book_presentations_on_gathering_id"
+    t.index ["user_id"], name: "index_book_presentations_on_user_id"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
@@ -23,6 +35,13 @@ ActiveRecord::Schema.define(version: 2020_08_05_135739) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "isbn"
+  end
+
+  create_table "gatherings", force: :cascade do |t|
+    t.date "date", null: false
+    t.string "special_presentation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,4 +54,7 @@ ActiveRecord::Schema.define(version: 2020_08_05_135739) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "book_presentations", "books"
+  add_foreign_key "book_presentations", "gatherings"
+  add_foreign_key "book_presentations", "users"
 end

@@ -1,0 +1,16 @@
+<% @gatherings.each do | year, gatherings | %>
+  <p><%= year %></p>
+  <% gatherings.each do | gathering |%>
+    <%= link_to Date::MONTHNAMES[gathering.date.month], gathering %>
+    <% if current_user %> |
+      <%= link_to 'Edit', edit_gathering_path(gathering) %> |
+      <%= link_to 'Delete', gathering, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <br>
+  <% end %>
+<% end %>
+<br>
+
+<% if current_user %>
+  <%= link_to 'New Gathering', new_gathering_path %>
+<% end %>

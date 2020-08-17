@@ -23,4 +23,14 @@
   <%= @book.isbn %>
 </p>
 
+<p> Presented by :</p>
+
+<ul>
+  <% @book.users.each do |user| %>
+    <li>
+      <div><%= user.name %></div>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Back', books_path %>
