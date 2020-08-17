@@ -2,7 +2,7 @@
 
 
 .gatherings-Main{
-    padding: 3% 30% 1% 30%;
+    padding: 3% 25% 1% 25%;
     hr {
         width: 100%;
         margin: 3% 0 0 0;
@@ -65,17 +65,17 @@
     max-height: 100px
 }
 .gatherings-Sec-img{
-  margin-right: 0.5em;
+  margin-right: 0.4em;
   display: flex;
-  max-height: 10%;
-  max-width: 10%;
+  max-height: 30%;
+  max-width: 30%;
 }
-
 
 .gatherings-Sec-link{
   display: flex;
   align-items: center;
   text-decoration: none;
+  justify-content: center;
   color: #1F29A4;
 }
 
@@ -87,4 +87,41 @@
 
 .gatherings-Ul{
   margin-top: 0;
+}
+
+.gatherings-First{
+    display: flex;
+    flex-wrap: wrap;
+    .gatherings-FirstBox{
+        flex-basis: 25%;
+        float: left;
+        margin: auto;
+        padding: 30px 50px 30px 50px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
+        border-radius: 25px;
+        border-color: #FFFFFF;
+        text-decoration: none;
+        font-size: 1.4em;
+        font-family: Playfair Display;
+        font-weight: bold;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .gatherings-PlusBox{
+        flex-basis: 25%;
+        float: left;
+        margin: auto;
+        padding: 30px 50px 30px 50px;
+        background: #7485A9;
+        box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
+        border-radius: 25px;
+        border-color: #7485A9;
+        text-decoration: none;
+        font-size: 1.4em;
+        font-family: Playfair Display;
+        font-weight: bold;
+        align-items: center;
+        justify-content: space-between;
+    }
 }

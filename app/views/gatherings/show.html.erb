@@ -21,9 +21,9 @@
   <ul class="gatherings-Ul">
     <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == false} %>
   </ul>
-  <h3>
+  <h2>
     <%= @gathering.special_presentation %>
-  </h3>
+  </h2>
   <ul class="gatherings-Ul">
     <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == true} %>
   </ul>
