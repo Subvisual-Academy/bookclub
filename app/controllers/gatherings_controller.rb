@@ -2,9 +2,7 @@ class GatheringsController < ApplicationController
   before_action :require_login, only: %i[new edit create update destroy]
 
   def index
-    @gatherings = Gathering.order("date DESC")
-    @first_year = @gatherings.first&.date&.year || 0
-    @last_year = @gatherings.last&.date&.year || 0
+    @gatherings = Gathering.group_by_year
   end
 
   def show
