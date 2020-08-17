@@ -7,5 +7,10 @@ class Gathering < ApplicationRecord
                                                                                            attr["book_id"].blank?)
                                                                                      }
 
-  scope :group_by_year, -> { Gathering.select("extract(year from date) as year, *").order("date desc").group_by(&:year) }
+  def self.group_by_year
+    Gathering.select("extract(year from date) as year, *").
+      order("date desc").
+      group_by(&:year).
+      transform_keys(&:round)
+  end
 end

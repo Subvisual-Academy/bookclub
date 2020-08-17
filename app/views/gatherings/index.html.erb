@@ -1,5 +1,5 @@
 <% @gatherings.each do | year, gatherings | %>
-  <p><%= year.round %></p>
+  <p><%= year %></p>
   <% gatherings.each do | gathering |%>
     <%= link_to Date::MONTHNAMES[gathering.date.month], gathering %>
     <% if current_user %> |
