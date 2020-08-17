@@ -5,13 +5,13 @@
     <div class="gatherings-First">
       <% if current_user %>
         <button class="gatherings-PlusBox">
-          <%= link_to (image_tag 'plus.svg', alt: "New Gathering", class: "gatherings-Sec-link") , new_gathering_path(@gathering) %>
+          <%= link_to (image_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"gatherings-First-link" %>
         </button>
         &nbsp; &nbsp
       <% end %>
       <% filter_by_year(@gatherings, year).each do |gathering| %>
         <button class="gatherings-FirstBox">
-          <%= link_to Date::MONTHNAMES[gathering.date.month], gathering,  class:"gatherings-Sec-link"%>
+          <%= link_to Date::MONTHNAMES[gathering.date.month], gathering,  class:"gatherings-First-link"%>
         </button>
         <!--<% if current_user %> |
           <%= link_to 'Edit', edit_gathering_path(gathering) %> |
