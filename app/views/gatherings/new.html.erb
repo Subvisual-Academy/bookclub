@@ -1,7 +1,10 @@
-<h1>New Bookclub Gathering</h1>
+<div class="gatherings-Sec">
+  <%= link_to (image_tag 'arrow.svg', alt: "back arrow", class: "gatherings-Sec-img" )+
+                  "Back", gatherings_path, class: "gatherings-Sec-link" %>
+</div>
 
 <div class="gatherings-Main">
+  <h1>New Bookclub Gathering</h1>
+  
   <%= render 'form', gathering: @gathering %>
-
-  <%= link_to 'Back', gatherings_path %>
 </div>

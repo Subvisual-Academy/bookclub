@@ -6,6 +6,12 @@
       border: 1px solid #EDF0F7;
   }
 
+  h1{
+    font-family: "Playfair Display" , serif;
+    color: #1B60F3;
+    font-size: 2em;
+  }
+
   h2 {
       color: #1B60F3;
       font-family: Open Sans, serif;
@@ -23,12 +29,6 @@
   ul {
     list-style: none;
   }
-}
-
-.gatherings-Main-h1 {
-  font-family: "Playfair Display" , serif;
-  color: #1B60F3;
-  font-size: 2em;
 }
 
 .gatherings-Main-header {
@@ -136,4 +136,28 @@
   vertical-align: middle;
   margin-left: 0.5em;
   width: 3em;
+}
+
+.gatherings-Date select:nth-child(1){
+  border: 1px solid #1F29A4;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: white;
+  width: 3.2em;
+}
+
+.gatherings-Date select:nth-child(2){
+  border: 1px solid #1F29A4;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: white;
+  width: 6em;
+}
+
+.gatherings-Date select:nth-child(3){
+  border: 1px solid #1F29A4;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: white;
+  width: 4.2em;
 }

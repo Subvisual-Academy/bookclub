@@ -13,7 +13,7 @@
 
   <%= form.label :date %>
   <br>
-  <%= form.date_select :date %>
+  <span class="gatherings-Date"><%= form.date_select :date, :order => [:day, :month, :year] %></span>
   <br>
   <br>
   <%= form.label :special_presentation %>
