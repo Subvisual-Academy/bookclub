@@ -7,7 +7,7 @@ FactoryBot.define do
     factory :gathering_with_book_presentations do
       after(:build) do |gathering|
         create(:book_presentation, gathering: gathering)
-        create(:book_presentation, :belong_to_special_presentation, gathering: gathering)
+        create(:book_presentation, :is_special_presentation, gathering: gathering)
       end
     end
   end

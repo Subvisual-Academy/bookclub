@@ -31,6 +31,10 @@ RSpec.describe "Books", type: :request do
   end
 
   describe "POST #create", :vcr do
+    before(:all) do
+      login_user(create(:user))
+    end
+
     it "redirects to books_path on a successful creation" do
       post books_path, params: { book: { isbn: "9781448103690" } }
 
@@ -56,6 +60,10 @@ RSpec.describe "Books", type: :request do
   end
 
   describe "DELETE #destroy" do
+    before(:all) do
+      login_user(create(:user))
+    end
+
     it "redirects to books_path on a successful delete" do
       book = create(:book)
 

@@ -2,9 +2,8 @@ class GatheringsController < ApplicationController
   before_action :require_login, only: %i[new edit create update destroy]
 
   def index
-    @gatherings = Gathering.order("date DESC")
-    @first_year = @gatherings.last&.date&.year || 0
-    @last_year = @gatherings.first&.date&.year || 0
+    @gatherings = Gathering.group_by_year
+
   end
 
   def show
@@ -23,7 +22,7 @@ class GatheringsController < ApplicationController
     @gathering = Gathering.new(gathering_params)
 
     if @gathering.save
-      SlackNotifier.publish(root_url, @gathering.date, gathering_path(@gathering))
+      SlackNotifier.publish(@gathering.date, gathering_url(@gathering))
       redirect_to gatherings_path, notice: "Gathering was successfully created."
     else
       flash.now[:notice] = "Invalid field"
@@ -56,6 +55,6 @@ class GatheringsController < ApplicationController
     params.require(:gathering).
       permit(:date, :special_presentation,
              book_presentations_attributes: %i[_destroy id gathering_id
-                                               user_id book_id belongs_special_presentation])
+                                               user_id book_id special])
   end
 end

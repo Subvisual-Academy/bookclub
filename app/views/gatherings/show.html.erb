@@ -19,13 +19,13 @@
     </div>
   </div>
   <ul class="gatherings-Ul">
-    <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == false} %>
+    <%= render @gathering.book_presentations.reject { |presentation|  presentation.special} %>
   </ul>
   <h2>
     <%= @gathering.special_presentation %>
   </h2>
   <ul class="gatherings-Ul">
-    <%= render @gathering.book_presentations.select { |presentation|  presentation.belongs_special_presentation == true} %>
+    <%= render @gathering.book_presentations.select { |presentation|  presentation.special} %>
   </ul>
   <br>
 </div>

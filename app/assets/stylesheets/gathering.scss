@@ -81,15 +81,15 @@
   margin-top: 0;
 }
 
-.gatherings-First{
+.gatherings-YearGrid{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  .gatherings-FirstBox{
+  justify-content: flex-start;
+  .gatherings-YearGridBox{
       flex-basis: 8em;
       float: left;
       margin: 0.5em;
-      padding: 30px 40px 30px 40px;
+      padding: 30px 60px 30px 60px;
       background: #FFFFFF;
       box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
       border-radius: 25px;
@@ -104,8 +104,8 @@
     position: relative;
     .gathering-FirstBox-DeleteImg{
       position: absolute;
-      top: -15px;
-      right: -25px;
+      top: -10px;
+      right: -35px;
       width: 18px;
     }
   }

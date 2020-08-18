@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :require_login, only: %i[new create destroy]
+
   def index
     @books = Book.all
   end

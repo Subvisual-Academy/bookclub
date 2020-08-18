@@ -47,6 +47,7 @@ body {
     height: 70px;
     background-color:  #2E47D1;
     font-weight: bold;
+    z-index: 1000;
 }
 
 .nav-link {
