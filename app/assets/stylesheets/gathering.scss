@@ -104,7 +104,13 @@
   }
 
   .gathering-FirstBox-Delete{
-    float: right;
+    position: relative;
+    .gathering-FirstBox-DeleteImg{
+      position: absolute;
+      top: -15px;
+      right: -25px;
+      width: 18px;
+    }
   }
 
   .gatherings-PlusBox{
