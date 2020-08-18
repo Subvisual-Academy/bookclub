@@ -7,11 +7,11 @@ namespace :database do
     user = User.new(name: args[:name], email: args[:email], password: password, password_confirmation: password)
     if user.save
       puts "User created with the following params: \n"
-      puts "Name: " + user.name
-      puts "Email: " + user.email
-      puts "Password: " + password
+      puts "Name: #{user.name}"
+      puts "Email: #{user.email}"
+      puts "Password: #{password}"
     else
-      puts "Error creating user: " + user.errors.messages.to_s
+      puts "Error creating user: #{user.errors.messages.to_s}"
     end
   end
 
