@@ -7,4 +7,32 @@
 .bookPresentation-a{
     color: #05359B;
     text-decoration: none;
+
+}
+
+.form-group {
+  display: flex;
+  padding: 0.5em 0;
+  align-items: center;
+}
+
+.checkbox-round {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.checkbox-round:checked {
+  background: #1F29A4;
+}
+
+input[type=checkbox] {
+  transform: scale(1.5);
 }

@@ -11,22 +11,24 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-    <br>
-    <%= form.label :special_presentation %>
-    <%= form.text_field :special_presentation %>
 
-  </div>
+  <%= form.label :date %>
+  <br>
+  <%= form.date_select :date %>
+  <br>
+  <br>
+  <%= form.label :special_presentation %>
+  <br>
+  <%= form.text_field :special_presentation %>
 
-  <h1>Presentations</h1>
+
+
+  <h2>Book Mentions</h2>
   <div data-controller="nested-form">
     <!-- template for form for creating a new book presentation -->
     <template data-target='nested-form.template'>
       <%= form.fields_for :book_presentations, BookPresentation.new, child_index: 'TEMPLATE_RECORD' do |book_presentation| %>
         <%= render 'book_presentation_fields', form: book_presentation %>
-        <br>
       <% end %>
     </template>
 

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Gathering", js: true do
+RSpec.feature "Gathering", :vcr, js: true do
   before(:each) do
     login_user(create(:user))
   end

@@ -45,7 +45,7 @@ RSpec.describe "Gatherings", type: :request do
 
     expect(response_text).to include("New Bookclub Gathering")
     expect(response_text).to include("Date")
-    expect(response_text).to include("Presentations")
+    expect(response_text).to include("Book Mentions")
     expect(response_text).to include("Add Presentation")
   end
 

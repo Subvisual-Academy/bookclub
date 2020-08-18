@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
-
-
 .gatherings-Main{
   padding: 3% 25% 1% 25%;
   hr {
@@ -29,7 +26,7 @@
 }
 
 .gatherings-Main-h1 {
-  font-family: "Playfair Display", Sans-Serif;
+  font-family: "Playfair Display" , serif;
   color: #1B60F3;
   font-size: 2em;
 }
@@ -46,7 +43,7 @@
 }
 
 .gatherings-Main-header-left-img {
-  padding-right: 10px;
+  margin-right: 10px;
 }
 
 .gatherings-Sec{
@@ -87,18 +84,18 @@
 .gatherings-First{
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   .gatherings-FirstBox{
-      flex-basis: 9.5em;
+      flex-basis: 8em;
       float: left;
-      margin: 0.6em;
-      padding: 30px 50px 30px 50px;
+      margin: 0.5em;
+      padding: 30px 40px 30px 40px;
       background: #FFFFFF;
       box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
       border-radius: 25px;
       border: none;
       text-decoration: none;
-      font-size: 1.4em;
+      font-size: 1.3em;
       font-family: Playfair Display;
       font-weight: bold;
   }
