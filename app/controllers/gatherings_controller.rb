@@ -3,8 +3,8 @@ class GatheringsController < ApplicationController
 
   def index
     @gatherings = Gathering.order("date DESC")
-    @first_year = @gatherings.first&.date&.year || 0
-    @last_year = @gatherings.last&.date&.year || 0
+    @first_year = @gatherings.last&.date&.year || 0
+    @last_year = @gatherings.first&.date&.year || 0
   end
 
   def show

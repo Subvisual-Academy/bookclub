@@ -13,7 +13,7 @@
 
     <div class="gatherings-Main-header-left">
       <% if current_user %>
-        <%= link_to (image_tag 'trash.svg', alt: "edit", class: "gatherings-resize-img gatherings-Main-header-left-img"), @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+        <%= link_to (image_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
         <%= link_to (image_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_gathering_path(@gathering) %>
       <% end %>
     </div>
