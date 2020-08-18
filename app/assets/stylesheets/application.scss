@@ -10,15 +10,15 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-
+@import "book_presentation";
+@import "books";
+@import "fonts";
+@import "gathering";
+@import "table";
+@import "users";
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -33,7 +33,7 @@ body {
 }
 
 .main-header {
-    font-family: "Poppins", Sans-Serif;
+    font-family: "Poppins", serif;
     color: white;
     display: flex;
     justify-content: space-between;
