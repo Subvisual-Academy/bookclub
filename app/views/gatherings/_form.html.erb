@@ -26,7 +26,6 @@
     <template data-target='nested-form.template'>
       <%= form.fields_for :book_presentations, BookPresentation.new, child_index: 'TEMPLATE_RECORD' do |book_presentation| %>
         <%= render 'book_presentation_fields', form: book_presentation %>
-        <br>
       <% end %>
     </template>
 
