@@ -1,4 +1,5 @@
 require "rails_helper"
+include ApplicationHelper
 
 RSpec.describe "Gatherings", type: :request do
   include ActionView::Helpers::SanitizeHelper
@@ -12,6 +13,12 @@ RSpec.describe "Gatherings", type: :request do
       expect(response_text).to include(Date::MONTHNAMES[gathering.date.month])
       expect(response_text).to include(gathering.date.year.to_s)
     end
+  end
+
+  it "displays the next gathering date" do
+    get gatherings_path
+
+    expect(response_text).to include(ApplicationHelper.next_gathering_date)
   end
 
   describe "GET #show" do
