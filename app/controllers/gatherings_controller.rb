@@ -3,7 +3,6 @@ class GatheringsController < ApplicationController
 
   def index
     @gatherings = Gathering.group_by_year
-
   end
 
   def show

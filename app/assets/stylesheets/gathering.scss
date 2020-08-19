@@ -151,7 +151,7 @@
   box-sizing: border-box;
   border-radius: 25px;
   background: white;
-  width: 6em;
+  width: 7em;
 }
 
 .gatherings-Date select:nth-child(3){
@@ -160,4 +160,59 @@
   border-radius: 25px;
   background: white;
   width: 4.2em;
+}
+
+.gatherings-Special{
+  border: 1px solid #1F29A4;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: white;
+  width: 15em;
+}
+
+.gatherings-Mentions{
+  border: 1px solid #1F29A4;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: white;
+}
+
+.gatherings-MentionsFirst{
+  width: 6em;
+}
+
+.gatherings-MentionsSecond{
+  width: 13em;
+}
+
+.gatherings-Link{
+  font-family: Open Sans;
+  text-decoration: none;
+  color: #1F29A4;
+}
+
+.gatherings-Titles{
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  color: #1F29A4;
+}
+
+.gatherings-TitlesDate{
+  line-height: 2.1em;
+}
+
+.gatherings-TitlesSpecial{
+  line-height: 0em;
+}
+
+.gatherings-Submit{
+  font-family: Open Sans;
+  font-size: 0.8em;
+  padding: 5px 20px 6px 20px;
+  background:#1B60F3;
+  color: white;
+  border-radius: 25px;
+  border: none;
 }
