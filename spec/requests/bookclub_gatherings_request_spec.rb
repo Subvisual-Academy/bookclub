@@ -18,7 +18,7 @@ RSpec.describe "Gatherings", type: :request do
   it "displays the next gathering date" do
     get gatherings_path
 
-    expect(response_text).to include(next_gathering_date) # ApplicationHelper method
+    expect(response_text).to include(next_gathering_date.strftime("%A, %d %B %Y")) # ApplicationHelper method
   end
 
   describe "GET #show" do

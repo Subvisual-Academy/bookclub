@@ -1,4 +1,4 @@
-Next gathering: <%= next_gathering_date %>
+Next gathering: <%= next_gathering_date.strftime("%A, %d %B %Y") %>
 
 <% @gatherings.each do | year, gatherings | %>
   <p><%= year %></p>
