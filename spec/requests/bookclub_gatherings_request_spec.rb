@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Gatherings", type: :request do
-  include ApplicationHelper
   include ActionView::Helpers::SanitizeHelper
   it "displays all gatherings basic info" do
     allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
@@ -18,7 +17,7 @@ RSpec.describe "Gatherings", type: :request do
   it "displays the next gathering date" do
     get gatherings_path
 
-    expect(response_text).to include(next_gathering_date.strftime("%A, %d %B %Y")) # ApplicationHelper method
+    expect(response_text).to include(Gathering.next_gathering_date.strftime("%A, %d %B %Y")) # ApplicationHelper method
   end
 
   describe "GET #show" do
