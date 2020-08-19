@@ -21,20 +21,20 @@
           <ul>
             <li>
               <div class="nav-link">
-                <%= link_to (image_tag 'books.svg', alt: "Icon of a book") +'Books', books_path %>
+                <%= link_to (inline_svg_tag 'books.svg', alt: "Icon of a book", class:"main-HeaderImages") +'Books', books_path %>
               </div>
             </li>
             <li>
               <div class="nav-link">
-                <%= link_to (image_tag 'gatherings.svg', alt: "Icon of a list") + 'Gatherings', gatherings_path  %>
+                <%= link_to (inline_svg_tag 'gatherings.svg', alt: "Icon of a list", class:"main-HeaderImages") + 'Gatherings', gatherings_path  %>
               </div>
             </li>
             <li>
               <div class="login-btn">
                 <% if current_user %>
-                  <%= link_to (image_tag 'user.svg', alt: "Icon of an user")+'Log Out', logout_path, method: :delete %>
+                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log Out', logout_path, method: :delete %>
                 <% else %>
-                  <%= link_to (image_tag 'user.svg', alt: "Icon of an user")+'Log In', login_path %>
+                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log In', login_path %>
                 <% end %>
               </div>
             </li>

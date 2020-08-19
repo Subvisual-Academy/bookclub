@@ -110,6 +110,9 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    inline_svg (1.7.1)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     json (1.8.6)
@@ -309,6 +312,7 @@ DEPENDENCIES
   faker
   foreman
   httparty (~> 0.13.7)
+  inline_svg
   jbuilder (~> 2.7)
   library_stdnums (~> 1.6)
   listen (~> 3.2)

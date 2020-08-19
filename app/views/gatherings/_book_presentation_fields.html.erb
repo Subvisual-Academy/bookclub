@@ -7,7 +7,7 @@
     &nbsp; &nbsp;
     <%= form.check_box :special, class: "checkbox-round" %>
     &nbsp;
-    <%= link_to (image_tag 'trash.svg', alt: "delete"), "#", data: { action: "click->nested-form#removeAssociation" } %>
+    <%= link_to (inline_svg_tag 'trash.svg', alt: "delete"), "#", data: { action: "click->nested-form#removeAssociation" } %>
     <br>
   </div>
 </div>
