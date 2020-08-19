@@ -1,7 +1,6 @@
 <div class='nested-fields'>
   <div class='form-group'>
     <%= form.hidden_field :_destroy %>
-    <%#= form.select :user_id,User.all.map {|u| [u.name,u.id]}, {} , {:class => "bookPresentation-Select", :prompt => "User"} %>
     <%= form.select :user_id, User.all.map {|u| [u.name,u.id]}, {:prompt => "User"} , {:class => "gatherings-Mentions gatherings-MentionsFirst"} %>
     &nbsp; - &nbsp;
     <%= form.select :book_id, Book.all.map {|b| [b.title, b.id]}, {:prompt => "Book"} , {:class => "gatherings-Mentions gatherings-MentionsSecond"} %>
