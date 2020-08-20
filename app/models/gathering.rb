@@ -25,7 +25,7 @@ class Gathering < ApplicationRecord
     end
 
     private
-  
+
     def find_this_month_gathering
       date = Time.zone.today.at_beginning_of_month.
         next_occurring(:thursday).next_occurring(:thursday)
@@ -33,7 +33,7 @@ class Gathering < ApplicationRecord
       return date if date.at_beginning_of_month.wday == 4 # if the month already started on a thursday
 
       date.next_occurring(:thursday)
-   end
+    end
 
     def find_next_month_gathering
       date = Time.zone.today.at_beginning_of_month.next_month.
