@@ -1,5 +1,4 @@
 module SlackNotifier
-
   class << self
     def notify_minute(date, url)
       @slack_notifier ||= Slack::Notifier.new ENV["SLACK_URL"], channel: ENV["SLACK_CHANNEL"], username: "BookClub-bot"
