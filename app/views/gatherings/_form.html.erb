@@ -2,7 +2,6 @@
   <% if gathering.errors.any? %>
     <div>
       <h2><%= pluralize(gathering.errors.count, "error") %> prohibited this gathering from being saved:</h2>
-
       <ul>
         <% gathering.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,14 +9,15 @@
       </ul>
     </div>
   <% end %>
-
-  <%= form.label :date, class: "gatherings-Titles gatherings-TitlesDate" %>
-  <br>
-  <span class="gatherings-Date"><%= form.date_select :date, :order => [:day, :month, :year] %></span>
-  <hr>
-  <br>
-  <%= form.label(:special_presentation, 'Special Presentation Title', class: "gatherings-Titles gatherings-TitlesSpecial") %>
-  <br>
+  
+  <div class="gatherings-SpaceDown">
+    <%= form.label :date, class: "gatherings-Titles gatherings-TitlesDate" %>
+  </div>
+  <div class="gatherings-Date"><%= form.date_select :date, :order => [:day, :month, :year] %></div>
+  <div class="gatherings-Line"></div>
+  <div class="gatherings-SpaceUpDown">
+    <%= form.label(:special_presentation, 'Special Presentation Title', class: "gatherings-Titles gatherings-TitlesSpecial") %>
+  </div>
   <%= form.text_field :special_presentation, class:"gatherings-Special" %>
   
   <h2>Book Mentions</h2>
@@ -34,10 +34,11 @@
       <%= render 'book_presentation_fields', form: book_presentation2 %>
     <% end %>
 
-    <div data-target="nested-form.add_item">
-      <%= link_to "+ Add Presentation", "#", data: { action: "nested-form#addAssociation" }, class: "gatherings-Link" %>
+    <div class="gatherings-SpaceButton">
+      <div data-target="nested-form.add_item">
+        <%= link_to "+ Add Presentation", "#", data: { action: "nested-form#addAssociation" }, class: "gatherings-Link" %>
+      </div>
     </div>
-    <br>
     <%= form.submit 'Submit', :class => "gatherings-Submit" %>
   </div>
 <% end %>
