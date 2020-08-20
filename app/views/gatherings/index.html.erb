@@ -1,18 +1,25 @@
-Next gathering: <%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %>
-
-<% @gatherings.each do | year, gatherings | %>
-  <p><%= year %></p>
-  <% gatherings.each do | gathering |%>
-    <%= link_to Date::MONTHNAMES[gathering.date.month], gathering %>
-    <% if current_user %> |
-      <%= link_to 'Edit', edit_gathering_path(gathering) %> |
-      <%= link_to 'Delete', gathering, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <br>
+<div class="gatherings-Main">
+  <div class="gatherings-NextDate">
+    Next BookClub session: <span class="gatherings-NextDate gatherings-NextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
+  </div>
+    <% @gatherings.each do | year, gatherings | %>
+    <p class="gatherings-MainYear"><%= year %></p>
+    <div class="gatherings-YearGrid">
+      <% if current_user %>
+        <% if year == @gatherings.keys.first %>
+          <button class="gatherings-YearGridBox gatherings-PlusBox">
+            <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"gatherings-First-link" %>
+          </button>
+        <% end %>
+      <% end %>
+      <% gatherings.each do | gathering |%>
+        <button class="gatherings-YearGridBox">
+          <div class="gathering-FirstBox-Delete">
+            <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gathering-FirstBox-DeleteImg"), gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+          </div>
+          <%= link_to Date::MONTHNAMES[gathering.date.month], gathering,  class:"gatherings-First-link"%>
+        </button>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
-<br>
-
-<% if current_user %>
-  <%= link_to 'New Gathering', new_gathering_path %>
-<% end %>
+</div>

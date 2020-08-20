@@ -4,35 +4,54 @@
     <title>Bookclub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
-    <nav>
-      <div id="navbar">
-        <ul>
-          <li><%= link_to 'Home', root_path %></li>
-          <% if current_user %>
-            <li><span><%= current_user.email %></span></li>
-            <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'Log In', login_path %></li>
-          <% end %>
-          <li><%= link_to 'Books', books_path %></li>
-          <li><%= link_to 'Bookclub Gatherings', gatherings_path %></li>
-        </ul>
+    <header class="main-header">
+      <div class="container">
+        <nav class="header-nav">
+          <div class="bookclub-brand">
+            <%= link_to 'BookClub', root_path %>
+          </div>
+        </nav>
+        <nav class="header-nav">
+          <ul>
+            <li>
+              <div class="nav-link">
+                <%= link_to (inline_svg_tag 'books.svg', alt: "Icon of a book", class:"main-HeaderImages") +'Books', books_path %>
+              </div>
+            </li>
+            <li>
+              <div class="nav-link">
+                <%= link_to (inline_svg_tag 'gatherings.svg', alt: "Icon of a list", class:"main-HeaderImages") + 'Gatherings', gatherings_path  %>
+              </div>
+            </li>
+            <li>
+              <div class="login-btn">
+                <% if current_user %>
+                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log Out', logout_path, method: :delete %>
+                <% else %>
+                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log In', login_path %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </nav>
+    </header>
+
     <div>
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">
           <%= value %>
         </div>
       <% end %>
-      <hr>
-      <br>
+    </div>
+
+    <div class="main-body">
       <%= yield %>
     </div>
   </body>

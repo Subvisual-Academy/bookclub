@@ -1,3 +1,7 @@
+<% if current_user %>
+  <%= link_to 'New Book', new_book_path %>
+<% end %>
+
 <table class="Table">
   <thead>
     <tr>
@@ -22,8 +26,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<% if current_user %>
-  <%= link_to 'New Book', new_book_path %>
-<% end %>

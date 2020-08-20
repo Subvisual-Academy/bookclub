@@ -26,7 +26,7 @@ RSpec.describe "Gatherings", type: :request do
 
       get gathering_path(gathering)
 
-      expect(response_text).to include(gathering.date.to_s)
+      expect(response_text).to include(Date::MONTHNAMES[gathering.date.month])
       expect(response_text).to include(gathering.special_presentation)
       gathering.book_presentations.each do |book_presentation|
         expect(response_text).to include(book_presentation.user.name)
@@ -51,7 +51,7 @@ RSpec.describe "Gatherings", type: :request do
 
     expect(response_text).to include("New Bookclub Gathering")
     expect(response_text).to include("Date")
-    expect(response_text).to include("Presentations")
+    expect(response_text).to include("Book Mentions")
     expect(response_text).to include("Add Presentation")
   end
 

@@ -5,6 +5,7 @@ ruby "2.6.6"
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem "httparty", "~> 0.13.7"
+gem "inline_svg"
 gem "jbuilder", "~> 2.7"
 gem "library_stdnums", "~> 1.6"
 gem "pg", ">= 0.18", "< 2.0"

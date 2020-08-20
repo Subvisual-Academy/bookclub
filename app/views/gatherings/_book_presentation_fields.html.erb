@@ -1,16 +1,12 @@
 <div class='nested-fields'>
   <div class='form-group'>
     <%= form.hidden_field :_destroy %>
-    <%= form.label :user %>
-    <%= form.select :user_id, User.all.map {|u| [u.name,u.id]} %>
-    <br>
-    <%= form.label :book %>
-    <%= form.select :book_id, Book.all.map {|b| [b.title, b.id]} %>
-    <br>
-    <%= form.label :special %>
-    <%= form.check_box :special %>
-    <small>
-      <%= link_to "Remove", "#", data: { action: "click->nested-form#removeAssociation" } %>
-    </small>
+    <%= form.select :user_id, User.order(:name).all.map {|u| [u.name,u.id]}, {:prompt => "User"} , {:class => "gatherings-Mentions gatherings-MentionsFirst"} %>
+    &nbsp; - &nbsp;
+    <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book"} , {:class => "gatherings-Mentions gatherings-MentionsSecond"} %>
+    &nbsp; &nbsp;
+    <%= form.check_box :special, class: "checkbox-round" %>
+    &nbsp;
+    <%= link_to (inline_svg_tag 'trash.svg', alt: "delete"), "#", data: { action: "click->nested-form#removeAssociation" } %>
   </div>
 </div>

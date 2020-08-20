@@ -1,0 +1,130 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+@import "book_presentation";
+@import "books";
+@import "common/fonts";
+@import "gathering";
+@import "table";
+@import "users";
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2rem;
+    min-height: 100vh;
+}
+
+.main-header {
+    font-family: "Poppins", serif;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.main-header {
+    height: 70px;
+    background-color:  #2E47D1;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    margin-right: .75rem;
+}
+
+.nav-link img {
+    width: 1em;
+    margin-right: .75rem;
+}
+
+
+.login-btn {
+    border: 3px solid white;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-right: .75rem;
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.login-btn img {
+    width: 1em;
+    margin-right: .25rem;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    flex-grow: 1;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header-nav ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-nav a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.header-nav a:hover  {
+    color: #adadad;
+}
+
+.bookclub-brand {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-size: 2rem;
+}
+
+.main-body {
+    margin-top: 70px;
+}
+
+.main-HeaderImages{
+    margin-right: 0.5em;
+}

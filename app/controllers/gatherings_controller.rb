@@ -19,6 +19,7 @@ class GatheringsController < ApplicationController
 
   def create
     @gathering = Gathering.new(gathering_params)
+
     if @gathering.save
       SlackNotifier.notify_minute(@gathering.date, gathering_url(@gathering))
       redirect_to gatherings_path, notice: "Gathering was successfully created."
