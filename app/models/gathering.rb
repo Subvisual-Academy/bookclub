@@ -6,39 +6,42 @@ class Gathering < ApplicationRecord
                                                                                        (attr["user_id"].blank? ||
                                                                                            attr["book_id"].blank?)
                                                                                      }
-
-  def self.group_by_year
-    Gathering.select("extract(year from date) as year, *").
-      order("date desc").
-      group_by(&:year).
-      transform_keys(&:round)
-  end
-
-  def self.next_gathering_date
-    this_month_gathering = find_this_month_gathering
-
-    if Time.zone.today <= this_month_gathering
-      this_month_gathering
-    else
-      find_next_month_gathering
+  class << self
+    def group_by_year
+      Gathering.select("extract(year from date) as year, *").
+        order("date desc").
+        group_by(&:year).
+        transform_keys(&:round)
     end
-  end
 
-  private_class_method def self.find_this_month_gathering
-    date = Time.zone.today.at_beginning_of_month.
-      next_occurring(:thursday).next_occurring(:thursday)
+    def next_gathering_date
+      this_month_gathering = find_this_month_gathering
 
-    return date if date.at_beginning_of_month.wday == 4 # if the month already started on a thursday
+      if Time.zone.today <= this_month_gathering
+        this_month_gathering
+      else
+        find_next_month_gathering
+      end
+    end
 
-    date.next_occurring(:thursday)
-  end
+    private
+  
+    def find_this_month_gathering
+      date = Time.zone.today.at_beginning_of_month.
+        next_occurring(:thursday).next_occurring(:thursday)
 
-  private_class_method def self.find_next_month_gathering
-    date = Time.zone.today.at_beginning_of_month.next_month.
-      next_occurring(:thursday).next_occurring(:thursday)
+      return date if date.at_beginning_of_month.wday == 4 # if the month already started on a thursday
 
-    return date if date.at_beginning_of_month.wday == 4 # if the month already started on a thursday
+      date.next_occurring(:thursday)
+   end
 
-    date.next_occurring(:thursday)
+    def find_next_month_gathering
+      date = Time.zone.today.at_beginning_of_month.next_month.
+        next_occurring(:thursday).next_occurring(:thursday)
+
+      return date if date.at_beginning_of_month.wday == 4 # if the month already started on a thursday
+
+      date.next_occurring(:thursday)
+    end
   end
 end
