@@ -1,4 +1,5 @@
 <div class="gatherings-Main">
+  Next gathering: <%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %>
   <% @gatherings.each do | year, gatherings | %>
     <p class="gatherings-MainYear"><%= year %></p>
     <div class="gatherings-YearGrid">

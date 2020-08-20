@@ -24,7 +24,7 @@ RSpec.feature "Gathering", js: true do
   end
 
   it "creates a gathering" do
-    allow(SlackNotifier).to receive(:publish).and_return(nil)
+    allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
 
     visit(new_gathering_path)
     fill_in("Special Presentation Title", with: "test")
