@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :require_login, only: %i[new create destroy]
+  before_action :require_login, only: %i[new create edit update destroy]
 
   def index
     @books = Book.all.reverse
@@ -11,6 +11,21 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+
+    if @book.update(book_params)
+      redirect_to @book, notice: "Book was successfully updated."
+    else
+      flash.now[:notice] = "Invalid field"
+      render :edit, status: :bad_request
+    end
   end
 
   def create
@@ -31,5 +46,11 @@ class BooksController < ApplicationController
     @book.destroy
 
     redirect_to books_url, notice: "Book was successfully destroyed."
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :author, :synopsis, :image)
   end
 end
