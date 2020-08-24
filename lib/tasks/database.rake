@@ -33,7 +33,7 @@ namespace :database do
           puts "Problem when updating #{book.title}"
         end
       else
-        puts "Problem when calling the API when updating #{book.title}: #{new_book.errors.messages}"
+        puts "Problem when calling the API for #{book.title}: #{new_book.errors.messages}"
       end
     end
   end
