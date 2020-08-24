@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_105153) do
+ActiveRecord::Schema.define(version: 2020_08_23_110240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(version: 2020_08_11_105153) do
     t.string "image", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "isbn"
+    t.string "google_id"
+    t.index ["google_id"], name: "index_books_on_google_id", unique: true
   end
 
   create_table "gatherings", force: :cascade do |t|

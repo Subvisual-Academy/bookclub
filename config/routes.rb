@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "home#index"
+  root to: "gatherings#index"
 
   resources :books, only: %i[index show new create destroy]
 
