@@ -46,7 +46,7 @@ RSpec.describe "Books", type: :request do
       created_book = Book.last
       expect(created_book.title).to eq("Hard-Boiled Wonderland and the End of the World")
       expect(created_book.author).to eq("Haruki Murakami")
-      expect(created_book.image).to eq("http://books.google.com/books/content?id=3ZgKkumhAywC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api")
+      expect(created_book.image).to eq("http://books.google.com/books/content?id=3ZgKkumhAywC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api")
       expect(created_book.synopsis).to eq("A narrative particle accelerator that zooms between Wild Turkey Whiskey and Bob Dylan, unicorn skulls and voracious librarians, John Coltrane and Lord Jim. Science fiction, detective story and post-modern manifesto all rolled into one rip-roaring novel, Hard-boiled Wonderland and the End of the World is the tour de force that expanded Haruki Murakami's international following. Tracking one man's descent into the Kafkaesque underworld of contemporary Tokyo, Murakami unites East and West, tragedy and farce, compassion and detachment, slang and philosophy.")
     end
 
