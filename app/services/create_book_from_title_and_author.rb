@@ -1,4 +1,6 @@
 class CreateBookFromTitleAndAuthor
+  attr_reader :book
+
   def initialize(book_params)
     @title = book_params[:title]
     @author = book_params[:author]
@@ -6,10 +8,9 @@ class CreateBookFromTitleAndAuthor
   end
 
   def perform
-    return @book if @title.blank?
+    return if @title.blank?
 
-    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=intitle:#{CGI.escape(@title)}" +
-                                (@author.blank? ? "" : "+inauthor:#{CGI.escape(@author)}").to_s)
+    response = HTTParty.get(url)
     response = response.parsed_response
 
     fill_in_book_details(response)
@@ -19,7 +20,7 @@ class CreateBookFromTitleAndAuthor
     @book.valid? && @book.persisted?
   end
 
-  def reason_for_no_success
+  def reason_for_failure
     return "Book already exists" if @book.errors.messages.key?(:google_id) &&
       @book.errors.messages[:google_id][0].eql?("has already been taken")
 
@@ -28,53 +29,51 @@ class CreateBookFromTitleAndAuthor
 
   private
 
+  def url
+    escaped_title = CGI.escape(@title)
+    author_query = @author.blank? ? "" : "+inauthor:#{CGI.escape(@author)}"
+
+
+    "https://www.googleapis.com/books/v1/volumes?q=intitle:#{escaped_title}" + author_query
+  end
+
   def fill_in_book_details(response)
-    unless response["totalItems"].zero?
-      item = if response["totalItems"].to_i >= 2
-               most_similar_item_by_title(response)
-             else
-               response["items"][0]
-             end
-      fill_book_from_item(item)
-      @book.save
-    end
-    @book
+    return if response["totalItems"].zero?
+
+    item = if response["totalItems"].to_i >= 2
+             most_similar_item_by_title(response)
+           else
+             response["items"][0]
+           end
+
+    fill_book_from_item(item)
+
+    @book.save
   end
 
   def most_similar_item_by_title(response)
     items = response["items"]
+    fz = FuzzyMatch.new(items, read: proc { |x| x["volumeInfo"]["title"] }) # fuzzy match against the title of each item
 
-    if string_similarity_index(items[0]["volumeInfo"]["title"], @title) >=
-        string_similarity_index(items[1]["volumeInfo"]["title"], @title)
-      items[0]
-    else
-      items[1]
-    end
-  end
-
-  # compares each character of the returned title against the one prompted by the user
-  def string_similarity_index(string1, string2)
-    longer = [string1.size, string2.size].max
-    same = string1.each_char.zip(string2.each_char).count { |a, b| a != b }
-    (longer - same) / string1.size.to_f
+    fz.find(@title)
   end
 
   def fill_book_from_item(item)
-    @book.title = return_title_from_item(item)
-    @book.author = return_author_from_item(item)
+    @book.title = title_from_item(item)
+    @book.author = author_from_item(item)
     @book.synopsis = return_synopsis_from_item(item)
-    @book.image = return_image_from_item(item)
-    @book.google_id = return_google_id_from_item(item)
+    @book.image = image_from_item(item)
+    @book.google_id = google_id_from_item(item)
   end
 
-  def return_title_from_item(item)
+  def title_from_item(item)
     item["volumeInfo"]["title"]
   end
 
-  def return_author_from_item(item)
+  def author_from_item(item)
     return "Unavailable" unless item["volumeInfo"]["authors"]
 
-    item["volumeInfo"]["authors"][0]
+    item["volumeInfo"]["authors"].join(", ")
   end
 
   def return_synopsis_from_item(item)
@@ -83,13 +82,13 @@ class CreateBookFromTitleAndAuthor
     item["volumeInfo"]["description"]
   end
 
-  def return_image_from_item(item)
+  def image_from_item(item)
     return "Unavailable" unless item["volumeInfo"]["imageLinks"]
 
     item["volumeInfo"]["imageLinks"]["thumbnail"]
   end
 
-  def return_google_id_from_item(item)
+  def google_id_from_item(item)
     item["id"]
   end
 end

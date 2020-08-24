@@ -16,6 +16,7 @@ gem "slack-notifier"
 gem "sorcery"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
+gem 'fuzzy_match', '~> 2.1'
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]

@@ -19,13 +19,17 @@ namespace :database do
   task update_books_with_google_id: :environment do
     Book.all.each do |book|
       puts "handling #{book.title}"
-      create_book_from_t_and_a = CreateBookFromTitleAndAuthor.new({ title: book.title, author: book.author })
-      new_book = create_book_from_t_and_a.perform
-      if create_book_from_t_and_a.successful?
-        Book.delete(new_book.id)
+
+      create_book = CreateBookFromTitleAndAuthor.new({ title: book.title, author: book.author })
+      create_book.perform
+      new_book = create_book.book
+
+      if create_book.successful?
         new_book_params = new_book.attributes
         new_book_params["id"] = book.id
-        unless book.update(new_book_params)
+        Book.delete(new_book.id)
+
+        if book.update(new_book_params) == false
           puts "Problem when updating #{book.title}"
         end
       else

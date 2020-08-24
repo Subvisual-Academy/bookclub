@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create destroy]
 
   def index
-    @books = Book.order("created_at DESC")
+    @books = Book.sorted_by_creation_date
   end
 
   def show
@@ -14,13 +14,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    create_book_from_t_and_a = CreateBookFromTitleAndAuthor.new(params[:book])
-    @book = create_book_from_t_and_a.perform
+    create_book = CreateBookFromTitleAndAuthor.new(params[:book])
+    create_book.perform
 
-    if create_book_from_t_and_a.successful?
+    if create_book.successful?
       redirect_to books_path, notice: "Book was successfully created."
     else
-      flash.now[:notice] = create_book_from_t_and_a.reason_for_no_success
+      @book = create_book.book
+      flash.now[:notice] = create_book.reason_for_failure
       render new_book_path, status: :bad_request
     end
   end
