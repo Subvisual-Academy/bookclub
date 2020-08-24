@@ -33,7 +33,6 @@ class CreateBookFromTitleAndAuthor
     escaped_title = CGI.escape(@title)
     author_query = @author.blank? ? "" : "+inauthor:#{CGI.escape(@author)}"
 
-
     "https://www.googleapis.com/books/v1/volumes?q=intitle:#{escaped_title}" + author_query
   end
 
