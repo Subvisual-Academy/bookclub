@@ -6,14 +6,10 @@ class BooksByHandController < ApplicationController
   end
 
   def create
-    params = book_params
-    params[:google_id] = SecureRandom.hex
-    params[:synopsis] = "Unavailable" if params[:synopsis].blank?
-    params[:image] = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg" if params[:image].blank?
-    @book = Book.new(params)
+    @book = Book.new(ensure_book_params)
 
     if @book.save
-      redirect_to @book, notice: "Book was successfully created."
+      redirect_to books_path, notice: "Book was successfully created."
     else
       flash.now[:notice] = "Problem: #{@book.errors.messages}"
       render new_books_by_hand_path, status: :bad_request
@@ -24,5 +20,15 @@ class BooksByHandController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author, :synopsis, :image)
+  end
+
+  def ensure_book_params
+    params = book_params
+
+    params[:google_id] = SecureRandom.hex
+    params[:synopsis] = "Unavailable" if params[:synopsis].blank?
+    params[:image] = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg" if params[:image].blank?
+    
+    params
   end
 end
