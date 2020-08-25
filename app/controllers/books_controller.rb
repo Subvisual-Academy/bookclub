@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    @books = Book.all.reverse
+    @books = Book.by_creation_date
   end
 
   def show
@@ -29,13 +29,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    create_book_from_isbn = CreateBookFromIsbn.new(isbn: params[:book][:isbn])
-    @book = create_book_from_isbn.perform
+    create_book = CreateBookFromTitleAndAuthor.new(params[:book])
+    create_book.perform
 
-    if create_book_from_isbn.successful?
+    if create_book.successful?
       redirect_to books_path, notice: "Book was successfully created."
     else
-      flash.now[:notice] = "The ISBN is invalid"
+      @book = create_book.book
+      flash.now[:notice] = create_book.reason_for_failure
       render new_book_path, status: :bad_request
     end
   end

@@ -6,12 +6,8 @@ RSpec.describe Book, type: :model do
 
     it { is_expected.to validate_presence_of(:title) }
 
-    it { is_expected.to validate_presence_of(:author) }
+    it { is_expected.to validate_presence_of(:google_id) }
 
-    it { is_expected.to validate_presence_of(:synopsis) }
-
-    it { is_expected.to validate_presence_of(:image) }
-
-    it { is_expected.to validate_presence_of(:isbn) }
+    it { is_expected.to validate_uniqueness_of(:google_id) }
   end
 end

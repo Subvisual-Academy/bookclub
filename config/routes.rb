@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "home#index"
+  root to: "gatherings#index"
 
   resources :books
   resources :books_by_hand, only: %i[new create]

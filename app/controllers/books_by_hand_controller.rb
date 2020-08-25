@@ -25,7 +25,7 @@ class BooksByHandController < ApplicationController
   def ensure_book_params
     params = book_params
 
-    params[:isbn] = SecureRandom.hex
+    params[:google_id] = SecureRandom.hex
 
     params
   end
