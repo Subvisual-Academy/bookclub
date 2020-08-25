@@ -26,9 +26,7 @@ class BooksByHandController < ApplicationController
     params = book_params
 
     params[:isbn] = SecureRandom.hex
-    params[:synopsis] = "Unavailable" if params[:synopsis].blank?
-    params[:image] = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg" if params[:image].blank?
-
+    
     params
   end
 end
