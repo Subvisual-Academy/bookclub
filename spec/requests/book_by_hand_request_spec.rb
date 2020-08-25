@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "BookByHands", type: :request do
   describe "GET #new" do
     it "redirects non logged user to login page" do
-      get new_books_by_hand_path
+      get books_manual_import_new_path
 
       expect(response).to redirect_to(login_path)
     end
@@ -13,7 +13,7 @@ RSpec.describe "BookByHands", type: :request do
     user = create(:user)
     login_user(user)
 
-    get new_books_by_hand_path
+    get books_manual_import_new_path
 
     expect(response_text).to include("Title")
     expect(response_text).to include("Author (optional)")
@@ -30,15 +30,14 @@ RSpec.describe "BookByHands", type: :request do
       @image_url = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg"
     end
 
-
     it "redirects to books_path on a successful creation" do
-      post books_by_hand_index_path, params: { book: { title: @title } }
+      post books_manual_import_path, params: { book: { title: @title } }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
-      post books_by_hand_index_path, params: { book: { title: @title, author: @author,
+      post books_manual_import_path, params: { book: { title: @title, author: @author,
                                                        synopsis: @synopsis, image: @image_url } }
 
       created_book = Book.last

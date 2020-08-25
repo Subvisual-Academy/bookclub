@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   root to: "gatherings#index"
 
+  namespace :books do
+    get "/manual_import/new", to: "manual_import#new"
+    post "/manual_import", to: "manual_import#create"
+  end
+
   resources :books
-  resources :books_by_hand, only: %i[new create]
+
   resources :gatherings
 
   get "/login", to: "sessions#new", as: :login

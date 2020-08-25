@@ -1,4 +1,4 @@
-class BooksByHandController < ApplicationController
+class Books::ManualImportController < ApplicationController
   before_action :require_login, only: %i[new create]
 
   def new
@@ -12,7 +12,7 @@ class BooksByHandController < ApplicationController
       redirect_to books_path, notice: "Book was successfully created."
     else
       flash.now[:notice] = "Problem: #{@book.errors.messages}"
-      render new_books_by_hand_path, status: :bad_request
+      render new_manual_import_path, status: :bad_request
     end
   end
 
