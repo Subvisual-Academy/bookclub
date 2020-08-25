@@ -15,9 +15,13 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td><img src="<%= book.image %>"  alt="book image"/></td>
+        <% if book.image%>
+          <td><img src="<%= book.image %>"  alt="book cover"/></td>
+        <% else %>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/></td>
+        <% end %>
         <td><%= book.title %></td>
-        <td><%= book.author %></td>
+        <td><%= book.author || "Unavailable" %></td>
         <td><%= link_to 'Show', book %></td>
         <% if current_user %>
           <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>

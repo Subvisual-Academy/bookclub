@@ -4,6 +4,6 @@ FactoryBot.define do
     author { Faker::Book.author }
     synopsis { Faker::Lorem.paragraph_by_chars }
     image { Faker::LoremPixel.image }
-    isbn { Faker::Code.isbn }
+    google_id { Faker::Alphanumeric.alphanumeric(number: 10) }
   end
 end

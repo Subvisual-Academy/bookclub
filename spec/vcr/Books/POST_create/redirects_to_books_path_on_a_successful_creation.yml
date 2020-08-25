@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/books/v1/volumes?q=isbn:9781448103690
+    uri: https://www.googleapis.com/books/v1/volumes?q=intitle:hard%20boiled%20wonderland%20and%20the%20end%20of%20the%20world
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       - Referer
       - X-Origin
       Date:
-      - Thu, 06 Aug 2020 10:01:31 GMT
+      - Sun, 23 Aug 2020 14:56:20 GMT
       Server:
       - ESF
       Cache-Control:
@@ -51,53 +51,53 @@ http_interactions:
           "items": [
             {
               "kind": "books#volume",
-              "id": "L6AtuutQHpwC",
-              "etag": "5yka5Kg8Gck",
-              "selfLink": "https://www.googleapis.com/books/v1/volumes/L6AtuutQHpwC",
+              "id": "3ZgKkumhAywC",
+              "etag": "XJ9Z56e8eWU",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/3ZgKkumhAywC",
               "volumeInfo": {
-                "title": "Kafka on the Shore",
+                "title": "Hard-Boiled Wonderland and the End of the World",
                 "authors": [
                   "Haruki Murakami"
                 ],
                 "publisher": "Random House",
                 "publishedDate": "2011-10-10",
-                "description": "Kafka Tamura runs away from home at fifteen, under the shadow of his father's dark prophesy. The aging Nakata, tracker of lost cats, who never recovered from a bizarre childhood affliction, finds his pleasantly simplified life suddenly turned upside down. As their parallel odysseys unravel, cats converse with people; fish tumble from the sky; a ghost-like pimp deploys a Hegel-spouting girl of the night; a forest harbours soldiers apparently un-aged since World War II. There is a savage killing, but the identity of both victim and killer is a riddle - one of many which combine to create an elegant and dreamlike masterpiece. 'Wonderful... Magical and outlandish' Daily Mail 'Hypnotic, spellbinding' The Times 'Cool, fluent and addictive' Daily Telegraph",
+                "description": "A narrative particle accelerator that zooms between Wild Turkey Whiskey and Bob Dylan, unicorn skulls and voracious librarians, John Coltrane and Lord Jim. Science fiction, detective story and post-modern manifesto all rolled into one rip-roaring novel, Hard-boiled Wonderland and the End of the World is the tour de force that expanded Haruki Murakami's international following. Tracking one man's descent into the Kafkaesque underworld of contemporary Tokyo, Murakami unites East and West, tragedy and farce, compassion and detachment, slang and philosophy.",
                 "industryIdentifiers": [
                   {
                     "type": "ISBN_13",
-                    "identifier": "9781448103690"
+                    "identifier": "9781448103683"
                   },
                   {
                     "type": "ISBN_10",
-                    "identifier": "144810369X"
+                    "identifier": "1448103681"
                   }
                 ],
                 "readingModes": {
                   "text": true,
                   "image": false
                 },
-                "pageCount": 512,
+                "pageCount": 416,
                 "printType": "BOOK",
                 "categories": [
                   "Fiction"
                 ],
                 "averageRating": 4,
-                "ratingsCount": 176,
+                "ratingsCount": 91,
                 "maturityRating": "NOT_MATURE",
                 "allowAnonLogging": true,
-                "contentVersion": "1.195.25.0.preview.2",
+                "contentVersion": "0.117.12.0.preview.2",
                 "panelizationSummary": {
                   "containsEpubBubbles": false,
                   "containsImageBubbles": false
                 },
                 "imageLinks": {
-                  "smallThumbnail": "http://books.google.com/books/content?id=L6AtuutQHpwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
-                  "thumbnail": "http://books.google.com/books/content?id=L6AtuutQHpwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                  "smallThumbnail": "http://books.google.com/books/content?id=3ZgKkumhAywC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=3ZgKkumhAywC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
                 },
                 "language": "en",
-                "previewLink": "http://books.google.pt/books?id=L6AtuutQHpwC&printsec=frontcover&dq=isbn:9781448103690&hl=&cd=1&source=gbs_api",
-                "infoLink": "https://play.google.com/store/books/details?id=L6AtuutQHpwC&source=gbs_api",
-                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=L6AtuutQHpwC"
+                "previewLink": "http://books.google.pt/books?id=3ZgKkumhAywC&printsec=frontcover&dq=intitle:hard+boiled+wonderland+and+the+end+of+the+world&hl=&cd=1&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=3ZgKkumhAywC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=3ZgKkumhAywC"
               },
               "saleInfo": {
                 "country": "PT",
@@ -111,7 +111,7 @@ http_interactions:
                   "amount": 9.49,
                   "currencyCode": "EUR"
                 },
-                "buyLink": "https://play.google.com/store/books/details?id=L6AtuutQHpwC&rdid=book-L6AtuutQHpwC&rdot=1&source=gbs_api",
+                "buyLink": "https://play.google.com/store/books/details?id=3ZgKkumhAywC&rdid=book-3ZgKkumhAywC&rdot=1&source=gbs_api",
                 "offers": [
                   {
                     "finskyOfferType": 1,
@@ -134,20 +134,20 @@ http_interactions:
                 "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
                 "epub": {
                   "isAvailable": true,
-                  "acsTokenLink": "http://books.google.pt/books/download/Kafka_on_the_Shore-sample-epub.acsm?id=L6AtuutQHpwC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                  "acsTokenLink": "http://books.google.pt/books/download/Hard_Boiled_Wonderland_and_the_End_of_th-sample-epub.acsm?id=3ZgKkumhAywC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
                 },
                 "pdf": {
                   "isAvailable": false
                 },
-                "webReaderLink": "http://play.google.com/books/reader?id=L6AtuutQHpwC&hl=&printsec=frontcover&source=gbs_api",
+                "webReaderLink": "http://play.google.com/books/reader?id=3ZgKkumhAywC&hl=&printsec=frontcover&source=gbs_api",
                 "accessViewStatus": "SAMPLE",
                 "quoteSharingAllowed": false
               },
               "searchInfo": {
-                "textSnippet": "Kafka Tamura runs away from home at fifteen, under the shadow of his father&#39;s dark prophesy."
+                "textSnippet": "Science fiction, detective story and post-modern manifesto all rolled into one rip-roaring novel, Hard-boiled Wonderland and the End of the World is the tour de force that expanded Haruki Murakami&#39;s international following."
               }
             }
           ]
         }
-  recorded_at: Thu, 06 Aug 2020 10:01:31 GMT
+  recorded_at: Sun, 23 Aug 2020 14:56:20 GMT
 recorded_with: VCR 6.0.0
