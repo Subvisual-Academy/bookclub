@@ -25,22 +25,22 @@ RSpec.describe "BookByHands", type: :request do
     before(:all) do
       login_user(create(:user))
     end
-    t = "Hard-Boiled Wonderland and the End of the World"
-    a = "Haruki Murakami"
+    title = "Hard-Boiled Wonderland and the End of the World"
+    author = "Haruki Murakami"
     url = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg"
 
     it "redirects to books_path on a successful creation" do
-      post books_by_hand_index_path, params: { book: { title: t, author: a } }
+      post books_by_hand_index_path, params: { book: { title: title, author: author } }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
-      post books_by_hand_index_path, params: { book: { title: t, author: a } }
+      post books_by_hand_index_path, params: { book: { title: title, author: author } }
 
       created_book = Book.last
-      expect(created_book.title).to eq(t)
-      expect(created_book.author).to eq(a)
+      expect(created_book.title).to eq(title)
+      expect(created_book.author).to eq(author)
       expect(created_book.synopsis).to eq("Unavailable")
       expect(created_book.image).to eq(url)
     end
