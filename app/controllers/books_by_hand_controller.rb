@@ -25,7 +25,7 @@ class BooksByHandController < ApplicationController
   def ensure_book_params
     params = book_params
 
-    params[:google_id] = SecureRandom.hex
+    params[:isbn] = SecureRandom.hex
     params[:synopsis] = "Unavailable" if params[:synopsis].blank?
     params[:image] = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg" if params[:image].blank?
 
