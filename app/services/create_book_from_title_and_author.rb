@@ -47,7 +47,7 @@ class CreateBookFromTitleAndAuthor
   end
 
   def most_similar_item_by_title(response)
-    items = response["items"].pop(5) # limit to the first 5 items
+    items = response["items"].first(10) # limit to the first 10 items
 
     fz = FuzzyMatch.new(items, read: proc { |x| x["volumeInfo"]["title"] }) # fuzzy match against the title of each item
 
@@ -57,7 +57,7 @@ class CreateBookFromTitleAndAuthor
   def fill_book_from_item(item)
     @book.title = title_from_item(item)
     @book.author = author_from_item(item)
-    @book.synopsis = return_synopsis_from_item(item)
+    @book.synopsis = synopsis_from_item(item)
     @book.image = image_from_item(item)
     @book.google_id = google_id_from_item(item)
   end
@@ -67,19 +67,19 @@ class CreateBookFromTitleAndAuthor
   end
 
   def author_from_item(item)
-    return "Unavailable" unless item["volumeInfo"]["authors"]
+    return unless item["volumeInfo"]["authors"]
 
     item["volumeInfo"]["authors"].join(", ")
   end
 
-  def return_synopsis_from_item(item)
-    return "Unavailable" unless item["volumeInfo"]["description"]
+  def synopsis_from_item(item)
+    return unless item["volumeInfo"]["description"]
 
     item["volumeInfo"]["description"]
   end
 
   def image_from_item(item)
-    return "Unavailable" unless item["volumeInfo"]["imageLinks"]
+    return unless item["volumeInfo"]["imageLinks"]
 
     item["volumeInfo"]["imageLinks"]["thumbnail"]
   end
