@@ -29,7 +29,7 @@ namespace :database do
         new_book_params["id"] = book.id
         Book.delete(new_book.id)
 
-        if book.update(new_book_params) == false
+        unless book.update(new_book_params)
           puts "Problem when updating #{book.title}"
         end
       else
