@@ -26,7 +26,7 @@ class BooksByHandController < ApplicationController
     params = book_params
 
     params[:isbn] = SecureRandom.hex
-    
+
     params
   end
 end

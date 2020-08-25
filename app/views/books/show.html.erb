@@ -1,10 +1,6 @@
 <p>
   <strong>Image:</strong>
-  <% if @book.image %>
-    <img src="<%= @book.image %>"  alt="book image"/>
-  <% else %>
-    <img src="https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg" alt="unknown book cover"/>
-  <% end %>
+  <img src="<%= @book.image %>"  alt="book image"/>
 </p>
 
 <p>
@@ -19,7 +15,7 @@
 
 <p>
   <strong>Synopsis:</strong>
-  <%= @book.synopsis || "Unavailable" %>
+  <%= @book.synopsis %>
 </p>
 
 <p>
