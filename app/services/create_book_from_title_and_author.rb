@@ -39,11 +39,7 @@ class CreateBookFromTitleAndAuthor
   def fill_in_book_details(response)
     return if response["totalItems"].zero?
 
-    item = if response["totalItems"].to_i >= 2
-             most_similar_item_by_title(response)
-           else
-             response["items"][0]
-           end
+    item = most_similar_item_by_title(response)
 
     fill_book_from_item(item)
 
@@ -51,7 +47,7 @@ class CreateBookFromTitleAndAuthor
   end
 
   def most_similar_item_by_title(response)
-    items = response["items"]
+    items = response["items"].pop(5) # limit to the first 5 items
 
     fz = FuzzyMatch.new(items, read: proc { |x| x["volumeInfo"]["title"] }) # fuzzy match against the title of each item
 

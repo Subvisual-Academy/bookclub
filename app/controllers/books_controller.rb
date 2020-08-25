@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create destroy]
 
   def index
-    @books = Book.sorted_by_creation_date
+    @books = Book.by_creation_date
   end
 
   def show
