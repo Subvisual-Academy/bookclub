@@ -27,4 +27,6 @@
   <ul class="gatherings-Ul">
     <%= render @gathering.book_presentations.select { |presentation|  presentation.special} %>
   </ul>
+
+  <%= render 'notifications/form' %>
 </div>
