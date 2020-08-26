@@ -4,6 +4,7 @@ RSpec.feature "Gathering", js: true do
   before(:each) do
     login_user(create(:user))
   end
+
   it "displays a book presentation form when the button is clicked" do
     visit new_gathering_path
     click_on("Add Presentation")
