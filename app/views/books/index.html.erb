@@ -15,18 +15,15 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <% if book.image.blank?%>
-          <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/></td>
-        <% else %>
+        <% if book.image%>
           <td><img src="<%= book.image %>"  alt="book cover"/></td>
+        <% else %>
+          <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/></td>
         <% end %>
 
         <td><%= book.title %></td>
-        <% if book.author.blank? %>
-          <td>Unavailable</td>
-        <% else %>
-          <td><%= book.author %></td>
-        <% end %>
+
+        <td><%= book.author || "Unavailable" %></td>
 
           <td><%= link_to 'Show', book %></td>
         <% if current_user %>

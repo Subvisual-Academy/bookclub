@@ -1,9 +1,9 @@
 <p>
   <strong>Image:</strong>
-  <% if @book.image.blank?%>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/>
-  <% else %>
+  <% if @book.image%>
     <img src="<%= @book.image %>"  alt="book cover"/>
+  <% else %>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/>
   <% end %>
 </p>
 
@@ -14,20 +14,12 @@
 
 <p>
   <strong> Author: </strong>
-  <% if @book.author.blank? %>
-     Unavailable
-  <% else %>
-    <%= @book.author %>
-  <% end %>
+    <%= @book.author || "Unavailable" %>
 </p>
 
 <p>
   <strong>Synopsis:</strong>
-  <% if @book.synopsis.blank? %>
-    Unavailable
-  <% else %>
-    <%= @book.synopsis %>
-  <% end %>
+    <%= @book.synopsis || "Unavailable" %>
 </p>
 
 

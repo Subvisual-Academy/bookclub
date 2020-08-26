@@ -19,7 +19,11 @@ class Books::ManualImportController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :synopsis, :image)
+    params.require(:book).permit(:title, :author, :synopsis, :image).tap do |params|
+      params[:author] = params[:author].presence
+      params[:synopsis] = params[:synopsis].presence
+      params[:image] = params[:image].presence
+    end
   end
 
   def ensure_book_params

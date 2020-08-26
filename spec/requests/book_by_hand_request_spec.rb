@@ -22,22 +22,24 @@ RSpec.describe "BookByHands", type: :request do
   end
 
   describe "POST #create", :vcr do
-    title = "Hard-Boiled Wonderland and the End of the World"
-    author = "Haruki Murakami"
-    synopsis = "sample_sinopsis"
-    image_url = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg"
-
     before(:all) do
       login_user(create(:user))
     end
 
     it "redirects to books_path on a successful creation" do
+      title = "Hard-Boiled Wonderland and the End of the World"
+
       post books_manual_import_path, params: { book: { title: title } }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
+      title = "Hard-Boiled Wonderland and the End of the World"
+      author = "Haruki Murakami"
+      synopsis = "sample_sinopsis"
+      image_url = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg"
+
       post books_manual_import_path, params: { book: { title: title, author: author,
                                                        synopsis: synopsis, image: image_url } }
 
