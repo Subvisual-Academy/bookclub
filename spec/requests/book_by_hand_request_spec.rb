@@ -22,29 +22,30 @@ RSpec.describe "BookByHands", type: :request do
   end
 
   describe "POST #create", :vcr do
+    title = "Hard-Boiled Wonderland and the End of the World"
+    author = "Haruki Murakami"
+    synopsis = "sample_sinopsis"
+    image_url = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg"
+
     before(:all) do
       login_user(create(:user))
-      @title = "Hard-Boiled Wonderland and the End of the World"
-      @author = "Haruki Murakami"
-      @synopsis = "sample_sinopsis"
-      @image_url = "https://www.ajnorfield.com/wp-content/uploads/2018/03/question_mark-book-cover.jpg"
     end
 
     it "redirects to books_path on a successful creation" do
-      post books_manual_import_path, params: { book: { title: @title } }
+      post books_manual_import_path, params: { book: { title: title } }
 
       expect(response).to redirect_to(books_path)
     end
 
     it "creates a book with the correct params" do
-      post books_manual_import_path, params: { book: { title: @title, author: @author,
-                                                       synopsis: @synopsis, image: @image_url } }
+      post books_manual_import_path, params: { book: { title: title, author: author,
+                                                       synopsis: synopsis, image: image_url } }
 
       created_book = Book.last
-      expect(created_book.title).to eq(@title)
-      expect(created_book.author).to eq(@author)
-      expect(created_book.synopsis).to eq(@synopsis)
-      expect(created_book.image).to eq(@image_url)
+      expect(created_book.title).to eq(title)
+      expect(created_book.author).to eq(author)
+      expect(created_book.synopsis).to eq(synopsis)
+      expect(created_book.image).to eq(image_url)
     end
 
     it "returns bad_request if create is unsuccessful" do
