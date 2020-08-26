@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root to: "gatherings#index"
 
-  resources :books, only: %i[index show new create destroy]
+  namespace :books do
+    get "/manual_import/new", to: "manual_import#new"
+    post "/manual_import", to: "manual_import#create"
+  end
+
+  resources :books
 
   resources :gatherings
 

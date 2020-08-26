@@ -13,13 +13,13 @@
 </p>
 
 <p>
-  <strong>Synopsis:</strong>
-  <%= @book.author || "Unavailable" %>
+  <strong> Author: </strong>
+    <%= @book.author || "Unavailable" %>
 </p>
 
 <p>
   <strong>Synopsis:</strong>
-  <%= @book.synopsis || "Unavailable" %>
+    <%= @book.synopsis || "Unavailable" %>
 </p>
 
 
@@ -34,3 +34,8 @@
 </ul>
 
 <%= link_to 'Back', books_path %>
+
+<% if current_user %>
+  | <%= link_to 'Edit', edit_book_path(@book) %>
+  | <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/books/v1/volumes?q=intitle:Hard-Boiled%20Wonderland%20and%20the%20End%20of%20the%20World
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Mon, 24 Aug 2020 17:12:37 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3-29=":443"; ma=2592000,h3-27=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "books#volumes",
+          "totalItems": 1,
+          "items": [
+            {
+              "kind": "books#volume",
+              "id": "3ZgKkumhAywC",
+              "etag": "AqOTdc9sMr8",
+              "selfLink": "https://www.googleapis.com/books/v1/volumes/3ZgKkumhAywC",
+              "volumeInfo": {
+                "title": "Hard-Boiled Wonderland and the End of the World",
+                "authors": [
+                  "Haruki Murakami"
+                ],
+                "publisher": "Random House",
+                "publishedDate": "2011-10-10",
+                "description": "A narrative particle accelerator that zooms between Wild Turkey Whiskey and Bob Dylan, unicorn skulls and voracious librarians, John Coltrane and Lord Jim. Science fiction, detective story and post-modern manifesto all rolled into one rip-roaring novel, Hard-boiled Wonderland and the End of the World is the tour de force that expanded Haruki Murakami's international following. Tracking one man's descent into the Kafkaesque underworld of contemporary Tokyo, Murakami unites East and West, tragedy and farce, compassion and detachment, slang and philosophy.",
+                "industryIdentifiers": [
+                  {
+                    "type": "ISBN_13",
+                    "identifier": "9781448103683"
+                  },
+                  {
+                    "type": "ISBN_10",
+                    "identifier": "1448103681"
+                  }
+                ],
+                "readingModes": {
+                  "text": true,
+                  "image": false
+                },
+                "pageCount": 416,
+                "printType": "BOOK",
+                "categories": [
+                  "Fiction"
+                ],
+                "averageRating": 4,
+                "ratingsCount": 91,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "0.117.12.0.preview.2",
+                "panelizationSummary": {
+                  "containsEpubBubbles": false,
+                  "containsImageBubbles": false
+                },
+                "imageLinks": {
+                  "smallThumbnail": "http://books.google.com/books/content?id=3ZgKkumhAywC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                  "thumbnail": "http://books.google.com/books/content?id=3ZgKkumhAywC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.pt/books?id=3ZgKkumhAywC&printsec=frontcover&dq=intitle:Hard-Boiled+Wonderland+and+the+End+of+the+World&hl=&cd=1&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=3ZgKkumhAywC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=3ZgKkumhAywC"
+              },
+              "saleInfo": {
+                "country": "PT",
+                "saleability": "FOR_SALE",
+                "isEbook": true,
+                "listPrice": {
+                  "amount": 9.49,
+                  "currencyCode": "EUR"
+                },
+                "retailPrice": {
+                  "amount": 9.49,
+                  "currencyCode": "EUR"
+                },
+                "buyLink": "https://play.google.com/store/books/details?id=3ZgKkumhAywC&rdid=book-3ZgKkumhAywC&rdot=1&source=gbs_api",
+                "offers": [
+                  {
+                    "finskyOfferType": 1,
+                    "listPrice": {
+                      "amountInMicros": 9490000,
+                      "currencyCode": "EUR"
+                    },
+                    "retailPrice": {
+                      "amountInMicros": 9490000,
+                      "currencyCode": "EUR"
+                    }
+                  }
+                ]
+              },
+              "accessInfo": {
+                "country": "PT",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+                "epub": {
+                  "isAvailable": true,
+                  "acsTokenLink": "http://books.google.pt/books/download/Hard_Boiled_Wonderland_and_the_End_of_th-sample-epub.acsm?id=3ZgKkumhAywC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                  "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=3ZgKkumhAywC&hl=&printsec=frontcover&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+              },
+              "searchInfo": {
+                "textSnippet": "Science fiction, detective story and post-modern manifesto all rolled into one rip-roaring novel, Hard-boiled Wonderland and the End of the World is the tour de force that expanded Haruki Murakami&#39;s international following."
+              }
+            }
+          ]
+        }
+  recorded_at: Mon, 24 Aug 2020 17:12:37 GMT
+recorded_with: VCR 6.0.0

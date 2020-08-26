@@ -1,0 +1,31 @@
+<%= form_with(model: book, local: true, url: books_manual_import_path) do |form| %>
+  <div class="Books-Field">
+    <%= form.label :title %>
+    <br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="Books-Field">
+    <%= form.label :author, 'Author (optional)' %>
+    <br>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="Books-Field">
+    <%= form.label :synopsis, 'Synopsis (optional)'%>
+    <br>
+    <%= form.text_field :synopsis %>
+  </div>
+
+
+  <div class="Books-Field">
+    <%= form.label :image, 'Link to book cover (optional)' %>
+    <br>
+    <%= form.text_field :image %>
+  </div>
+
+
+  <div class="Books-Actions">
+    <%= form.submit %>
+  </div>
+<% end %>
