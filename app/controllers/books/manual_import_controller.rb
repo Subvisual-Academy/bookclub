@@ -3,6 +3,8 @@ class Books::ManualImportController < ApplicationController
 
   def new
     @book = Book.new
+    @book.title = params[:title]
+    @book.author = params[:author]
   end
 
   def create
@@ -12,7 +14,7 @@ class Books::ManualImportController < ApplicationController
       redirect_to books_path, notice: "Book was successfully created."
     else
       flash.now[:notice] = "Problem: #{@book.errors.messages}"
-      render new_manual_import_path, status: :bad_request
+      render :new, status: :bad_request
     end
   end
 

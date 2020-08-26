@@ -1,4 +1,8 @@
 <%= form_with(model: book, local: true, url: books_path) do |form| %>
+  <div class="Books-Actions">
+    <%= form.submit 'Create manually', name: "redirect_to_manual_creation" %>
+  </div>
+
   <div class="Books-Field">
     <%= form.label :title %>
     <br>
