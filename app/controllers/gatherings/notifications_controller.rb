@@ -1,7 +1,8 @@
-class NotificationsController < ApplicationController
+class Gatherings::NotificationsController < ApplicationController
+  before_action :require_login, only: %i[create]
 
   def create
-    @gathering = Gathering.find(params[:gathering][:id])
+    @gathering = Gathering.find(params[:gathering_id])
 
     SlackNotifier.notify_minute(@gathering.date, gathering_url(@gathering))
 

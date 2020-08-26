@@ -1,5 +1,0 @@
-<%= form_with model: @gathering,:url => notifications_path , method: "post" do |f| %>
-  <%= f.hidden_field :id, :value => @gathering.id %>
-
-  <%= f.submit "Send notification", class: "btn-submit", data: {confirm: 'Want to send a notification to slack?' }  %>
-<% end %>

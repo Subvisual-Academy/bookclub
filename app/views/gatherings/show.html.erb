@@ -4,9 +4,13 @@
 </div>
 
 <div class="gatherings-Main">
-  <h1>
-    <strong><%= Date::MONTHNAMES[@gathering.date.month] %></strong>
-  </h1>
+  <div class="gatherings-ShowHeader">
+    <h1>
+      <strong><%= Date::MONTHNAMES[@gathering.date.month] %></strong>
+    </h1>
+    <%= button_to 'Send Slack Notification', gathering_notifications_path(@gathering), :class => "gatherings-Submit", data: {confirm: 'Are you sure?' } %>
+  </div>
+
   <div class="gatherings-Line"></div>
   <div class="gatherings-Main-header">
     <h2>Book Mentions</h2>
@@ -27,6 +31,4 @@
   <ul class="gatherings-Ul">
     <%= render @gathering.book_presentations.select { |presentation|  presentation.special} %>
   </ul>
-
-  <%= render 'notifications/form' %>
 </div>

@@ -8,9 +8,12 @@ Rails.application.routes.draw do
 
   resources :books
 
-  resources :gatherings
+  resources :gatherings do
+    scope module: :gatherings do
+      resources :notifications, only: %i[create]
+    end
+  end
 
-  resources :notifications, only: %i[create]
 
   get "/login", to: "sessions#new", as: :login
   post "login" => "sessions#create"
