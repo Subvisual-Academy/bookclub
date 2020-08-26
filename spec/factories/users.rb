@@ -4,5 +4,8 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { "foobar" }
     password_confirmation { "foobar" }
+    moderator { false }
+
+    trait(:is_moderator) { moderator { true } }
   end
 end

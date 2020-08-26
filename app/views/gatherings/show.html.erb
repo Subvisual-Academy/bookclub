@@ -8,7 +8,7 @@
     <h1>
       <strong><%= Date::MONTHNAMES[@gathering.date.month] %></strong>
     </h1>
-    <% if current_user&.email.eql? ENV["MODERATOR_EMAIL"] %>
+    <% if current_user&.moderator %>
       <%= button_to 'Send Slack Notification', gathering_notifications_path(@gathering), :class => "gatherings-Submit", data: {confirm: 'Are you sure?' } %>
     <% end %>
   </div>
