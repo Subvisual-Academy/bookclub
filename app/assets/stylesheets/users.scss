@@ -4,8 +4,6 @@
 
 .users-Actions{
   padding: 5px;
-  display: flex;
-  justify-content: space-around;
 
   .submit {
     font-family: Open Sans, serif;
@@ -16,10 +14,11 @@
     border-radius: 10px;
     border: none;
     width: 13em;
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor:pointer;
   }
 }
-
-
 
 .users-Login {
   top: 40px;
@@ -35,7 +34,6 @@
     margin: auto;
     background-color: #FFFFFF;
     width: 25em;
-    //max-width: 75%;
     border-radius: 25px;
     height: 20em;
     position: absolute;
