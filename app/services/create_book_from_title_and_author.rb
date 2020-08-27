@@ -56,7 +56,7 @@ class CreateBookFromTitleAndAuthor
 
   def fill_book_from_item(item)
     @book.title = title_from_item(item)
-    @book.author = author_from_item(item)
+    @book.author = author_from_item(item) || @author
     @book.synopsis = synopsis_from_item(item)
     @book.image = image_from_item(item)
     @book.google_id = google_id_from_item(item)
