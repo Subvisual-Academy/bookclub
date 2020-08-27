@@ -14,6 +14,6 @@ class Gatherings::NotificationsController < ApplicationController
   def require_moderator
     return if current_user&.moderator
 
-    redirect_to login_path, notice: "Must be a moderator"
+    head :unauthorized
   end
 end

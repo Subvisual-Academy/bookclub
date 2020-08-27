@@ -6,11 +6,9 @@
 <div class="gatherings-Main">
   <div class="gatherings-ShowHeader">
     <h1>
-      <strong><%= Date::MONTHNAMES[@gathering.date.month] %></strong>
+      <strong><%= show_date_month(@gathering) %></strong>
     </h1>
-    <% if current_user&.moderator %>
-      <%= button_to 'Send Slack Notification', gathering_notifications_path(@gathering), :class => "gatherings-Submit", data: {confirm: 'Are you sure?' } %>
-    <% end %>
+    <%= send_notification_button(current_user, @gathering) %>
   </div>
 
   <div class="gatherings-Line"></div>
