@@ -5,15 +5,15 @@
     <p class="subtitle"> Log in to Bookclub</p>
     <%= form_with model: @user, url: login_path, method: :post do %>
       <div class="users-Field">
-        <%= email_field_tag :email, nil, required: true,  placeholder: 'Email' %>
+        <%= email_field_tag :email, nil, required: true,  placeholder: 'Email', class: "text-input" %>
       </div>
 
       <div class="users-Field">
-        <%= password_field_tag :password, nil, required: true,   placeholder: 'Password' %>
+        <%= password_field_tag :password, nil, required: true,   placeholder: 'Password', class: "text-input" %>
       </div>
 
       <div class="users-Actions">
-        <%= submit_tag 'Log in' %>
+        <%= submit_tag 'Log in', class:  "submit" %>
       </div>
     <% end %>
     </div>

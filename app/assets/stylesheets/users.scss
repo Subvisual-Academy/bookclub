@@ -4,7 +4,22 @@
 
 .users-Actions{
   padding: 5px;
+  display: flex;
+  justify-content: space-around;
+
+  .submit {
+    font-family: Open Sans, serif;
+    font-size: 0.8em;
+    padding: 5px 20px 6px 20px;
+    background:#1B60F3;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    width: 13em;
+  }
 }
+
+
 
 .users-Login {
   top: 40px;
@@ -14,14 +29,34 @@
   background: #EDF0F7;
 
   .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
     background-color: #FFFFFF;
-    width: 50vw;
+    width: 25vw;
     max-width: 50%;
-    padding: 2rem 4rem;
-    border-radius: 20px;
+    border-radius: 25px;
+    height: 500px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .text-input{
+      border: 1px solid #1F29A4;
+      box-sizing: border-box;
+      border-radius: 25px;
+      background: white;
+      width: 15em;
+      height: 3em;
+    }
 
     h1 {
       font-family: "Playfair Display", serif;
+      margin-top: 2em;
+      margin-bottom: 0;
       color: #1B60F3;
     }
 
@@ -30,4 +65,3 @@
     }
   }
 }
-
