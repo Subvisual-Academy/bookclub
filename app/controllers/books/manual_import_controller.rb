@@ -8,6 +8,16 @@ class Books::ManualImportController < ApplicationController
   end
 
   def create
+    if params[:redirect_to_API]
+      redirect_to new_book_path(title: params[:book][:title], author: params[:book][:author])
+    else
+      handle_default_book_creation
+    end
+  end
+
+  private
+
+  def handle_default_book_creation
     @book = Book.new(ensure_book_params)
 
     if @book.save
@@ -17,8 +27,6 @@ class Books::ManualImportController < ApplicationController
       render :new, status: :bad_request
     end
   end
-
-  private
 
   def book_params
     params.require(:book).permit(:title, :author, :synopsis, :image).tap do |params|

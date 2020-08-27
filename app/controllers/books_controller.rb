@@ -11,10 +11,20 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @book.title = params[:title]
+    @book.author = params[:author]
   end
 
   def edit
     @book = Book.find(params[:id])
+  end
+
+  def create
+    if params[:redirect_to_manual_creation]
+      redirect_to books_manual_import_new_path(title: params[:book][:title], author: params[:book][:author])
+    else
+      handle_default_book_creation
+    end
   end
 
   def update
@@ -25,14 +35,6 @@ class BooksController < ApplicationController
     else
       flash.now[:notice] = "Invalid field"
       render :edit, status: :bad_request
-    end
-  end
-
-  def create
-    if params[:redirect_to_manual_creation]
-      redirect_to books_manual_import_new_path(title: params[:book][:title], author: params[:book][:author])
-    else
-      handle_default_book_creation
     end
   end
 
