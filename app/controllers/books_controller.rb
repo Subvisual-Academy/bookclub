@@ -20,10 +20,15 @@ class BooksController < ApplicationController
   end
 
   def create
-    if params[:redirect_to_manual_creation]
-      redirect_to books_manual_import_new_path(title: params[:book][:title], author: params[:book][:author])
+    create_book = CreateBookFromTitleAndAuthor.new(params[:book])
+    create_book.perform
+
+    if create_book.successful?
+      redirect_to books_path, notice: "Book was successfully created."
     else
-      handle_default_book_creation
+      @book = create_book.book
+      flash.now[:notice] = create_book.reason_for_failure
+      render new_book_path, status: :bad_request
     end
   end
 
@@ -50,18 +55,5 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author, :synopsis, :image)
-  end
-
-  def handle_default_book_creation
-    create_book = CreateBookFromTitleAndAuthor.new(params[:book])
-    create_book.perform
-
-    if create_book.successful?
-      redirect_to books_path, notice: "Book was successfully created."
-    else
-      @book = create_book.book
-      flash.now[:notice] = create_book.reason_for_failure
-      render new_book_path, status: :bad_request
-    end
   end
 end

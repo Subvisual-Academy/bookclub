@@ -26,16 +26,6 @@ RSpec.describe "BookByHands", type: :request do
       login_user(create(:user))
     end
 
-    it "redirect to API creation and carry the params when prompted" do
-      params = { redirect_to_API: "Create using API",
-                 book: { title: Faker::Name, author: Faker::Book.author } }
-
-      post books_manual_import_path, params: params
-
-      expect(response).to redirect_to(new_book_path(title: params[:book][:title],
-                                                    author: params[:book][:author]))
-    end
-
     it "redirects to books_path on a successful creation" do
       title = "Hard-Boiled Wonderland and the End of the World"
 

@@ -34,16 +34,6 @@ RSpec.describe "Books", type: :request do
       login_user(create(:user))
     end
 
-    it "redirect to manual creation and carries the params when prompted" do
-      params = { redirect_to_manual_creation: "Create manually",
-                 book: { title: Faker::Name, author: Faker::Book.author } }
-
-      post books_path, params: params
-
-      expect(response).to redirect_to(books_manual_import_new_path(title: params[:book][:title],
-                                                                   author: params[:book][:author]))
-    end
-
     it "redirects to books_path on a successful creation" do
       post books_path, params: { book: { title: "hard boiled wonderland and the end of the world" } }
 
