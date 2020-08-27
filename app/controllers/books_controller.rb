@@ -10,22 +10,11 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book = Book.new(title: params[:title], author: params[:author])
   end
 
   def edit
     @book = Book.find(params[:id])
-  end
-
-  def update
-    @book = Book.find(params[:id])
-
-    if @book.update(book_params)
-      redirect_to @book, notice: "Book was successfully updated."
-    else
-      flash.now[:notice] = "Invalid field"
-      render :edit, status: :bad_request
-    end
   end
 
   def create
@@ -38,6 +27,17 @@ class BooksController < ApplicationController
       @book = create_book.book
       flash.now[:notice] = create_book.reason_for_failure
       render new_book_path, status: :bad_request
+    end
+  end
+
+  def update
+    @book = Book.find(params[:id])
+
+    if @book.update(book_params)
+      redirect_to @book, notice: "Book was successfully updated."
+    else
+      flash.now[:notice] = "Invalid field"
+      render :edit, status: :bad_request
     end
   end
 
