@@ -47,7 +47,7 @@ class CreateBookFromTitleAndAuthor
   end
 
   def most_similar_item_by_title(response)
-    items = response["items"].first(10) # limit to the first 10 items
+    items = response["items"].first(3) # limit to the first 10 items
 
     fz = FuzzyMatch.new(items, read: proc { |x| x["volumeInfo"]["title"] }) # fuzzy match against the title of each item
 
