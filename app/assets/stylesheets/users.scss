@@ -13,7 +13,7 @@
     padding: 5px 20px 6px 20px;
     background:#1B60F3;
     color: white;
-    border-radius: 25px;
+    border-radius: 10px;
     border: none;
     width: 13em;
   }
@@ -34,10 +34,10 @@
     align-items: center;
     margin: auto;
     background-color: #FFFFFF;
-    width: 25vw;
-    max-width: 50%;
+    width: 25em;
+    //max-width: 75%;
     border-radius: 25px;
-    height: 500px;
+    height: 20em;
     position: absolute;
     top:0;
     bottom: 0;
@@ -47,15 +47,16 @@
     .text-input{
       border: 1px solid #1F29A4;
       box-sizing: border-box;
-      border-radius: 25px;
+      border-radius: 10px;
       background: white;
       width: 15em;
       height: 3em;
+      padding-left: 10px;
     }
 
     h1 {
       font-family: "Playfair Display", serif;
-      margin-top: 2em;
+      margin-top: 1.5em;
       margin-bottom: 0;
       color: #1B60F3;
     }
