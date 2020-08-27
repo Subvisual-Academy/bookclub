@@ -2,9 +2,7 @@ class Books::ManualImportController < ApplicationController
   before_action :require_login, only: %i[new create]
 
   def new
-    @book = Book.new
-    @book.title = params[:title]
-    @book.author = params[:author]
+    @book = Book.new(title: params[:title], author: params[:author])
   end
 
   def create
