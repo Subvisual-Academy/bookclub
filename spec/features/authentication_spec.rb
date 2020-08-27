@@ -13,7 +13,7 @@ RSpec.feature "Authentication", js: true do
     visit login_path
     fill_in("Email", with: user.email)
     fill_in("Password", with: "foobar")
-    click_on("LOG IN")
+    click_on("Log in")
 
     expect(page).to have_current_path(root_path)
     expect(page).to have_content("Log Out")
@@ -25,12 +25,10 @@ RSpec.feature "Authentication", js: true do
     visit login_path
     fill_in("Email", with: user.email)
     fill_in("Password", with: "bad password")
-    click_on("LOG IN")
+    click_on("Log in")
 
     expect(page).to have_current_path(login_path)
     expect(page).to have_content("Incorrect email/password")
-    expect(page).to have_content("Email")
-    expect(page).to have_content("Password")
   end
 
   it "rejects the user's login if the email is bad" do
@@ -39,12 +37,10 @@ RSpec.feature "Authentication", js: true do
     visit login_path
     fill_in("Email", with: "#{user.email}.bad")
     fill_in("Password", with: "bad password")
-    click_on("LOG IN")
+    click_on("Log in")
 
     expect(page).to have_current_path(login_path)
     expect(page).to have_content("Incorrect email/password")
-    expect(page).to have_content("Email")
-    expect(page).to have_content("Password")
   end
 
   it "logs out the user" do

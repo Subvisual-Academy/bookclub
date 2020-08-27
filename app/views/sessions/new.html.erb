@@ -1,16 +1,20 @@
-<h1>Log In</h1>
-<%= form_with model: @user, url: login_path, method: :post do |f|  %>
-  <div class="Users-Field">
-    <%= label_tag :email %>
-    <%= email_field_tag :email, nil, required: true %>
-  </div>
+<div class="users-Login">
 
-  <div class="Users-Field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password, nil, required: true %>
-  </div>
+  <div class="form">
+    <h1>Bookclub</h1>
+    <p class="subtitle"> Log in to Bookclub</p>
+    <%= form_with model: @user, url: login_path, method: :post do %>
+      <div class="users-Field">
+        <%= email_field_tag :email, nil, required: true,  placeholder: 'Email' %>
+      </div>
 
-  <div class="Users-Actions">
-    <%= submit_tag 'LOG IN' %>
-  </div>
-<% end %>
+      <div class="users-Field">
+        <%= password_field_tag :password, nil, required: true,   placeholder: 'Password' %>
+      </div>
+
+      <div class="users-Actions">
+        <%= submit_tag 'Log in' %>
+      </div>
+    <% end %>
+    </div>
+</div>

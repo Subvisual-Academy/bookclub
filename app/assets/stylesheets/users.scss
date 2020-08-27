@@ -1,7 +1,33 @@
-.Users-Field{
+.users-Field{
   padding: 10px;
 }
 
-.Users-Actions{
+.users-Actions{
   padding: 5px;
 }
+
+.users-Login {
+  top: 40px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #EDF0F7;
+
+  .form {
+    background-color: #FFFFFF;
+    width: 50vw;
+    max-width: 50%;
+    padding: 2rem 4rem;
+    border-radius: 20px;
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      color: #1B60F3;
+    }
+
+    .subtitle{
+      color: #1F29A4;
+    }
+  }
+}
+
