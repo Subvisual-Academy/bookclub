@@ -1,7 +1,9 @@
 <div class='nested-fields'>
   <div class='form-group'>
     <%= form.hidden_field :_destroy %>
-    <%= form.select :user_id, User.order(:name).all.map {|u| [u.name,u.id]}, {:prompt => "User"} , {:class => "gatherings-Mentions gatherings-MentionsFirst"} %>
+    <!-- <%= form.text_field :user_id, data: {behaviour: 'autocomplete'} %> -->
+    <input type="text" name="textfield_id_1" id="textfield_id_1" value="" onKeyUp="buildhidden();" data-behaviour="autocomplete">
+    <input type="hidden" name="user_id" id="user_id" value="" >
     &nbsp; - &nbsp;
     <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book"} , {:class => "gatherings-Mentions gatherings-MentionsSecond"} %>
     &nbsp; &nbsp;
@@ -9,4 +11,5 @@
     &nbsp;
     <%= link_to (inline_svg_tag 'trash.svg', alt: "delete"), "#", data: { action: "click->nested-form#removeAssociation" } %>
   </div>
+  <!-- <input type="text" placeholder="Enter name..." data-behaviour="autocomplete"> -->
 </div>

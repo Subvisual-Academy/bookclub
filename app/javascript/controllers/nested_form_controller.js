@@ -1,5 +1,21 @@
 import { Controller } from "stimulus"
 
+const autocomplete = (element) => {
+  var options = {
+    url: function(phrase) {
+      return "/users/search.json?q=" + phrase;
+    },
+    getValue: "name",
+  };
+
+  $(element).find('[data-behaviour="autocomplete"]').easyAutocomplete(options);
+}
+
+function buildhidden() {
+  var joinedvalues = document.getElementById('textfield_id_1').value;
+  document.getElementById("user_id").value = joinedvalues;
+}
+
 export default class extends Controller {
   static targets = ["add_item", "template"]
 
@@ -7,6 +23,7 @@ export default class extends Controller {
     event.preventDefault()
     const content = this.templateTarget.innerHTML.replace(/TEMPLATE_RECORD/g, new Date().valueOf())
     this.add_itemTarget.insertAdjacentHTML('beforebegin', content)
+    autocomplete(this.element)
   }
 
   removeAssociation(event) {
