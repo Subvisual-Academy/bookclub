@@ -4,9 +4,13 @@
 </div>
 
 <div class="gatherings-Main">
-  <h1>
-    <strong><%= Date::MONTHNAMES[@gathering.date.month] %></strong>
-  </h1>
+  <div class="gatherings-ShowHeader">
+    <h1>
+      <strong><%= show_date_month(@gathering) %></strong>
+    </h1>
+    <%= send_notification_button(current_user, @gathering) %>
+  </div>
+
   <div class="gatherings-Line"></div>
   <div class="gatherings-Main-header">
     <h2>Book Mentions</h2>
