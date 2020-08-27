@@ -17,7 +17,7 @@
           <div class="gathering-FirstBox-Delete">
             <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gathering-FirstBox-DeleteImg"), gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
           </div>
-          <%= link_to Date::MONTHNAMES[gathering.date.month], gathering,  class:"gatherings-First-link"%>
+          <%= link_to show_date_month(gathering), gathering,  class:"gatherings-First-link"%>
         </button>
       <% end %>
     </div>
