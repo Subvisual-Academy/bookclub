@@ -47,7 +47,12 @@ class CreateBookFromTitleAndAuthor
   end
 
   def most_similar_item_by_title(response)
-    items = response["items"].first(3) # limit to the first 10 items
+    # Only the first three items returned by the API are put up to consideration.
+    # This happens because the API tends to return various editions of the same book (hence with the same title and author)
+    # and FuzzyMatch's behaviour when faced with the same string multiple times is not reliable.
+    # Since the API returns the books by order of popularity + geographical location of the request, it has been decided,
+    # after testing, that 3 was the number of books for optimal results.
+    items = response["items"].first(3)
 
     fz = FuzzyMatch.new(items, read: proc { |x| x["volumeInfo"]["title"] }) # fuzzy match against the title of each item
 
