@@ -30,8 +30,9 @@
     </template>
 
     <!-- Displaying existing book presentations -->
+
     <%= form.fields_for :book_presentations do |book_presentation2| %>
-      <%= render 'book_presentation_fields', form: book_presentation2 %>
+      <%= render 'book_presentation_fields', form: book_presentation2, gathering: gathering %>
     <% end %>
 
     <div class="gatherings-SpaceButton">

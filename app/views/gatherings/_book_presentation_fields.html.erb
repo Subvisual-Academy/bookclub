@@ -2,9 +2,9 @@
   <div class='form-group'>
     <%= form.hidden_field :_destroy %>
 
-    <%= form.text_field :user_id, data: { behaviour: "autocomplete_user" }, placeholder: "User" %>
+    <%= form.text_field :user_id, data: { behaviour: "autocomplete_user" }, placeholder: "User", value: convert_user_id_to_name(form.object.user_id) %>
     &nbsp; - &nbsp;
-    <%= form.text_field :book_id, data: { behaviour: "autocomplete_book" }, placeholder: "Book" %>
+    <%= form.text_field :book_id, data: { behaviour: "autocomplete_book" }, placeholder: "Book", value: convert_book_id_to_title(form.object.book_id) %>
     &nbsp; &nbsp;
     <%= form.check_box :special, class: "checkbox-round" %>
     &nbsp;
