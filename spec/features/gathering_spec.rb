@@ -8,8 +8,8 @@ RSpec.feature "Gathering", js: true do
     visit new_gathering_path
     click_on("Add Presentation")
 
-    expect(page).to have_content("User")
-    expect(page).to have_content("Book")
+    expect(page).to have_field("User")
+    expect(page).to have_field("Book")
   end
 
   it "displays the Gathering information when editing" do

@@ -62,11 +62,12 @@ class GatheringsController < ApplicationController
 
   def process_params
     params = gathering_params
-    book_presentations_attributes = params["book_presentations_attributes"].to_unsafe_h
-    book_presentations_attributes.transform_values { |presentation_params| process_user_id(presentation_params) }
-    book_presentations_attributes.transform_values { |presentation_params| process_book_id(presentation_params) }
-    params["book_presentations_attributes"] = book_presentations_attributes
-
+    if params["book_presentations_attributes"]
+      book_presentations_attributes = params["book_presentations_attributes"].to_unsafe_h
+      book_presentations_attributes.transform_values { |presentation_params| process_user_id(presentation_params) }
+      book_presentations_attributes.transform_values { |presentation_params| process_book_id(presentation_params) }
+      params["book_presentations_attributes"] = book_presentations_attributes
+    end
     params
   end
 
