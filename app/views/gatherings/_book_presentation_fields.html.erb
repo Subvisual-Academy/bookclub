@@ -2,9 +2,9 @@
   <div class='form-group'>
     <%= form.hidden_field :_destroy %>
 
-    <%= form.text_field :user_id, data: { behaviour: "autocomplete" } %>
+    <%= form.text_field :user_id, data: { behaviour: "autocomplete_user" } %>
     &nbsp; - &nbsp;
-    <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book"} , {:class => "gatherings-Mentions gatherings-MentionsSecond"} %>
+    <%= form.text_field :book_id, data: { behaviour: "autocomplete_book" } %>
     &nbsp; &nbsp;
     <%= form.check_box :special, class: "checkbox-round" %>
     &nbsp;

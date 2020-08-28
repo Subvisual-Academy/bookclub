@@ -64,8 +64,7 @@ class GatheringsController < ApplicationController
     params = gathering_params
     book_presentations_attributes = params["book_presentations_attributes"].to_unsafe_h
     book_presentations_attributes.transform_values { |presentation_params| process_user_id(presentation_params) }
-    # linha semelhante aqui mas com a função process_book_id
-    # depois no jc e na view mudar aquilo de forma a suportar os dois forms
+    book_presentations_attributes.transform_values { |presentation_params| process_book_id(presentation_params) }
     params["book_presentations_attributes"] = book_presentations_attributes
 
     params
@@ -74,5 +73,10 @@ class GatheringsController < ApplicationController
   def process_user_id(presentation_params)
     user = User.find_by(name: presentation_params[:user_id])
     presentation_params[:user_id] = user.id if user
+  end
+
+  def process_book_id(presentation_params)
+    book = Book.find_by(title: presentation_params[:book_id])
+    presentation_params[:book_id] = book.id if book
   end
 end
