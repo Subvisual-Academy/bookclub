@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :gatherings
 
-  get "users/search", to: "user_autocomplete#search"
+  get "users/search", to: "autocomplete#search_user"
 
   get "/login", to: "sessions#new", as: :login
   post "login" => "sessions#create"

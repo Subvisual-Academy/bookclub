@@ -18,6 +18,8 @@ class GatheringsController < ApplicationController
   end
 
   def create
+    gathering_params = process_params
+
     @gathering = Gathering.new(gathering_params)
 
     if @gathering.save
@@ -30,6 +32,7 @@ class GatheringsController < ApplicationController
   end
 
   def update
+    gathering_params = process_params
     @gathering = Gathering.find(params[:id])
 
     if @gathering.update(gathering_params)
@@ -55,5 +58,21 @@ class GatheringsController < ApplicationController
       permit(:date, :special_presentation,
              book_presentations_attributes: %i[_destroy id gathering_id
                                                user_id book_id special])
+  end
+
+  def process_params
+    params = gathering_params
+    book_presentations_attributes = params["book_presentations_attributes"].to_unsafe_h
+    book_presentations_attributes.transform_values { |presentation_params| process_user_id(presentation_params) }
+    # linha semelhante aqui mas com a função process_book_id
+    # depois no jc e na view mudar aquilo de forma a suportar os dois forms
+    params["book_presentations_attributes"] = book_presentations_attributes
+
+    params
+  end
+
+  def process_user_id(presentation_params)
+    user = User.find_by(name: presentation_params[:user_id])
+    presentation_params[:user_id] = user.id if user
   end
 end

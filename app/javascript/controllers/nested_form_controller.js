@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 const autocomplete = (element) => {
-  var options = {
+  const options = {
     url: function(phrase) {
       return "/users/search.json?q=" + phrase;
     },
@@ -11,10 +11,10 @@ const autocomplete = (element) => {
   $(element).find('[data-behaviour="autocomplete"]').easyAutocomplete(options);
 }
 
-function buildhidden() {
-  var joinedvalues = document.getElementById('textfield_id_1').value;
-  document.getElementById("user_id").value = joinedvalues;
-}
+// function buildhidden() {
+//   const joinedvalues = document.getElementById('user_id').value;
+//   document.getElementById("user_id").value = joinedvalues;
+// }
 
 export default class extends Controller {
   static targets = ["add_item", "template"]
