@@ -3,16 +3,18 @@
 <% end %>
 <br>
 
-<% if @user_filter.nil? %>
+<% if @selected_user.nil? %>
   <strong> <%= link_to 'All books', books_path %> </strong>
+  <%= @books.count %>
 <% else %>
   <%= link_to 'All books', books_path %>
+  <%= Book.all.count %>
 <% end %>
-<%= @books.count %>
+
 <br>
 
 <% @users.each do |user| %>
-  <% if @user_filter.eql?(user.id.to_s) %>
+  <% if @selected_user.eql?(user) %>
     <strong><%= link_to user.name, books_path(:user_id => user.id) %> </strong>
   <% else %>
     <%= link_to user.name, books_path(:user_id => user.id) %>
