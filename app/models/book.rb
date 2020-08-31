@@ -6,4 +6,5 @@ class Book < ApplicationRecord
   has_many :users, through: :book_presentations
 
   scope :by_creation_date, -> { order("created_at DESC") }
+  scope :by_user_id, ->(user_id) { User.find(user_id).books.uniq }
 end

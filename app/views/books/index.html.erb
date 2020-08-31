@@ -1,6 +1,25 @@
 <% if current_user %>
   <%= link_to 'New Book', new_book_path %>
 <% end %>
+<br>
+
+<% if @user_filter.nil? %>
+  <strong> <%= link_to 'All books', books_path %> </strong>
+<% else %>
+  <%= link_to 'All books', books_path %>
+<% end %>
+<%= @books.count %>
+<br>
+
+<% @users.each do |user| %>
+  <% if @user_filter.eql?(user.id.to_s) %>
+    <strong><%= link_to user.name, books_path(:user_id => user.id) %> </strong>
+  <% else %>
+    <%= link_to user.name, books_path(:user_id => user.id) %>
+  <% end %>
+  <%= unique_book_mentions(user)%>
+  <br>
+<% end %>
 
 <table class="Table">
   <thead>
