@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe "Gatherings", type: :request do
   include ActionView::Helpers::SanitizeHelper
   it "displays all gatherings basic info" do
-    allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
     gatherings_list = create_list(:gathering_with_book_presentations, 3, :has_special_presentation)
 
     get gatherings_path
@@ -73,7 +72,6 @@ RSpec.describe "Gatherings", type: :request do
 
     it "redirects to gatherings_path on a successful creation" do
       book = create(:book)
-      allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
       gathering_params = attributes_for(:gathering, :has_special_presentation)
       book_presentation_params = { "1" => { user_id: @user.id, book_id: book.id, special: true } }
       gathering_params["book_presentations_attributes"] = book_presentation_params
@@ -85,7 +83,6 @@ RSpec.describe "Gatherings", type: :request do
 
     it "creates a gathering with the correct params" do
       book = create(:book)
-      allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
       gathering_params = attributes_for(:gathering, :has_special_presentation)
       book_presentation_params = { "1" => { user_id: @user.id, book_id: book.id, special: true } }
       gathering_params["book_presentations_attributes"] = book_presentation_params
@@ -101,8 +98,6 @@ RSpec.describe "Gatherings", type: :request do
     end
 
     it "returns bad_request if create is unsuccessful" do
-      allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
-
       post gatherings_path, params: { gathering: { date: "" } }
 
       expect(response).to have_http_status(:bad_request)

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :books
 
-  resources :gatherings
+  resources :gatherings do
+    resources :notifications, only: %i[create], module: :gatherings
+  end
 
   get "book/search", to: "autocomplete#search_book"
   get "users/search", to: "autocomplete#search_user"

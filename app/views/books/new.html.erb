@@ -2,6 +2,6 @@
 
 <%= render 'form', book: @book %>
 
-<%= link_to 'Back', books_path %> |
+<%= link_to 'Back', books_path %>  |
 
-<%= link_to "Create manually", books_manual_import_new_path %>
+<%= link_to "Create manually", books_manual_import_new_path(title: @book.title, author: @book.author) %>
