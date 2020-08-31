@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :google_id, presence: true, uniqueness: true
 
   has_many :book_presentations, dependent: :destroy

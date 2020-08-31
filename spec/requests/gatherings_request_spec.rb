@@ -63,19 +63,6 @@ RSpec.describe "Gatherings", type: :request do
 
       expect(response).to redirect_to(login_path)
     end
-
-    # it "displays gathering parameters to logged user" do
-    #   user = create(:user)
-    #   login_user(user)
-    #   gathering = create(:gathering_with_book_presentations, :has_special_presentation)
-    #
-    #   get edit_gathering_path(gathering)
-    #
-    #   gathering.book_presentations.each do |book_presentation|
-    #     expect(response_text).to include(book_presentation.user.name)
-    #     expect(response_text).to include(book_presentation.book.title)
-    #   end
-    # end
   end
 
   describe "POST #create" do

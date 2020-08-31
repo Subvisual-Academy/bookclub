@@ -21,13 +21,22 @@ class CreateBookFromTitleAndAuthor
   end
 
   def reason_for_failure
-    return "Book already exists" if @book.errors.messages.key?(:google_id) &&
-      @book.errors.messages[:google_id][0].eql?("has already been taken")
-
-    "Book does not exist in the API"
+    if google_id_exists? || title_exists?
+      "Book already exists"
+    else
+      "Book does not exist in the API"
+    end
   end
 
   private
+
+  def google_id_exists?
+    @book.errors.messages.key?(:google_id) && @book.errors.messages[:google_id][0].eql?("has already been taken")
+  end
+
+  def title_exists?
+    @book.errors.messages.key?(:title) && @book.errors.messages[:title][0].eql?("has already been taken")
+  end
 
   def url
     escaped_title = CGI.escape(@title)
