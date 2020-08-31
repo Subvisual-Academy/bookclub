@@ -18,7 +18,7 @@ RSpec.describe "Books", type: :request do
     it "Only displays books associated with the filtered user" do
       user = create(:user)
       book_list = create_list(:book, 3)
-      gathering = Gathering.create(date: Time.zone.today)
+      gathering = create(:gathering)
       book_presentation1 = BookPresentation.create(gathering_id: gathering.id, user_id: user.id, book_id: book_list[0].id)
       book_presentation2 = BookPresentation.create(gathering_id: gathering.id, user_id: user.id, book_id: book_list[1].id)
       gathering.book_presentations << [book_presentation1, book_presentation2]
@@ -41,6 +41,17 @@ RSpec.describe "Books", type: :request do
       expect(response_text).to include(book.author)
       expect(response_text).to include(book.synopsis)
       expect(response.body).to include(book.image)
+    end
+
+    it "Displays the name of a user who presented it" do
+      user = create(:user)
+      book = create(:book)
+      gathering = create(:gathering)
+      BookPresentation.create(gathering_id: gathering.id, user_id: user.id, book_id: book.id)
+
+      get books_path(book)
+
+      expect(response_text).to include(user.name)
     end
   end
 
