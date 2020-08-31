@@ -1,7 +1,66 @@
-.Users-Field{
+.users-Field{
   padding: 10px;
 }
 
-.Users-Actions{
+.users-Actions{
   padding: 5px;
+
+  .submit {
+    font-family: Open Sans, serif;
+    font-size: 0.8em;
+    padding: 5px 20px 6px 20px;
+    background:#1B60F3;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    width: 13em;
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor:pointer;
+  }
+}
+
+.users-Login {
+  top: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #EDF0F7;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    background-color: #FFFFFF;
+    width: 25em;
+    border-radius: 25px;
+    height: 20em;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .text-input{
+      border: 1px solid #1F29A4;
+      box-sizing: border-box;
+      border-radius: 10px;
+      background: white;
+      width: 15em;
+      height: 3em;
+      padding-left: 10px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      margin-top: 1.5em;
+      margin-bottom: 0;
+      color: #1B60F3;
+    }
+
+    .subtitle{
+      color: #1F29A4;
+    }
+  }
 }
