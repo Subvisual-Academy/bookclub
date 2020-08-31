@@ -7,14 +7,14 @@ class BooksController < ApplicationController
     @books = if @selected_user.nil?
                Book.by_creation_date
              else
-               @selected_user.books
+               @selected_user.books.distinct
              end
     @users = User.order(:name).all
   end
 
   def show
     @book = Book.find(params[:id])
-    @users = @book.users.uniq
+    @users = @book.users.distinct
   end
 
   def new

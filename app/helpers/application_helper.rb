@@ -10,7 +10,7 @@ module ApplicationHelper
               class: "gatherings-Submit", data: { confirm: "Are you sure?" }
   end
 
-  def unique_book_mentions(user)
-    user.books.uniq.count
+  def distinct_book_mentions(user)
+    user.books.distinct.count
   end
 end

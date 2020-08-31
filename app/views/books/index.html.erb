@@ -19,7 +19,7 @@
   <% else %>
     <%= link_to user.name, books_path(:user_id => user.id) %>
   <% end %>
-  <%= unique_book_mentions(user)%>
+  <%= distinct_book_mentions(user)%>
   <br>
 <% end %>
 
