@@ -9,8 +9,8 @@
     <% end %>
   </div>
 </div>
-  <%= render 'gatherings/presentations_hash', presentations_hash: gathering.book_presentations.reject { |presentation|  presentation.special}.group_by(&:user_id) %>
+  <%= render 'book_presentations/book_presentation', presentations_hash: gathering.book_presentations.reject { |presentation|  presentation.special}.group_by(&:user_id) %>
 <h2>
   <%= gathering.special_presentation %>
 </h2>
-  <%= render 'gatherings/presentations_hash', presentations_hash: gathering.book_presentations.select { |presentation|  presentation.special}.group_by(&:user_id) %>
+  <%= render 'book_presentations/book_presentation', presentations_hash: gathering.book_presentations.select { |presentation|  presentation.special}.group_by(&:user_id) %>

@@ -17,14 +17,17 @@
   font-weight: 600;
 }
 
-.bookPresentation-title{
+.bookPresentation-titles{
   font-weight: normal;
   color: #7485A9;
+  margin-top: 0.25em;
+  margin-left: 1em;
   a {
     color: inherit;
     text-decoration: none;
   }
 }
+
 
 .form-group {
   display: flex;

@@ -1,4 +1,14 @@
-<li class="bookPresentation-Li">
-  <%= link_to book_presentation.user.name, books_path(:user_id => book_presentation.user.id), class: "bookPresentation-a" %>
-  &nbsp;- &nbsp;<%=link_to book_presentation.book.title, book_path(book_presentation.book), class: "bookPresentation-a" %>
-</li>
+<% presentations_hash.each do |user_id, book_presentations| %>
+ <div class="bookPresentation-box">
+  <ul>
+    <li><%= link_to book_presentations[0].user.name, books_path(:user_id => user_id), class: "bookPresentation-name" %> </li>
+
+    <div class="bookPresentation-titles">
+      <% book_presentations.each do |presentation| %>
+          <li> &mdash;  <%=link_to presentation.book.title, book_path(presentation.book)%> </li>
+      <% end %>
+    </div>
+  </ul>
+
+ </div>
+<% end %>

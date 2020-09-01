@@ -260,6 +260,8 @@
   }
 
   .gatherings-NextDate {
+    display: flex;
+    align-items: center;
     font-family: Open Sans, sans-serif;
     color: #1B60F3;
     font-size: 0.9em;
@@ -272,6 +274,7 @@
     border-radius: 25px;
     border: 2px solid #1B60F3;
     margin-left: 0.8em;
+    margin-bottom: 0;
     padding: 0.3em 0.7em 0.3em 0.7em;
   }
 
