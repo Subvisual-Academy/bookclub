@@ -2,11 +2,19 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    @books = Book.by_creation_date
+    @selected_user = User.find_by(id: params[:user_id])
+
+    @books = if @selected_user.nil?
+               Book.by_creation_date
+             else
+               @selected_user.books.distinct
+             end
+    @users = User.order(:name).all
   end
 
   def show
     @book = Book.find(params[:id])
+    @users = @book.users.distinct
   end
 
   def new
