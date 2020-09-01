@@ -1,5 +1,4 @@
 <li class="bookPresentation-Li">
-  <%=book_presentation.user.name%>  &nbsp;
-  -
-  &nbsp; <%=link_to book_presentation.book.title, book_path(book_presentation.book), class: "bookPresentation-a" %>
+  <%= link_to book_presentation.user.name, books_path(:user_id => book_presentation.user.id), class: "bookPresentation-a" %>
+  &nbsp;- &nbsp;<%=link_to book_presentation.book.title, book_path(book_presentation.book), class: "bookPresentation-a" %>
 </li>
