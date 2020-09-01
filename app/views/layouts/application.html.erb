@@ -10,50 +10,40 @@
 
 
   <body>
-    <header class="main-header">
-      <div class="container">
-        <nav class="header-nav">
-          <div class="bookclub-brand">
-            <%= link_to 'BookClub', root_path %>
-          </div>
-        </nav>
-        <nav class="header-nav">
-          <ul>
-            <li>
-              <div class="nav-link">
-                <%= link_to (inline_svg_tag 'books.svg', alt: "Icon of a book", class:"main-HeaderImages") +'Books', books_path %>
-              </div>
-            </li>
-            <li>
-              <div class="nav-link">
-                <%= link_to (inline_svg_tag 'gatherings.svg', alt: "Icon of a list", class:"main-HeaderImages") + 'Gatherings', gatherings_path  %>
-              </div>
-            </li>
-            <li>
-              <div class="login-btn">
-                <% if current_user %>
-                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log Out', logout_path, method: :delete %>
-                <% else %>
-                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log In', login_path %>
-                <% end %>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-
-    <div class="main-body">
-      <div>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>">
-            <%= value %>
-          </div>
-        <% end %>
-      </div>
-
-      <%= yield %>
+    <div>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
     </div>
+    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+      <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"sidebar-book") + 'All Books', books_path %>
+      <div class="sidebar-textList">
+        <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"sidebar-list") + 'BookClub Gatherings', gatherings_path %>
+      </div>
+      <% if current_user %>
+        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"sidebar-session") + 'Log Out', logout_path, method: :delete %>
+      <% else %>
+        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"sidebar-session") + 'Log In', login_path %>
+      <% end %>
+    </div>
+
+    <script type="text/javascript">
+    var mini = true;
+      function toggleSidebar() {
+        if (mini) {
+          console.log("opening sidebar");
+          document.getElementById("mySidebar").style.width = "20%";
+          this.mini = false;
+        } else {
+          console.log("closing sidebar");
+          document.getElementById("mySidebar").style.width = "5%";
+          document.getElementById("mySidebar").style.paddingLeft = "1%";
+          this.mini = true;
+        }
+      }
+    </script>
+  <%= yield %>
   </body>
 </html>

@@ -32,99 +32,58 @@ body {
     min-height: 100vh;
 }
 
-.main-header {
-    font-family: "Poppins", serif;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.sidebar {
+    height: 100%;
+    width: 5%;
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    background-color:#1B60F3;
+    padding-top: 14%;
+    padding-left: 1%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    z-index: 1;
+    transition: 0.5s;
 }
-
-.main-header {
-    height: 70px;
-    background-color:  #2E47D1;
-    font-weight: bold;
-    z-index: 1000;
-}
-
-.nav-link {
-    display: flex;
-    align-items: center;
-    margin-right: .75rem;
-}
-
-.nav-link img {
-    width: 1em;
-    margin-right: .75rem;
-}
-
-
-.login-btn {
-    border: 3px solid white;
-    border-radius: 1.5rem;
-    display: flex;
-    align-items: center;
-    margin-right: .75rem;
-    padding-left: 10px;
-    padding-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.login-btn img {
-    width: 1em;
-    margin-right: .25rem;
-}
-
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    flex-grow: 1;
-}
-
-.main-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.header-nav ul {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.header-nav a {
-    color: inherit;
+  
+.sidebar a {
+    padding-left: 8%;
     text-decoration: none;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
+    font-size: 1em;
+    color: #1F29A4;
+    display: block;
+}
+  
+.sidebar a:hover {
+    color: #f1f1f1;
 }
 
-.header-nav a:hover  {
-    color: #adadad;
+.sidebar-book{
+    margin: 0 1em 0.1em 0;
+    vertical-align: middle;
 }
 
-.bookclub-brand {
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
-    font-size: 2rem;
+.sidebar-list{
+    margin: 0 1em 0.1em 0.2em;
+    vertical-align: middle;
 }
 
-.main-body {
-    margin-top: 70px;
+.sidebar-session{
+    margin: 0 1em 0.1em 0.3em;
+    vertical-align: middle;
 }
 
-.main-HeaderImages{
-    margin-right: 0.5em;
+.sidebar-textList{
+    padding-top: 3.5em;
+    padding-bottom: 3.5em;
+}
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+      padding-top: 15px;
+    }
+    .sidebar a {
+      font-size: 18px;
+    }
 }
