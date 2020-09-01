@@ -1,0 +1,55 @@
+.Sidebar {
+    height: 100%;
+    width: 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:#1B60F3;
+    padding-top: 14%;
+    padding-left: 1%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    z-index: 1;
+    transition: 0.5s;
+}
+  
+.Sidebar a {
+    padding-left: 8%;
+    text-decoration: none;
+    font-size: 1em;
+    color: #1F29A4;
+    display: block;
+}
+  
+.Sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.Sidebar-book{
+    margin: 0 1em 0.1em 0;
+    vertical-align: middle;
+}
+
+.Sidebar-list{
+    margin: 0 1em 0.1em 0.2em;
+    vertical-align: middle;
+}
+
+.Sidebar-session{
+    margin: 0 1em 0.1em 0.3em;
+    vertical-align: middle;
+}
+
+.Sidebar-textList{
+    padding-top: 3.5em;
+    padding-bottom: 3.5em;
+}
+
+@media screen and (max-height: 450px) {
+    .Sidebar {
+      padding-top: 15px;
+    }
+    .Sidebar a {
+      font-size: 18px;
+    }
+}
