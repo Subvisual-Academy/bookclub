@@ -91,7 +91,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    cursor: pointer;
     flex-basis: 3.5em;
     float: left;
     margin: 0.5em;
@@ -281,4 +281,17 @@
     margin-top: 0.2em;
     font-size: 1em;
   }
+}
+
+.collapsible-content{
+  padding: 0px 30px;
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+
+.active, .collapsible:hover {
+  background-color: #555;
 }
