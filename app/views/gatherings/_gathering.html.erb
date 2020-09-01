@@ -1,0 +1,20 @@
+<div class="gatherings-Line"></div>
+<div class="gatherings-Main-header">
+  <h2>Book Mentions</h2>
+
+  <div class="gatherings-Main-header-left">
+    <% if current_user %>
+      <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+      <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_gathering_path(gathering) %>
+    <% end %>
+  </div>
+</div>
+<ul class="gatherings-Ul">
+  <%= render gathering.book_presentations.reject { |presentation|  presentation.special} %>
+</ul>
+<h2>
+  <%= gathering.special_presentation %>
+</h2>
+<ul class="gatherings-Ul">
+  <%= render gathering.book_presentations.select { |presentation|  presentation.special} %>
+</ul>
