@@ -77,10 +77,6 @@
   justify-content: flex-end;
 }
 
-.gatherings-Ul{
-  margin-top: 0;
-}
-
 .gatherings-YearGrid {
   display: flex;
   flex-wrap: wrap;
@@ -106,6 +102,7 @@
     font-weight: bold;
 
     .gatherings-YearGridBox-SpecialPresentation {
+      font-family: "Open Sans", sans-serif;
       color: #7485A9;
       font-size: 16px;
       flex-grow: 1;
@@ -232,6 +229,18 @@
     cursor: pointer;
   }
 
+.gatherings-Notification {
+  font-family: Open Sans, serif;
+  font-size: 0.8em;
+  padding: 5px 20px 6px 20px;
+  margin-right: 1em;
+  background: #1B60F3;
+  color: white;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
   .gatherings-SpaceDown {
     margin-bottom: 0.1em;
   }
@@ -251,7 +260,7 @@
   }
 
   .gatherings-NextDate {
-    font-family: Open Sans;
+    font-family: Open Sans, sans-serif;
     color: #1B60F3;
     font-size: 0.9em;
     font-weight: bold;
