@@ -16,7 +16,7 @@
         <button type="button" class="gatherings-YearGridBox collapsible-button">
           <div class="gatherings-Month-link"> <%= show_date_month(gathering) %> </div>
           <div class="gatherings-YearGridBox-SpecialPresentation"><%= gathering.special_presentation %> </div>
-          <%= inline_svg_tag 'dropdown_arrow.svg', alt: "expand" %>
+          <%= image_tag('expand_arrow.png', alt: "expand", class: "arrow-image") %>
         </button>
         <div class="collapsible-content">
           <%= render 'gathering_collapsible', gathering: gathering %>
@@ -24,46 +24,8 @@
       <% end %>
     </div>
   <% end %>
-
-
-  <script>
-      const coll = document.getElementsByClassName("collapsible-button");
-
-      for (let i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function() {
-              this.classList.toggle("active");
-              const content = this.nextElementSibling;
-              if (content.style.maxHeight){
-                  content.style.maxHeight = null;
-                  // content.style.display = "none";
-              } else {
-                  content.style.display = "block";
-                  content.style.maxHeight = content.scrollHeight + "px";
-              }
-          });
-      }
-  </script>
-
-
-<p>
-  <img alt="" src="http://www.userinterfaceicons.com/80x80/minimize.png"
-       style="height: 85px; width: 198px" id="imgClickAndChange" onclick="changeImage()"  />
-</p>
-
-<script>
-    function changeImage() {
-
-        if (document.getElementById("imgClickAndChange").src === "http://www.userinterfaceicons.com/80x80/minimize.png")
-        {
-            document.getElementById("imgClickAndChange").src = "http://www.userinterfaceicons.com/80x80/maximize.png";
-        }
-        else
-        {
-            document.getElementById("imgClickAndChange").src = "http://www.userinterfaceicons.com/80x80/minimize.png";
-        }
-    }
-</script>
 </div>
 
+<%= javascript_pack_tag 'gathering_expansion' %>
 
 

@@ -16,3 +16,7 @@ export default class extends Controller {
     item.style.display = 'none'
   }
 }
+
+
+
+
