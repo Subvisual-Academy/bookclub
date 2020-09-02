@@ -1,5 +1,5 @@
 @media all and (max-width: 1000px) {
-  .gatherings-YearGridBox-SpecialPresentation {
+  .gatherings-YearGridBox-headerSpecialPresentation {
     display: none;
   }
 }
@@ -36,6 +36,10 @@
   ul {
     list-style: none;
   }
+}
+
+.gatherings-Main-helpText{
+  color: #7485A9;
 }
 
 .gatherings-Main-header {
@@ -75,7 +79,7 @@
   align-items: center;
   text-decoration: none;
   justify-content: center;
-  color: #1F29A4;
+  color: #7485A9;
 }
 
 .gatherings-Main-header-container{
@@ -91,11 +95,6 @@
   flex-direction: column;
 
   .gatherings-YearGridBox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    flex-basis: 3.5em;
     float: left;
     margin: 0.5em;
     padding: 20px 60px 20px 60px;
@@ -104,16 +103,37 @@
     border-radius: 25px;
     border: none;
     text-decoration: none;
-    font-size: 1.3em;
+    //font-size: 1.3em;
     font-family: Playfair Display, sans-serif;
     font-weight: bold;
 
-    .gatherings-YearGridBox-SpecialPresentation {
-      font-family: "Open Sans", sans-serif;
-      color: #7485A9;
-      font-size: 16px;
-      flex-grow: 1;
-      text-align: left;
+    .gatherings-YearGridBox-header{
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      background-color: inherit;
+
+      .gatherings-YearGridBox-headerMonth {
+        font-family: "Playfair Display", serif;
+        font-weight: bold;
+        color: #1B60F3;
+        width: 35%;
+        text-align: left;
+        font-size: 2em;
+      }
+      .gatherings-YearGridBox-headerSpecialPresentation {
+        font-family: "Open Sans", sans-serif;
+        color: #7485A9;
+        font-size: 16px;
+        flex-grow: 1;
+        text-align: left;
+      }
     }
   }
 }
@@ -133,11 +153,7 @@
     background: #7485A9;
   }
 
-  .gatherings-Month-link {
-    color: #1B60F3;
-    width: 35%;
-    text-align: left;
-  }
+
 
   .gatherings-MainYear {
     color: #7485A9;
@@ -303,8 +319,8 @@
 }
 
 .collapsible-content{
-  padding: 0px 30px;
-  display: none;
+  padding: 0;
+  display: block;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.2s ease-out;
