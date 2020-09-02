@@ -143,7 +143,7 @@
 }
 
 .gatherings-PlusBox {
-    flex-basis: 3.5em;
+    flex-basis: 3em;
     float: left;
     margin: 0.5em;
     padding: 0 60px 0 60px;
@@ -200,9 +200,12 @@
 .gatherings-Special {
   border: 1px solid #1F29A4;
   box-sizing: border-box;
-  border-radius: 25px;
+  border-radius: 5px;
+  font-size: 1rem;
   background: white;
-  width: 15em;
+  width: 60%;
+  color: #7485A9;
+  padding: 0.3rem 1rem .3em 1rem;
 }
 
 .gatherings-Mentions {
