@@ -17,7 +17,12 @@
         </div>
       <% end %>
     </div>
-    <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
+
+    <div
+      id="sidebar"
+      class="Sidebar"
+      data-turbolinks-permanent
+    >
       <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path %>
       <div class="Sidebar-textList">
         <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
@@ -28,6 +33,7 @@
         <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
       <% end %>
     </div>
-  <%= yield %>
+
+    <%= yield %>
   </body>
 </html>
