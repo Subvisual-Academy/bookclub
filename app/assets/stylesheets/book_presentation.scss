@@ -31,8 +31,8 @@
 
 .form-group {
   display: flex;
-  padding: 0.5em 0;
   align-items: center;
+  padding: 0.5em 0;
 }
 
 .u-deleteButton {
@@ -51,20 +51,22 @@
   width: 1.3em;
   min-width: 1.3em;
   height: 1.3em;
-  background-color: white;
-  border-radius: 50%;
-  vertical-align: middle;
-  border: 1px solid #ddd;
-  -webkit-appearance: none;
-  outline: none;
-  cursor: pointer;
   margin-right: 8px;
+
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+
+  vertical-align: middle;
+  -webkit-appearance: none;
 }
 
 .checkbox-round:checked {
-  background: #1F29A4;
+  background: #1f29a4;
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   transform: scale(1.5);
 }
