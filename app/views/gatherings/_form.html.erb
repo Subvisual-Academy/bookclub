@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div class="gatherings-SpaceDown">
     <%= form.label :date, class: "gatherings-Titles gatherings-TitlesDate" %>
   </div>
@@ -19,7 +19,7 @@
     <%= form.label(:special_presentation, 'Special Presentation Title', class: "gatherings-Titles gatherings-TitlesSpecial") %>
   </div>
   <%= form.text_field :special_presentation, class:"gatherings-Special" %>
-  
+
   <h2>Book Mentions</h2>
   <div data-controller="nested-form">
     <!-- template for form for creating a new book presentation -->
@@ -35,7 +35,7 @@
     <% end %>
 
     <div class="gatherings-SpaceButton">
-      <div data-target="nested-form.add_item">
+      <div data-target="nested-form.addItem">
         <%= link_to "+ Add Presentation", "#", data: { action: "nested-form#addAssociation" }, class: "gatherings-Link" %>
       </div>
     </div>

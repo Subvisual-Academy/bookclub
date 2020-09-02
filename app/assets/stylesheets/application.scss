@@ -20,111 +20,122 @@
 @import "table";
 @import "users";
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
-    padding: 0;
-    margin: 0;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.2rem;
-    min-height: 100vh;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
 }
 
 .main-header {
-    font-family: "Poppins", serif;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  color: white;
+
+  font-family: "Poppins", serif;
 }
 
 .main-header {
-    height: 70px;
-    background-color:  #2E47D1;
-    font-weight: bold;
-    z-index: 1000;
+  z-index: 1000;
+
+  height: 70px;
+
+  background-color: #2e47d1;
+
+  font-weight: bold;
 }
 
 .nav-link {
-    display: flex;
-    align-items: center;
-    margin-right: .75rem;
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
 }
 
 .nav-link img {
-    width: 1em;
-    margin-right: .75rem;
+  width: 1em;
+  margin-right: 0.75rem;
 }
 
-
 .login-btn {
-    border: 3px solid white;
-    border-radius: 1.5rem;
-    display: flex;
-    align-items: center;
-    margin-right: .75rem;
-    padding-left: 10px;
-    padding-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+  padding-left: 10px;
+  margin-top: 5px;
+  margin-right: 0.75rem;
+  margin-bottom: 5px;
+
+  border: 3px solid white;
+  border-radius: 1.5rem;
 }
 
 .login-btn img {
-    width: 1em;
-    margin-right: .25rem;
+  width: 1em;
+  margin-right: 0.25rem;
 }
 
-
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    flex-grow: 1;
+  flex-grow: 1;
+  max-width: 1200px;
+  padding: 0 40px;
+  margin: 0 auto;
 }
 
 .main-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-nav ul {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
 }
 
 .header-nav a {
-    color: inherit;
-    text-decoration: none;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+
+  color: inherit;
+
+  text-decoration: none;
 }
 
-.header-nav a:hover  {
-    color: #adadad;
+.header-nav a:hover {
+  color: #adadad;
 }
 
 .bookclub-brand {
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
-    font-size: 2rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+
+  font-size: 2rem;
 }
 
 .main-body {
-    margin-top: 70px;
+  margin-top: 70px;
 }
 
-.main-HeaderImages{
-    margin-right: 0.5em;
+.main-HeaderImages {
+  margin-right: 0.5em;
 }
