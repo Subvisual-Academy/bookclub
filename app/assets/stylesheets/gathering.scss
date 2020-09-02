@@ -4,8 +4,7 @@
   }
 }
 
-
-.gatherings-Main{
+.gatherings-Main {
   padding: 3% 25% 1% 25%;
   hr {
     width: 100%;
@@ -42,8 +41,8 @@
   }
 }
 
-.gatherings-Main-helpText{
-  color: #7485A9;
+.gatherings-Main-helpText {
+  color: #7485a9;
 }
 
 .gatherings-Main-header {
@@ -83,7 +82,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #7485A9;
+
+  color: #7485a9;
 }
 
 .gatherings-Main-header-container {
@@ -94,48 +94,55 @@
 
 .gatherings-YearGrid {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  flex-direction: column;
 
   .gatherings-YearGridBox {
     float: left;
-    margin: 0.5em;
     padding: 20px 60px 20px 60px;
-    background: #FFFFFF;
-    box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
-    border-radius: 25px;
+    margin: 0.5em;
+
+    background: #ffffff;
     border: none;
-    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
     //font-size: 1.3em;
     font-family: Playfair Display, sans-serif;
     font-weight: bold;
+    text-decoration: none;
 
-    .gatherings-YearGridBox-header{
-      padding-left: 0;
-      padding-right: 0;
-      width: 100%;
+    .gatherings-YearGridBox-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
+      justify-content: space-between;
+      width: 100%;
+      padding-right: 0;
+      padding-left: 0;
+
       background-color: inherit;
+      border: none;
+      cursor: pointer;
+
+      text-decoration: none;
 
       .gatherings-YearGridBox-headerMonth {
-        font-family: "Playfair Display", serif;
-        font-weight: bold;
-        color: #1B60F3;
         width: 35%;
-        text-align: left;
+
+        color: #1b60f3;
+
+        font-family: "Playfair Display", serif;
         font-size: 2em;
+        font-weight: bold;
+        text-align: left;
       }
       .gatherings-YearGridBox-headerSpecialPresentation {
-        font-family: "Open Sans", sans-serif;
-        color: #7485A9;
-        font-size: 16px;
         flex-grow: 1;
+
+        color: #7485a9;
+
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
         text-align: left;
       }
     }
@@ -143,76 +150,87 @@
 }
 
 .gatherings-PlusBox {
-    flex-basis: 3em;
-    float: left;
-    margin: 0.5em;
-    padding: 0 60px 0 60px;
-    box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
-    border-radius: 25px;
-    border: none;
-    text-decoration: none;
-    font-size: 1.3em;
-    font-family: Playfair Display, sans-serif;
-    font-weight: bold;
-    background: #7485A9;
+  flex-basis: 3em;
+  float: left;
+  padding: 0 60px 0 60px;
+  margin: 0.5em;
+
+  background: #7485a9;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
+
+  font-family: Playfair Display, sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .gatherings-MainYear {
-  color: #7485A9;
+  color: #7485a9;
+
   font-family: Open Sans, sans-serif;
 }
 
 .gatherings-MainYear::after {
-  border: 0.01em solid #7485A9;
   content: "";
+
   display: inline-block;
+  width: 3em;
+  margin-left: 0.5em;
+
+  border: 0.01em solid #7485a9;
+
   text-align: center;
   vertical-align: middle;
-  margin-left: 0.5em;
-  width: 3em;
 }
 
 .gatherings-Date select:nth-child(1) {
-  border: 1px solid #1F29A4;
   box-sizing: border-box;
-  border-radius: 25px;
-  background: white;
   width: 3.2em;
+
+  background: white;
+  border: 1px solid #1f29a4;
+  border-radius: 25px;
 }
 
 .gatherings-Date select:nth-child(2) {
-  border: 1px solid #1F29A4;
   box-sizing: border-box;
-  border-radius: 25px;
-  background: white;
   width: 7em;
+
+  background: white;
+  border: 1px solid #1f29a4;
+  border-radius: 25px;
 }
 
 .gatherings-Date select:nth-child(3) {
-  border: 1px solid #1F29A4;
   box-sizing: border-box;
-  border-radius: 25px;
-  background: white;
   width: 4.2em;
+
+  background: white;
+  border: 1px solid #1f29a4;
+  border-radius: 25px;
 }
 
-
 .gatherings-Special {
-  border: 1px solid #1F29A4;
   box-sizing: border-box;
-  border-radius: 5px;
-  font-size: 1rem;
-  background: white;
   width: 60%;
-  color: #7485A9;
-  padding: 0.3rem 1rem .3em 1rem;
+  padding: 0.3rem 1rem 0.3em 1rem;
+
+  background: white;
+  border: 1px solid #1f29a4;
+  border-radius: 5px;
+  color: #7485a9;
+
+  font-size: 1rem;
 }
 
 .gatherings-Mentions {
-  border: 1px solid #1F29A4;
   box-sizing: border-box;
-  border-radius: 25px;
+
   background: white;
+  border: 1px solid #1f29a4;
+  border-radius: 25px;
 }
 
 .gatherings-MentionsFirst {
@@ -224,17 +242,19 @@
 }
 
 .gatherings-Link {
+  color: #1f29a4;
+
   font-family: Open Sans;
   text-decoration: none;
-  color: #1F29A4;
 }
 
 .gatherings-Titles {
+  color: #1f29a4;
+
   font-family: Open Sans;
+  font-size: 0.9em;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.9em;
-  color: #1F29A4;
 }
 
 .gatherings-TitlesDate {
@@ -246,26 +266,30 @@
 }
 
 .gatherings-Submit {
+  padding: 5px 20px 6px 20px;
+
+  background: #1b60f3;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+
   font-family: Open Sans, serif;
   font-size: 0.8em;
-  padding: 5px 20px 6px 20px;
-  background: #1B60F3;
-  color: white;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
 }
 
 .gatherings-Notification {
-  font-family: Open Sans, serif;
-  font-size: 0.8em;
   padding: 5px 20px 6px 20px;
   margin-right: 1em;
-  background: #1B60F3;
-  color: white;
-  border-radius: 25px;
+
+  background: #1b60f3;
   border: none;
+  border-radius: 25px;
+  color: white;
   cursor: pointer;
+
+  font-family: Open Sans, serif;
+  font-size: 0.8em;
 }
 
 .gatherings-SpaceDown {
@@ -281,28 +305,33 @@
 }
 
 .gatherings-Line {
-  border: 1px solid #EDF0F7;
   width: 100%;
   margin-top: 1.2em;
+
+  border: 1px solid #edf0f7;
 }
 
 .gatherings-NextDate {
   display: flex;
   align-items: center;
+  margin-bottom: 2.3em;
+
+  color: #1b60f3;
+
   font-family: Open Sans, sans-serif;
-  color: #1B60F3;
   font-size: 0.9em;
   font-weight: bold;
-  margin-bottom: 2.3em;
 }
 
 .gatherings-NextDateShow {
-  font-size: 1.1em;
-  border-radius: 25px;
-  border: 2px solid #1B60F3;
-  margin-left: 0.8em;
-  margin-bottom: 0;
   padding: 0.3em 0.7em 0.3em 0.7em;
+  margin-bottom: 0;
+  margin-left: 0.8em;
+
+  border: 2px solid #1b60f3;
+  border-radius: 25px;
+
+  font-size: 1.1em;
 }
 
 .gatherings-ShowHeader {
@@ -323,15 +352,16 @@
   }
 }
 
-.collapsible-content{
-  padding: 0;
+.collapsible-content {
   display: block;
-  overflow: hidden;
   max-height: 0;
+  padding: 0;
+  overflow: hidden;
+
   transition: max-height 0.2s ease-out;
 }
 
-
-.active, .collapsible:hover {
+.active,
+.collapsible:hover {
   background-color: #555;
 }

@@ -1,33 +1,38 @@
-.bookPresentation-box{
+.bookPresentation-box {
   margin-bottom: 15px;
-  ul{
+  ul {
     padding-left: 1em;
   }
 }
 
-.bookPresentation-Li{
-    padding-left: 5%;
-    color: #7485A9;
-    font-family: Open Sans, serif;
+.bookPresentation-Li {
+  padding-left: 5%;
+
+  color: #7485a9;
+
+  font-family: Open Sans, serif;
 }
 
-.bookPresentation-name{
-  color: #05359B;
-  text-decoration: none;
+.bookPresentation-name {
+  color: #05359b;
+
   font-weight: 600;
+  text-decoration: none;
 }
 
-.bookPresentation-titles{
-  font-weight: normal;
-  color: #7485A9;
+.bookPresentation-titles {
   margin-top: 0.25em;
   margin-left: 1em;
+
+  color: #7485a9;
+
+  font-weight: normal;
   a {
     color: inherit;
+
     text-decoration: none;
   }
 }
-
 
 .form-group {
   display: flex;
@@ -46,11 +51,10 @@
   margin-bottom: 0.7em;
 }
 
-
 .checkbox-round {
   width: 1.3em;
-  min-width: 1.3em;
   height: 1.3em;
+  min-width: 1.3em;
   margin-right: 8px;
 
   background-color: white;
