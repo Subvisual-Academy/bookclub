@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Whitelist one hostname
-  config.hosts << "ugly-fireant-28.loca.lt"
+  # config.hosts << "tender-snake-15.loca.lt"
 
   # Do not eager load code on boot.
   config.eager_load = false

@@ -7,13 +7,13 @@ for (let i = 0; i < coll.length; i++) {
         var arrow_image = this.getElementsByTagName("img")[0];
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
-            content.style.paddingTop="0";
             arrow_image.src = "assets/expand_arrow.png";
+            content.style.paddingTop="0";
         } else {
             closeOtherGatherings(coll, this);
+            content.style.paddingTop="15px"
             content.style.maxHeight = content.scrollHeight + "px";
             arrow_image.src = "assets/collapse_arrow.png";
-            content.style.paddingTop="15px"
         }
     });
 }

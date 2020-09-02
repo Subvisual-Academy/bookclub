@@ -35,8 +35,21 @@
   align-items: center;
 }
 
+.u-deleteButton {
+  display: none;
+}
+
+.form-group:hover .u-deleteButton {
+  display: block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-bottom: 0.7em;
+}
+
+
 .checkbox-round {
   width: 1.3em;
+  min-width: 1.3em;
   height: 1.3em;
   background-color: white;
   border-radius: 50%;
