@@ -17,10 +17,22 @@
         </div>
       <% end %>
     </div>
-    <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
-      <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path %>
+    <div
+      id="sidebar"
+      class="Sidebar"
+      data-turbolinks-permanent
+    >
+      <% if controller_name === "books" && action_name === "index" %>
+        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path, {:style=>'color:#f1f1f1;'} %>
+      <% else %>
+        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path %>
+      <% end %>
       <div class="Sidebar-textList">
-        <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
+        <% if controller_name === "gatherings" && action_name ==="index" %>
+          <%= link_to (inline_svg_tag 'gatheringspage-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path, {:style=>'color:#f1f1f1;'} %>
+        <% else %>
+          <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
+        <% end %>
       </div>
       <% if current_user %>
         <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete %>
@@ -28,6 +40,6 @@
         <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
       <% end %>
     </div>
-  <%= yield %>
+    <%= yield %>
   </body>
 </html>
