@@ -6,7 +6,7 @@ document.toggleSidebar = (event) => {
         hidden = false;
     } else {
         sidebarElement.style.width = "5%";
-        sidebarElement.style.paddingLeft = "1%";
+        sidebarElement.style.paddingLeft = "1.2%";
         hidden = true;
     }
 }
