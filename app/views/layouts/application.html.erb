@@ -10,46 +10,50 @@
 
 
   <body>
-    <div>
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-          <%= value %>
-        </div>
-      <% end %>
-    </div>
-    <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
-      <% if controller_name === "books" && action_name === "index" %>
-        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path, {:style=>'color:#f1f1f1;'} %>
-      <% else %>
-        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path %>
-      <% end %>
-      <div class="Sidebar-textList">
-        <% if controller_name === "gatherings" && action_name ==="index" %>
-          <%= link_to (inline_svg_tag 'gatheringspage-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path, {:style=>'color:#f1f1f1;'} %>
-        <% else %>
-          <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
+    <header class="main-header">
+      <div class="container">
+        <nav class="header-nav">
+          <div class="bookclub-brand">
+            <%= link_to 'BookClub', root_path %>
+          </div>
+        </nav>
+        <nav class="header-nav">
+          <ul>
+            <li>
+              <div class="nav-link">
+                <%= link_to (inline_svg_tag 'books.svg', alt: "Icon of a book", class:"main-HeaderImages") +'Books', books_path %>
+              </div>
+            </li>
+            <li>
+              <div class="nav-link">
+                <%= link_to (inline_svg_tag 'gatherings.svg', alt: "Icon of a list", class:"main-HeaderImages") + 'Gatherings', gatherings_path  %>
+              </div>
+            </li>
+            <li>
+              <div class="login-btn">
+                <% if current_user %>
+                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log Out', logout_path, method: :delete %>
+                <% else %>
+                  <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"main-HeaderImages")+'Log In', login_path %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <div class="main-body">
+      <div>
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>">
+            <%= value %>
+          </div>
         <% end %>
       </div>
-      <% if current_user %>
-        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete %>
-      <% else %>
-        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
-      <% end %>
+
+      <%= yield %>
     </div>
-    <script type="text/javascript">
-    var hidden = true;
-    document.toggleSidebar = (event) => {
-        const sidebarElement = event.currentTarget;
-        if (hidden) {
-            sidebarElement.style.width = "21.5%";
-            hidden = false;
-        } else {
-            sidebarElement.style.width = "5%";
-            sidebarElement.style.paddingLeft = "1.2%";
-            hidden = true;
-        }
-    }
-    </script>
-    <%= yield %>
   </body>
 </html>
