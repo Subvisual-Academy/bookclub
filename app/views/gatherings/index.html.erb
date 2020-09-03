@@ -2,7 +2,15 @@
   <div class="gatherings-NextDate">
     Next BookClub session: <span class="gatherings-NextDate gatherings-NextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
   </div>
-    <% @gatherings.each do | year, gatherings | %>
+
+  <select class="SlimSelect">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+
+  <% @gatherings.each do | year, gatherings | %>
     <p class="gatherings-MainYear"><%= year %></p>
     <div class="gatherings-YearGrid">
       <% if current_user %>

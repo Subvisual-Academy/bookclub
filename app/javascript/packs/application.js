@@ -17,6 +17,7 @@ require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("../channels");
+require("../components");
 
 const application = Application.start();
 const context = require.context("../controllers", true, /\.js$/);
