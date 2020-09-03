@@ -1,38 +1,47 @@
 .Sidebar {
-  height: 100%;
-  width: 5%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #1b60f3;
+  z-index: 1;
+
+  width: 5%;
+  height: 100%;
   padding-top: 14%;
   padding-left: 1.2%;
-  white-space: nowrap;
   overflow-x: hidden;
-  z-index: 1;
+
+  background-color: #1b60f3;
+
+  white-space: nowrap;
+
   transition: width 0.5s;
 }
 
 .Sidebar a {
-  padding-left: 8%;
-  text-decoration: none;
-  font-size: 1em;
-  color: #1f29a4;
   display: block;
+  padding-left: 8%;
+
+  color: #1f29a4;
+
+  font-size: 1em;
+  text-decoration: none;
 }
 
 .Sidebar-book {
   margin: 0 1em 0.1em 0;
+
   vertical-align: middle;
 }
 
 .Sidebar-list {
   margin: 0 1em 0.1em 0.2em;
+
   vertical-align: middle;
 }
 
 .Sidebar-session {
   margin: 0 1em 0.1em 0.3em;
+
   vertical-align: middle;
 }
 
