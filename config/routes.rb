@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :books
 
-  resources :gatherings do
+  resources :gatherings, only: %i[index new edit create update destroy] do
     resources :notifications, only: %i[create], module: :gatherings
   end
 

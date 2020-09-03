@@ -5,10 +5,6 @@ class GatheringsController < ApplicationController
     @gatherings = Gathering.group_by_year
   end
 
-  def show
-    @gathering = Gathering.find(params[:id])
-  end
-
   def new
     @gathering = Gathering.new
   end
@@ -32,7 +28,7 @@ class GatheringsController < ApplicationController
     @gathering = Gathering.find(params[:id])
 
     if @gathering.update(gathering_params)
-      redirect_to @gathering, notice: "Gathering was successfully updated."
+      redirect_to gatherings_path, notice: "Gathering was successfully updated."
     else
       flash.now[:notice] = "Invalid field"
       render :edit, status: :bad_request
