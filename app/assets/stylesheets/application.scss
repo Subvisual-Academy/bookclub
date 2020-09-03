@@ -21,14 +21,17 @@
 @import "users";
 @import "sidebar";
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
-    padding: 0;
-    margin: 0;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.2rem;
-    min-height: 100vh;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
 }

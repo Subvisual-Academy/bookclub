@@ -26,9 +26,9 @@
 <p> Presented by :</p>
 
 <ul>
-  <% @book.users.each do |user| %>
+  <% @users.each do |user| %>
     <li>
-      <div><%= user.name %></div>
+      <div><%= link_to user.name, books_path(:user_id => user.id) %></div>
     </li>
   <% end %>
 </ul>

@@ -1,66 +1,76 @@
-.users-Field{
+.users-Field {
   padding: 10px;
 }
 
-.users-Actions{
+.users-Actions {
   padding: 5px;
 
   .submit {
-    font-family: Open Sans, serif;
-    font-size: 0.8em;
-    padding: 5px 20px 6px 20px;
-    background:#1B60F3;
-    color: white;
-    border-radius: 10px;
-    border: none;
     width: 13em;
+    padding: 5px 20px 6px 20px;
     margin-top: 5px;
     margin-left: 5px;
-    cursor:pointer;
+
+    background: #1b60f3;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+
+    font-family: Open Sans, serif;
+    font-size: 0.8em;
   }
 }
 
 .users-Login {
   top: 0;
   position: fixed;
+  top: 40px;
   bottom: 0;
+
   width: 100%;
-  background: #EDF0F7;
+
+  background: #edf0f7;
 
   .form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: auto;
-    background-color: #FFFFFF;
     width: 25em;
-    border-radius: 25px;
     height: 20em;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    margin: auto;
 
-    .text-input{
-      border: 1px solid #1F29A4;
+    background-color: #ffffff;
+    border-radius: 25px;
+
+    .text-input {
       box-sizing: border-box;
-      border-radius: 10px;
-      background: white;
       width: 15em;
       height: 3em;
       padding-left: 10px;
+
+      background: white;
+      border: 1px solid #1f29a4;
+      border-radius: 10px;
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
       margin-top: 1.5em;
       margin-bottom: 0;
-      color: #1B60F3;
+
+      color: #1b60f3;
+
+      font-family: "Playfair Display", serif;
     }
 
-    .subtitle{
-      color: #1F29A4;
+    .subtitle {
+      color: #1f29a4;
     }
   }
 }
