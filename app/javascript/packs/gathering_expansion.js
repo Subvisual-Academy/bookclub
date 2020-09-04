@@ -1,5 +1,5 @@
 // Add the expanding collapsing behaviour when clicking on the gathering header
-const gatherings = document.getElementsByClassName("collapsible-button");
+const gatherings = document.getElementsByClassName("collapsible-gathering");
 for (let index = 0; index < gatherings.length; index += 1) {
   gatherings[index].addEventListener("click", function expandGathering() {
     const gatheringHead = this;
@@ -16,8 +16,7 @@ for (let index = 0; index < gatherings.length; index += 1) {
       content.style.maxHeight = `${content.scrollHeight}px`;
       arrowImage.src = "assets/collapse_arrow.png";
 
-
-      moveGatheringToTopPage(gatheringHead)
+      moveGatheringToTopOfWindow(gatheringHead)
     }
   });
 }
@@ -51,7 +50,7 @@ function closeOtherGatherings(gatherings, element) {
   }
 }
 
-function moveGatheringToTopPage(gathering){
+function moveGatheringToTopOfWindow(gathering){
   const offset = 35;
   const bodyRect = document.body.getBoundingClientRect().top;
   const elementRect = gathering.getBoundingClientRect().top;

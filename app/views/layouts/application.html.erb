@@ -46,8 +46,8 @@
 
     <div class="main-body">
       <div>
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>">
+        <% flash.each do |_key, value| %>
+          <div class="u-notice">
             <%= value %>
           </div>
         <% end %>

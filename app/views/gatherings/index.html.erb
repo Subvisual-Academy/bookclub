@@ -14,7 +14,7 @@
       <% end %>
       <% gatherings.each do | gathering |%>
         <div class="gatherings-YearGridBox">
-          <button type="button" class="gatherings-YearGridBox-header collapsible-button">
+          <button type="button" class="gatherings-YearGridBox-header collapsible-gathering">
               <div class="gatherings-YearGridBox-headerMonth"> <%= show_date_month(gathering) %> </div>
               <div class="gatherings-YearGridBox-headerSpecialPresentation"><%= gathering.special_presentation %> </div>
               <%= image_tag('expand_arrow.png', alt: "expand", class: "arrow-image") %>

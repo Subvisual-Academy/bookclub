@@ -73,4 +73,15 @@ RSpec.feature "Gathering", js: true do
 
     find(".collapsible-content").assert_matches_style("paddingTop" => "15px") # sign it has expanded, can't use max-height since it's non-deterministic
   end
+
+  it "closes a presentation when the close button is clicked" do
+    login_user(create(:user))
+    gathering = create(:gathering_with_book_presentations, :has_special_presentation)
+
+    visit gatherings_path
+    click_on(Date::MONTHNAMES[gathering.date.month])
+    click_on(class: 'gatherings-bodyCloseDivButton')
+
+    find(".collapsible-content").assert_matches_style("paddingTop" => "0px")
+  end
 end
