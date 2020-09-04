@@ -10,7 +10,7 @@
 
 
   <body>
-    <div>
+    <div class="Main">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">
           <%= value %>
@@ -41,7 +41,7 @@
     document.toggleSidebar = (event) => {
         const sidebarElement = event.currentTarget;
         if (hidden) {
-            sidebarElement.style.width = "21.5%";
+            sidebarElement.style.width = "21.7%";
             hidden = false;
         } else {
             sidebarElement.style.width = "5%";
