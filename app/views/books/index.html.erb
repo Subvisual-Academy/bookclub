@@ -40,7 +40,7 @@
           <% if book.image%>
             <td><img src="<%= book.image %>"  alt="book cover"/></td>
           <% else %>
-            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/></td>
+            <td><%= link_to (inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown") %></td>
           <% end %>
 
           <td><%= book.title %></td>
