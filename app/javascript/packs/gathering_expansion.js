@@ -16,12 +16,12 @@ for (let index = 0; index < gatherings.length; index += 1) {
       content.style.maxHeight = `${content.scrollHeight}px`;
       arrowImage.src = "assets/collapse_arrow.png";
 
-      moveGatheringToTopOfWindow(gatheringHead)
+      moveGatheringToTopOfWindow(gatheringHead);
     }
   });
 }
 
-const collapseUpButtons= document.getElementsByClassName("collapse-up");
+const collapseUpButtons = document.getElementsByClassName("collapse-up");
 for (let index = 0; index < collapseUpButtons.length; index += 1) {
   collapseUpButtons[index].addEventListener("click", function closeGathering() {
     const collapseUpButton = this;
@@ -36,21 +36,7 @@ for (let index = 0; index < collapseUpButtons.length; index += 1) {
   });
 }
 
-function closeOtherGatherings(gatherings, element) {
-  for (let index = 0; index < gatherings.length; index += 1) {
-    if (gatherings[index] !== element) {
-      const content = gatherings[index].nextElementSibling;
-      const arrowImage = gatherings[index].getElementsByTagName("img")[0];
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-        content.style.paddingTop = "0";
-        arrowImage.src = "assets/expand_arrow.png";
-      }
-    }
-  }
-}
-
-function moveGatheringToTopOfWindow(gathering){
+function moveGatheringToTopOfWindow(gathering) {
   const offset = 35;
   const bodyRect = document.body.getBoundingClientRect().top;
   const elementRect = gathering.getBoundingClientRect().top;
@@ -58,6 +44,6 @@ function moveGatheringToTopOfWindow(gathering){
   const offsetPosition = elementPosition - offset;
   window.scrollTo({
     top: offsetPosition,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 }

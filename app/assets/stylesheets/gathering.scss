@@ -101,6 +101,7 @@
     border: none;
     border-radius: 25px;
     box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
+
     font-family: Playfair Display, sans-serif;
     font-weight: bold;
     text-decoration: none;
@@ -354,50 +355,51 @@
   transition: max-height 0.2s ease-out;
 }
 
-.gatherings-bodyCloseDiv{
+.gatherings-bodyCloseDiv {
   display: flex;
   justify-content: flex-end;
 
-  .gatherings-bodyCloseDivButton{
+  .gatherings-bodyCloseDivButton {
     padding: 5px 20px 6px 20px;
-    border: 1px solid #7485a9;
-    color: #7485a9;
+
     background-color: transparent;
+    border: 1px solid #7485a9;
     border-radius: 25px;
+    color: #7485a9;
     cursor: pointer;
 
     font-family: Open Sans, serif;
     font-size: 0.8em;
   }
 
-  .gatherings-bodyCloseDivButton:hover{
-    color: #FFFFFF;
-    background-color: #1B60F3;
+  .gatherings-bodyCloseDivButton:hover {
+    background-color: #1b60f3;
+    color: #ffffff;
   }
 }
 
 #backToTop {
+  position: fixed;
+  right: 100px;
+  bottom: 20px;
+  z-index: 99;
 
+  display: none;
   padding: 5px 20px 6px 20px;
-  border: 1px solid #7485a9;
-  color: #7485a9;
+
   background-color: transparent;
+  border: 1px solid #7485a9;
   border-radius: 25px;
+  color: #7485a9;
   cursor: pointer;
 
   font-family: Open Sans, serif;
   font-size: 0.8em;
-
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 100px;
-  z-index: 99;
 }
 
 #backToTop:hover {
-  color: #FFFFFF;
-  background-color: #1B60F3;
+  background-color: #1b60f3;
+  color: #ffffff;
 }
 
 @media all and (max-width: 1000px) {

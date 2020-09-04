@@ -80,7 +80,7 @@ RSpec.feature "Gathering", js: true do
 
     visit gatherings_path
     click_on(Date::MONTHNAMES[gathering.date.month])
-    click_on(class: 'gatherings-bodyCloseDivButton')
+    click_on(class: "gatherings-bodyCloseDivButton")
 
     find(".collapsible-content").assert_matches_style("paddingTop" => "0px")
   end
