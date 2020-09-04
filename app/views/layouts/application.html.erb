@@ -17,7 +17,7 @@
         </div>
       <% end %>
     </div>
-    THIS IS A FUCKING TEST CARALHO
+
     <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
       <% if controller_name === "books" && action_name === "index" %>
         <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path, {:style=>'color:#f1f1f1;'} %>
