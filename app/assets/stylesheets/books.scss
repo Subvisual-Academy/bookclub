@@ -2,10 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.Books {
+  margin-left: 8%;
+}
+
 .Books-Field {
   padding: 10px;
 }
 
 .Books-Actions {
   padding: 5px;
+}
+
+.Books-unknown {
+  width: 9em;
+  height: 9em;
 }
