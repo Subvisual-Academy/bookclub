@@ -13,4 +13,11 @@ module ApplicationHelper
   def distinct_book_mentions(user)
     user.books.distinct.count
   end
+  
+  def book_author(book)
+    return "Unknown" if book.author.nil?
+    
+    book.author
+  end
 end
+

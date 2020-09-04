@@ -1,7 +1,9 @@
 .bookPresentation-box {
   margin-bottom: 15px;
   ul {
+    margin-top: 0;
     padding-left: 1em;
+    margin-bottom: -8px;
   }
 }
 
@@ -14,17 +16,19 @@
 }
 
 .bookPresentation-name {
-  color: #05359b;
-
-  font-weight: 600;
+  color: #7485A9;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
   text-decoration: none;
 }
 
 .bookPresentation-titles {
   margin-top: 0.25em;
   margin-left: 1em;
-
-  color: #7485a9;
+  font-family: "Open Sans", sans-serif;
+  //font-size: 1px;
+  color: #1F29A4;
 
   font-weight: normal;
   a {
@@ -32,7 +36,15 @@
 
     text-decoration: none;
   }
+  li {
+    padding-bottom: 8px;
+  }
+
+  .bookPresentation-title{
+    font-weight: 600;
+  }
 }
+
 
 .form-group {
   display: flex;

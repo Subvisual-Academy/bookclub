@@ -5,7 +5,9 @@
 
     <div class="bookPresentation-titles">
       <% book_presentations.each do |presentation| %>
-          <li> &mdash;  <%=link_to presentation.book.title, book_path(presentation.book)%> </li>
+        <li> <span class="bookPresentation-title"> &mdash;  <%=link_to presentation.book.title, book_path(presentation.book)%></span>,
+          by <%= book_author(presentation.book) %>
+        </li>
       <% end %>
     </div>
   </ul>
