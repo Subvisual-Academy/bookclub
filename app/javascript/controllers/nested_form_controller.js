@@ -23,10 +23,12 @@ export default class extends Controller {
     item.querySelector("input[name*='_destroy']").value = 1;
     item.style.display = "none";
   }
-  
+
   initializeSlimSelect() {
     document.querySelectorAll(".SlimSelect").forEach((node) => {
-      if (node.hasAttribute("data-ssid"))
+      if (node.tagName !== "SELECT") return;
+      if (node.hasAttribute("data-ssid")) return;
+      // eslint-disable-next-line no-new
       new window.SlimSelect({
         select: node,
       });
