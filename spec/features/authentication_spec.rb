@@ -42,15 +42,4 @@ RSpec.feature "Authentication", js: true do
     expect(page).to have_current_path(login_path)
     expect(page).to have_content("Incorrect email/password")
   end
-
-  # it "logs out the user" do
-  #   user = create(:user)
-  #   login_user(user)
-  #
-  #   visit books_path
-  #   click_on("Log Out")
-  #   debugger
-  #   expect(page).to have_current_path(gatherings_path)
-  #   expect(page).to have_content("Log In")
-  # end
 end
