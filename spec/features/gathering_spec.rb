@@ -80,6 +80,7 @@ RSpec.feature "Gathering", js: true do
 
     visit gatherings_path
     click_on(Date::MONTHNAMES[gathering.date.month])
+    sleep(1) # wait for the animation to finish and display the new button
     click_on(class: "gatherings-bodyCloseDivButton")
 
     find(".collapsible-content").assert_matches_style("paddingTop" => "0px")

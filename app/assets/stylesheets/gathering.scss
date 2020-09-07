@@ -91,6 +91,7 @@
 }
 
 .gatherings-YearGrid {
+  flex-shrink: 1;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -148,9 +149,8 @@
 }
 
 .gatherings-PlusBox {
-  flex-basis: 3em;
   float: left;
-  padding: 0 60px 0 60px;
+  padding: 20px 60px;
   margin: 0.5em;
 
   background: $secondary-color;
@@ -385,7 +385,7 @@
 
 #backToTop {
   position: fixed;
-  right: 100px;
+  right: 50px;
   bottom: 20px;
   z-index: 99;
 
@@ -413,5 +413,11 @@
   }
   #backToTop {
     right: 20px;
+
+    font-size: 0.8rem;
+  }
+
+  .gatherings-Notification {
+    display: none;
   }
 }
