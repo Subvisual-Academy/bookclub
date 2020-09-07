@@ -25,11 +25,10 @@ export default class extends Controller {
   }
   
   initializeSlimSelect() {
-    document.addEventListener("turbolinks:load", () => {
-      document.querySelectorAll(".SlimSelect").forEach((node) => {
-        new window.SlimSelect({
-          select: node,
-        });
+    document.querySelectorAll(".SlimSelect").forEach((node) => {
+      if (node.hasAttribute("data-ssid"))
+      new window.SlimSelect({
+        select: node,
       });
     });
   }
