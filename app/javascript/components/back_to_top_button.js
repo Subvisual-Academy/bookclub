@@ -1,4 +1,6 @@
-document.addEventListener("turbolinks:load", function addButtonAction() {
+document.addEventListener("turbolinks:load", () => addButtonAction());
+
+function addButtonAction() {
   const goToTopButton = document.getElementById("backToTop");
   // When the user scrolls down 300px from the top of the document, show the button
   window.onscroll = function displayFunction() {
@@ -15,4 +17,4 @@ document.addEventListener("turbolinks:load", function addButtonAction() {
   goToTopButton.addEventListener("click", function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
-});
+}

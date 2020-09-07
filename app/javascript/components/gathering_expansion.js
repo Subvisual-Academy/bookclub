@@ -1,5 +1,7 @@
 // Add the expanding/collapsing behaviour when clicking on the gathering header to all gatherings
-document.addEventListener("turbolinks:load", function addExpansionAction() {
+document.addEventListener("turbolinks:load", () => addExpansionAction());
+
+function addExpansionAction() {
   const gatherings = document.querySelectorAll(".collapsible-gathering");
   gatherings.forEach((gatheringHead) => {
     gatheringHead.addEventListener("click", function expandGathering() {
@@ -33,7 +35,7 @@ document.addEventListener("turbolinks:load", function addExpansionAction() {
       arrowImage.src = "assets/expand_arrow.png";
     });
   });
-});
+}
 
 function moveGatheringToTopOfWindow(gathering) {
   const offset = 35;

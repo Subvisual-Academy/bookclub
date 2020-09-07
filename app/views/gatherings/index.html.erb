@@ -1,4 +1,4 @@
-<div class="gatherings-Main" xmlns="">
+<div class="gatherings-Main">
   <div class="gatherings-NextDate">
     Next BookClub session: <span class="gatherings-NextDate gatherings-NextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
   </div>
@@ -10,7 +10,7 @@
           <button class="gatherings-PlusBox">
             <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"gatherings-First-link" %>
           </button>
-        <% end %>
+        <% end %>z
       <% end %>
       <% gatherings.each do | gathering |%>
         <div class="gatherings-YearGridBox">
