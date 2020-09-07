@@ -29,6 +29,7 @@ export default class extends Controller {
     document.querySelectorAll(".SlimSelect").forEach((node) => {
       if (node.tagName !== "SELECT") return;
       if (node.hasAttribute("data-ssid")) return;
+
       // eslint-disable-next-line no-new
       new SlimSelect({
         select: node,

@@ -2,7 +2,7 @@
   <div class="gatherings-NextDate">
     Next BookClub session: <span class="gatherings-NextDate gatherings-NextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
   </div>
-  
+
   <% @gatherings.each do | year, gatherings | %>
     <p class="gatherings-MainYear"><%= year %></p>
     <div class="gatherings-YearGrid">
