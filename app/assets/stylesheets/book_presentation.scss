@@ -1,3 +1,4 @@
+@import "colors";
 .bookPresentation-box {
   margin-bottom: 15px;
   ul {
@@ -10,13 +11,13 @@
 .bookPresentation-Li {
   padding-left: 5%;
 
-  color: #7485a9;
+  color: $secondary-color;
 
   font-family: Open Sans, serif;
 }
 
 .bookPresentation-name {
-  color: #7485a9;
+  color: $secondary-color;
 
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
@@ -28,7 +29,7 @@
   margin-top: 0.25em;
   margin-left: 1em;
   //font-size: 1px;
-  color: #1f29a4;
+  color: $darker-base-color;
 
   font-family: "Open Sans", sans-serif;
 
@@ -70,8 +71,8 @@
   min-width: 1.3em;
   margin-right: 8px;
 
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: $tertiary-color;
+  border: 1px solid $lighter-secondary-color;
   border-radius: 50%;
   cursor: pointer;
   outline: none;
@@ -81,7 +82,7 @@
 }
 
 .checkbox-round:checked {
-  background: #1f29a4;
+  background: $darker-base-color;
 }
 
 input[type="checkbox"] {

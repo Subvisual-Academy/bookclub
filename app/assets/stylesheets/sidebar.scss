@@ -1,3 +1,5 @@
+@import "colors";
+
 .Sidebar {
   position: fixed;
   top: 0;
@@ -10,7 +12,7 @@
   padding-left: 1.2%;
   overflow-x: hidden;
 
-  background-color: #1b60f3;
+  background-color: $base-color;
 
   white-space: nowrap;
 
@@ -21,7 +23,7 @@
   display: block;
   padding-left: 8%;
 
-  color: #1f29a4;
+  color: $darker-base-color;
 
   font-size: 1em;
   text-decoration: none;
