@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import SlimSelect from "slim-select";
 
 export default class extends Controller {
   static targets = ["addItem", "template"];
@@ -29,7 +30,7 @@ export default class extends Controller {
       if (node.tagName !== "SELECT") return;
       if (node.hasAttribute("data-ssid")) return;
       // eslint-disable-next-line no-new
-      new window.SlimSelect({
+      new SlimSelect({
         select: node,
       });
     });
