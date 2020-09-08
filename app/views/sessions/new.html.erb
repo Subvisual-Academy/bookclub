@@ -1,19 +1,19 @@
-<div class="Users-login">
+<div class="users-Login">
 
-  <div class="Users-loginForm">
+  <div class="form">
     <h1>Bookclub</h1>
-    <p class="Users-loginSubtitle"> Log in to Bookclub</p>
+    <p class="subtitle"> Log in to Bookclub</p>
     <%= form_with model: @user, url: login_path, method: :post do %>
-      <div class="Users-field">
-        <%= email_field_tag :email, nil, required: true,  placeholder: 'Email', class: "Users-loginTextInput" %>
+      <div class="users-Field">
+        <%= email_field_tag :email, nil, required: true,  placeholder: 'Email', class: "text-input" %>
       </div>
 
-      <div class="Users-field">
-        <%= password_field_tag :password, nil, required: true,   placeholder: 'Password', class: "Users-loginTextInput" %>
+      <div class="users-Field">
+        <%= password_field_tag :password, nil, required: true,   placeholder: 'Password', class: "text-input" %>
       </div>
 
-      <div class="Users-actions">
-        <%= submit_tag 'Log in', class: "Users-actionsSubmit" %>
+      <div class="users-Actions">
+        <%= submit_tag 'Log in', class:  "submit" %>
       </div>
     <% end %>
     </div>
