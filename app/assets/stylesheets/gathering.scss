@@ -223,7 +223,7 @@
   font-size: 1rem;
 }
 
-.gatherings-Mentions {
+.gatherings-mentions {
   box-sizing: border-box;
 
   background: $tertiary-color;
@@ -231,12 +231,12 @@
   border-radius: 25px;
 }
 
-.gatherings-MentionsFirst {
+.gatherings-mentionsFirst {
   width: 6em;
 }
 
-.gatherings-MentionsSecond {
-  width: 13em;
+.Gatherings-mentionsSecond {
+  width: 50%;
 }
 
 .gatherings-Link {
@@ -249,7 +249,7 @@
 .gatherings-Titles {
   color: $darker-base-color;
 
-  font-family: Open Sans;
+  font-family: Open Sans, sans-serif;
   font-size: 0.9em;
   font-style: normal;
   font-weight: normal;
@@ -260,7 +260,7 @@
 }
 
 .gatherings-TitlesSpecial {
-  line-height: 0em;
+  line-height: 0;
 }
 
 .gatherings-Submit {

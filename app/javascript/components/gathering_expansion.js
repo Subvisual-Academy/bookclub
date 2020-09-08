@@ -11,11 +11,11 @@ function addExpansionAction() {
       if (content.style.maxHeight) {
         content.style.maxHeight = null;
         content.style.paddingTop = "0";
-        arrowImage.style.transform = "none"
+        arrowImage.style.transform = "none";
       } else {
         content.style.paddingTop = "15px";
         content.style.maxHeight = `${content.scrollHeight}px`;
-        arrowImage.style.transform = "rotate(180deg)"
+        arrowImage.style.transform = "rotate(180deg)";
 
         moveGatheringToTopOfWindow(gatheringHead);
       }
@@ -32,7 +32,7 @@ function addExpansionAction() {
 
       gatheringContent.style.maxHeight = null;
       gatheringContent.style.paddingTop = "0";
-      arrowImage.style.transform = "none"
+      arrowImage.style.transform = "none";
     });
   });
 }
