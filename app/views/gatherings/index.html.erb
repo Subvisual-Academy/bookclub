@@ -1,23 +1,23 @@
-<div class="gatherings-Main">
-  <div class="gatherings-NextDate">
-    Next BookClub session: <span class="gatherings-NextDate gatherings-NextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
+<div class="Gatherings-main">
+  <div class="Gatherings-nextDate">
+    Next BookClub session: <span class="Gatherings-nextDate Gatherings-nextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
   </div>
     <% @gatherings.each do | year, gatherings | %>
-    <p class="gatherings-MainYear"><%= year %></p>
-    <div class="gatherings-YearGrid">
+    <p class="Gatherings-mainYear"><%= year %></p>
+    <div class="Gatherings-yearGrid">
       <% if current_user %>
         <% if year == @gatherings.keys.first %>
-          <button class="gatherings-YearGridBox gatherings-PlusBox">
-            <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"gatherings-First-link" %>
+          <button class="Gatherings-yearGridBox Gatherings-plusBox">
+            <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"Gatherings-firstLink" %>
           </button>
         <% end %>
       <% end %>
       <% gatherings.each do | gathering |%>
-        <button class="gatherings-YearGridBox">
-          <div class="gathering-FirstBox-Delete">
-            <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gathering-FirstBox-DeleteImg"), gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+        <button class="Gatherings-yearGridBox">
+          <div class="Gatherings-firstBoxDelete">
+            <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "Gatherings-firstBoxDeleteImg"), gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
           </div>
-          <%= link_to show_date_month(gathering), gathering,  class:"gatherings-First-link"%>
+          <%= link_to show_date_month(gathering), gathering,  class:"Gatherings-firstLink"%>
         </button>
       <% end %>
     </div>

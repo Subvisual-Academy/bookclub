@@ -1,31 +1,31 @@
 <h1>Editing Bookclub Gathering</h1>
 
 <%= form_with(model: @book, local: true) do |form| %>
-  <div class="Books-Field">
+  <div class="Books-field">
     <%= form.label :title %>
     <br>
     <%= form.text_field :title %>
   </div>
 
-  <div class="Books-Field">
+  <div class="Books-field">
     <%= form.label :author, 'Author' %>
     <br>
     <%= form.text_field :author %>
   </div>
 
-  <div class="Books-Field">
+  <div class="Books-field">
     <%= form.label :synopsis, 'Synopsis' %>
     <br>
     <%= form.text_field :synopsis %>
   </div>
 
-  <div class="Books-Field">
+  <div class="Books-field">
     <%= form.label :image, 'Link to book cover' %>
     <br>
     <%= form.text_field :image %>
   </div>
 
-  <div class="Books-Actions">
+  <div class="Books-actions">
     <%= form.submit %>
   </div>
 <% end %>
