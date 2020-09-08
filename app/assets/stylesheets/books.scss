@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.Books {
-  margin-left: 8%;
-}
-
 .Books-Field {
   padding: 10px;
 }
@@ -14,7 +10,64 @@
   padding: 5px;
 }
 
+.Books-main {
+  padding: 3% 25% 1% 25%;
+  h1 {
+    color: #1b60f3;
+
+    font-family: "Playfair Display", serif;
+    font-size: 2em;
+  }
+
+  h2 {
+    color: #1b60f3;
+
+    font-family: Open Sans, serif;
+    font-size: 1.2em;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  h3 {
+    color: #1b60f3;
+
+    font-family: Open Sans;
+    font-style: normal;
+  }
+}
+
 .Books-unknown {
-  width: 8em;
-  height: 8em;
+  width: 7em;
+  height: 7em;
+}
+
+.Books-flexGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  .Books-flexGridSingle {
+    flex-basis: 8em;
+    float: left;
+    margin: 0.5em;
+
+    background: #ffffff;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
+  }
+  .Books-flexGridSingleImg {
+    flex-basis: 8em;
+    float: left;
+    padding: 1.6em 3em 20px 60px;
+  }
+    
+  .Books-flexGridSingleText{
+    
+    padding: 0 8% 10% 8%;
+    font-family: Open Sans;
+    font-size: 0.8em;
+    color: #1B60F3;
+    font-weight: bold;
+    text-decoration: none;
+  }
 }

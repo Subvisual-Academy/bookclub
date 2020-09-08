@@ -3,7 +3,8 @@ class BooksController < ApplicationController
 
   def index
     @selected_user = User.find_by(id: params[:user_id])
-
+    @gatherings = Gathering.group_by_year
+    
     @books = if @selected_user.nil?
                Book.by_creation_date
              else
