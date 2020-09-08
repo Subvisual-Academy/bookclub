@@ -10,12 +10,12 @@ function addExpansionAction() {
 
       if (content.style.maxHeight) {
         content.style.maxHeight = null;
-        arrowImage.src = "assets/expand-arrow.png";
         content.style.paddingTop = "0";
+        arrowImage.style.transform = "none"
       } else {
         content.style.paddingTop = "15px";
         content.style.maxHeight = `${content.scrollHeight}px`;
-        arrowImage.src = "assets/collapse-arrow.png";
+        arrowImage.style.transform = "rotate(180deg)"
 
         moveGatheringToTopOfWindow(gatheringHead);
       }
@@ -32,7 +32,7 @@ function addExpansionAction() {
 
       gatheringContent.style.maxHeight = null;
       gatheringContent.style.paddingTop = "0";
-      arrowImage.src = "assets/expand-arrow.png";
+      arrowImage.style.transform = "none"
     });
   });
 }
