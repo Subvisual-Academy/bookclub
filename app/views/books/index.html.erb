@@ -10,6 +10,7 @@
   <% end %>
   <br>
 
+
   <table class="Table">
     <thead>
       <tr>
@@ -23,11 +24,17 @@
     <tbody>
       <% @books.each do |book| %>
         <tr>
-          <% if book.image%>
-            <td><img src="<%= book.image %>"  alt="book cover"/></td>
-          <% else %>
-            <td><%= link_to (inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown") %></td>
-          <% end %>
+          <td>
+            <div class="Books-popup">
+              <% if book.image%>
+                <img src="<%= book.image %>"  alt="book cover"/>
+              <% else %>
+                <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown" %>
+              <% end %>
+
+              <span class="Books-popuptext"><%= book.synopsis || "Unavailable" %> </span>
+            </div>
+          </td>
 
           <td><%= book.title %></td>
 
