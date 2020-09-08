@@ -1,11 +1,11 @@
-.Users-field {
+.users-Field {
   padding: 10px;
 }
 
-.Users-actions {
+.users-Actions {
   padding: 5px;
 
-  .Users-actionsSubmit {
+  .submit {
     width: 13em;
     padding: 5px 20px 6px 20px;
     margin-top: 5px;
@@ -22,7 +22,7 @@
   }
 }
 
-.Users-login {
+.users-Login {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -31,7 +31,7 @@
 
   background: #edf0f7;
 
-  .Users-loginForm {
+  .form {
     position: absolute;
     top: 0;
     right: 0;
@@ -48,7 +48,7 @@
     background-color: #ffffff;
     border-radius: 25px;
 
-    .Users-loginTextInput {
+    .text-input {
       box-sizing: border-box;
       width: 15em;
       height: 3em;
@@ -68,7 +68,7 @@
       font-family: "Playfair Display", serif;
     }
 
-    .Users-loginSubtitle {
+    .subtitle {
       color: #1f29a4;
     }
   }

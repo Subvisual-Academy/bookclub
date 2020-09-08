@@ -1,4 +1,4 @@
-.Gatherings-main {
+.gatherings-Main {
   padding: 3% 25% 1% 25%;
   hr {
     width: 100%;
@@ -35,22 +35,22 @@
   }
 }
 
-.Gatherings-mainHeader {
+.gatherings-Main-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.Gatherings-mainHeaderLeft {
+.gatherings-Main-header-left {
   display: flex;
   align-items: center;
 }
 
-.Gatherings-mainHeaderLeftImg {
+.gatherings-Main-header-left-img {
   margin-right: 10px;
 }
 
-.Gatherings-sec {
+.gatherings-Sec {
   position: fixed;
 
   display: flex;
@@ -61,14 +61,14 @@
   padding: 0 7em;
   margin-top: 1.5em;
 }
-.Gatherings-secImg {
+.gatherings-Sec-img {
   display: flex;
   max-width: 30%;
   max-height: 30%;
   margin-right: 0.4em;
 }
 
-.Gatherings-secLink {
+.gatherings-Sec-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,21 +78,21 @@
   text-decoration: none;
 }
 
-.Gatherings-mainHeaderContainer {
+.gatherings-Main-header-container {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.Gatherings-ul {
+.gatherings-Ul {
   margin-top: 0;
 }
 
-.Gatherings-yearGrid {
+.gatherings-YearGrid {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  .Gatherings-yearGridBox {
+  .gatherings-YearGridBox {
     flex-basis: 8em;
     float: left;
     padding: 30px 60px 30px 60px;
@@ -109,9 +109,9 @@
     text-decoration: none;
   }
 
-  .Gatherings-firstBoxDelete {
+  .gathering-FirstBox-Delete {
     position: relative;
-    .Gatherings-firstBoxDeleteImg {
+    .gathering-FirstBox-DeleteImg {
       position: absolute;
       top: -10px;
       right: -35px;
@@ -120,12 +120,12 @@
     }
   }
 
-  .Gatherings-plusBox {
+  .gatherings-PlusBox {
     background: #7485a9;
   }
 }
 
-.Gatherings-firstLink {
+.gatherings-First-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,13 +135,13 @@
   text-decoration: none;
 }
 
-.Gatherings-mainYear {
+.gatherings-MainYear {
   color: #7485a9;
 
   font-family: Open Sans;
 }
 
-.Gatherings-mainYear::after {
+.gatherings-MainYear::after {
   content: "";
 
   display: inline-block;
@@ -154,7 +154,7 @@
   vertical-align: middle;
 }
 
-.Gatherings-date select:nth-child(1) {
+.gatherings-Date select:nth-child(1) {
   box-sizing: border-box;
   width: 3.2em;
 
@@ -163,7 +163,7 @@
   border-radius: 25px;
 }
 
-.Gatherings-date select:nth-child(2) {
+.gatherings-Date select:nth-child(2) {
   box-sizing: border-box;
   width: 7em;
 
@@ -172,7 +172,7 @@
   border-radius: 25px;
 }
 
-.Gatherings-date select:nth-child(3) {
+.gatherings-Date select:nth-child(3) {
   box-sizing: border-box;
   width: 4.2em;
 
@@ -181,17 +181,9 @@
   border-radius: 25px;
 }
 
-.Gatherings-special {
+.gatherings-Special {
   box-sizing: border-box;
   width: 15em;
-
-  background: white;
-  border: 1px solid #1f29a4;
-  border-radius: 25px;
-}
-
-.Gatherings-mentions {
-  box-sizing: border-box;
 
   background: white;
   border: 1px solid #1f29a4;
@@ -206,14 +198,14 @@
   width: 50%;
 }
 
-.Gatherings-link {
+.gatherings-Link {
   color: #1f29a4;
 
   font-family: Open Sans;
   text-decoration: none;
 }
 
-.Gatherings-titles {
+.gatherings-Titles {
   color: #1f29a4;
 
   font-family: Open Sans;
@@ -222,15 +214,15 @@
   font-weight: normal;
 }
 
-.Gatherings-titlesDate {
+.gatherings-TitlesDate {
   line-height: 2.1em;
 }
 
-.Gatherings-titlesSpecial {
+.gatherings-TitlesSpecial {
   line-height: 0em;
 }
 
-.Gatherings-submit {
+.gatherings-Submit {
   padding: 5px 20px 6px 20px;
 
   background: #1b60f3;
@@ -243,26 +235,26 @@
   font-size: 0.8em;
 }
 
-.Gatherings-spaceDown {
+.gatherings-SpaceDown {
   margin-bottom: 0.1em;
 }
 
-.Gatherings-spaceUpDown {
+.gatherings-SpaceUpDown {
   margin: 0.8em 0 0.2em 0;
 }
 
-.Gatherings-spaceButton {
+.gatherings-SpaceButton {
   margin-bottom: 0.8em;
 }
 
-.Gatherings-line {
+.gatherings-Line {
   width: 100%;
   margin-top: 1.2em;
 
   border: 1px solid #edf0f7;
 }
 
-.Gatherings-nextDate {
+.gatherings-NextDate {
   margin-bottom: 2.3em;
 
   color: #1b60f3;
@@ -272,7 +264,7 @@
   font-weight: bold;
 }
 
-.Gatherings-nextDateShow {
+.gatherings-NextDateShow {
   padding: 0.3em 0.7em 0.3em 0.7em;
   margin-left: 0.8em;
 
@@ -282,7 +274,7 @@
   font-size: 1.1em;
 }
 
-.Gatherings-showHeader {
+.gatherings-ShowHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;

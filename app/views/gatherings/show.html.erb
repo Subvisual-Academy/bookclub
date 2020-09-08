@@ -1,34 +1,34 @@
-<div class="Gatherings-sec">
-  <%= link_to (inline_svg_tag 'arrow.svg', alt: "back arrow", class: "Gatherings-secImg" )+
-                  "Back", gatherings_path, class: "Gatherings-secLink" %>
+<div class="gatherings-Sec">
+  <%= link_to (inline_svg_tag 'arrow.svg', alt: "back arrow", class: "gatherings-Sec-img" )+
+                  "Back", gatherings_path, class: "gatherings-Sec-link" %>
 </div>
 
-<div class="Gatherings-main">
-  <div class="Gatherings-showHeader">
+<div class="gatherings-Main">
+  <div class="gatherings-ShowHeader">
     <h1>
       <strong><%= show_date_month(@gathering) %></strong>
     </h1>
     <%= send_notification_button(current_user, @gathering) %>
   </div>
 
-  <div class="Gatherings-line"></div>
-  <div class="Gatherings-mainHeader">
+  <div class="gatherings-Line"></div>
+  <div class="gatherings-Main-header">
     <h2>Book Mentions</h2>
 
-    <div class="Gatherings-mainHeaderLeft">
+    <div class="gatherings-Main-header-left">
       <% if current_user %>
-        <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "Gatherings-mainHeaderLeftImg"), @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
-        <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "Gatherings-mainHeaderLeftImg") , edit_gathering_path(@gathering) %>
+        <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), @gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+        <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_gathering_path(@gathering) %>
       <% end %>
     </div>
   </div>
-  <ul class="Gatherings-ul">
+  <ul class="gatherings-Ul">
     <%= render @gathering.book_presentations.reject { |presentation|  presentation.special} %>
   </ul>
   <h2>
     <%= @gathering.special_presentation %>
   </h2>
-  <ul class="Gatherings-ul">
+  <ul class="gatherings-Ul">
     <%= render @gathering.book_presentations.select { |presentation|  presentation.special} %>
   </ul>
 </div>
