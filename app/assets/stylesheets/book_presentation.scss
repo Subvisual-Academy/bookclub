@@ -12,13 +12,13 @@
   text-decoration: none;
 }
 
-.form-group {
+.Form-group {
   display: flex;
   align-items: center;
   padding: 0.5em 0;
 }
 
-.checkbox-round {
+.Checkbox-round {
   width: 1.3em;
   height: 1.3em;
   margin-right: 8px;
@@ -33,7 +33,7 @@
   -webkit-appearance: none;
 }
 
-.checkbox-round:checked {
+.Checkbox-round:checked {
   background: #1f29a4;
 }
 
