@@ -16,7 +16,9 @@ import { definitionsFromContext } from "stimulus/webpack-helpers";
 require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
+require("slim-select/dist/slimselect.css");
 require("../channels");
+require("../components");
 
 const application = Application.start();
 const context = require.context("../controllers", true, /\.js$/);

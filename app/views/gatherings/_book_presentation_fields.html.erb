@@ -1,9 +1,14 @@
 <div class='nested-fields'>
   <div class='Form-group'>
     <%= form.hidden_field :_destroy %>
-    <%= form.select :user_id, User.order(:name).all.map {|u| [u.name,u.id]}, {:prompt => "User"} , {:class => "Gatherings-mentions Gatherings-mentionsFirst"} %>
+    
+    <div class="Gatherings-mentionsFirst">
+    <%= form.select :user_id, User.order(:name).all.map {|u| [u.name,u.id]}, {:prompt => "User"} , {:class => "SlimSelect"} %>
+    </div>
     &nbsp; - &nbsp;
-    <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book"} , {:class => "Gatherings-mentions Gatherings-mentionsSecond"} %>
+    <div class="Gatherings-mentionsSecond">
+    <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book"} , {:class => "SlimSelect"} %>
+    </div>
     &nbsp; &nbsp;
     <%= form.check_box :special, class: "Checkbox-round" %>
     &nbsp;
