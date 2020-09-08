@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", () => addButtonAction());
+document.addEventListener("turbolinks:load", addButtonAction);
 
 function addButtonAction() {
   const goToTopButton = document.getElementById("backToTop");

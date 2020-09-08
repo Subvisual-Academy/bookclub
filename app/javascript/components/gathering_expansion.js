@@ -1,5 +1,5 @@
 // Add the expanding/collapsing behaviour when clicking on the gathering header to all gatherings
-document.addEventListener("turbolinks:load", () => addExpansionAction());
+document.addEventListener("turbolinks:load", addExpansionAction);
 
 function addExpansionAction() {
   const gatherings = document.querySelectorAll(".collapsible-gathering");
