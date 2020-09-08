@@ -13,6 +13,7 @@
  *= require_self
  */
 
+@import "colors";
 @import "book_presentation";
 @import "books";
 @import "common/fonts";
@@ -38,4 +39,13 @@ body {
 
 .Main {
   padding: 3% 25% 1% 25%;
+}
+
+.u-notice {
+  padding-left: 25%;
+
+  color: $base-color;
+
+  font-family: "Open Sans", serif;
+  font-weight: bold;
 }

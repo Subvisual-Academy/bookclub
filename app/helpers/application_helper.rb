@@ -7,10 +7,16 @@ module ApplicationHelper
     return unless current_user&.moderator
 
     button_to "Send Slack Notification", gathering_notifications_path(gathering),
-              class: "gatherings-Submit", data: { confirm: "Are you sure?" }
+              class: "gatherings-Notification", data: { confirm: "Are you sure you want to send a notification to slack?" }
   end
 
   def distinct_book_mentions(user)
     user.books.distinct.count
+  end
+
+  def book_author(book)
+    return "Unknown" if book.author.nil?
+
+    book.author
   end
 end

@@ -1,6 +1,4 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "colors";
 
 .Books {
   margin-left: 8%;
@@ -15,6 +13,6 @@
 }
 
 .Books-unknown {
-  width: 8em;
-  height: 8em;
+  width: 9em;
+  height: 9em;
 }
