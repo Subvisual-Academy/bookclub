@@ -1,28 +1,27 @@
 <div class="Books">
-  <% if current_user %>
-    <%= link_to 'New Book', new_book_path %>
-  <% end %>
-  <br>
-
-  <% if @selected_user.nil? %>
-    <strong> <%= link_to 'All books', books_path %> </strong>
-    <%= @books.count %>
-  <% else %>
-    <%= link_to 'All books', books_path %>
-    <%= Book.all.count %>
-  <% end %>
-
-  <br>
-
-  <% @users.each do |user| %>
-    <% if @selected_user.eql?(user) %>
-      <strong><%= link_to user.name, books_path(:user_id => user.id) %> </strong>
+  <div>
+    <% if @selected_user.nil? %>
+      <strong> <%= link_to 'All books', books_path %> </strong>
+      <%= @books.count %>
     <% else %>
-      <%= link_to user.name, books_path(:user_id => user.id) %>
+      <%= link_to 'All books', books_path %>
+      <%= Book.all.count %>
     <% end %>
-    <%= distinct_book_mentions(user)%>
+
     <br>
-  <% end %>
+
+    <% @users.each do |user| %>
+      <% if @selected_user.eql?(user) %>
+        <strong><%= link_to user.name, books_path(:user_id => user.id) %> </strong>
+      <% else %>
+        <%= link_to user.name, books_path(:user_id => user.id) %>
+      <% end %>
+      <%= distinct_book_mentions(user)%>
+      <br>
+    <% end %>
+  </div>
+
+  <%= link_to 'Create New Book', new_book_path, class: "books-NewButton" %>
 
   <table class="Table">
     <thead>
