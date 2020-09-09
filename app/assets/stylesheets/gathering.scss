@@ -190,20 +190,12 @@
   border-radius: 25px;
 }
 
-.gatherings-Mentions {
-  box-sizing: border-box;
-
-  background: white;
-  border: 1px solid #1f29a4;
-  border-radius: 25px;
+.Gatherings-mentionsFirst {
+  width: 33%;
 }
 
-.gatherings-MentionsFirst {
-  width: 6em;
-}
-
-.gatherings-MentionsSecond {
-  width: 13em;
+.Gatherings-mentionsSecond {
+  width: 50%;
 }
 
 .gatherings-Link {
