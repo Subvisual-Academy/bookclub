@@ -32,7 +32,15 @@
                 <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown" %>
               <% end %>
 
-              <span class="Books-popuptext"><%= book.synopsis || "Unavailable" %> </span>
+              <span class="Books-popuptext">
+                <% if book.image%>
+                  <img src="<%= book.image %>"  alt="book cover" class="books-PopUpImage"/>
+                <% else %>
+                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown books-PopUpImage" %>
+                <% end %>
+
+                <%= book.synopsis || "Unavailable" %>
+              </span>
             </div>
           </td>
 
