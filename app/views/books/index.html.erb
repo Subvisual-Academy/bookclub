@@ -1,15 +1,11 @@
 <div class="Books">
   <%= form_with(url: books_path, method: "get") do |f| %>
     <div class='form-group'>
-      <%= f.select :user_id, @users.map {|u| [" #{u.name} - #{u.books.distinct.count}",u.id]}.insert(0, ["All Users - #{Book.all.count}", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();'} %>
+      <%= f.select :user_id, @users.map {|u| ["#{u.name} - #{u.books.distinct.count}",u.id]}.insert(0, ["All Users - #{Book.all.count}", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();'} %>
     </div>
   <% end %>
 
-  <% if current_user %>
-    <%= link_to 'New Book', new_book_path %>
-  <% end %>
-  <br>
-
+  <%= link_to 'Create New Book', new_book_path, class: "books-NewButton" %>
 
   <table class="Table">
     <thead>
