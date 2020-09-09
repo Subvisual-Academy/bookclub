@@ -17,68 +17,6 @@
   height: 9em;
 }
 
-.Books-popup {
-  position: relative;
-
-  display: inline-block;
-
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.Books-popuptext {
-  position: absolute;
-  top: 0;
-  left: 160%;
-  z-index: 1;
-
-  visibility: hidden;
-
-  width: 30em;
-  padding: 8px;
-  margin-left: -80px;
-
-  background-color: #555;
-  border-radius: 6px;
-  color: #fff;
-
-  text-align: center;
-}
-
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
-.Books-show {
-  visibility: visible;
-
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.books-PopUpImage {
-  float: left;
-}
-
 .books-NewButton {
   display: inline-block;
   padding: 5px 20px 6px 20px;

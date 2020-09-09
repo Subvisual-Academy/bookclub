@@ -21,20 +21,14 @@
       <% @books.each do |book| %>
         <tr>
           <td>
-            <div class="Books-popup">
+            <div class="u-popup">
               <% if book.image%>
                 <img src="<%= book.image %>"  alt="book cover"/>
               <% else %>
                 <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown" %>
               <% end %>
 
-              <span class="Books-popuptext">
-                <% if book.image%>
-                  <img src="<%= book.image %>"  alt="book cover" class="books-PopUpImage"/>
-                <% else %>
-                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown books-PopUpImage" %>
-                <% end %>
-
+              <span class="u-popupContent popup-BookPopup">
                 <%= book.synopsis || "Unavailable" %>
               </span>
             </div>

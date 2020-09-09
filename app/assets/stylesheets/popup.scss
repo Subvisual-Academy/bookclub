@@ -1,0 +1,87 @@
+@import "colors";
+
+.u-popup {
+  position: relative;
+
+  display: inline-block;
+
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.u-popupContent {
+  visibility: hidden;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.u-show {
+  visibility: visible;
+
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup-GatheringPopup {
+  position: fixed;
+  top: 42px;
+  left: 81%;
+  z-index: 1;
+
+  width: 20em;
+  max-height: 300px;
+  padding: 8px;
+  margin-left: -80px;
+
+  background-color: #555;
+  border-radius: 6px;
+  color: #fff;
+
+  font-size: 0.8em;
+
+  text-align: justify;
+  overflow-y: scroll;
+}
+
+.popup-GatheringPopupImage {
+  float: left;
+  margin-right: 10px;
+}
+
+.popup-BookPopup {
+  position: absolute;
+  top: 0;
+  left: 160%;
+  z-index: 1;
+
+  width: 30em;
+  padding: 8px;
+  margin-left: -80px;
+
+  background-color: #555;
+  border-radius: 6px;
+  color: #fff;
+
+  text-align: center;
+}
