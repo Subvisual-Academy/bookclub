@@ -19,12 +19,12 @@ RSpec.describe "Gatherings", type: :request do
     expect(response_text).to include(Gathering.next_gathering_date.strftime("%A, %d %B %Y")) # ApplicationHelper method
   end
 
-  describe "GET #show" do
-    it "displays the given gathering parameters when there's a special presentation" do
-      gathering = create(:gathering_with_book_presentations, :has_special_presentation)
+  it "displays the full information about all the gatherings" do
+    gathering_list = create_list(:gathering_with_book_presentations, 3, :has_special_presentation)
 
-      get gathering_path(gathering)
+    get gatherings_path
 
+    gathering_list.each do |gathering|
       expect(response_text).to include(Date::MONTHNAMES[gathering.date.month])
       expect(response_text).to include(gathering.special_presentation)
       gathering.book_presentations.each do |book_presentation|
@@ -122,13 +122,13 @@ RSpec.describe "Gatherings", type: :request do
       login_user(create(:user))
     end
 
-    it "redirects to gathering_path on a successful update" do
+    it "redirects to gatherings_path on a successful update" do
       gathering = create(:gathering, :has_special_presentation)
       gathering_params = attributes_for(:gathering, :has_special_presentation)
 
       put gathering_path(gathering), params: { gathering: gathering_params }
 
-      expect(response).to redirect_to(gathering_path(gathering))
+      expect(response).to redirect_to(gatherings_path)
     end
 
     it "updates parameter on successful patch" do

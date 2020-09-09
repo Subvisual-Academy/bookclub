@@ -35,11 +35,12 @@ RSpec.feature "Gathering", js: true do
     expect(page).to have_current_path(gatherings_path)
   end
 
-  it "does not show the notification button to non moderators" do
+  it "does not show the notification button of a gathering to non moderators" do
     login_user(create(:user))
     gathering = create(:gathering)
 
-    visit gathering_path(gathering)
+    visit gatherings_path
+    click_on(Date::MONTHNAMES[gathering.date.month])
 
     expect(page).not_to have_selector(:link_or_button, "Send Slack Notification")
   end
@@ -48,8 +49,41 @@ RSpec.feature "Gathering", js: true do
     login_user(create(:user, :is_moderator))
     gathering = create(:gathering)
 
-    visit gathering_path(gathering)
+    visit gatherings_path
+    click_on(Date::MONTHNAMES[gathering.date.month])
 
     expect(page).to have_selector(:link_or_button, "Send Slack Notification")
+  end
+
+  it "does not display presentation information when a gathering is not clicked" do
+    login_user(create(:user))
+    create(:gathering_with_book_presentations, :has_special_presentation)
+
+    visit gatherings_path
+
+    find(".collapsible-content").assert_matches_style("paddingTop" => "0px")
+  end
+
+  it "does display presentation information when a gathering is clicked" do
+    login_user(create(:user))
+    gathering = create(:gathering_with_book_presentations, :has_special_presentation)
+
+    visit gatherings_path
+    click_on(Date::MONTHNAMES[gathering.date.month])
+
+    # sign it has expanded, can't use max-height since it's non-deterministic
+    find(".collapsible-content").assert_matches_style("paddingTop" => "15px")
+  end
+
+  it "closes a presentation when the close button is clicked" do
+    login_user(create(:user))
+    gathering = create(:gathering_with_book_presentations, :has_special_presentation)
+
+    visit gatherings_path
+    click_on(Date::MONTHNAMES[gathering.date.month])
+    sleep(1) # wait for the animation to finish and display the new button
+    click_on(class: "gatherings-bodyCloseDivButton")
+
+    find(".collapsible-content").assert_matches_style("paddingTop" => "0px")
   end
 end
