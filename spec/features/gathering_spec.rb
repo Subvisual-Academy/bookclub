@@ -86,4 +86,15 @@ RSpec.feature "Gathering", js: true do
 
     find(".collapsible-content").assert_matches_style("paddingTop" => "0px")
   end
+
+  it "displays the book's synopsis when it's name is clicked" do
+    login_user(create(:user))
+    gathering = create(:gathering_with_book_presentations)
+
+    visit gatherings_path
+    click_on(Date::MONTHNAMES[gathering.date.month])
+    sleep(1) # wait for the animation to finish and display the new button
+    debugger
+    click_on(gathering.book_presentations[0].book.title)
+  end
 end
