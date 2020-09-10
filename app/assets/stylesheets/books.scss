@@ -15,14 +15,14 @@
 .books-Main {
   padding: 3% 25% 1% 25%;
   h1 {
-    color: #1b60f3;
+    color: $base-color;
 
     font-family: "Playfair Display", serif;
     font-size: 2em;
   }
 
   h2 {
-    color: #1b60f3;
+    color: $base-color;
 
     font-family: Open Sans, serif;
     font-size: 1.2em;
@@ -31,7 +31,7 @@
   }
 
   h3 {
-    color: #1b60f3;
+    color: $base-color;
 
     font-family: Open Sans;
     font-style: normal;
@@ -57,7 +57,7 @@
     min-height: 22em;
     margin: 0.5em;
 
-    background: #ffffff;
+    background: $tertiary-color;
     border: none;
     border-radius: 25px;
     box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
@@ -79,7 +79,7 @@
     max-width: 100%;
     padding: 0 8% 3% 8%;
 
-    color: #1f29a4;
+    color: $darker-base-color;
 
     font-family: Open Sans;
     font-size: 0.8em;
@@ -89,7 +89,7 @@
   .books-FlexContainer-author {
     padding: 0 8% 3% 8%;
 
-    color: #7485a9;
+    color: $secondary-color;
 
     font-family: Open Sans;
     font-size: 0.8em;
@@ -98,21 +98,21 @@
   .books-FlexContainer-presenter {
     padding: 5% 8% 0 8%;
 
-    color: #1b60f3;
+    color: $base-color;
 
     font-family: Open Sans;
     font-size: 0.7em;
   }
 
   .books-FlexContainer-presenterName {
-    color: #1b60f3;
+    color: $base-color;
 
     font-family: Open Sans;
     text-decoration: none;
   }
 
   .books-FlexContainer-presenterName:hover {
-    color: #1f29a4;
+    color: $darker-base-color;
   }
 }
 
