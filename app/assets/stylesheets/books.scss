@@ -51,9 +51,9 @@
   .books-FlexContainer-child {
     flex-basis: 0;
     float: left;
-    max-width: 11.5em;
+    max-width: 10.5em;
     max-height: 22em;
-    min-width: 11.5em;
+    min-width: 10.5em;
     min-height: 22em;
     margin: 0.5em;
 
@@ -66,20 +66,20 @@
   .books-FlexContainer-apiImg {
     width: 13em;
     height: 13em;
-    padding: 1.6em 4em 1.5em 3em;
+    padding: 1.6em 4.7em 1.5em 2.3em;
   }
 
   .books-FlexContainer-unavailableImg {
     width: 13em;
     height: 13em;
-    padding: 1.6em 1.2em 1.5em 1.2em;
+    padding: 1.6em 2.7em 1.5em 1.3em;
   }
 
   .books-FlexContainer-title {
     max-width: 100%;
     padding: 0 8% 3% 8%;
 
-    color: #1b60f3;
+    color: #1f29a4;
 
     font-family: Open Sans;
     font-size: 0.8em;
@@ -96,12 +96,23 @@
   }
 
   .books-FlexContainer-presenter {
-    padding: 0 8% 0 8%;
+    padding: 5% 8% 0 8%;
 
-    color: #1f29a4;
+    color: #1b60f3;
 
     font-family: Open Sans;
     font-size: 0.7em;
+  }
+
+  .books-FlexContainer-presenterName {
+    color: #1b60f3;
+
+    font-family: Open Sans;
+    text-decoration: none;
+  }
+
+  .books-FlexContainer-presenterName:hover {
+    color: #1f29a4;
   }
 }
 
