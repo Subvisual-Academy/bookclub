@@ -1,31 +1,33 @@
-<h1>Editing Bookclub Gathering</h1>
+<div class="Books">
+  <h1>Editing Book</h1>
 
-<%= form_with(model: @book, local: true) do |form| %>
-  <div class="Books-Field">
-    <%= form.label :title %>
-    <br>
-    <%= form.text_field :title %>
-  </div>
+  <%= form_with(model: @book, local: true) do |form| %>
+    <div class="Books-Field">
+      <%= form.label :title %>
+      <br>
+      <%= form.text_field :title %>
+    </div>
 
-  <div class="Books-Field">
-    <%= form.label :author, 'Author' %>
-    <br>
-    <%= form.text_field :author %>
-  </div>
+    <div class="Books-Field">
+      <%= form.label :author, 'Author' %>
+      <br>
+      <%= form.text_field :author %>
+    </div>
 
-  <div class="Books-Field">
-    <%= form.label :synopsis, 'Synopsis' %>
-    <br>
-    <%= form.text_field :synopsis %>
-  </div>
+    <div class="Books-Field">
+      <%= form.label :synopsis, 'Synopsis' %>
+      <br>
+      <%= form.text_field :synopsis %>
+    </div>
 
-  <div class="Books-Field">
-    <%= form.label :image, 'Link to book cover' %>
-    <br>
-    <%= form.text_field :image %>
-  </div>
+    <div class="Books-Field">
+      <%= form.label :image, 'Link to book cover' %>
+      <br>
+      <%= form.text_field :image %>
+    </div>
 
-  <div class="Books-Actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <div class="Books-Actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

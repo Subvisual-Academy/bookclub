@@ -1,3 +1,5 @@
+@import "colors";
+
 .users-Field {
   padding: 10px;
 }
@@ -11,10 +13,10 @@
     margin-top: 5px;
     margin-left: 5px;
 
-    background: #1b60f3;
+    background: $base-color;
     border: none;
     border-radius: 10px;
-    color: white;
+    color: $tertiary-color;
     cursor: pointer;
 
     font-family: Open Sans, serif;
@@ -45,7 +47,7 @@
     height: 20em;
     margin: auto;
 
-    background-color: #ffffff;
+    background-color: $tertiary-color;
     border-radius: 25px;
 
     .text-input {
@@ -54,8 +56,8 @@
       height: 3em;
       padding-left: 10px;
 
-      background: white;
-      border: 1px solid #1f29a4;
+      background: $tertiary-color;
+      border: 1px solid $darker-base-color;
       border-radius: 10px;
     }
 
@@ -63,13 +65,13 @@
       margin-top: 1.5em;
       margin-bottom: 0;
 
-      color: #1b60f3;
+      color: $base-color;
 
       font-family: "Playfair Display", serif;
     }
 
     .subtitle {
-      color: #1f29a4;
+      color: $darker-base-color;
     }
   }
 }

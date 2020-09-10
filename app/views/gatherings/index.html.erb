@@ -2,24 +2,31 @@
   <div class="gatherings-NextDate">
     Next BookClub session: <span class="gatherings-NextDate gatherings-NextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
   </div>
-    <% @gatherings.each do | year, gatherings | %>
+
+  <% @gatherings.each do | year, gatherings | %>
     <p class="gatherings-MainYear"><%= year %></p>
     <div class="gatherings-YearGrid">
       <% if current_user %>
         <% if year == @gatherings.keys.first %>
-          <button class="gatherings-YearGridBox gatherings-PlusBox">
+          <button class="gatherings-PlusBox">
             <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"gatherings-First-link" %>
           </button>
         <% end %>
       <% end %>
       <% gatherings.each do | gathering |%>
-        <button class="gatherings-YearGridBox">
-          <div class="gathering-FirstBox-Delete">
-            <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gathering-FirstBox-DeleteImg"), gathering, method: :delete, data: {confirm: 'Are you sure?' } %>
+        <div class="gatherings-YearGridBox">
+          <button type="button" class="gatherings-YearGridBox-header collapsible-gathering">
+              <div class="gatherings-YearGridBox-headerMonth"> <%= show_date_month(gathering) %> </div>
+              <div class="gatherings-YearGridBox-headerSpecialPresentation"><%= gathering.special_presentation %> </div>
+              <%= image_tag('expand-arrow.png', alt: "expand", class: "arrow-image") %>
+          </button>
+          <div class="collapsible-content">
+            <%= render 'gathering_collapsible', gathering: gathering %>
           </div>
-          <%= link_to show_date_month(gathering), gathering,  class:"gatherings-First-link"%>
-        </button>
+        </div>
       <% end %>
     </div>
   <% end %>
 </div>
+
+<button id="backToTop" title="Back to Top">	&uarr; Back To Top </button>

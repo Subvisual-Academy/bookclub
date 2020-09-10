@@ -1,0 +1,19 @@
+<div class="gatherings-Main-header">
+  <h2>Book Mentions</h2>
+
+  <div class="gatherings-Main-header-left">
+    <% if current_user %>
+      <%= send_notification_button(current_user, gathering) %>
+      <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), gathering, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
+      <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_gathering_path(gathering) %>
+    <% end %>
+  </div>
+</div>
+  <%= render 'book_presentations/book_presentation_hash', presentations_hash: gathering.book_presentations.reject { |presentation|  presentation.special}.group_by(&:user_id) %>
+<h2>
+  <%= gathering.special_presentation %>
+</h2>
+  <%= render 'book_presentations/book_presentation_hash', presentations_hash: gathering.book_presentations.select { |presentation|  presentation.special}.group_by(&:user_id) %>
+  <div class="gatherings-bodyCloseDiv collapse-up">
+    <button class="gatherings-bodyCloseDivButton">Close</button>
+  </div>

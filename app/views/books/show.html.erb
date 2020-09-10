@@ -1,41 +1,43 @@
-<p>
-  <strong>Image:</strong>
-  <% if @book.image%>
-    <img src="<%= @book.image %>"  alt="book cover"/>
-  <% else %>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/>
+<div class="Books">
+  <p>
+    <strong>Image:</strong>
+    <% if @book.image%>
+      <img src="<%= @book.image %>"  alt="book cover"/>
+    <% else %>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @book.title %>
+  </p>
+
+  <p>
+    <strong> Author: </strong>
+      <%= @book.author || "Unavailable" %>
+  </p>
+
+  <p>
+    <strong>Synopsis:</strong>
+      <%= @book.synopsis || "Unavailable" %>
+  </p>
+
+
+  <p> Presented by :</p>
+
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+        <div><%= link_to user.name, books_path(:user_id => user.id) %></div>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Back', books_path %>
+
+  <% if current_user %>
+    | <%= link_to 'Edit', edit_book_path(@book) %>
+    | <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong> Author: </strong>
-    <%= @book.author || "Unavailable" %>
-</p>
-
-<p>
-  <strong>Synopsis:</strong>
-    <%= @book.synopsis || "Unavailable" %>
-</p>
-
-
-<p> Presented by :</p>
-
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <div><%= link_to user.name, books_path(:user_id => user.id) %></div>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'Back', books_path %>
-
-<% if current_user %>
-  | <%= link_to 'Edit', edit_book_path(@book) %>
-  | <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+</div>

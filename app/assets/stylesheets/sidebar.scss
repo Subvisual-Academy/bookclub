@@ -1,3 +1,5 @@
+@import "colors";
+
 .Sidebar {
   position: fixed;
   top: 0;
@@ -10,7 +12,7 @@
   padding-left: 1.2%;
   overflow-x: hidden;
 
-  background-color: #1b60f3;
+  background-color: $base-color;
 
   white-space: nowrap;
 
@@ -21,26 +23,26 @@
   display: block;
   padding-left: 8%;
 
-  color: #1f29a4;
+  color: $darker-base-color;
 
   font-size: 1em;
   text-decoration: none;
 }
 
 .Sidebar-book {
-  margin: 0 1.5em 0.1em 0;
+  margin: 0 1.7em 0.1em 0;
 
   vertical-align: middle;
 }
 
 .Sidebar-list {
-  margin: 0 1.5em 0.1em 0.2em;
+  margin: 0 1.7em 0.1em 0.2em;
 
   vertical-align: middle;
 }
 
 .Sidebar-session {
-  margin: 0 1.5em 0.1em 0.3em;
+  margin: 0 1.7em 0.1em 0.3em;
 
   vertical-align: middle;
 }

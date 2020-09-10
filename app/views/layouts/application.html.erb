@@ -5,18 +5,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
   <body>
     <div class="Main">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
+      <% flash.each do |_key, value| %>
+        <div class="u-notice">
           <%= value %>
         </div>
       <% end %>
     </div>
+
     <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
       <% if controller_name === "books" && action_name === "index" %>
         <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path, {:style=>'color:#f1f1f1;'} %>
@@ -31,7 +32,7 @@
         <% end %>
       </div>
       <% if current_user %>
-        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete %>
+        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete, title: "logout", class: "logout" %>
       <% else %>
         <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
       <% end %>
@@ -41,7 +42,7 @@
     document.toggleSidebar = (event) => {
         const sidebarElement = event.currentTarget;
         if (hidden) {
-            sidebarElement.style.width = "21.7%";
+            sidebarElement.style.width = "23%";
             hidden = false;
         } else {
             sidebarElement.style.width = "5%";

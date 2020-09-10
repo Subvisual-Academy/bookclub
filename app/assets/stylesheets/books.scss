@@ -1,6 +1,4 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "colors";
 
 .Books-Field {
   padding: 10px;
@@ -101,4 +99,20 @@
     font-family: Open Sans;
     font-size: 0.7em;
   }
+}
+
+.books-NewButton {
+  display: inline-block;
+  padding: 5px 20px 6px 20px;
+  margin: 40px 0;
+
+  background: $base-color;
+  border: none;
+  border-radius: 25px;
+  color: $tertiary-color;
+  cursor: pointer;
+
+  font-family: Open Sans, serif;
+  font-size: 1em;
+  text-decoration: none;
 }
