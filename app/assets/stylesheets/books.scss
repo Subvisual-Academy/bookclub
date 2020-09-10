@@ -1,5 +1,9 @@
 @import "colors";
 
+.Books {
+  margin-left: 8%;
+}
+
 .Books-Field {
   padding: 10px;
 }
@@ -45,11 +49,11 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   .books-FlexContainer-child {
-    flex-basis: auto;
+    flex-basis: 0;
     float: left;
-    max-width: 13em;
+    max-width: 11.5em;
     max-height: 22em;
-    min-width: 13em;
+    min-width: 11.5em;
     min-height: 22em;
     margin: 0.5em;
 
@@ -60,15 +64,15 @@
   }
 
   .books-FlexContainer-apiImg {
-    max-width: 13em;
-    min-width: 13em;
-    padding: 1.6em 3em 1.5em 3em;
+    width: 13em;
+    height: 13em;
+    padding: 1.6em 4em 1.5em 3em;
   }
 
   .books-FlexContainer-unavailableImg {
-    width: 12em;
-    height: 13.5em;
-    padding: 1.6em 0 1.5em 2em;
+    width: 13em;
+    height: 13em;
+    padding: 1.6em 1.2em 1.5em 1.2em;
   }
 
   .books-FlexContainer-title {
