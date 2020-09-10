@@ -20,9 +20,9 @@
 
     <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
       <% if controller_name === "books" && action_name === "index" %>
-        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path, {:style=>'color:#f1f1f1;'} %>
+        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path, {:style=>'color:#f1f1f1;'} %>
       <% else %>
-        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path %>
+        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path %>
       <% end %>
       <div class="Sidebar-textList">
         <% if controller_name === "gatherings" && action_name ==="index" %>
