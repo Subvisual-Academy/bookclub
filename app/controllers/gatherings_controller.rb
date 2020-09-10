@@ -56,6 +56,6 @@ class GatheringsController < ApplicationController
   def require_moderator
     return if current_user&.moderator
 
-    redirect_to gatherings_path, status: :bad_request, notice: "The user does not have the required permissions."
+    head :unauthorized
   end
 end
