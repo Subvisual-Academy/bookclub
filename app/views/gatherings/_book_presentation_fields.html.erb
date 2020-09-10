@@ -7,7 +7,7 @@
     </div>
     &nbsp; - &nbsp;
     <div class="Gatherings-mentionsSecond">
-    <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book"} , {:class => "SlimSelect bookPresentation-prompt"} %>
+    <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book (Create before insert)"} , {:class => "SlimSelect bookPresentation-prompt"} %>
     </div>
     &nbsp; &nbsp;
     <%= form.check_box :special, class: "checkbox-round" %>

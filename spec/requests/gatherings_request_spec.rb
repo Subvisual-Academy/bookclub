@@ -41,18 +41,18 @@ RSpec.describe "Gatherings", type: :request do
 
       expect(response).to redirect_to(login_path)
     end
-  end
 
-  it "displays the gathering form for logged in users" do
-    user = create(:user)
-    login_user(user)
+    it "displays the gathering form for moderators" do
+      user = create(:user, :is_moderator)
+      login_user(user)
 
-    get new_gathering_path
+      get new_gathering_path
 
-    expect(response_text).to include("New Bookclub Gathering")
-    expect(response_text).to include("Date")
-    expect(response_text).to include("Book Mentions")
-    expect(response_text).to include("Add Presentation")
+      expect(response_text).to include("New Bookclub Gathering")
+      expect(response_text).to include("Date")
+      expect(response_text).to include("Book Mentions")
+      expect(response_text).to include("Add Presentation")
+    end
   end
 
   describe "GET #edit" do

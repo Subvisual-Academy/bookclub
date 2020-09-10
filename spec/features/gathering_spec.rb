@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Gathering", js: true do
   it "displays a book presentation form when the button is clicked" do
-    login_user(create(:user))
+    login_user(create(:user, :is_moderator))
 
     visit new_gathering_path
     click_on("Add Presentation")
@@ -24,7 +24,7 @@ RSpec.feature "Gathering", js: true do
   end
 
   it "creates a gathering" do
-    login_user(create(:user))
+    login_user(create(:user, :is_moderator))
     allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
 
     visit(new_gathering_path)
