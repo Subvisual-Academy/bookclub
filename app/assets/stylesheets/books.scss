@@ -10,7 +10,7 @@
   padding: 5px;
 }
 
-.Books-main {
+.books-Main {
   padding: 3% 25% 1% 25%;
   h1 {
     color: #1b60f3;
@@ -36,18 +36,23 @@
   }
 }
 
-.Books-unknown {
-  width: 7em;
-  height: 7em;
+.books-Unknown {
+  width: 10em;
+  height: 10em;
+  padding: 1.6em 3em 1.5em 3em;
 }
 
-.Books-flexGrid {
-  display: flex;
+.books-FlexContainer {
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  .Books-flexGridSingle {
-    flex-basis: 8em;
+  .books-FlexContainer-child {
+    flex-basis: auto;
     float: left;
+    max-width: 13em;
+    max-height: 22em;
+    min-width: 13em;
+    min-height: 22em;
     margin: 0.5em;
 
     background: #ffffff;
@@ -55,19 +60,45 @@
     border-radius: 25px;
     box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
   }
-  .Books-flexGridSingleImg {
-    flex-basis: 8em;
-    float: left;
-    padding: 1.6em 3em 20px 60px;
+
+  .books-FlexContainer-apiImg {
+    max-width: 13em;
+    min-width: 13em;
+    padding: 1.6em 3em 1.5em 3em;
   }
-    
-  .Books-flexGridSingleText{
-    
-    padding: 0 8% 10% 8%;
+
+  .books-FlexContainer-unavailableImg {
+    width: 12em;
+    height: 13.5em;
+    padding: 1.6em 0 1.5em 2em;
+  }
+
+  .books-FlexContainer-title {
+    max-width: 100%;
+    padding: 0 8% 3% 8%;
+
+    color: #1b60f3;
+
     font-family: Open Sans;
     font-size: 0.8em;
-    color: #1B60F3;
-    font-weight: bold;
-    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .books-FlexContainer-author {
+    padding: 0 8% 3% 8%;
+
+    color: #7485a9;
+
+    font-family: Open Sans;
+    font-size: 0.8em;
+  }
+
+  .books-FlexContainer-presenter {
+    padding: 0 8% 0 8%;
+
+    color: #1f29a4;
+
+    font-family: Open Sans;
+    font-size: 0.7em;
   }
 }

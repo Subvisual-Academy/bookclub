@@ -1,4 +1,4 @@
-<div class="Books-main">
+<div class="books-Main">
   <% if current_user %>
     <%= link_to 'New Book', new_book_path %>
   <% end %>
@@ -22,34 +22,74 @@
     <%= distinct_book_mentions(user)%>
     <br>
   <% end %>
-  <% @gatherings.each do | year, gatherings | %>
-  <% gatherings.each do | gathering |%>
-  <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
 
-  <% @books.each do |book| %>
-    <div class="Books-flexGrid">
-      <div class="Books-flexGridSingle">
-      <div class="Books-flexGridSingleImg">
-        <% if book.image%>
-          <img src="<%= book.image %>"  alt="book cover"/>
-        <% else %>
-          <%= link_to (inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown") %>
-        <% end %>
-      </div>
-      <div class="Books-flexGridSingleText">
-        <%= book.title %>
-      </div>
-      <%= book.author || "Unavailable" %>
-      
-      <!-- <%= link_to 'Show', book %>
-      <% if current_user %>
-        <%= link_to 'Edit', edit_book_path(book) %>
-        <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>-->
-      </div>
-    </div>
+  <% if @selected_user.nil? %>
+    <p class="gatherings-MainYear">Books not presented</p>
+    <% @books.select { |book| book.users.count == 0 }.each do |book| %>
+      <div class="books-FlexContainer">
+            <div class="books-FlexContainer-child">
+                <% if book.image%>
+                  <img src="<%= book.image %>"  alt="book cover" class="books-FlexContainer-apiImg"/>
+                <% else %>
+                  <%= link_to (inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg") %>
+                <% end %>
+              <div class="books-FlexContainer-title">
+                <%= truncate(book.title, length:44) %>
+              </div>
+              <div class="books-FlexContainer-author">
+                by <%= book.author || "Unavailable" %>
+              </div>
+              <p class ="books-FlexContainer-presenter">Presented by:
+              <% book.users.distinct.each do |user| %>
+                  <%= link_to user.name, books_path(:user_id => user.id) %>
+              <% end %>
+            <p>
+            </div>
+          </div>
+    <% end %>
   <% end %>
 
+  <% @gatherings.each do | year, gatherings | %>
+    <% gatherings.each do | gathering |%>
+      <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
+      
+      <% gathering.books.distinct.each do |book| %>
+        <% if @selected_user.nil? || book.users.include?(@selected_user) %>
+          <div class="books-FlexContainer">
+            <div class="books-FlexContainer-child">
+                <% if book.image%>
+                  <img src="<%= book.image %>"  alt="book cover" class="books-FlexContainer-apiImg"/>
+                <% else %>
+                  <%= link_to (inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg") %>
+                <% end %>
+              <div class="books-FlexContainer-title">
+                <%= truncate(book.title, length:44) %>
+              </div>
+              <div class="books-FlexContainer-author">
+                by <%= book.author || "Unavailable" %>
+              </div>
+              <p class ="books-FlexContainer-presenter">Presented by:
+              <% if book.users.count < 2 %>
+                <% book.users.distinct.each do |user| %>
+                  <%= link_to user.name, books_path(:user_id => user.id) %>
+                <% end %>
+              <% else %>
+                <% book.users.distinct[0..1].each do |user| %>
+                  <%= link_to user.name, books_path(:user_id => user.id) %>
+                <% end %>
+                + <%= book.users.distinct.count -2 %>
+              <% end %>
+            <p>
+
+            <!--<%= link_to 'Show', book %>
+              <% if current_user %>
+                <%= link_to 'Edit', edit_book_path(book) %>
+                <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>-->
+            </div>
+          </div>
+        <% end %>
+    <% end %>
   <% end %>
   <% end %>
 </div>
