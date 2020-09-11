@@ -4,8 +4,10 @@
       <li><%= link_to book_presentations[0].user.name, books_path(:user_id => user_id), class: "bookPresentation-name" %> </li>
       <div class="bookPresentation-titles">
         <% book_presentations.each do |presentation| %>
-          <li class=" u-popup"> <span class="bookPresentation-title"> &mdash;  <%= presentation.book.title %></span>,
-            by <%= book_author(presentation.book) %>
+          <li>
+            <span class="u-popup">
+              <span class="bookPresentation-title"> &mdash;  <%= presentation.book.title %></span>,
+                by <%= book_author(presentation.book) %>
               <span class="popup-GatheringPopup u-popupContent">
                 <% if presentation.book.image%>
                   <img src="<%= presentation.book.image %>"  alt="book cover" class="popup-GatheringPopupImage"/>
@@ -14,6 +16,7 @@
                 <% end %>
                 <%= presentation.book.synopsis || "Unavailable" %>
               </span>
+            </span>
           </li>
         <% end %>
       </div>
