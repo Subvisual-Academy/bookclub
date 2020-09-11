@@ -3,7 +3,7 @@ module SlackNotifier
     def notify_minute(date, url)
       @slack_notifier ||= Slack::Notifier.new ENV["SLACK_URL"], channel: ENV["SLACK_CHANNEL"], username: ENV["BOT_NAME"]
 
-      @slack_notifier.ping(text: "The books from the *#{date.strftime('%B %-dth')}* gathering are now available! Check them out on: #{url} :book:")
+      @slack_notifier.ping(text: "The books from the *#{date.strftime("%B #{date.day.ordinalize}")}* gathering are now available! Check them out on: #{url} :book:")
     end
 
     def notify_start_of_week
