@@ -4,7 +4,7 @@ class Gatherings::NotificationsController < ApplicationController
   def create
     @gathering = Gathering.find(params[:gathering_id])
 
-    SlackNotifier.notify_minute(@gathering.date, gathering_url(@gathering))
+    SlackNotifier.notify_minute(@gathering.date, gatherings_url)
 
     redirect_to gatherings_path, notice: "Notification was succesfully sent"
   end
