@@ -38,13 +38,8 @@
               <%= truncate(book.title, length:40) %>
             </div>
             <div class="books-FlexContainer-author">
-              by <%= book.author || "Unavailable" %>
+              by <%= truncate(book.author, length: 35) || "Unavailable" %>
             </div>
-            <%= link_to 'Show', book %>
-            <% if current_user %>
-              <%= link_to 'Edit', edit_book_path(book) %>
-              <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
           </div>
         </div>
       <% end %>
@@ -68,7 +63,7 @@
                 <%= truncate(book.title, length:40) %>
               </div>
               <div class="books-FlexContainer-author">
-                by <%= book.author || "Unavailable" %>
+                by <%= truncate(book.author, length:35) || "Unavailable" %>
               </div>
               <div class ="books-FlexContainer-presenter">Presented by:
               <% if book.users.count <= 3 %>
