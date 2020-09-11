@@ -65,12 +65,12 @@
               </div>
               <div class ="books-FlexContainer-presenter">Presented by:
               <% if book.users.count <= 3 %>
-                <% book.users.distinct.each do |user| %>
-                  <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %>&nbsp;&nbsp;
+                <% book.users.distinct.each_with_index do |user, index| %>
+                  <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < book.users.distinct.count-1 %>,<% end %>
                 <% end %>
               <% else %>
-                <% book.users.distinct[0..2].each do |user| %>
-                  <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %>&nbsp;&nbsp;
+                <% book.users.distinct[0..2].each_with_index do |user, index| %>
+                  <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < 2 %>,<% end %>
                 <% end %>
                 + <%= book.users.distinct.count -3 %>
               <% end %>
