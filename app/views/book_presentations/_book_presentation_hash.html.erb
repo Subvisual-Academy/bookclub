@@ -6,7 +6,7 @@
         <% book_presentations.each do |presentation| %>
           <li>
             <span class="u-popup">
-              <span class="bookPresentation-title"> &mdash;  <%= presentation.book.title %></span>,
+              &mdash; <span class="bookPresentation-title u-pointer"><%= presentation.book.title %></span>,
                 by <%= book_author(presentation.book) %>
               <span class="popup-GatheringPopup u-popupContent">
                 <% if presentation.book.image%>

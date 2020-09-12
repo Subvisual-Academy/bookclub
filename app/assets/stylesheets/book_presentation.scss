@@ -25,6 +25,10 @@
   text-decoration: none;
 }
 
+.bookPresentation-name:hover {
+  text-decoration: underline;
+}
+
 .bookPresentation-titles {
   margin-top: 0.25em;
   margin-left: 1em;
@@ -45,6 +49,10 @@
 
   .bookPresentation-title {
     font-weight: 600;
+  }
+
+  .bookPresentation-title:hover {
+    text-decoration: underline;
   }
 }
 
