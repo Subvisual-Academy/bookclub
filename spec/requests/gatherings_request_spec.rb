@@ -169,7 +169,6 @@ RSpec.describe "Gatherings", type: :request do
   end
 
   describe "DELETE #destroy" do
-
     it "redirects to gatherings_path on a successful delete" do
       login_user(create(:user, :is_moderator))
       gathering = create(:gathering)

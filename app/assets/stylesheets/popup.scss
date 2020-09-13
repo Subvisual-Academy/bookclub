@@ -55,14 +55,14 @@
   max-width: 20em;
   max-height: 300px;
   padding: 8px;
-  margin-left: -80px;
   margin-right: 0.5em;
+  margin-left: -80px;
 
   background-color: $tertiary-color;
-  color: $base-color;
+  border-radius: 12px;
 
   box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
-  border-radius: 12px;
+  color: $base-color;
 
   font-size: 0.8em;
 
@@ -107,22 +107,22 @@
   font-size: 1.1em;
   font-weight: bold;
 }
-.popup-Goodreads:hover{
+.popup-Goodreads:hover {
   background-color: $darker-base-color;
 }
 
-.popup-Break{
+.popup-Break {
   margin: 10px 0;
 }
 
-.popup-GatheringBookContent{
+.popup-GatheringBookContent {
   margin-top: 5px;
 }
 
 @media all and (max-width: 900px) {
-  .popup-GatheringPopup{
+  .popup-GatheringPopup {
+    left: 87%;
+
     max-width: 10em;
-    left: 87%
   }
 }
-

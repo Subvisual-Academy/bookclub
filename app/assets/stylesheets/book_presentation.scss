@@ -100,32 +100,36 @@ input[type="checkbox"] {
   min-width: 200px;
 }
 
-.bookPresentation-Tooltip{
+.bookPresentation-Tooltip {
   position: relative;
+
   display: inline-block;
 }
 
 .bookPresentation-TooltipText {
-  visibility: hidden;
-  width: 200px;
-  background-color: $secondary-color;
-  color: $tertiary-color;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
+  position: absolute;
 
   /* Position the tooltip text - see examples below! */
   bottom: 110%;
   left: 50%;
-  margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
-  position: absolute;
   z-index: 1;
 
+  visibility: hidden;
+  width: 200px;
+  padding: 5px 0;
+  margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+  background-color: $secondary-color;
+  border-radius: 6px;
+  color: $tertiary-color;
+
   font-size: 0.6em;
+  text-align: center;
 }
 
 .bookPresentation-TooltipText {
   opacity: 0;
+
   transition: opacity 0.75s;
 }
 
@@ -135,13 +139,16 @@ input[type="checkbox"] {
 
 .bookPresentation-TooltipText::after {
   content: " ";
+
   position: absolute;
   top: 100%; /* At the bottom of the tooltip */
   left: 50%;
+
   margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
+
   border-color: $secondary-color transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px;
 }
 
 .bookPresentation-Tooltip:hover .bookPresentation-TooltipText {
