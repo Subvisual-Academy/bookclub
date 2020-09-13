@@ -10,7 +10,10 @@
     <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book (Create before insert)"} , {:class => "SlimSelect bookPresentation-prompt"} %>
     </div>
     &nbsp; &nbsp;
-    <%= form.check_box :special, class: "checkbox-round" %>
+    <div class="bookPresentation-Tooltip">
+      <%= form.check_box :special, class: "checkbox-round" %>
+      <span class="bookPresentation-TooltipText">Belongs to a special presentation?</span>
+    </div>
     &nbsp;
     <%= link_to (inline_svg_tag 'trash.svg', alt: "delete"), "#", data: { action: "click->nested-form#removeAssociation" }, class:"u-deleteButton" %>
   </div>

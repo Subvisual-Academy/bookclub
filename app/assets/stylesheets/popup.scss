@@ -73,6 +73,7 @@
 .popup-GatheringPopupImage {
   float: left;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .popup-BookPopup {
@@ -92,9 +93,36 @@
   text-align: center;
 }
 
+.popup-Goodreads {
+  padding: 5px 20px 6px 20px;
+  margin: 0 auto;
+
+  background: $base-color;
+  border: none;
+  border-radius: 25px;
+  color: $tertiary-color;
+  cursor: pointer;
+
+  font-family: "Playfair Display", serif;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.popup-Goodreads:hover{
+  background-color: $darker-base-color;
+}
+
+.popup-Break{
+  margin: 10px 0;
+}
+
+.popup-GatheringBookContent{
+  margin-top: 5px;
+}
+
 @media all and (max-width: 900px) {
   .popup-GatheringPopup{
     max-width: 10em;
     left: 87%
   }
 }
+

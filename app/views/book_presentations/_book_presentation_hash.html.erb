@@ -14,7 +14,13 @@
                 <% else %>
                   <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown books-PopUpImage" %>
                 <% end %>
-                <%= presentation.book.synopsis || "Unavailable" %>
+                <div class="popup-GatheringBookContent">
+                  <div>
+                    <%= goodreads_button(presentation.book) %>
+                  </div>
+                  <div class="popup-Break"></div>
+                  <%= presentation.book.synopsis || "Unavailable" %>
+                </div>
               </span>
             </span>
           </li>

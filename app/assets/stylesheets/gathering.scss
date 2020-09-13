@@ -84,6 +84,11 @@
   text-decoration: none;
 }
 
+.gatherings-Sec-link:hover {
+  color: $darker-secondary-color;
+}
+
+
 .gatherings-Main-header-container {
   display: flex;
   align-items: center;
@@ -276,6 +281,9 @@
   font-size: 0.8em;
 }
 
+.gatherings-Submit:hover{
+  background-color: $darker-base-color;
+}
 .gatherings-Notification {
   padding: 5px 20px 6px 20px;
   margin-right: 1em;
@@ -288,6 +296,10 @@
 
   font-family: Open Sans, serif;
   font-size: 0.8em;
+}
+
+.gatherings-Notification:hover {
+  background-color: $darker-base-color;
 }
 
 .gatherings-SpaceDown {
