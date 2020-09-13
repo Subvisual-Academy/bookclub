@@ -94,7 +94,7 @@ RSpec.feature "Gathering", js: true do
     visit gatherings_path
     click_on(Date::MONTHNAMES[gathering.date.month])
     sleep(1) # wait for the animation to finish and display the new button
-    find('span', text: gathering.book_presentations[0].book.title).click
+    find('span', class: "bookPresentation-title",text: gathering.book_presentations[0].book.title).click
 
     expect(page).to have_content(gathering.book_presentations[0].book.synopsis)
   end
