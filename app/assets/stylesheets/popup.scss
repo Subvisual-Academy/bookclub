@@ -7,7 +7,7 @@
 .u-popup {
   position: relative;
 
-  display: inline-block;
+  //display: inline-block;
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -117,6 +117,11 @@
 
 .popup-GatheringBookContent {
   margin-top: 5px;
+}
+
+.popup-UnknownCover {
+  width:10em;
+  height: 10em;
 }
 
 @media all and (max-width: 900px) {

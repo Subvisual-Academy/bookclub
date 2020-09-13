@@ -12,7 +12,7 @@
                 <% if presentation.book.image%>
                   <img src="<%= presentation.book.image %>"  alt="book cover" class="popup-GatheringPopupImage"/>
                 <% else %>
-                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "Books-unknown books-PopUpImage" %>
+                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-GatheringPopupImage" %>
                 <% end %>
                 <div class="popup-GatheringBookContent">
                   <div>
