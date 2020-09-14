@@ -14,11 +14,6 @@ class BooksController < ApplicationController
     @users = User.order(:name).all
   end
 
-  def show
-    @book = Book.find(params[:id])
-    @users = @book.users.distinct
-  end
-
   def new
     @book = Book.new(title: params[:title], author: params[:author])
   end
@@ -44,7 +39,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     if @book.update(book_params)
-      redirect_to @book, notice: "Book was successfully updated."
+      redirect_to books_path, notice: "Book was successfully updated."
     else
       flash.now[:notice] = "Invalid field"
       render :edit, status: :bad_request

@@ -23,14 +23,14 @@
                 <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg" %>
               <% end %>
               <div class="books-FlexContainer-title">
-                <%= truncate(book.title, length:40) %>
+                  <%= truncate(book.title, length:40) %>
               </div>
 
               <span class="popup-PopupFrame u-popupContent">
                 <% if book.image%>
                   <img src="<%= book.image %>"  alt="book cover" class="popup-PopupImage"/>
                 <% else %>
-                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-GatheringPopupImage" %>
+                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-PopupImage" %>
                 <% end %>
                 <div class="popup-BookContent">
                   <%= goodreads_button(book) %>
@@ -41,10 +41,15 @@
                 </div>
               </span>
             </div>
-
             <div class="books-FlexContainer-author">
               by <%= truncate(book.author, length: 35) || "Unavailable" %>
             </div>
+
+            <div class="books-FlexContainer-footer">
+              <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_book_path(book) %>
+              <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), book, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
+            </div>
+
           </div>
         </div>
       <% end %>
@@ -59,6 +64,7 @@
         <% if @selected_user.nil? || book.users.include?(@selected_user) %>
           <div class="books-FlexContainer">
             <div class="books-FlexContainer-child">
+
               <div class="u-popup u-pointer u-underline">
                 <% if book.image%>
                   <img src="<%= book.image %>"  alt="book cover" class="books-FlexContainer-apiImg"/>
@@ -74,9 +80,10 @@
                   <% if book.image%>
                     <img src="<%= book.image %>"  alt="book cover" class="popup-PopupImage"/>
                   <% else %>
-                    <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover" %>
+                    <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-PopupImage" %>
                   <% end %>
-                    <div class="popup-BookContent">
+
+                  <div class="popup-BookContent">
                     <div>
                       <%= goodreads_button(book) %>
                     </div>
@@ -102,6 +109,12 @@
                   + <%= book.users.distinct.count -3 %>
                 <% end %>
               </div>
+
+              <div class="books-FlexContainer-footer">
+                <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_book_path(book) %>
+                <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), book, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
+              </div>
+
             </div>
           </div>
         <% end %>

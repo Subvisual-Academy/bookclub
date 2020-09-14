@@ -35,6 +35,14 @@
   ul {
     list-style: none;
   }
+
+  p {
+    margin-top: 6.2px;
+  }
+
+  .gatherings-SpecialPresentation {
+    margin-top: 2.5rem;
+  }
 }
 
 .gatherings-Main-helpText {
@@ -267,8 +275,13 @@
   line-height: 0;
 }
 
+.gatherings-FormSeparation {
+  margin-bottom: 1.5em;
+}
+
 .gatherings-Submit {
   padding: 5px 20px 6px 20px;
+  margin-top: 10px;
 
   background: $base-color;
   border: none;

@@ -12,7 +12,7 @@
   </div>
 </div>
   <%= render 'book_presentations/book_presentation_hash', presentations_hash: gathering.book_presentations.reject { |presentation|  presentation.special}.group_by(&:user_id) %>
-<h2>
+<h2 class="gatherings-SpecialPresentation">
   <%= gathering.special_presentation %>
 </h2>
   <%= render 'book_presentations/book_presentation_hash', presentations_hash: gathering.book_presentations.select { |presentation|  presentation.special}.group_by(&:user_id) %>

@@ -45,6 +45,8 @@
 }
 
 .books-FlexContainer {
+  position: relative;
+
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -120,6 +122,23 @@
   }
 }
 
+.books-FlexContainer-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  visibility: hidden;
+
+  width: 100%;
+  padding: 12px 30px;
+}
+
+.books-FlexContainer-child:hover .books-FlexContainer-footer {
+  visibility: visible;
+}
+
 .books-NewButton {
   display: inline-block;
   padding: 5px 20px 6px 20px;
@@ -134,4 +153,8 @@
   font-family: Open Sans, serif;
   font-size: 1em;
   text-decoration: none;
+}
+
+.books-NewButton:hover {
+  background: $darker-base-color;
 }
