@@ -11,6 +11,10 @@ class BooksController < ApplicationController
                @selected_user.books.distinct
              end
     @users = User.order(:name).all
+    if params[:search]
+      @books = Book.search(params[:search])
+      @users = User.search(params[:search])
+    end
   end
 
   def show

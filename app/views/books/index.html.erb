@@ -1,4 +1,14 @@
 <div class="books-Main">
+  <%= form_tag books_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <!--<form action="/search">
+    <input name="q" type="text" placeholder="Search">
+    <button type="submit">Search</button>
+  </form>-->
+
   <div>
     <% if @selected_user.nil? %>
       <strong> <%= link_to 'All books', books_path %> </strong>
