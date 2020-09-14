@@ -46,7 +46,7 @@
   }
 }
 
-.popup-GatheringPopup {
+.popup-PopupFrame {
   position: fixed;
   top: 42px;
   left: 81.5%;
@@ -70,28 +70,12 @@
   overflow-y: scroll;
 }
 
-.popup-GatheringPopupImage {
+.popup-PopupImage {
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
 }
 
-.popup-BookPopup {
-  position: absolute;
-  top: 0;
-  left: 160%;
-  z-index: 1;
-
-  width: 30em;
-  padding: 8px;
-  margin-left: -80px;
-
-  background-color: #555;
-  border-radius: 6px;
-  color: #fff;
-
-  text-align: center;
-}
 
 .popup-Goodreads {
   padding: 5px 20px 6px 20px;
@@ -106,6 +90,8 @@
   font-family: "Playfair Display", serif;
   font-size: 1.1em;
   font-weight: bold;
+
+  text-decoration: none;
 }
 .popup-Goodreads:hover {
   background-color: $darker-base-color;
@@ -115,17 +101,19 @@
   margin: 10px 0;
 }
 
-.popup-GatheringBookContent {
+.popup-BookContent {
   margin-top: 5px;
 }
-
+.popup-BookSynopsis {
+  text-align: left;
+}
 .popup-UnknownCover {
-  width:10em;
+  width: 10em;
   height: 10em;
 }
 
 @media all and (max-width: 900px) {
-  .popup-GatheringPopup {
+  .popup-PopupFrame {
     left: 87%;
 
     max-width: 10em;

@@ -20,24 +20,24 @@
               <% if book.image%>
                 <img src="<%= book.image %>"  alt="book cover" class="books-FlexContainer-apiImg"/>
               <% else %>
-                <%= link_to(inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg") %>
+                <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg" %>
               <% end %>
               <div class="books-FlexContainer-title">
                 <%= truncate(book.title, length:40) %>
               </div>
 
-              <span class="popup-GatheringPopup u-popupContent">
+              <span class="popup-PopupFrame u-popupContent">
                 <% if book.image%>
-                  <img src="<%= book.image %>"  alt="book cover" class="popup-GatheringPopupImage"/>
+                  <img src="<%= book.image %>"  alt="book cover" class="popup-PopupImage"/>
                 <% else %>
                   <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-GatheringPopupImage" %>
                 <% end %>
-                <div class="popup-GatheringBookContent">
-                  <div>
-                    <%= goodreads_button(book) %>
-                  </div>
+                <div class="popup-BookContent">
+                  <%= goodreads_button(book) %>
                   <div class="popup-Break"></div>
-                  <%= book.synopsis || "Unavailable" %>
+                  <div class="popup-BookSynopsis">
+                    <%= book.synopsis || "Unavailable" %>
+                  </div>
                 </div>
               </span>
             </div>
@@ -70,19 +70,18 @@
                   <%= truncate(book.title, length:40) %>
                 </div>
 
-
-                <span class="popup-GatheringPopup u-popupContent">
+                <span class="popup-PopupFrame u-popupContent">
                   <% if book.image%>
-                    <img src="<%= book.image %>"  alt="book cover" class="popup-GatheringPopupImage"/>
+                    <img src="<%= book.image %>"  alt="book cover" class="popup-PopupImage"/>
                   <% else %>
-                    <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-GatheringPopupImage" %>
+                    <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover" %>
                   <% end %>
-                    <div class="popup-GatheringBookContent">
+                    <div class="popup-BookContent">
                     <div>
                       <%= goodreads_button(book) %>
                     </div>
                     <div class="popup-Break"></div>
-                      <%= book.synopsis || "Unavailable" %>
+                    <div><%= book.synopsis || "Unavailable" %></div>
                   </div>
                 </span>
               </div>

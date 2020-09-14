@@ -8,18 +8,18 @@
             <span class="u-popup">
               &mdash; <span class="bookPresentation-title u-pointer"><%= presentation.book.title %></span>,
                 by <%= book_author(presentation.book) %>
-              <span class="popup-GatheringPopup u-popupContent">
+              <span class="popup-PopupFrame u-popupContent">
                 <% if presentation.book.image%>
-                  <img src="<%= presentation.book.image %>"  alt="book cover" class="popup-GatheringPopupImage"/>
+                  <img src="<%= presentation.book.image %>"  alt="book cover" class="popup-PopupImage"/>
                 <% else %>
                   <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-GatheringPopupImage" %>
                 <% end %>
-                <div class="popup-GatheringBookContent">
-                  <div>
-                    <%= goodreads_button(presentation.book) %>
-                  </div>
+                <div class="popup-BookContent">
+                  <%= goodreads_button(presentation.book) %>
                   <div class="popup-Break"></div>
-                  <%= presentation.book.synopsis || "Unavailable" %>
+                  <div class="popup-BookSynopsis">
+                    <%= presentation.book.synopsis || "Unavailable" %>
+                  </div>
                 </div>
               </span>
             </span>
