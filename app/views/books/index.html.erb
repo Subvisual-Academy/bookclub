@@ -1,4 +1,9 @@
 <div class="books-Main">
+  <%= form_tag books_path, :method => "get" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for a book..." %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
   <div>
     <% if @selected_user.nil? %>
       <strong> <%= link_to 'All books', books_path %> </strong>
@@ -51,7 +56,7 @@
       <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
       
       <% gathering.books.distinct.each do |book| %>
-        <% if @selected_user.nil? || book.users.include?(@selected_user) %>
+        <% if (@selected_user.nil? || book.users.include?(@selected_user)) && (@books.include?(book)) %>
           <div class="books-FlexContainer">
             <div class="books-FlexContainer-child">
               <% if book.image%>

@@ -6,4 +6,10 @@ class Book < ApplicationRecord
   has_many :users, through: :book_presentations
 
   scope :by_creation_date, -> { order("created_at DESC") }
+
+  def self.search(search)
+    return Book.all if search.blank?
+
+    Book.where("title ILIKE ? OR synopsis ILIKE ? OR author ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
 end
