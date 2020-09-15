@@ -43,7 +43,9 @@
                 <% end %>
                 <div class="popup-BookContent">
                   <%= goodreads_button(book) %>
+
                   <div class="popup-Break"></div>
+
                   <div class="popup-BookSynopsis">
                     <%= book.synopsis || "Unavailable" %>
                   </div>
@@ -98,9 +100,7 @@
                     <% end %>
 
                     <div class="popup-BookContent">
-                      <div>
-                        <%= goodreads_button(book) %>
-                      </div>
+                      <%= goodreads_button(book) %>
 
                       <div class="popup-Break"></div>
 
