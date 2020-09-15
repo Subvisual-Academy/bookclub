@@ -1,17 +1,17 @@
 <%= form_with(model: book, local: true, url: books_path) do |form| %>
-  <div class="Books-Field">
+  <div class="books-Field">
     <%= form.label :title %>
     <br>
     <%= form.text_field :title %>
   </div>
 
-  <div class="Books-Field">
+  <div class="books-Field">
     <%= form.label :author, 'Author (Optional - use when the API creates the wrong book)' %>
     <br>
     <%= form.text_field :author %>
   </div>
 
-  <div class="Books-Actions">
+  <div class="books-Actions">
     <%= form.submit %>
   </div>
 <% end %>

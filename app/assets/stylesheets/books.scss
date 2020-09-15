@@ -4,11 +4,30 @@
   margin-left: 8%;
 }
 
-.Books-Field {
+.books-Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.books-UserFilter {
+  box-sizing: border-box;
+  height: 38px;
+  padding-left: 20px;
+
+  background: $tertiary-color;
+  border: 1px solid $darker-base-color;
+  border-radius: 25px;
+  color: $darker-secondary-color;
+
+  font-size: 0.8em;
+}
+
+.books-Field {
   padding: 10px;
 }
 
-.Books-Actions {
+.books-Actions {
   padding: 5px;
 }
 
