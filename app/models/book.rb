@@ -13,5 +13,5 @@ class Book < ApplicationRecord
     else
       Book.where("title ILIKE ? OR synopsis ILIKE ? OR author ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
     end
-  end 
+  end
 end

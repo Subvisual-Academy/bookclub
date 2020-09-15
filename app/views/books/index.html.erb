@@ -1,13 +1,8 @@
 <div class="books-Main">
-  <%= form_tag books_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
+  <%= form_tag books_path, :method => "get" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for a book..." %>
     <%= submit_tag "Search" %>
   <% end %>
-
-  <!--<form action="/search">
-    <input name="q" type="text" placeholder="Search">
-    <button type="submit">Search</button>
-  </form>-->
 
   <div>
     <% if @selected_user.nil? %>

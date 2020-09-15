@@ -29,6 +29,17 @@ RSpec.describe "Books", type: :request do
       expect(response_text).to include(book_list[1].title)
       expect(response_text).not_to include(book_list[2].title)
     end
+
+    it "displays book when searched by title" do
+      book_list = create_list(:book, 3)
+
+      get books_path(search: book_list[0].title)
+      result_list = Book.search(book_list[0].title)
+
+      result_list.each do |book|
+        expect(response_text).to include(book.title)
+      end
+    end
   end
 
   describe "GET #show" do

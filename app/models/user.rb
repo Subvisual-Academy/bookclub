@@ -12,12 +12,4 @@ class User < ApplicationRecord
 
   has_many :book_presentations, dependent: :destroy
   has_many :books, through: :book_presentations
-
-  def self.search(search)
-    if search.blank?
-      User.all
-    else
-      User.where("name ILIKE ?", "%#{search}%")
-    end
-  end
 end
