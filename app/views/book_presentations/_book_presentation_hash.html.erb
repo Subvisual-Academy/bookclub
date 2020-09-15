@@ -20,6 +20,13 @@
                   <div class="popup-BookSynopsis">
                     <%= presentation.book.synopsis || "Unavailable" %>
                   </div>
+
+                  <h4> Presented by: </h4>
+                  <ul style="list-style: disc;padding-left: 2.5em;">
+                  <% presentation.book.users.distinct.each do |user| %>
+                    <li> <%= link_to user.name, books_path(:user_id => user.id), class: "popup-UserName"%></li>
+                  <% end %>
+                  </ul>
                 </div>
               </span>
             </span>
