@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Gathering", js: true do
   it "displays a book presentation form when the button is clicked" do
-    login_user(create(:user))
+    login_user(create(:user, :is_moderator))
 
     visit new_gathering_path
     click_on("Add Presentation")
@@ -24,7 +24,7 @@ RSpec.feature "Gathering", js: true do
   end
 
   it "creates a gathering" do
-    login_user(create(:user))
+    login_user(create(:user, :is_moderator))
     allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
 
     visit(new_gathering_path)
@@ -85,5 +85,17 @@ RSpec.feature "Gathering", js: true do
     click_on(class: "gatherings-bodyCloseDivButton")
 
     find(".collapsible-content").assert_matches_style("paddingTop" => "0px")
+  end
+
+  it "displays the book's synopsis when it's name is clicked" do
+    login_user(create(:user))
+    gathering = create(:gathering_with_book_presentations)
+
+    visit gatherings_path
+    click_on(Date::MONTHNAMES[gathering.date.month])
+    sleep(1) # wait for the animation to finish and display the new button
+    find("span", class: "bookPresentation-title", text: gathering.book_presentations[0].book.title).click
+
+    expect(page).to have_content(gathering.book_presentations[0].book.synopsis)
   end
 end

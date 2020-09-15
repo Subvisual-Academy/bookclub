@@ -3,14 +3,10 @@ class BooksController < ApplicationController
 
   def index
     @selected_user = User.find_by(id: params[:user_id])
+    @search_param = params[:search]
     @gatherings = Gathering.group_by_year
-    @books = retrieve_books(@selected_user)
+    @books = retrieve_books(@selected_user, @search_param)
     @users = User.order(:name).all
-  end
-
-  def show
-    @book = Book.find(params[:id])
-    @users = @book.users.distinct
   end
 
   def new
@@ -38,7 +34,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     if @book.update(book_params)
-      redirect_to @book, notice: "Book was successfully updated."
+      redirect_to books_path, notice: "Book was successfully updated."
     else
       flash.now[:notice] = "Invalid field"
       render :edit, status: :bad_request
@@ -59,9 +55,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :synopsis, :image)
   end
 
-  def retrieve_books(selected_user)
-    if params[:search]
-      Book.search(params[:search])
+  def retrieve_books(selected_user, search_param)
+    if search_param
+      Book.search(search_param)
     elsif selected_user
       selected_user.books.distinct
     else

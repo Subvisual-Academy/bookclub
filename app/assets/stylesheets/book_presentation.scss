@@ -25,18 +25,20 @@
   text-decoration: none;
 }
 
+.bookPresentation-name:hover {
+  text-decoration: underline;
+}
+
 .bookPresentation-titles {
   margin-top: 0.25em;
   margin-left: 1em;
-  //font-size: 1px;
+
   color: $darker-base-color;
 
   font-family: "Open Sans", sans-serif;
 
   font-weight: normal;
   a {
-    color: inherit;
-
     text-decoration: none;
   }
   li {
@@ -45,6 +47,10 @@
 
   .bookPresentation-title {
     font-weight: 600;
+  }
+
+  .bookPresentation-title:hover {
+    text-decoration: underline;
   }
 }
 
@@ -92,4 +98,55 @@ input[type="checkbox"] {
 
 .bookPresentation-prompt {
   min-width: 200px;
+}
+
+.bookPresentation-Tooltip {
+  position: relative;
+
+  display: inline-block;
+}
+
+.bookPresentation-TooltipText {
+  position: absolute;
+
+  bottom: 110%;
+  left: 50%;
+  z-index: 1;
+
+  visibility: hidden;
+  width: 200px;
+  padding: 5px 0;
+  margin-left: -100px; /* Using half of the width (200/2 = 100), to center the tooltip */
+
+  background-color: $secondary-color;
+  border-radius: 6px;
+  color: $tertiary-color;
+
+  opacity: 0;
+
+  font-size: 0.6em;
+  text-align: center;
+
+  transition: opacity 0.75s;
+}
+.bookPresentation-Tooltip:hover .bookPresentation-TooltipText {
+  opacity: 1;
+}
+
+.bookPresentation-TooltipText::after {
+  content: " ";
+
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+
+  margin-left: -5px;
+
+  border-color: $secondary-color transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px;
+}
+
+.bookPresentation-Tooltip:hover .bookPresentation-TooltipText {
+  visibility: visible;
 }

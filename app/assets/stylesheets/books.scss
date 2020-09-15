@@ -4,12 +4,90 @@
   margin-left: 8%;
 }
 
-.Books-Field {
-  padding: 10px;
+.books-Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 40px;
 }
 
-.Books-Actions {
-  padding: 5px;
+.books-SearchButton {
+  display: inline-block;
+  padding: 5px 20px 6px 20px;
+  margin: 40px 0;
+
+  background: $base-color;
+  border: none;
+  border-radius: 25px;
+  color: $tertiary-color;
+  cursor: pointer;
+
+  font-family: Open Sans, serif;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.books-SearchButton:hover {
+  background-color: $darker-base-color;
+}
+
+.books-UserFilter {
+  box-sizing: border-box;
+  height: 38px;
+  padding-left: 20px;
+
+  background: $tertiary-color;
+  border: 1px solid $darker-base-color;
+  border-radius: 25px;
+  color: $darker-secondary-color;
+
+  font-size: 0.8em;
+}
+
+.books-Field {
+  padding-bottom: 20px;
+}
+
+.books-FieldLabel {
+  color: $darker-base-color;
+
+  font-family: Open Sans, sans-serif;
+  font-size: 0.9em;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.books-FieldPrompt {
+  box-sizing: border-box;
+
+  padding: 0.3rem 1rem 0.3em 1rem;
+  margin-top: 10px;
+
+  background: $tertiary-color;
+  border: 1px solid $darker-base-color;
+  border-radius: 5px;
+  color: $darker-secondary-color;
+
+  font-size: 1rem;
+}
+
+.books-Submit {
+  padding: 5px 20px 6px 20px;
+  margin-top: 15px;
+
+  background: $base-color;
+  border: none;
+  border-radius: 25px;
+  color: $tertiary-color;
+  cursor: pointer;
+
+  font-family: Open Sans, serif;
+  font-size: 0.8em;
+}
+
+.books-Submit:hover {
+  background: $darker-base-color;
 }
 
 .books-Main {
@@ -45,6 +123,8 @@
 }
 
 .books-FlexContainer {
+  position: relative;
+
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -61,6 +141,10 @@
     border: none;
     border-radius: 25px;
     box-shadow: 0px 0px 50px rgba(27, 96, 243, 0.08);
+  }
+
+  .u-underline:hover {
+    text-decoration: underline;
   }
 
   .books-FlexContainer-apiImg {
@@ -107,13 +191,30 @@
   .books-FlexContainer-presenterName {
     color: $base-color;
 
-    font-family: Open Sans;
+    font-family: Open Sans, sans-serif;
     text-decoration: none;
   }
 
   .books-FlexContainer-presenterName:hover {
     color: $darker-base-color;
   }
+}
+
+.books-FlexContainer-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  visibility: hidden;
+
+  width: 100%;
+  padding: 12px 30px;
+}
+
+.books-FlexContainer-child:hover .books-FlexContainer-footer {
+  visibility: visible;
 }
 
 .books-NewButton {
@@ -130,4 +231,12 @@
   font-family: Open Sans, serif;
   font-size: 1em;
   text-decoration: none;
+}
+
+.books-NewButton:hover {
+  background: $darker-base-color;
+}
+
+.u-break {
+  margin: 30px 0;
 }

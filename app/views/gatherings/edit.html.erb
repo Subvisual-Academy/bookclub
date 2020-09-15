@@ -1,14 +1,12 @@
-<div class="gatherings-Sec">
-  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "gatherings-Sec-img" )+
-                  "Back", gatherings_path, class: "gatherings-Sec-link" %>
+<div class="u-floatingBack">
+  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "u-floatingBackImg" )+
+                  "Back", gatherings_path, class: "u-floatingBackLink" %>
 </div>
 
 <div class="gatherings-Main">
   <h1>Editing Bookclub Gathering</h1>
-  <p class="gatherings-Main-helpText"> If you want a book to belong to the special presentation, check the circle next to it.
-    If you don’t press it, it will belong to the normal book mentions.</p>
-  <div class="gatherings-Line"></div>
-  <%= render 'form', gathering: @gathering %>
+  <div class="u-line"></div>
+  <%= render "form", gathering: @gathering %>
 </div>
 
 

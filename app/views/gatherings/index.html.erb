@@ -6,7 +6,7 @@
   <% @gatherings.each do | year, gatherings | %>
     <p class="gatherings-MainYear"><%= year %></p>
     <div class="gatherings-YearGrid">
-      <% if current_user %>
+      <% if current_user&.moderator %>
         <% if year == @gatherings.keys.first %>
           <button class="gatherings-PlusBox">
             <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"gatherings-First-link" %>
