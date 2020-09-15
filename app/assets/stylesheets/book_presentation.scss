@@ -109,7 +109,6 @@ input[type="checkbox"] {
 .bookPresentation-TooltipText {
   position: absolute;
 
-  /* Position the tooltip text - see examples below! */
   bottom: 110%;
   left: 50%;
   z-index: 1;
@@ -117,22 +116,19 @@ input[type="checkbox"] {
   visibility: hidden;
   width: 200px;
   padding: 5px 0;
-  margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  margin-left: -100px; /* Using half of the width (200/2 = 100), to center the tooltip */
 
   background-color: $secondary-color;
   border-radius: 6px;
   color: $tertiary-color;
 
+  opacity: 0;
+
   font-size: 0.6em;
   text-align: center;
-}
-
-.bookPresentation-TooltipText {
-  opacity: 0;
 
   transition: opacity 0.75s;
 }
-
 .bookPresentation-Tooltip:hover .bookPresentation-TooltipText {
   opacity: 1;
 }
