@@ -1,11 +1,11 @@
-<div class="gatherings-Sec">
-  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "gatherings-Sec-img" )+
-                  "Back", gatherings_path, class: "gatherings-Sec-link" %>
+<div class="u-floatingBack">
+  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "u-floatingBackImg" )+
+                  "Back", gatherings_path, class: "u-floatingBackLink" %>
 </div>
 
 <div class="gatherings-Main">
   <h1>Editing Bookclub Gathering</h1>
-  <div class="gatherings-Line"></div>
+  <div class="u-line"></div>
   <%= render 'form', gathering: @gathering %>
 </div>
 

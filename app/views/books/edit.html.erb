@@ -1,33 +1,40 @@
-<div class="Books">
+<div class="u-floatingBack">
+  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "u-floatingBackImg" )+
+                  "Back", books_path, class: "u-floatingBackLink" %>
+</div>
+
+
+<div class="books-Main">
   <h1>Editing Book</h1>
+  <div class="u-line"></div>
+
+  <div class="u-break"></div>
 
   <%= form_with(model: @book, local: true) do |form| %>
     <div class="books-Field">
-      <%= form.label :title %>
+      <%= form.label :title, class: "books-FieldLabel" %>
       <br>
-      <%= form.text_field :title %>
+      <%= form.text_field :title, class: "books-FieldPrompt"  %>
     </div>
 
     <div class="books-Field">
-      <%= form.label :author, 'Author' %>
+      <%= form.label :author, 'Author', class: "books-FieldLabel" %>
       <br>
-      <%= form.text_field :author %>
+      <%= form.text_field :author, class: "books-FieldPrompt"  %>
     </div>
 
     <div class="books-Field">
-      <%= form.label :synopsis, 'Synopsis' %>
+      <%= form.label :synopsis, 'Synopsis', class: "books-FieldLabel" %>
       <br>
-      <%= form.text_field :synopsis %>
+      <%= form.text_field :synopsis, class: "books-FieldPrompt"  %>
     </div>
 
     <div class="books-Field">
-      <%= form.label :image, 'Link to book cover' %>
+      <%= form.label :image, 'Link to book cover',  class: "books-FieldLabel" %>
       <br>
-      <%= form.text_field :image %>
+      <%= form.text_field :image, class: "books-FieldPrompt"  %>
     </div>
 
-    <div class="books-Actions">
-      <%= form.submit %>
-    </div>
+    <%= form.submit "Edit", class: "books-Submit"%>
   <% end %>
 </div>

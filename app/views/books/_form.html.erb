@@ -1,17 +1,19 @@
+<p class="u-helpText"> Since we're using an external service (google books) to gather the book information, only the title (and, optionally, the author) needs to be provided.</p>
+<p class="u-helpText">  If you wish to create a book manually, click
+  <%= link_to "here.", books_manual_import_new_path(title: @book.title, author: @book.author), style: "color: inherit" %></p>
+
 <%= form_with(model: book, local: true, url: books_path) do |form| %>
-  <div class="books-Field">
-    <%= form.label :title %>
-    <br>
-    <%= form.text_field :title %>
-  </div>
+    <div class="books-Field">
+      <%= form.label :title, class: "books-FieldLabel" %>
+      <div></div>
+      <%= form.text_field :title, class: "books-FieldPrompt" %>
+    </div>
 
-  <div class="books-Field">
-    <%= form.label :author, 'Author (Optional - use when the API creates the wrong book)' %>
-    <br>
-    <%= form.text_field :author %>
-  </div>
+    <div class="books-Field">
+      <%= form.label :author, 'Author (Optional)', class: "books-FieldLabel"  %>
+      <div></div>
+      <%= form.text_field :author, class: "books-FieldPrompt" %>
+    </div>
 
-  <div class="books-Actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <%= form.submit "Create", class: "books-Submit" %>
+  <% end %>

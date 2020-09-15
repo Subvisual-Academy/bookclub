@@ -1,9 +1,11 @@
-<div class="Books">
-  <h1>New Book - Using API </h1>
+<div class="u-floatingBack">
+  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "u-floatingBackImg" )+
+                  "Back", books_path, class: "u-floatingBackLink" %>
+</div>
+
+<div class="books-Main">
+  <h1>New Book - Using Google Books </h1>
+  <div class="u-line"></div>
 
   <%= render 'form', book: @book %>
-
-  <%= link_to 'Back', books_path %>  |
-
-  <%= link_to "Create manually", books_manual_import_new_path(title: @book.title, author: @book.author) %>
 </div>

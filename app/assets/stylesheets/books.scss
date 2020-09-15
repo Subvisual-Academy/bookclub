@@ -24,11 +24,49 @@
 }
 
 .books-Field {
-  padding: 10px;
+  padding-bottom: 20px;
 }
 
-.books-Actions {
-  padding: 5px;
+.books-FieldLabel {
+  color: $darker-base-color;
+
+  font-family: Open Sans, sans-serif;
+  font-size: 0.9em;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.books-FieldPrompt {
+  box-sizing: border-box;
+
+  padding: 0.3rem 1rem 0.3em 1rem;
+  margin-top: 10px;
+
+  background: $tertiary-color;
+  border: 1px solid $darker-base-color;
+  border-radius: 5px;
+  color: $darker-secondary-color;
+
+  font-size: 1rem;
+}
+
+.books-Submit {
+  width: 13em;
+  padding: 5px 20px 6px 20px;
+  margin-top: 15px;
+
+  background: $base-color;
+  border: none;
+  border-radius: 10px;
+  color: $tertiary-color;
+  cursor: pointer;
+
+  font-family: Open Sans, serif;
+  font-size: 0.8em;
+}
+
+.books-Submit:hover {
+  background: $darker-base-color;
 }
 
 .books-Main {
@@ -132,7 +170,7 @@
   .books-FlexContainer-presenterName {
     color: $base-color;
 
-    font-family: Open Sans;
+    font-family: Open Sans, sans-serif;
     text-decoration: none;
   }
 
@@ -176,4 +214,8 @@
 
 .books-NewButton:hover {
   background: $darker-base-color;
+}
+
+.u-break {
+  margin: 30px 0;
 }
