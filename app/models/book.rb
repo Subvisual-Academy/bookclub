@@ -8,10 +8,8 @@ class Book < ApplicationRecord
   scope :by_creation_date, -> { order("created_at DESC") }
 
   def self.search(search)
-    if search.blank?
-      Book.all
-    else
-      Book.where("title ILIKE ? OR synopsis ILIKE ? OR author ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
-    end
+    return Book.all if search.blank?
+
+    Book.where("title ILIKE ? OR synopsis ILIKE ? OR author ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 end
