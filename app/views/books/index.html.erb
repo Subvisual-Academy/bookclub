@@ -1,7 +1,7 @@
 <div class="books-Main">
   <%= form_tag books_path, :method => "get" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search for a book..." %>
-    <%= submit_tag "Search" %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for a book...", class: "books-FieldPrompt" %>
+    <%= submit_tag "Search", class: "books-SearchButton" %>
   <% end %>
 
   <div class="books-Header">
@@ -15,6 +15,9 @@
     <%= link_to 'Create New Book', new_book_path, class: "books-NewButton" %>
   </div>
 
+  <% if @search_param %>
+    <h2> Showing the results for: <%= @search_param %></h2>
+  <% end %>
   <!-- Books who haven't been presented yet -->
   <% if @selected_user.nil? %>
     <% if @books.select { |book| book.users.count == 0 }.length != 0 %>
@@ -65,6 +68,7 @@
   <% if @selected_user %>
     <h2> Showing books presented by: <%= @selected_user.name %></h2>
   <% end %>
+
   <% @gatherings.each do | year, gatherings | %>
     <% gatherings.each do | gathering |%>
       <% if (@selected_user.nil?  && @search_param.blank?) || (gathering.books & @books).count > 0 %> <!-- To avoid empty months -->
