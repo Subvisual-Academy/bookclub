@@ -14,7 +14,10 @@ function addExpansionAction() {
         arrowImage.style.transform = "none";
       } else {
         content.style.paddingTop = "15px";
-        content.style.maxHeight = `${content.scrollHeight}px`;
+        // the maxHeight value is meant to account for if an user zooms in/splits screen and the contents have to
+        // adapt to new limited space
+        // using maxHeight = "100%" did not trigger the css transition property, so instead a px value was user
+        content.style.maxHeight = "9999px";
         arrowImage.style.transform = "rotate(180deg)";
 
         moveGatheringToTopOfWindow(gatheringHead);

@@ -54,7 +54,7 @@
 
   max-width: 20em;
   max-height: 300px;
-  min-width: 20em;
+
   padding: 8px;
   margin-right: 0.5em;
   margin-left: -80px;
@@ -87,9 +87,8 @@
   color: $tertiary-color;
   cursor: pointer;
 
-  font-family: "Playfair Display", serif;
+  font-family: "Poppins", serif;
   font-size: 1.1em;
-  font-weight: bold;
 
   text-decoration: none;
 }
@@ -106,6 +105,7 @@
 }
 .popup-BookSynopsis {
   text-align: left;
+  padding-top: 5px;
 }
 .popup-UnknownCover {
   width: 10em;

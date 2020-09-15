@@ -56,6 +56,9 @@
     <% end %>
   <% end %>
 
+  <% if @selected_user %>
+    <h1> Showing books presented by: <%= @selected_user.name %></h1>
+  <% end %>
   <% @gatherings.each do | year, gatherings | %>
     <% gatherings.each do | gathering |%>
       <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
@@ -87,8 +90,12 @@
                     <div>
                       <%= goodreads_button(book) %>
                     </div>
+
                     <div class="popup-Break"></div>
-                    <div><%= book.synopsis || "Unavailable" %></div>
+
+                    <div class="popup-BookSynopsis">
+                      <%= book.synopsis || "Unavailable" %>
+                    </div>
                   </div>
                 </span>
               </div>

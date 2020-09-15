@@ -42,14 +42,23 @@
     document.toggleSidebar = (event) => {
         const sidebarElement = event.currentTarget;
         if (hidden) {
-            sidebarElement.style.width = "23%";
+            if (window.innerWidth > 1000){
+              sidebarElement.style.width = "23%";
+            }else{
+              sidebarElement.style.width = "50%";
+            }
             hidden = false;
         } else {
-            sidebarElement.style.width = "5%";
+            if (window.innerWidth > 1000) {
+                sidebarElement.style.width = "5%";
+            }else{
+                sidebarElement.style.width = "8%";
+            }
             sidebarElement.style.paddingLeft = "1.2%";
             hidden = true;
         }
     }
+
     </script>
     <%= yield %>
   </body>
