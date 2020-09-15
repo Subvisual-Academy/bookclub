@@ -3,14 +3,9 @@ class BooksController < ApplicationController
 
   def index
     @selected_user = User.find_by(id: params[:user_id])
+    @search_param = params[:search]
     @gatherings = Gathering.group_by_year
-
-    @books = if @selected_user.nil?
-               Book.by_creation_date
-             else
-               @selected_user.books.distinct
-             end
-
+    @books = retrieve_books(@selected_user, @search_param)
     @users = User.order(:name).all
   end
 
@@ -58,5 +53,15 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author, :synopsis, :image)
+  end
+
+  def retrieve_books(selected_user, search_param)
+    if search_param
+      Book.search(search_param)
+    elsif selected_user
+      selected_user.books.distinct
+    else
+      Book.by_creation_date
+    end
   end
 end

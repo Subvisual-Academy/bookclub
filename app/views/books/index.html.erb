@@ -1,10 +1,16 @@
 <div class="books-Main">
+  <%= form_tag books_path, :method => "get" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for a book..." %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
   <div class="books-Header">
     <%= form_with(url: books_path, method: "get") do |f| %>
       <div class='form-group'>
         <%= f.select :user_id, @users.map {|u| ["#{u.name} - #{u.books.distinct.count}",u.id]}.insert(0, ["All Users - #{Book.all.count}", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();', class: "books-UserFilter"} %>
       </div>
     <% end %>
+
 
     <%= link_to 'Create New Book', new_book_path, class: "books-NewButton" %>
   </div>
@@ -61,11 +67,11 @@
   <% end %>
   <% @gatherings.each do | year, gatherings | %>
     <% gatherings.each do | gathering |%>
-      <% if @selected_user.nil? || (gathering.books & @books).count > 0 %> <!-- To avoid empty months -->
+      <% if (@selected_user.nil?  && @search_param.blank?) || (gathering.books & @books).count > 0 %> <!-- To avoid empty months -->
         <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
 
         <% gathering.books.distinct.each do |book| %>
-          <% if @selected_user.nil? || book.users.include?(@selected_user) %>
+          <% if (@selected_user.nil? || book.users.include?(@selected_user)) && (@books.include?(book)) %>
             <div class="books-FlexContainer">
               <div class="books-FlexContainer-child">
 
@@ -130,7 +136,6 @@
                   <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_book_path(book) %>
                   <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), book, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
                 </div>
-
               </div>
             </div>
           <% end %>
