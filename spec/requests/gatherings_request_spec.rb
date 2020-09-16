@@ -30,28 +30,31 @@ RSpec.describe "Gatherings", type: :request do
       gathering.book_presentations.each do |book_presentation|
         expect(response_text).to include(book_presentation.user.name)
         expect(response_text).to include(book_presentation.book.title)
+        expect(response_text).to include(book_presentation.book.synopsis)
       end
     end
   end
 
   describe "GET #new" do
-    it "redirects non logged user to login page" do
+    it "returns unauthorized if user isn't moderator" do
+      login_user(create(:user))
+
       get new_gathering_path
 
-      expect(response).to redirect_to(login_path)
+      expect(response).to have_http_status(:unauthorized)
     end
-  end
 
-  it "displays the gathering form for logged in users" do
-    user = create(:user)
-    login_user(user)
+    it "displays the gathering form for moderators" do
+      user = create(:user, :is_moderator)
+      login_user(user)
 
-    get new_gathering_path
+      get new_gathering_path
 
-    expect(response_text).to include("New Bookclub Gathering")
-    expect(response_text).to include("Date")
-    expect(response_text).to include("Book Mentions")
-    expect(response_text).to include("Add Presentation")
+      expect(response_text).to include("New Bookclub Gathering")
+      expect(response_text).to include("Date")
+      expect(response_text).to include("Book Mentions")
+      expect(response_text).to include("Add Presentation")
+    end
   end
 
   describe "GET #edit" do
@@ -79,7 +82,7 @@ RSpec.describe "Gatherings", type: :request do
 
   describe "POST #create" do
     before(:all) do
-      @user = create(:user)
+      @user = create(:user, :is_moderator)
       login_user(@user)
     end
 
@@ -114,6 +117,20 @@ RSpec.describe "Gatherings", type: :request do
       post gatherings_path, params: { gathering: { date: "" } }
 
       expect(response).to have_http_status(:bad_request)
+    end
+
+    it "returns unauthorized if non moderator is trying to create gathering" do
+      logout
+      user = create(:user)
+      login_user(create(:user))
+      book = create(:book)
+      gathering_params = attributes_for(:gathering, :has_special_presentation)
+      book_presentation_params = { "1" => { user_id: user.id, book_id: book.id, special: true } }
+      gathering_params["book_presentations_attributes"] = book_presentation_params
+
+      post gatherings_path, params: { gathering: gathering_params }
+
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 
@@ -152,11 +169,8 @@ RSpec.describe "Gatherings", type: :request do
   end
 
   describe "DELETE #destroy" do
-    before(:all) do
-      login_user(create(:user))
-    end
-
     it "redirects to gatherings_path on a successful delete" do
+      login_user(create(:user, :is_moderator))
       gathering = create(:gathering)
 
       delete gathering_path(gathering)
@@ -165,11 +179,21 @@ RSpec.describe "Gatherings", type: :request do
     end
 
     it "destroys a gathering" do
+      login_user(create(:user, :is_moderator))
       gathering = create(:gathering)
 
       delete gathering_path(gathering)
 
       expect(Gathering.count).to eq(0)
+    end
+
+    it "returns bad request if user is not moderator" do
+      login_user(create(:user))
+      gathering = create(:gathering)
+
+      delete gathering_path(gathering)
+
+      expect(response).to have_http_status(:unauthorized)
     end
   end
 end

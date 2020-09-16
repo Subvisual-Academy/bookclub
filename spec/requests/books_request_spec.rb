@@ -42,30 +42,6 @@ RSpec.describe "Books", type: :request do
     end
   end
 
-  describe "GET #show" do
-    it "displays the given book's parameters" do
-      book = create(:book)
-
-      get book_path(book)
-
-      expect(response_text).to include(book.title)
-      expect(response_text).to include(book.author)
-      expect(response_text).to include(book.synopsis)
-      expect(response.body).to include(book.image)
-    end
-
-    it "Displays the name of a user who presented it" do
-      user = create(:user)
-      book = create(:book)
-      gathering = create(:gathering)
-      BookPresentation.create(gathering_id: gathering.id, user_id: user.id, book_id: book.id)
-
-      get books_path(book)
-
-      expect(response_text).to include(user.name)
-    end
-  end
-
   describe "POST #create", :vcr do
     before(:all) do
       login_user(create(:user))

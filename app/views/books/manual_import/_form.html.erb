@@ -1,31 +1,32 @@
+<p class="u-helpText">  If you wish to create a book using Google Books, click
+  <%= link_to "here.", new_book_path(title: @book.title, author: @book.author), style: "color: inherit" %></p>
+
 <%= form_with(model: book, local: true, url: books_manual_import_path) do |form| %>
-  <div class="Books-Field">
-    <%= form.label :title %>
+  <div class="books-Field">
+    <%= form.label :title, class: "books-FieldLabel" %>
     <br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "books-FieldPrompt" %>
   </div>
 
-  <div class="Books-Field">
-    <%= form.label :author, 'Author (optional)' %>
+  <div class="books-Field">
+    <%= form.label :author, 'Author (optional)', class: "books-FieldLabel" %>
     <br>
-    <%= form.text_field :author %>
+    <%= form.text_field :author, class: "books-FieldPrompt" %>
   </div>
 
-  <div class="Books-Field">
-    <%= form.label :synopsis, 'Synopsis (optional)'%>
+  <div class="books-Field">
+    <%= form.label :synopsis, 'Synopsis (optional)', class: "books-FieldLabel"%>
     <br>
-    <%= form.text_field :synopsis %>
+    <%= form.text_field :synopsis, class: "books-FieldPrompt" %>
   </div>
 
 
-  <div class="Books-Field">
-    <%= form.label :image, 'Link to book cover (optional)' %>
+  <div class="books-Field">
+    <%= form.label :image, 'Link to book cover (optional)',  class: "books-FieldLabel" %>
     <br>
-    <%= form.text_field :image %>
+    <%= form.text_field :image, class: "books-FieldPrompt" %>
   </div>
 
 
-  <div class="Books-Actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Create", class: "books-Submit" %>
 <% end %>

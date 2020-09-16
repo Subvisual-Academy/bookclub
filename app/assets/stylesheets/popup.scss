@@ -1,0 +1,130 @@
+@import "colors";
+
+.u-pointer {
+  cursor: pointer;
+}
+
+.u-popup {
+  position: relative;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.u-popupContent {
+  visibility: hidden;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.u-show {
+  visibility: visible;
+
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup-PopupFrame {
+  position: fixed;
+  top: 42px;
+  left: 81.5%;
+  z-index: 1;
+
+  max-width: 20em;
+  max-height: 300px;
+
+  padding: 8px;
+  margin-right: 0.5em;
+  margin-left: -80px;
+
+  background-color: $tertiary-color;
+  border-radius: 12px;
+
+  box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
+  color: $base-color;
+
+  font-size: 0.8em;
+
+  text-align: justify;
+  overflow-y: scroll;
+}
+
+.popup-PopupImage {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.popup-Goodreads {
+  padding: 5px 20px 6px 20px;
+  margin: 0 auto;
+
+  background: $base-color;
+  border: none;
+  border-radius: 25px;
+  color: $tertiary-color;
+  cursor: pointer;
+
+  font-family: "Poppins", serif;
+  font-size: 1.1em;
+
+  text-decoration: none;
+}
+.popup-Goodreads:hover {
+  background-color: $darker-base-color;
+}
+
+.popup-Break {
+  margin: 10px 0;
+}
+
+.popup-BookContent {
+  margin-top: 5px;
+}
+.popup-BookSynopsis {
+  padding-top: 5px;
+
+  text-align: left;
+}
+.popup-UnknownCover {
+  width: 10em;
+  height: 10em;
+}
+
+.popup-UserName {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+.popup-UserName:hover {
+  text-decoration: underline;
+}
+
+@media all and (max-width: 900px) {
+  .popup-PopupFrame {
+    left: 87%;
+
+    max-width: 10em;
+  }
+}

@@ -37,32 +37,50 @@
     </div>
 
     <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
-      <% if controller_name === "books" && action_name === "index" %>
-        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path, {:style=>'color:#f1f1f1;'} %>
+      <% if controller_name === "books" %>
+        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path, {:style=>'color:#f1f1f1;'} %>
       <% else %>
-        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'All Books', books_path %>
+        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path %>
       <% end %>
       <div class="Sidebar-textList">
-        <% if controller_name === "gatherings" && action_name ==="index" %>
+        <% if controller_name === "gatherings"%>
           <%= link_to (inline_svg_tag 'gatheringspage-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path, {:style=>'color:#f1f1f1;'} %>
         <% else %>
           <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
         <% end %>
       </div>
+      <% if current_user %>
+        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete, title: "logout", class: "logout" %>
+      <% else %>
+        <% if controller_name === "sessions" && action_name ==="new" %>
+          <%= link_to (inline_svg_tag 'user-selected.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path, {:style=>'color:#f1f1f1;'} %>
+        <% else %>
+          <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
+        <% end %>
+      <% end %>
     </div>
     <script type="text/javascript">
     var hidden = true;
     document.toggleSidebar = (event) => {
         const sidebarElement = event.currentTarget;
         if (hidden) {
-            sidebarElement.style.width = "23%";
+            if (window.innerWidth > 1000){
+              sidebarElement.style.width = "23%";
+            }else{
+              sidebarElement.style.width = "50%";
+            }
             hidden = false;
         } else {
-            sidebarElement.style.width = "5%";
+            if (window.innerWidth > 1000) {
+                sidebarElement.style.width = "5%";
+            }else{
+                sidebarElement.style.width = "8%";
+            }
             sidebarElement.style.paddingLeft = "1.2%";
             hidden = true;
         }
     }
+
     </script>
     <%= yield %>
   </body>

@@ -22,6 +22,10 @@
     font-family: Open Sans, serif;
     font-size: 0.8em;
   }
+
+  .submit:hover {
+    background-color: $darker-base-color;
+  }
 }
 
 .users-Login {

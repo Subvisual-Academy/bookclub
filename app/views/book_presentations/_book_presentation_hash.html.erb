@@ -2,13 +2,41 @@
   <div class="bookPresentation-box">
     <ul>
       <li><%= link_to book_presentations[0].user.name, books_path(:user_id => user_id), class: "bookPresentation-name" %> </li>
-      <div class="bookPresentation-titles">
+      <ul class="bookPresentation-titles">
         <% book_presentations.each do |presentation| %>
-          <li> <span class="bookPresentation-title"> &mdash;  <%=link_to presentation.book.title, book_path(presentation.book)%></span>,
-            by <%= book_author(presentation.book) %>
+          <li>
+            <span class="u-popup">
+              &mdash; <span class="bookPresentation-title u-pointer"><%= presentation.book.title %></span>,
+                by <%= book_author(presentation.book) %>
+              <span class="popup-PopupFrame u-popupContent">
+                <% if presentation.book.image%>
+                  <img src="<%= presentation.book.image %>"  alt="book cover" class="popup-PopupImage"/>
+                <% else %>
+                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-GatheringPopupImage" %>
+                <% end %>
+                <div class="popup-BookContent">
+                  <%= goodreads_button(presentation.book) %>
+
+                  <div class="popup-Break"></div>
+
+                  <div class="popup-BookSynopsis">
+                    <%= presentation.book.synopsis || "Unavailable" %>
+                  </div>
+
+                  <h4> Presented by: </h4>
+                  <ul style="list-style: disc;padding-left: 2.5em;">
+                    <% presentation.book.users.distinct.each do |user| %>
+                      <li> <%= link_to user.name, books_path(:user_id => user.id), class: "popup-UserName"%></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </span>
+            </span>
           </li>
         <% end %>
-      </div>
+      </ul>
     </ul>
   </div>
 <% end %>
+
+
