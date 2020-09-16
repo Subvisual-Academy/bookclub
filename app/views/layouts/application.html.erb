@@ -14,7 +14,7 @@
       <div class="header-Nav">
         <div class="header-Search">
           <%= form_tag books_path, :method => "get" do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search for a book...", class: "header-SearchText" %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "header-SearchText" %>
             <%= image_submit_tag("magnifier.svg", alt: "search", class: "header-SearchImg") %>
           <% end %>
         </div>
@@ -35,11 +35,6 @@
     </div>
 
     <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
-      <% if controller_name === "books" %>
-        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path, {:style=>'color:#f1f1f1;'} %>
-      <% else %>
-        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path %>
-      <% end %>
       <div class="Sidebar-textList">
         <% if controller_name === "gatherings"%>
           <%= link_to (inline_svg_tag 'gatheringspage-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path, {:style=>'color:#f1f1f1;'} %>
@@ -47,6 +42,11 @@
           <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
         <% end %>
       </div>
+      <% if controller_name === "books" %>
+        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path, {:style=>'color:#f1f1f1;'} %>
+      <% else %>
+        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path %>
+      <% end %>
     </div>
     <script type="text/javascript">
     var hidden = true;

@@ -31,25 +31,19 @@
 }
 
 .Sidebar-book {
-  margin: 0 1.6em 0.1em 0;
+  margin: 0 1.8em 0.1em 0;
 
   vertical-align: middle;
 }
 
 .Sidebar-list {
-  margin: 0 1.7em 0.1em 0.2em;
-
-  vertical-align: middle;
-}
-
-.Sidebar-session {
-  margin: 0 1.7em 0.1em 0.3em;
+  margin: 0 1.9em 0.1em 0;
 
   vertical-align: middle;
 }
 
 .Sidebar-textList {
-  padding-top: 2.5em;
+  padding-bottom: 2.5em;
 }
 
 @media screen and (max-height: 450px) {
