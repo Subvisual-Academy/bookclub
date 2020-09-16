@@ -1,4 +1,4 @@
-<p class="u-helpText">  If you wish to create a book using Google Books, click
+<p class="u-helpText">  If you wish to create a book using Google Books, 
   <%= link_to "click here.", new_book_path(title: @book.title, author: @book.author), style: "color: inherit" %></p>
 
 <%= form_with(model: book, local: true, url: books_manual_import_path) do |form| %>
