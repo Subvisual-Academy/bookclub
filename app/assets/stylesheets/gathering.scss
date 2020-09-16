@@ -177,6 +177,8 @@
 }
 
 .gatherings-MainYear {
+  padding-top: 1em;
+
   color: $secondary-color;
 
   font-family: Open Sans, sans-serif;
@@ -336,24 +338,22 @@
 .gatherings-NextDate {
   display: flex;
   align-items: center;
-  margin-bottom: 2.3em;
+  margin-bottom: 1em;
 
   color: $base-color;
 
   font-family: Open Sans, sans-serif;
   font-size: 0.9em;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .gatherings-NextDateShow {
   padding: 0.3em 0.7em 0.3em 0.7em;
   margin-bottom: 0;
-  margin-left: 0.8em;
-
-  border: 2px solid $base-color;
-  border-radius: 25px;
+  margin-left: 0.2em;
 
   font-size: 1.1em;
+  font-weight: bold;
 }
 
 .gatherings-ShowHeader {
