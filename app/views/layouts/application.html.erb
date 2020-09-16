@@ -47,15 +47,6 @@
           <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
         <% end %>
       </div>
-      <% if current_user %>
-        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete, title: "logout", class: "logout" %>
-      <% else %>
-        <% if controller_name === "sessions" && action_name ==="new" %>
-          <%= link_to (inline_svg_tag 'user-selected.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path, {:style=>'color:#f1f1f1;'} %>
-        <% else %>
-          <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
-        <% end %>
-      <% end %>
     </div>
     <script type="text/javascript">
     var hidden = true;
