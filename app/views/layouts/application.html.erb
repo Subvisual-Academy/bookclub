@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <header class="main-header">
+      <div class="header-nav">
+        <div class="header-Search">
+          <%= form_tag books_path, :method => "get" do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search for a book...", class: "header-SearchText" %>
+            <%= image_submit_tag("magnifier.svg", alt: "search", class: "header-SearchImg") %>
+          <% end %>
+        </div>
+        <div>
+        <% if current_user %>
+          <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogUser", style:"padding-left: 2.8em" %>
+        <% else %>
+          <%= link_to 'Log In', login_path, class:"header-LogUser", class: "header-LogUser", style:"padding-left: 2.8em" %>
+        <% end %>
+        </div>
+      </div>
+    </header>
+
     <div class="Main">
       <% flash.each do |_key, value| %>
         <div class="u-notice">
@@ -31,11 +49,6 @@
           <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
         <% end %>
       </div>
-      <% if current_user %>
-        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete, title: "logout", class: "logout" %>
-      <% else %>
-        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
-      <% end %>
     </div>
     <script type="text/javascript">
     var hidden = true;
