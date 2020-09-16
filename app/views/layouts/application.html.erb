@@ -10,25 +10,23 @@
   </head>
 
   <body>
-    <header class="main-header">
-      <div class="header-nav">
+    <header class="main-Header">
+      <div class="header-Nav">
         <div class="header-Search">
           <%= form_tag books_path, :method => "get" do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search for a book...", class: "header-SearchText" %>
             <%= image_submit_tag("magnifier.svg", alt: "search", class: "header-SearchImg") %>
           <% end %>
         </div>
-        <div>
         <% if current_user %>
-          <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogUser", style:"padding-left: 2.8em" %>
+          <span class="header-LogOut-text">Hello, <span class="header-UserName"><%= link_to current_user.name, books_path(:user_id => current_user.id) %></span>/<%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogOut" %></span>
         <% else %>
-          <%= link_to 'Log In', login_path, class:"header-LogUser", class: "header-LogUser", style:"padding-left: 2.8em" %>
+          <%= link_to 'Log In', login_path, class:"header-LogIn", style:"padding-left: 3.1em" %>
         <% end %>
-        </div>
       </div>
     </header>
 
-    <div class="Main">
+    <div class="main">
       <% flash.each do |_key, value| %>
         <div class="u-notice">
           <%= value %>

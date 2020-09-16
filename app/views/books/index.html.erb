@@ -118,7 +118,7 @@
                 </div>
 
                 <div class ="books-FlexContainer-presenter">Presented by:
-                  <% if book.users.count <= 3 %>
+                  <% if book.users.distinct.count <= 3 %>
                     <% book.users.distinct.each_with_index do |user, index| %>
                       <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < book.users.distinct.count-1 %>,<% end %>
                     <% end %>

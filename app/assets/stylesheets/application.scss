@@ -37,7 +37,7 @@ body {
   font-size: 1.2rem;
 }
 
-.Main {
+.main {
   padding: 3% 25% 1% 25%;
 }
 
@@ -50,7 +50,7 @@ body {
   font-weight: bold;
 }
 
-.main-header {
+.main-Header {
   top: 0;
   z-index: 0;
 
@@ -72,7 +72,7 @@ body {
   height: 2.1em;
   padding-right: 10px;
   padding-left: 7px;
-  margin-left: 23em;
+  margin-left: 26rem;
 
   background-color: $tertiary-color;
   border-color: $tertiary-color;
@@ -98,7 +98,35 @@ body {
   margin-left: 1em;
 }
 
-.header-LogUser {
+.header-LogOut-text {
+  padding-top: 0.4em;
+  padding-left: 1.8em;
+
+  color: $secondary-color;
+
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header-UserName {
+  color: $base-color;
+}
+
+.header-UserName:hover {
+  text-decoration: underline;
+}
+
+.header-LogOut {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.header-LogOut:hover {
+  text-decoration: underline;
+}
+
+.header-LogIn {
   width: 9em;
   height: 2.5em;
   margin-left: 3em;
@@ -112,18 +140,19 @@ body {
   font-weight: normal;
 }
 
-.header-nav {
+.header-LogIn:hover {
+  background-color: $darker-base-color;
+}
+
+.header-Nav {
   display: flex;
-  align-items: center;
   padding: 0;
   margin: 0;
 
   list-style: none;
 }
 
-.header-nav a {
-  display: flex;
-  align-items: center;
+.header-Nav a {
   padding: 0.5rem;
 
   color: inherit;
@@ -131,14 +160,16 @@ body {
   text-decoration: none;
 }
 
-.header-nav a:hover {
-  color: #adadad;
-}
-
-.bookclub-brand {
+.bookclub-Brand {
   display: flex;
   align-items: center;
   margin-left: 1rem;
 
   font-size: 2rem;
+}
+
+@media all and (max-width: 1000px) {
+  .main-Header {
+    display: none;
+  }
 }
