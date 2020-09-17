@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     @search_param = params[:search]
     @gatherings = Gathering.group_by_year
     @books = retrieve_books(@selected_user, @search_param)
-    @users = User.order(:name).all
+    @users = User.order(:name).all.includes(:books)
   end
 
   def new
