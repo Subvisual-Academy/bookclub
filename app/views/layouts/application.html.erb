@@ -27,13 +27,11 @@
       <% end %>
     </div>
 
-    <div class="main">
-      <% flash.each do |_key, value| %>
-        <div class="u-notice">
-          <%= value %>
-        </div>
-      <% end %>
-    </div>
+    <% flash.each do |_key, value| %>
+      <div class="u-notice">
+        <%= value %>
+      </div>
+    <% end %>
 
     <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
       <div class="Sidebar-textList">

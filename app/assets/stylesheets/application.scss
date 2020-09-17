@@ -37,21 +37,16 @@ body {
   font-size: 1.2rem;
 }
 
-.main {
-  padding: 3% 25% 1% 25%;
-}
-
 .u-notice {
-  padding-left: 25%;
-
   color: $base-color;
 
   font-family: "Open Sans", serif;
   font-weight: bold;
+  text-align: center;
 }
 
 .header-Search {
-  width: 18em;
+  width: 20em;
   height: 2.1em;
   padding-right: 10px;
   padding-left: 7px;
@@ -133,7 +128,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 25%;
+  padding: 0 20%;
   margin: 0;
 
   color: $tertiary-color;
