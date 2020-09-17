@@ -1,16 +1,10 @@
 <div class="books-Main">
-  <%= form_tag books_path, :method => "get" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search for a book...", class: "books-FieldPrompt" %>
-    <%= submit_tag "Search", class: "books-SearchButton" %>
-  <% end %>
-
   <div class="books-Header">
     <%= form_with(url: books_path, method: "get") do |f| %>
       <div class='form-group'>
-        <%= f.select :user_id, @users.map {|u| ["#{u.name} - #{u.books.distinct.count}",u.id]}.insert(0, ["All Users - #{Book.all.count}", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();', class: "books-UserFilter"} %>
+        <%= f.select :user_id, @users.map {|u| ["#{u.name} - #{u.books.distinct.count}",u.id]}.insert(0, ["All Users (#{Book.all.count})", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();', class: "books-UserFilter"} %>
       </div>
     <% end %>
-
 
     <%= link_to 'Create New Book', new_book_path, class: "books-NewButton" %>
   </div>
@@ -124,7 +118,7 @@
                 </div>
 
                 <div class ="books-FlexContainer-presenter">Presented by:
-                  <% if book.users.count <= 3 %>
+                  <% if book.users.distinct.count <= 3 %>
                     <% book.users.distinct.each_with_index do |user, index| %>
                       <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < book.users.distinct.count-1 %>,<% end %>
                     <% end %>

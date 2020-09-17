@@ -1,7 +1,7 @@
 <div class="users-Login">
 
   <div class="form">
-    <h1>Bookclub</h1>
+    <%= inline_svg_tag "logo-login.svg", alt: "BookClub", class:"users-LoginLogo" %>
     <p class="subtitle"> Log in to Bookclub</p>
     <%= form_with model: @user, url: login_path, method: :post do %>
       <div class="users-Field">

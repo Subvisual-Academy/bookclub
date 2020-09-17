@@ -4,7 +4,7 @@ RSpec.feature "Authentication", js: true do
   it "Has the login option on root_path" do
     visit root_path
 
-    expect(page).to have_content("Log In")
+    expect(page).to have_button("Log In")
   end
 
   it "logins the user with correct credentials" do
@@ -48,9 +48,9 @@ RSpec.feature "Authentication", js: true do
     login_user(user)
 
     visit root_path
-    click_on("Log Out")
+    click_link("Log Out")
 
     expect(page).to have_current_path(root_path)
-    expect(page).to have_content("Log In")
+    expect(page).to have_button("Log In")
   end
 end

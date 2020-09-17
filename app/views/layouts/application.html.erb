@@ -10,20 +10,30 @@
   </head>
 
   <body>
-    <div class="Main">
-      <% flash.each do |_key, value| %>
-        <div class="u-notice">
-          <%= value %>
-        </div>
+    <div class="header-Nav">
+      <div class="header-Brand">
+        <%= link_to (inline_svg_tag"logo-navbar.svg", alt: "BookClub", class:"header-BrandImg"), root_path %>
+      </div>
+      <div class="header-Search">
+        <%= form_tag books_path, :method => "get" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "header-SearchText" %>
+          <%= image_submit_tag("magnifier.svg", alt: "search", class: "header-SearchImg") %>
+        <% end %>
+      </div>
+      <% if current_user %>
+        <span class="header-LogOut-text">Hello, <span class="header-UserName"><%= link_to current_user.name, books_path(:user_id => current_user.id) %></span> / <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogOut" %></span>
+      <% else %>
+        <%= button_to 'Log In', login_path, class:"header-LogIn", :method => "get" %>
       <% end %>
     </div>
 
+    <% flash.each do |_key, value| %>
+      <div class="u-notice">
+        <%= value %>
+      </div>
+    <% end %>
+
     <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
-      <% if controller_name === "books" %>
-        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path, {:style=>'color:#f1f1f1;'} %>
-      <% else %>
-        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path %>
-      <% end %>
       <div class="Sidebar-textList">
         <% if controller_name === "gatherings"%>
           <%= link_to (inline_svg_tag 'gatheringspage-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path, {:style=>'color:#f1f1f1;'} %>
@@ -31,14 +41,10 @@
           <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
         <% end %>
       </div>
-      <% if current_user %>
-        <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log Out', logout_path, method: :delete, title: "logout", class: "logout" %>
+      <% if controller_name === "books" %>
+        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path, {:style=>'color:#f1f1f1;'} %>
       <% else %>
-        <% if controller_name === "sessions" && action_name ==="new" %>
-          <%= link_to (inline_svg_tag 'user-selected.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path, {:style=>'color:#f1f1f1;'} %>
-        <% else %>
-          <%= link_to (inline_svg_tag 'user.svg', alt: "Icon of an user", class:"Sidebar-session") + 'Log In', login_path %>
-        <% end %>
+        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path %>
       <% end %>
     </div>
     <script type="text/javascript">

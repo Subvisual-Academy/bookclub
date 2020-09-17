@@ -19,12 +19,12 @@
 
   <div class="gatherings-FormSeparation">
     <div class="gatherings-SpaceUpDown">
-      <%= form.label(:special_presentation, "Special Presentation Title", class: "gatherings-Titles gatherings-TitlesSpecial") %>
+      <%= form.label(:special_presentation, "Special Presentation Title (optional)", class: "gatherings-Titles gatherings-TitlesSpecial") %>
     </div>
     <%= form.text_field :special_presentation, class:"gatherings-Special", placeholder: "Special Presentation Title"%>
 
-    <p class="u-helpText"> If you want a book to belong to the special presentation, check the circle next to it.
-      If you don’t press it, it will belong to the normal book mentions.</p>
+    <p class="u-helpText"> If you want a book to belong to the special presentation, press the circle.
+      <br>If you don’t press it, it will belong to the normal book mentions.</p>
   </div>
 
   <h2>Book Mentions</h2>

@@ -24,17 +24,17 @@
     </div>
 
     <div class="books-Field">
-      <%= form.label :synopsis, 'Synopsis', class: "books-FieldLabel" %>
-      <br>
-      <%= form.text_field :synopsis, class: "books-FieldPrompt"  %>
-    </div>
-
-    <div class="books-Field">
       <%= form.label :image, 'Link to book cover',  class: "books-FieldLabel" %>
       <br>
       <%= form.text_field :image, class: "books-FieldPrompt"  %>
     </div>
 
-    <%= form.submit "Edit", class: "books-Submit"%>
+    <div class="books-Field">
+      <%= form.label :synopsis, 'Synopsis', class: "books-FieldLabel" %>
+      <br>
+      <%= form.text_area :synopsis, class: "books-FieldPrompt-synopsis"  %>
+    </div>
+
+    <%= form.submit "Submit", class: "books-Submit"%>
   <% end %>
 </div>

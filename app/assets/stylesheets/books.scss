@@ -60,16 +60,43 @@
 
 .books-FieldPrompt {
   box-sizing: border-box;
+  width: 17rem;
 
   padding: 0.3rem 1rem 0.3em 1rem;
   margin-top: 10px;
 
   background: $tertiary-color;
-  border: 1px solid $darker-base-color;
+  border: 1px solid $darker-secondary-color;
   border-radius: 5px;
   color: $darker-secondary-color;
 
+  font-family: Open Sans;
   font-size: 1rem;
+}
+
+.books-FieldPrompt:focus {
+  border: 1px solid $darker-base-color;
+}
+
+.books-FieldPrompt-synopsis {
+  box-sizing: border-box;
+  width: 17rem;
+  height: 6rem;
+
+  padding: 0.3rem 1rem 3em 1rem;
+  margin-top: 10px;
+
+  background: $tertiary-color;
+  border: 1px solid $darker-secondary-color;
+  border-radius: 5px;
+  color: $darker-secondary-color;
+
+  font-family: Open Sans;
+  font-size: 1rem;
+}
+
+.books-FieldPrompt-synopsis:focus {
+  border: 1px solid $darker-base-color;
 }
 
 .books-Submit {
@@ -219,7 +246,7 @@
 
 .books-NewButton {
   display: inline-block;
-  padding: 5px 20px 6px 20px;
+  padding: 7px 22px 7px 22px;
   margin: 40px 0;
 
   background: $base-color;
@@ -229,7 +256,7 @@
   cursor: pointer;
 
   font-family: Open Sans, serif;
-  font-size: 1em;
+  font-size: 0.9em;
   text-decoration: none;
 }
 
