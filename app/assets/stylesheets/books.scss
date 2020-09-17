@@ -66,12 +66,16 @@
   margin-top: 10px;
 
   background: $tertiary-color;
-  border: 1px solid $darker-base-color;
+  border: 1px solid $darker-secondary-color;
   border-radius: 5px;
   color: $darker-secondary-color;
 
   font-family: Open Sans;
   font-size: 1rem;
+}
+
+.books-FieldPrompt:focus {
+  border: 1px solid $darker-base-color;
 }
 
 .books-FieldPrompt-synopsis {
@@ -83,12 +87,16 @@
   margin-top: 10px;
 
   background: $tertiary-color;
-  border: 1px solid $darker-base-color;
+  border: 1px solid $darker-secondary-color;
   border-radius: 5px;
   color: $darker-secondary-color;
 
   font-family: Open Sans;
   font-size: 1rem;
+}
+
+.books-FieldPrompt-synopsis:focus {
+  border: 1px solid $darker-base-color;
 }
 
 .books-Submit {

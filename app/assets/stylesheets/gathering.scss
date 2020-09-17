@@ -230,11 +230,15 @@
   padding: 0.3rem 1rem 0.3em 1rem;
 
   background: $tertiary-color;
-  border: 1px solid $darker-base-color;
+  border: 1px solid $darker-secondary-color;
   border-radius: 5px;
   color: $secondary-color;
 
   font-size: 1rem;
+}
+
+.gatherings-Special:focus {
+  border: 1px solid $darker-base-color;
 }
 
 .gatherings-mentions {

@@ -72,6 +72,7 @@ body {
   height: 2.1em;
   padding-right: 10px;
   padding-left: 7px;
+  margin-left: 9em;
 
   background-color: $tertiary-color;
   border-color: $tertiary-color;
@@ -80,7 +81,7 @@ body {
 }
 
 .header-SearchText {
-  width: 25em;
+  width: 22em;
   height: 3em;
   padding-right: 10px;
   margin-left: 1em;
@@ -95,7 +96,6 @@ body {
 
   height: 1.5em;
   margin-top: 8px;
-  margin-left: 1em;
 }
 
 .header-LogOut-text {
@@ -155,23 +155,24 @@ body {
 }
 
 .header-Nav a {
-  padding: 0.5rem;
-
   color: inherit;
 
   text-decoration: none;
 }
 
-.bookclub-Brand {
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
+.header-Brand {
+  position: absolute;
+  top: -1.3em;
 
-  font-size: 2rem;
+  color: $base-color;
+}
+
+.header-BrandImg {
+  width: 8em;
 }
 
 @media all and (max-width: 1000px) {
-  .header-SearchText {
+  .header-Nav {
     width: 20em;
   }
 }
