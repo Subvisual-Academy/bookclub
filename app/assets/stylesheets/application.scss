@@ -50,29 +50,11 @@ body {
   font-weight: bold;
 }
 
-.main-Header {
-  top: 0;
-  z-index: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 5%;
-  padding-top: 1.5em;
-
-  color: $tertiary-color;
-
-  font-family: Playfair Display, serif;
-  font-weight: bold;
-}
-
 .header-Search {
-  width: 21em;
+  width: 18em;
   height: 2.1em;
   padding-right: 10px;
   padding-left: 7px;
-  margin-left: 9em;
 
   background-color: $tertiary-color;
   border-color: $tertiary-color;
@@ -81,8 +63,8 @@ body {
 }
 
 .header-SearchText {
-  width: 22em;
-  height: 3em;
+  width: 80%;
+  height: 2.1em;
   padding-right: 10px;
   margin-left: 1em;
 
@@ -92,8 +74,6 @@ body {
 }
 
 .header-SearchImg {
-  position: absolute;
-
   height: 1.5em;
   margin-top: 8px;
 }
@@ -127,17 +107,21 @@ body {
 }
 
 .header-LogIn {
+  display: inline-block;
   width: 9em;
-  height: 2.5em;
-  margin-left: 3em;
+  height: 2.4em;
+  max-width: 7em;
 
   background-color: $base-color;
+  border: none;
   border-radius: 50px;
   box-shadow: 0px 5px 10px rgba(27, 96, 243, 0.2);
+  color: $tertiary-color;
 
   font-family: Open Sans;
   font-size: 16px;
   font-weight: normal;
+  text-align: center;
 }
 
 .header-LogIn:hover {
@@ -146,10 +130,13 @@ body {
 
 .header-Nav {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: 0 25%;
   margin: 0;
+
+  color: $tertiary-color;
 
   list-style: none;
 }
@@ -161,9 +148,6 @@ body {
 }
 
 .header-Brand {
-  position: absolute;
-  top: -1.3em;
-
   color: $base-color;
 }
 

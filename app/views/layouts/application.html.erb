@@ -10,24 +10,22 @@
   </head>
 
   <body>
-    <header class="main-Header">
-      <div class="header-Nav">
-        <div class="header-Brand">
-          <%= link_to (inline_svg_tag"logo-navbar.svg", alt: "BookClub", class:"header-BrandImg"), root_path %>
-        </div>
-        <div class="header-Search">
-          <%= form_tag books_path, :method => "get" do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "header-SearchText" %>
-            <%= image_submit_tag("magnifier.svg", alt: "search", class: "header-SearchImg") %>
-          <% end %>
-        </div>
-        <% if current_user %>
-          <span class="header-LogOut-text">Hello, <span class="header-UserName"><%= link_to current_user.name, books_path(:user_id => current_user.id) %></span> / <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogOut" %></span>
-        <% else %>
-          <%= link_to 'Log In', login_path, class:"header-LogIn", style:"padding-left: 3.1em; padding-top: 9px" %>
+    <div class="header-Nav">
+      <div class="header-Brand">
+        <%= link_to (inline_svg_tag"logo-navbar.svg", alt: "BookClub", class:"header-BrandImg"), root_path %>
+      </div>
+      <div class="header-Search">
+        <%= form_tag books_path, :method => "get" do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "header-SearchText" %>
+          <%= image_submit_tag("magnifier.svg", alt: "search", class: "header-SearchImg") %>
         <% end %>
       </div>
-    </header>
+      <% if current_user %>
+        <span class="header-LogOut-text">Hello, <span class="header-UserName"><%= link_to current_user.name, books_path(:user_id => current_user.id) %></span> / <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogOut" %></span>
+      <% else %>
+        <%= button_to 'Log In', login_path, class:"header-LogIn", :method => "get" %>
+      <% end %>
+    </div>
 
     <div class="main">
       <% flash.each do |_key, value| %>
