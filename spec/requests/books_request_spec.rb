@@ -1,4 +1,5 @@
 require "rails_helper"
+require "active_support/core_ext/string/filters"
 
 RSpec.describe "Books", type: :request do
   include ActionView::Helpers::SanitizeHelper
@@ -9,8 +10,8 @@ RSpec.describe "Books", type: :request do
       get books_path
 
       list.each do |book|
-        expect(response_text).to include(book.title)
-        expect(response_text).to include(book.author)
+        expect(response_text).to include(book.title.truncate(40))
+        expect(response_text).to include(book.author.truncate(35))
         expect(response.body).to include(book.image)
       end
     end
@@ -25,9 +26,9 @@ RSpec.describe "Books", type: :request do
 
       get books_path(user_id: user.id)
 
-      expect(response_text).to include(book_list[0].title)
-      expect(response_text).to include(book_list[1].title)
-      expect(response_text).not_to include(book_list[2].title)
+      expect(response_text).to include(book_list[0].title.truncate(40))
+      expect(response_text).to include(book_list[1].title.truncate(40))
+      expect(response_text).not_to include(book_list[2].title.truncate(40))
     end
 
     it "displays book when searched by title" do
@@ -37,7 +38,7 @@ RSpec.describe "Books", type: :request do
       result_list = Book.search(book_list[0].title)
 
       result_list.each do |book|
-        expect(response_text).to include(book.title)
+        expect(response_text).to include(book.title.truncate(40))
       end
     end
   end
