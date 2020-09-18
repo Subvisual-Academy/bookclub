@@ -10,7 +10,7 @@
                 by <%= book_author(presentation.book) %>
               <span class="popup-PopupFrame u-popupContent">
                 <% if presentation.book.image%>
-                  <img src="<%= presentation.book.image %>"  alt="book cover" class="popup-PopupImage"/>
+                  <img src="<%= presentation.book.image %>" loading="async" alt="book cover" class="popup-PopupImage"/>
                 <% else %>
                   <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-GatheringPopupImage" %>
                 <% end %>

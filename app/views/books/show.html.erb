@@ -2,9 +2,9 @@
   <p>
     <strong>Image:</strong>
     <% if @book.image%>
-      <img src="<%= @book.image %>"  alt="book cover"/>
+      <img src="<%= @book.image %>" loading="async" alt="book cover"/>
     <% else %>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png"  alt="unknown book cover"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Question_mark.svg/585px-Question_mark.svg.png" loading="async" alt="unknown book cover"/>
     <% end %>
   </p>
 
