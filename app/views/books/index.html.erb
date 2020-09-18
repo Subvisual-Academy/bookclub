@@ -16,47 +16,9 @@
   <% if @selected_user.nil? %>
     <% if @books.select { |book| book.users.count == 0 }.length != 0 %>
       <p class="gatherings-MainYear">Books not presented</p>
+
       <% @books.select { |book| book.users.count == 0 }.each do |book| %>
-        <div class="books-FlexContainer">
-          <div class="books-FlexContainer-child">
-            <div class="u-popup u-pointer u-underline">
-              <% if book.image%>
-                <img src="<%= book.image %>" loading="async" alt="book cover" class="books-FlexContainer-apiImg"/>
-              <% else %>
-                <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg" %>
-              <% end %>
-              <div class="books-FlexContainer-title">
-                  <%= truncate(book.title, length:40) %>
-              </div>
-
-              <span class="popup-PopupFrame u-popupContent">
-                <% if book.image%>
-                  <img src="<%= book.image %>" loading="async" alt="book cover" class="popup-PopupImage"/>
-                <% else %>
-                  <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-PopupImage" %>
-                <% end %>
-                <div class="popup-BookContent">
-                  <%= goodreads_button(book) %>
-
-                  <div class="popup-Break"></div>
-
-                  <div class="popup-BookSynopsis">
-                    <%= book.synopsis || "Unavailable" %>
-                  </div>
-                </div>
-              </span>
-            </div>
-            <div class="books-FlexContainer-author">
-              by <%= truncate(book.author, length: 35) || "Unavailable" %>
-            </div>
-
-            <div class="books-FlexContainer-footer">
-              <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_book_path(book) %>
-              <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), book, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
-            </div>
-
-          </div>
-        </div>
+        <%= render "book_item", book: book %>
       <% end %>
     <% end %>
   <% end %>
@@ -72,70 +34,7 @@
 
         <% gathering.books.distinct.each do |book| %>
           <% if (@selected_user.nil? || book.users.include?(@selected_user)) && (@books.include?(book)) %>
-            <div class="books-FlexContainer">
-              <div class="books-FlexContainer-child">
-
-                <div class="u-popup u-pointer u-underline">
-                  <% if book.image%>
-                    <img src="<%= book.image %>" loading="async" alt="book cover" class="books-FlexContainer-apiImg"/>
-                  <% else %>
-                    <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg" %>
-                  <% end %>
-
-                  <div class="books-FlexContainer-title">
-                    <%= truncate(book.title, length:40) %>
-                  </div>
-
-                  <span class="popup-PopupFrame u-popupContent">
-                    <% if book.image%>
-                      <img src="<%= book.image %>" loading="async" alt="book cover" class="popup-PopupImage"/>
-                    <% else %>
-                      <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-PopupImage" %>
-                    <% end %>
-
-                    <div class="popup-BookContent">
-                      <%= goodreads_button(book) %>
-
-                      <div class="popup-Break"></div>
-
-                      <div class="popup-BookSynopsis">
-                        <%= book.synopsis || "Unavailable" %>
-                      </div>
-
-                      <h4> Presented by: </h4>
-                      <ul style="list-style: disc;padding-left: 2.5em;">
-                      <% book.users.distinct.each do |user| %>
-                        <li> <%= link_to user.name, books_path(:user_id => user.id), class: "popup-UserName"%></li>
-                      <% end %>
-                      </ul>
-
-                    </div>
-                  </span>
-                </div>
-
-                <div class="books-FlexContainer-author">
-                  by <%= truncate(book.author, length:35) || "Unavailable" %>
-                </div>
-
-                <div class ="books-FlexContainer-presenter">Presented by:
-                  <% if book.users.distinct.count <= 3 %>
-                    <% book.users.distinct.each_with_index do |user, index| %>
-                      <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < book.users.distinct.count-1 %>,<% end %>
-                    <% end %>
-                  <% else %>
-                    <% book.users.distinct[0..2].each_with_index do |user, index| %>
-                      <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < 2 %>,<% end %>
-                    <% end %>
-                    + <%= book.users.distinct.count -3 %>
-                  <% end %>
-                </div>
-
-                <div class="books-FlexContainer-footer">
-                  <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_book_path(book) %>
-                  <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), book, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
-                </div>
-              </div>
-            </div>
+            <%= render "book_item", book: book %>
           <% end %>
         <% end %>
       <% end %>

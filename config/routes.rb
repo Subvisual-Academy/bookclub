@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post "/manual_import", to: "manual_import#create"
   end
 
-  resources :books, only: %i[index new edit create update destroy]
+  resources :books
 
   resources :gatherings, only: %i[index new edit create update destroy] do
     resources :notifications, only: %i[create], module: :gatherings

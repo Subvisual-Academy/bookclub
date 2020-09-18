@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
+  protect_from_forgery except: :show
 
   def index
     @selected_user = User.find_by(id: params[:user_id])
@@ -7,6 +8,13 @@ class BooksController < ApplicationController
     @gatherings = Gathering.group_by_year
     @books = retrieve_books(@selected_user, @search_param)
     @users = User.order(:name).all.includes(:books)
+  end
+
+  def show
+    @book = Book.find(params[:id])
+    @presenting_users = @book.users.distinct
+
+    render layout: false
   end
 
   def new

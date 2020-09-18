@@ -1,24 +1,22 @@
-document.addEventListener("turbolinks:load", addPopupAction);
+document.addEventListener("turbolinks:load", addPopupRemotes);
 
-function addPopupAction() {
-  const popupDivs = document.querySelectorAll(".u-popup");
+function addPopupRemotes() {
+  const popupDivs = document.querySelectorAll(".u-popupRemote");
 
   popupDivs.forEach((popupDiv) => {
-    popupDiv.addEventListener("click", function showPopup() {
-      const popupContent = popupDiv.querySelectorAll(".u-popupContent")[0];
-      popupContent.classList.toggle("u-show");
-      closeOtherPopups(popupDiv);
+    popupDiv.addEventListener("click", async () => {
+      closeOtherPopups();
+
+      const response = await fetch(popupDiv.dataset.url);
+      const html = await response.text();
+
+      document.body.children[0].insertAdjacentHTML("afterend", html);
     });
   });
 }
 
-function closeOtherPopups(currentPopup) {
-  const popupDivs = document.querySelectorAll(".u-popup");
-
-  popupDivs.forEach((popupDiv) => {
-    if (popupDiv !== currentPopup) {
-      const popupContent = popupDiv.querySelectorAll(".u-popupContent")[0];
-      popupContent.classList.remove("u-show");
-    }
-  });
+function closeOtherPopups() {
+  document
+    .querySelectorAll(".u-remotePopupContent")
+    .forEach((popup) => popup.remove());
 }
