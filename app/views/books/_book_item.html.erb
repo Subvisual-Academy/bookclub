@@ -3,7 +3,7 @@
 
     <div class="u-popup u-pointer u-underline" data-url="<%= book_path(book) %>">
       <% if book.image%>
-        <img src="<%= book.image %>" loading="async" alt="book cover" class="books-FlexContainer-apiImg"/>
+        <img src="<%= book.image %>" loading="lazy" alt="book cover" class="books-FlexContainer-apiImg"/>
       <% else %>
         <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg" %>
       <% end %>
