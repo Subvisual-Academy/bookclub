@@ -27,11 +27,6 @@ RSpec.describe "Gatherings", type: :request do
     gathering_list.each do |gathering|
       expect(response_text).to include(Date::MONTHNAMES[gathering.date.month])
       expect(response_text).to include(gathering.special_presentation)
-      gathering.book_presentations.each do |book_presentation|
-        expect(response_text).to include(book_presentation.user.name)
-        expect(response_text).to include(book_presentation.book.title)
-        expect(response_text).to include(book_presentation.book.synopsis)
-      end
     end
   end
 
