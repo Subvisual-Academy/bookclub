@@ -4,7 +4,7 @@
   cursor: pointer;
 }
 
-.u-popupRemote {
+.u-popup {
   position: relative;
 
   -webkit-user-select: none;
@@ -13,7 +13,7 @@
   user-select: none;
 }
 
-.u-remotePopupContent {
+.u-popupContent {
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }

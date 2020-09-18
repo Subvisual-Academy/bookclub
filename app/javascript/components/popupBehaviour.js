@@ -1,7 +1,7 @@
-document.addEventListener("turbolinks:load", addPopupRemotes);
+document.addEventListener("turbolinks:load", setupPopups);
 
-function addPopupRemotes() {
-  const popupDivs = document.querySelectorAll(".u-popupRemote");
+function setupPopups() {
+  const popupDivs = document.querySelectorAll(".u-popup");
 
   popupDivs.forEach((popupDiv) => {
     popupDiv.addEventListener("click", async () => {
@@ -17,6 +17,6 @@ function addPopupRemotes() {
 
 function closeOtherPopups() {
   document
-    .querySelectorAll(".u-remotePopupContent")
+    .querySelectorAll(".u-popupContent")
     .forEach((popup) => popup.remove());
 }
