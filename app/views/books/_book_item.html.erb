@@ -1,0 +1,40 @@
+<div class="books-FlexContainer">
+  <div class="books-FlexContainer-child">
+
+    <div class="u-popup u-pointer u-underline" data-url="<%= book_path(book) %>">
+      <% if book.image%>
+        <img src="<%= book.image %>" loading="async" alt="book cover" class="books-FlexContainer-apiImg"/>
+      <% else %>
+        <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "books-FlexContainer-unavailableImg" %>
+      <% end %>
+
+      <div class="books-FlexContainer-title">
+        <%= truncate(book.title, length:40) %>
+      </div>
+    </div>
+
+    <div class="books-FlexContainer-author">
+      by <%= truncate(book.author, length:35) || "Unavailable" %>
+    </div>
+
+    <% if book.users.distinct.count > 0 %>
+      <div class ="books-FlexContainer-presenter">Presented by:
+        <% if book.users.distinct.count <= 3 %>
+          <% book.users.distinct.each_with_index do |user, index| %>
+            <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < book.users.distinct.count-1 %>,<% end %>
+          <% end %>
+        <% else %>
+          <% book.users.distinct[0..2].each_with_index do |user, index| %>
+            <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < 2 %>,<% end %>
+          <% end %>
+          + <%= book.users.distinct.count -3 %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="books-FlexContainer-footer">
+      <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_book_path(book) %>
+      <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), book, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
+    </div>
+  </div>
+</div>

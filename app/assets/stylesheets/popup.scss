@@ -14,13 +14,6 @@
 }
 
 .u-popupContent {
-  visibility: hidden;
-}
-
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
-.u-show {
-  visibility: visible;
-
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
