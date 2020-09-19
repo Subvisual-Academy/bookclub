@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "gatherings#index"
+  root to: redirect("gatherings")
 
   namespace :books do
     get "/manual_import/new", to: "manual_import#new"

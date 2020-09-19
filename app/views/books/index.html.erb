@@ -2,7 +2,7 @@
   <div class="books-Header">
     <%= form_with(url: books_path, method: "get") do |f| %>
       <div class='form-group'>
-        <%= f.select :user_id, @users.map {|u| ["#{u.name} - #{u.books.distinct.count}",u.id]}.insert(0, ["All Users (#{Book.all.count})", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();', class: "books-UserFilter"} %>
+        <%= f.select :user_id, @users.map {|u| ["#{u.name} - #{u.books.distinct.length}",u.id]}.insert(0, ["All Users (#{Book.all.length})", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();', class: "books-UserFilter"} %>
       </div>
     <% end %>
 
@@ -12,12 +12,13 @@
   <% if @search_param %>
     <h2> Showing the results for: <%= @search_param %></h2>
   <% end %>
+
   <!-- Books who haven't been presented yet -->
   <% if @selected_user.nil? %>
-    <% if @books.select { |book| book.users.count == 0 }.length != 0 %>
+    <% if @books.select { |book| book.users.length == 0 }.length != 0 %>
       <p class="gatherings-MainYear">Books not presented</p>
 
-      <% @books.select { |book| book.users.count == 0 }.each do |book| %>
+      <% @books.select { |book| book.users.length == 0 }.each do |book| %>
         <%= render "book_item", book: book %>
       <% end %>
     <% end %>

@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.6"
 
+gem "actionpack-page_caching"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "fuzzy_match", "~> 2.1"
 gem "httparty", "~> 0.13.7"
@@ -12,6 +13,7 @@ gem "library_stdnums", "~> 1.6"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
+gem "rails-observers"
 gem "sass-rails", ">= 6"
 gem "slack-notifier"
 gem "sorcery"

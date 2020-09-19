@@ -43,3 +43,6 @@ yarn-debug.log*
 # env files
 .env
 .envrc
+
+# cache folder
+public/page-cache

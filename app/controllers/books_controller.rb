@@ -2,11 +2,13 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   protect_from_forgery except: :show
 
+  caches_page :index
+
   def index
     @selected_user = User.find_by(id: params[:user_id])
     @search_param = params[:search]
     @gatherings = Gathering.group_by_year
-    @books = retrieve_books(@selected_user, @search_param)
+    @books = retrieve_books(@selected_user, @search_param).includes(:users)
     @users = User.order(:name).all.includes(:books)
   end
 
@@ -30,6 +32,8 @@ class BooksController < ApplicationController
     create_book.perform
 
     if create_book.successful?
+      expire_page action: "index"
+
       redirect_to books_path, notice: "Book was successfully created."
     else
       @book = create_book.book
@@ -42,6 +46,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     if @book.update(book_params)
+      expire_page action: "index"
+
       redirect_to books_path, notice: "Book was successfully updated."
     else
       flash.now[:notice] = "Invalid field"
@@ -53,6 +59,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     @book.destroy
+    expire_page action: "index"
 
     redirect_to books_url, notice: "Book was successfully destroyed."
   end
