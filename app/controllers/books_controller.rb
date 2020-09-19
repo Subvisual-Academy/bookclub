@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @presenting_users = @book.users.distinct
+    @presenting_users = @book.users
 
     render layout: false
   end
@@ -74,7 +74,7 @@ class BooksController < ApplicationController
     if search_param
       Book.search(search_param)
     elsif selected_user
-      selected_user.books.distinct
+      selected_user.books
     else
       Book.by_creation_date
     end
