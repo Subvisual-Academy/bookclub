@@ -50,7 +50,7 @@ RSpec.feature "Authentication", js: true do
     visit root_path
     click_link("Log Out")
 
-    expect(page).to have_current_path(gatherings_path)
+    expect(page).to have_current_path(root_path)
     expect(page).to have_button("Log In")
   end
 end

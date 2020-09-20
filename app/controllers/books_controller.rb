@@ -32,8 +32,6 @@ class BooksController < ApplicationController
     create_book.perform
 
     if create_book.successful?
-      expire_page action: "index"
-
       redirect_to books_path, notice: "Book was successfully created."
     else
       @book = create_book.book
@@ -46,8 +44,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     if @book.update(book_params)
-      expire_page action: "index"
-
       redirect_to books_path, notice: "Book was successfully updated."
     else
       flash.now[:notice] = "Invalid field"
@@ -59,7 +55,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     @book.destroy
-    expire_page action: "index"
 
     redirect_to books_url, notice: "Book was successfully destroyed."
   end
