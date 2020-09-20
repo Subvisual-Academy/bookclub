@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   protect_from_forgery except: :show
 
-  caches_page :index
+  caches_action :index, layout: false, unless: -> { current_user }
 
   def index
     @selected_user = User.find_by(id: params[:user_id])

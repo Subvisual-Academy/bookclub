@@ -4,7 +4,7 @@ class CacheSweeper < ActionController::Caching::Sweeper
   def after_commit(_record)
     return unless @controller
 
-    expire_page(gatherings_path)
-    expire_page(books_path)
+    expire_action(controller: "gatherings", action: "index")
+    expire_action(controller: "books", action: "index")
   end
 end

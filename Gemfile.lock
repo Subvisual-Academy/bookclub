@@ -25,8 +25,8 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actionpack-page_caching (1.2.3)
-      actionpack (>= 5.0.0)
+    actionpack-action_caching (1.2.1)
+      actionpack (>= 4.0.0)
     actiontext (6.0.3.2)
       actionpack (= 6.0.3.2)
       activerecord (= 6.0.3.2)
@@ -201,6 +201,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.2)
     regexp_parser (1.7.1)
     rexml (3.2.4)
     rspec-core (3.9.2)
@@ -307,7 +308,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionpack-page_caching
+  actionpack-action_caching
   bootsnap (>= 1.4.2)
   byebug
   capybara
@@ -328,6 +329,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.2)
   rails-controller-testing
   rails-observers
+  redis
   rspec-rails (~> 4.0.1)
   rubocop
   rubocop-performance

@@ -2,7 +2,7 @@ class GatheringsController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_moderator, only: %i[new create destroy]
 
-  caches_page :index
+  caches_action :index, layout: false, unless: -> { current_user }
 
   def index
     @gatherings = Gathering.group_by_year
