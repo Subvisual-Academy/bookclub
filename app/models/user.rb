@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   has_many :book_presentations, dependent: :destroy
-  has_many :books, through: :book_presentations
+  has_many :books, -> { distinct }, through: :book_presentations
 end

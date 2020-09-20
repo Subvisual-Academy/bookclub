@@ -2,7 +2,7 @@ class Gathering < ApplicationRecord
   validates :date, presence: true
 
   has_many :book_presentations, dependent: :destroy
-  has_many :books, through: :book_presentations
+  has_many :books, -> { distinct }, through: :book_presentations
   accepts_nested_attributes_for :book_presentations, allow_destroy: true, reject_if: proc { |attr|
                                                                                        (attr["user_id"].blank? ||
                                                                                            attr["book_id"].blank?)

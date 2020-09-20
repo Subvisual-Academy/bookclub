@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   validates :google_id, presence: true, uniqueness: true
 
   has_many :book_presentations, dependent: :destroy
-  has_many :users, through: :book_presentations
+  has_many :users, -> { distinct }, through: :book_presentations
 
   scope :by_creation_date, -> { order("created_at DESC") }
 

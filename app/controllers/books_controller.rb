@@ -2,17 +2,19 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   protect_from_forgery except: :show
 
+  caches_action :index, layout: false, unless: -> { current_user }
+
   def index
     @selected_user = User.find_by(id: params[:user_id])
     @search_param = params[:search]
     @gatherings = Gathering.group_by_year
-    @books = retrieve_books(@selected_user, @search_param)
+    @books = retrieve_books(@selected_user, @search_param).includes(:users)
     @users = User.order(:name).all.includes(:books)
   end
 
   def show
     @book = Book.find(params[:id])
-    @presenting_users = @book.users.distinct
+    @presenting_users = @book.users
 
     render layout: false
   end
@@ -67,7 +69,7 @@ class BooksController < ApplicationController
     if search_param
       Book.search(search_param)
     elsif selected_user
-      selected_user.books.distinct
+      selected_user.books
     else
       Book.by_creation_date
     end

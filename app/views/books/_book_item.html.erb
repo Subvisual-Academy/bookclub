@@ -17,17 +17,17 @@
       by <%= truncate(book.author, length:35) || "Unavailable" %>
     </div>
 
-    <% if book.users.distinct.count > 0 %>
+    <% if book.users.length > 0 %>
       <div class ="books-FlexContainer-presenter">Presented by:
-        <% if book.users.distinct.count <= 3 %>
-          <% book.users.distinct.each_with_index do |user, index| %>
-            <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < book.users.distinct.count-1 %>,<% end %>
+        <% if book.users.length <= 3 %>
+          <% book.users.each_with_index do |user, index| %>
+            <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < book.users.count-1 %>,<% end %>
           <% end %>
         <% else %>
-          <% book.users.distinct[0..2].each_with_index do |user, index| %>
+          <% book.users[0..2].each_with_index do |user, index| %>
             <%= link_to user.name, books_path(:user_id => user.id), class:"books-FlexContainer-presenterName" %><% if index < 2 %>,<% end %>
           <% end %>
-          + <%= book.users.distinct.count -3 %>
+          + <%= book.users.length -3 %>
         <% end %>
       </div>
     <% end %>
