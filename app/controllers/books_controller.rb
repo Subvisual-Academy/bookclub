@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   protect_from_forgery except: :show
 
-  caches_action :index, layout: false, unless: -> { current_user }
+  caches_action :index, layout: false, unless: proc { current_user || search_params.keys.length.positive? }
 
   def index
     @selected_user = User.find_by(id: params[:user_id])
@@ -60,6 +60,10 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.permit(:user_id, :search)
+  end
 
   def book_params
     params.require(:book).permit(:title, :author, :synopsis, :image)
