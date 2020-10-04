@@ -6,7 +6,7 @@ function addExpansionAction() {
   gatherings.forEach((gatheringHead) => {
     gatheringHead.addEventListener("click", function expandGathering() {
       const content = gatheringHead.nextElementSibling;
-      const arrowImage = gatheringHead.getElementsByTagName("img")[0];
+      const arrowImage = gatheringHead.getElementsByTagName("svg")[0];
 
       if (content.style.maxHeight) {
         content.style.maxHeight = null;
