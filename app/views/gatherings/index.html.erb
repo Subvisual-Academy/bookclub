@@ -19,7 +19,7 @@
           <button type="button" class="gatherings-YearGridBox-header collapsible-gathering">
               <div class="gatherings-YearGridBox-headerMonth"> <%= show_date_month(gathering) %> </div>
               <div class="gatherings-YearGridBox-headerSpecialPresentation"><%= gathering.special_presentation %> </div>
-              <%= image_tag('expand-arrow.png', alt: "expand", class: "arrow-image") %>
+              <%= inline_svg_tag('expand-arrow.svg', alt: "expand", class: "arrow-image") %>
           </button>
           <div class="collapsible-content">
             <%= render 'gathering_collapsible', gathering: gathering %>
