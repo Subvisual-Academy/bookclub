@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "gatherings#index"
 
+  get "/login", to: "sessions#new", as: :login
+  post "login" => "sessions#create"
+  delete "/logout", to: "sessions#destroy", as: :logout
+
   namespace :books do
     get "/manual_import/new", to: "manual_import#new"
     post "/manual_import", to: "manual_import#create"
@@ -12,7 +16,9 @@ Rails.application.routes.draw do
     resources :notifications, only: %i[create], module: :gatherings
   end
 
-  get "/login", to: "sessions#new", as: :login
-  post "login" => "sessions#create"
-  delete "/logout", to: "sessions#destroy", as: :logout
+  namespace :admin do
+    resources :users
+
+    root to: "users#index"
+  end
 end
