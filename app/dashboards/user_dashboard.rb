@@ -9,7 +9,7 @@ class UserDashboard < Administrate::BaseDashboard
     password_confirmation: Field::Password,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    moderator: Field::Boolean,
+    moderator: Field::Boolean
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[

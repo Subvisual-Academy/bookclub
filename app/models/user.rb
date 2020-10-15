@@ -12,9 +12,4 @@ class User < ApplicationRecord
 
   has_many :book_presentations, dependent: :destroy
   has_many :books, -> { distinct }, through: :book_presentations
-
-  enum role: {
-    user: "user",
-    admin: "admin"
-  }
 end
