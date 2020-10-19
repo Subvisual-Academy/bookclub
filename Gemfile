@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.6"
 
 gem "actionpack-action_caching"
+gem "administrate"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "fuzzy_match", "~> 2.1"
 gem "httparty", "~> 0.13.7"
