@@ -27,8 +27,6 @@
 
   <% @gatherings.each do | year, gatherings | %>
     <% gatherings.each do | gathering |%>
-      <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
-
       <turbo-frame
         id="gathering_<%= gathering.id %>_books"
         src="<%= gathering_books_path(gathering, search: @search_param) %>"

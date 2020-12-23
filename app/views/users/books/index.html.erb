@@ -13,11 +13,9 @@
 
   <% @gatherings.each do | year, gatherings | %>
     <% gatherings.each do | gathering |%>
-      <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
-
       <turbo-frame
         id="gathering_<%= gathering.id %>_books"
-        src="/gatherings/<%= gathering.id %>/books"
+        src="<%= gathering_books_path(gathering, user_id: @user.id) %>"
       ></turbo-frame>
     <% end %>
   <% end %>
