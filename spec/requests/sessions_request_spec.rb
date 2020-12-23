@@ -22,17 +22,17 @@ RSpec.describe "Sessions", type: :request do
     it "redirects to root_path on a successful login" do
       user = create(:user)
 
-      post login_path, params: { email: user.email, password: "foobar" }
+      post login_path, params: { user: { email: user.email, password: "foobar" } }
 
       expect(response).to redirect_to(root_path)
     end
 
-    it "return bad_request if login is bad" do
+    it "redirects to login path on a failed login" do
       user = create(:user)
 
-      post login_path, params: { email: user.email, password: "bad_password" }
+      post login_path, params: { user: { email: user.email, password: "bad_password" } }
 
-      expect(response).to have_http_status(:unauthorized)
+      expect(response).to redirect_to(login_path(email: user.email))
     end
   end
 

@@ -1,0 +1,34 @@
+<div class="gatherings-Main">
+  <turbo-frame id="<%= dom_id(@gathering) %>">
+    <div class="gatherings-Main-header">
+      <h2>Book Mentions</h2>
+
+      <div class="gatherings-Main-header-left">
+        <% if current_user %>
+          <%= send_notification_button(current_user, @gathering) %>
+          <% if current_user.moderator %>
+            <%= link_to (inline_svg_tag 'trash.svg',
+                alt: "delete",
+                class: "gatherings-Main-header-left-img"),
+                @gathering,
+                method: :delete,
+                data: {confirm: 'Are you sure you want to delete it?' }
+            %>
+          <% end %>
+          <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img"),
+              edit_gathering_path(@gathering),
+              data: { "turbo-frame": "_top" }
+          %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render "book_presentations/book_presentation_hash", presentations_hash: @gathering.book_presentations.reject { |presentation|  presentation.special}.group_by(&:user_id) %>
+
+    <h2 class="gatherings-SpecialPresentation">
+      <%= @gathering.special_presentation %>
+    </h2>
+
+    <%= render "book_presentations/book_presentation_hash", presentations_hash: @gathering.book_presentations.select { |presentation|  presentation.special}.group_by(&:user_id) %>
+  </turbo-frame>
+</div>

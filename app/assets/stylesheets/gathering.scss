@@ -128,12 +128,11 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding-right: 0;
-      padding-left: 0;
 
       background-color: inherit;
       border: none;
       cursor: pointer;
+      user-select: none;
 
       text-decoration: none;
 
@@ -147,6 +146,7 @@
         font-weight: bold;
         text-align: left;
       }
+
       .gatherings-YearGridBox-headerSpecialPresentation {
         flex-grow: 1;
 
@@ -156,8 +156,18 @@
         font-size: 16px;
         text-align: left;
       }
+
+      .isOpen > svg {
+        transform: rotate(180deg);
+      }
     }
   }
+}
+
+.gatherings-YearGridBox-toggle {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
 }
 
 .gatherings-PlusBox {
@@ -378,47 +388,10 @@
   }
 }
 
-.collapsible-content {
+.gatherings-closeButton {
   display: block;
-  max-height: 0;
-  padding: 0;
-  overflow: hidden;
-
-  transition: max-height 0.3s ease-out;
-}
-
-.gatherings-bodyCloseDiv {
-  display: flex;
-  justify-content: flex-end;
-
-  .gatherings-bodyCloseDivButton {
-    display: inline-block;
-    padding: 5px 20px 6px 20px;
-
-    background-color: transparent;
-    border: 1px solid $secondary-color;
-    border-radius: 25px;
-    color: $secondary-color;
-    cursor: pointer;
-
-    font-family: Open Sans, serif;
-    font-size: 0.8em;
-  }
-
-  .gatherings-bodyCloseDivButton:hover {
-    background-color: $base-color;
-    color: $tertiary-color;
-  }
-}
-
-#backToTop {
-  position: fixed;
-  right: 50px;
-  bottom: 20px;
-  z-index: 99;
-
-  display: none;
   padding: 5px 20px 6px 20px;
+  margin-left: auto;
 
   background-color: transparent;
   border: 1px solid $secondary-color;
@@ -430,7 +403,36 @@
   font-size: 0.8em;
 }
 
-#backToTop:hover {
+.gatherings-close:hover {
+  background-color: $base-color;
+  color: $tertiary-color;
+}
+
+.gatherings-backToTop {
+  position: fixed;
+  right: 50px;
+  bottom: 20px;
+  z-index: 99;
+
+  padding: 5px 20px 6px 20px;
+
+  background-color: transparent;
+  border: 1px solid $secondary-color;
+  border-radius: 25px;
+  color: $secondary-color;
+  cursor: pointer;
+
+  font-family: Open Sans, serif;
+  font-size: 0.8em;
+
+  @media all and (max-width: 1000px) {
+    right: 20px;
+
+    font-size: 0.8rem;
+  }
+}
+
+.gatherings-backToTop:hover {
   background-color: $base-color;
   color: $tertiary-color;
 }
@@ -438,11 +440,6 @@
 @media all and (max-width: 1000px) {
   .gatherings-YearGridBox-headerSpecialPresentation {
     display: none;
-  }
-  #backToTop {
-    right: 20px;
-
-    font-size: 0.8rem;
   }
 
   .gatherings-Notification {

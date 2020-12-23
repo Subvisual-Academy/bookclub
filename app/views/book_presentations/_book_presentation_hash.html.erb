@@ -5,7 +5,7 @@
       <ul class="bookPresentation-titles">
         <% book_presentations.each do |presentation| %>
           <li>
-            <span class="u-popup" data-url="<%= book_path(presentation.book) %>">
+            <span class="u-popup" onclick="openPopup('<%= book_path(presentation.book) %>')">
               &mdash; <span class="bookPresentation-title u-pointer"><%= presentation.book.title %></span>,
                 by <%= book_author(presentation.book) %>
             </span>

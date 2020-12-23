@@ -2,10 +2,12 @@ class GatheringsController < ApplicationController
   before_action :require_login, only: %i[edit update]
   before_action :require_moderator, only: %i[new create destroy]
 
-  caches_action :index, layout: false, unless: proc { current_user }
-
   def index
     @gatherings = Gathering.group_by_year
+  end
+
+  def show
+    @gathering = Gathering.find(params[:id])
   end
 
   def new
@@ -22,8 +24,8 @@ class GatheringsController < ApplicationController
     if @gathering.save
       redirect_to gatherings_path, notice: "Gathering was successfully created."
     else
-      flash.now[:notice] = "Invalid field"
-      render new_gathering_path, status: :bad_request
+      flash[:notice] = "Invalid field"
+      redirect_to new_gathering_path
     end
   end
 
@@ -33,8 +35,8 @@ class GatheringsController < ApplicationController
     if @gathering.update(gathering_params)
       redirect_to gatherings_path, notice: "Gathering was successfully updated."
     else
-      flash.now[:notice] = "Invalid field"
-      render :edit, status: :bad_request
+      flash[:notice] = "Invalid field"
+      redirect_to edit_gathering_path
     end
   end
 

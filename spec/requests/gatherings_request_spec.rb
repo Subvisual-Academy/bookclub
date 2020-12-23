@@ -108,10 +108,11 @@ RSpec.describe "Gatherings", type: :request do
       expect(created_gathering.book_presentations[0].special).to eq(book_presentation_params["1"][:special])
     end
 
-    it "returns bad_request if create is unsuccessful" do
+    it "redirects to new if params are invalid" do
       post gatherings_path, params: { gathering: { date: "" } }
 
-      expect(response).to have_http_status(:bad_request)
+      expect(Gathering.last).to be_falsey
+      expect(response).to redirect_to(new_gathering_path)
     end
 
     it "returns unauthorized if non moderator is trying to create gathering" do
@@ -154,12 +155,13 @@ RSpec.describe "Gatherings", type: :request do
       expect(gathering.special_presentation).to eq(gathering_params[:special_presentation])
     end
 
-    it "returns bad_request on an unsuccessful patch" do
+    it "redirects to edit if params are invalid" do
       gathering = create(:gathering, :has_special_presentation)
 
-      put gathering_path(gathering), params: { gathering: { date: 1 } }
+      put gathering_path(gathering), params: { gathering: { date: "INVALID" } }
 
-      expect(response).to have_http_status(:bad_request)
+      expect(Gathering.last).to eq(gathering)
+      expect(response).to redirect_to(edit_gathering_path)
     end
   end
 

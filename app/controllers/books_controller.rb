@@ -2,8 +2,6 @@ class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   protect_from_forgery except: :show
 
-  caches_action :index, layout: false, unless: proc { current_user || search_params.keys.length.positive? }
-
   def index
     @selected_user = User.find_by(id: params[:user_id])
     @search_param = params[:search]
@@ -35,8 +33,8 @@ class BooksController < ApplicationController
       redirect_to books_path, notice: "Book was successfully created."
     else
       @book = create_book.book
-      flash.now[:notice] = create_book.reason_for_failure
-      render new_book_path, status: :bad_request
+      flash[:notice] = create_book.reason_for_failure
+      redirect_to new_book_path
     end
   end
 
@@ -46,8 +44,8 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to books_path, notice: "Book was successfully updated."
     else
-      flash.now[:notice] = "Invalid field"
-      render :edit, status: :bad_request
+      flash[:notice] = "Invalid field"
+      redirect_to edit_book_path
     end
   end
 

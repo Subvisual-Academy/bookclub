@@ -1,21 +1,15 @@
-document.addEventListener("turbolinks:load", setupPopups);
+document.addEventListener("turbo:before-render", cleanupPopups);
 
-function setupPopups() {
-  const popupDivs = document.querySelectorAll(".u-popup");
+window.openPopup = async (url) => {
+  cleanupPopups();
 
-  popupDivs.forEach((popupDiv) => {
-    popupDiv.addEventListener("click", async () => {
-      closeOtherPopups();
+  const response = await fetch(url);
+  const html = await response.text();
 
-      const response = await fetch(popupDiv.dataset.url);
-      const html = await response.text();
+  document.body.children[0].insertAdjacentHTML("afterend", html);
+};
 
-      document.body.children[0].insertAdjacentHTML("afterend", html);
-    });
-  });
-}
-
-function closeOtherPopups() {
+function cleanupPopups() {
   document
     .querySelectorAll(".u-popupContent")
     .forEach((popup) => popup.remove());

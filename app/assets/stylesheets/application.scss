@@ -28,6 +28,10 @@
   box-sizing: border-box;
 }
 
+[x-cloak] {
+  display: none;
+}
+
 body {
   min-height: 100vh;
   padding: 0;
@@ -35,6 +39,14 @@ body {
 
   font-family: "Open Sans", sans-serif;
   font-size: 1.2rem;
+}
+
+.u-noticeArea {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+
+  transform: translateX(-50%);
 }
 
 .u-notice {
