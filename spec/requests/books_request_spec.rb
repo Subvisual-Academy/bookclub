@@ -75,10 +75,11 @@ RSpec.describe "Books", type: :request do
       expect(created_book.synopsis).to eq(expected_description)
     end
 
-    it "returns bad_request if create is unsuccessful" do
+    it "redirects to new if params are invalid" do
       post books_path, params: { book: { title: "" } }
 
-      expect(response).to have_http_status(:bad_request)
+      expect(Book.last).to be_falsy
+      expect(response).to redirect_to(new_book_path)
     end
   end
 

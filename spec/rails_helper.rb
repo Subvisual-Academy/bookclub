@@ -39,6 +39,7 @@ RSpec.configure do |config|
   config.include AuthHelpers::Request, type: :request
   config.include AuthHelpers::Feature, type: :feature
   config.include TransactionalCapybara::AjaxHelpers, type: :feature
+  config.include DomHelpers, type: :feature
   config.include Capybara::RSpecMatchers, type: :component
   config.include HtmlHelpers, type: :request
 end

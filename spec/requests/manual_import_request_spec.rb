@@ -50,10 +50,11 @@ RSpec.describe "BookByHands", type: :request do
       expect(created_book.image).to eq(image_url)
     end
 
-    it "returns bad_request if create is unsuccessful" do
-      post books_path, params: { book: { author: "" } }
+    it "redirects to new if params are invalid" do
+      post books_manual_import_path, params: { book: { author: "" } }
 
-      expect(response).to have_http_status(:bad_request)
+      expect(Book.last).to be_falsy
+      expect(response).to redirect_to(books_manual_import_new_path)
     end
   end
 end

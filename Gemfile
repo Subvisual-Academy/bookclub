@@ -1,26 +1,24 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.6"
+ruby "2.7.2"
 
-gem "actionpack-action_caching"
 gem "administrate"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "fuzzy_match", "~> 2.1"
-gem "httparty", "~> 0.13.7"
+gem "httparty", "~> 0.17"
 gem "inline_svg"
 gem "jbuilder", "~> 2.7"
 gem "library_stdnums", "~> 1.6"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
-gem "rails", "~> 6.0.3", ">= 6.0.3.2"
-gem "rails-observers"
+gem "rails", "~> 6.1"
 gem "redis"
 gem "sass-rails", ">= 6"
 gem "slack-notifier"
 gem "sorcery"
-gem "turbolinks", "~> 5"
-gem "webpacker", "~> 4.0"
+gem "turbo-rails"
+gem "webpacker", "~> 5.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]

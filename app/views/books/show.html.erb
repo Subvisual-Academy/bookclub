@@ -1,4 +1,9 @@
-<span class="popup-PopupFrame u-popupContent">
+<span
+  class="popup-PopupFrame u-popupContent"
+  x-cloak
+  x-data
+  @click.away="$el.remove()"
+>
   <% if @book.image%>
     <img src="<%= @book.image %>" alt="book cover" class="popup-PopupImage"/>
   <% else %>

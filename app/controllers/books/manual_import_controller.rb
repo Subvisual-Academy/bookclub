@@ -11,8 +11,8 @@ class Books::ManualImportController < ApplicationController
     if @book.save
       redirect_to books_path, notice: "Book was successfully created."
     else
-      flash.now[:notice] = "Problem: #{@book.errors.messages}"
-      render :new, status: :bad_request
+      flash[:notice] = "Problem: #{@book.errors.messages}"
+      redirect_to books_manual_import_new_path
     end
   end
 

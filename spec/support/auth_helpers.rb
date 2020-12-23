@@ -1,7 +1,7 @@
 module AuthHelpers
   module Request
     def login_user(user)
-      send(:post, login_path, params: { email: user.email, password: "foobar" })
+      send(:post, login_path, params: { user: { email: user.email, password: "foobar" } })
     end
 
     def logout
@@ -12,8 +12,8 @@ module AuthHelpers
   module Feature
     def login_user(user, current_page = page)
       current_page.visit login_path
-      current_page.fill_in("email", with: user.email)
-      current_page.fill_in("password", with: "foobar")
+      current_page.fill_in("user[email]", with: user.email)
+      current_page.fill_in("user[password]", with: "foobar")
       current_page.click_on("Log in")
       current_page.has_content?(user.email)
     end

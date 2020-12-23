@@ -6,15 +6,18 @@ class SessionsController < ApplicationController
       redirect_to(root_path)
     end
 
-    @user = User.new
+    @user = User.new(email: params[:email])
   end
 
   def create
-    if login(params[:email], params[:password])
+    user_params = params[:user]
+
+    if login(user_params[:email], user_params[:password])
       redirect_back_or_to root_path, notice: "Welcome, #{current_user.name}!"
     else
       flash[:alert] = "Incorrect email/password"
-      redirect_to login_path, status: :unauthorized
+
+      redirect_to login_path(email: user_params[:email])
     end
   end
 

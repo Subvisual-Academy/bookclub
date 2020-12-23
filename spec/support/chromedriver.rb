@@ -1,9 +1,17 @@
 require "selenium/webdriver"
 
-Capybara.default_driver = :selenium_chrome_headless
-Capybara.javascript_driver = :selenium_chrome_headless
-Capybara.ignore_hidden_elements = false
-Capybara.default_max_wait_time = 4
-Capybara::Screenshot.register_driver(:selenium_chrome_headless) do |driver, path|
-  driver.browser.save_screenshot(path)
+Capybara.register_driver :chrome_headless do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument("--window-size=1368,768")
+  options.add_argument("--headless")
+  options.add_argument("--disable-gpu")
+
+  Capybara::Selenium::Driver.new(app,
+                                 browser: :chrome,
+                                 options: options)
 end
+
+Capybara.default_driver = :chrome_headless
+Capybara.javascript_driver = :chrome_headless
+Capybara.ignore_hidden_elements = true
+Capybara.default_max_wait_time = 1

@@ -1,6 +1,9 @@
 <div class="gatherings-Main">
   <div class="gatherings-NextDate">
-    Next BookClub session: <span class="gatherings-NextDate gatherings-NextDateShow"><%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %></span>
+    Next BookClub session:
+    <span class="gatherings-NextDate gatherings-NextDateShow">
+      <%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %>
+    </span>
   </div>
 
   <% @gatherings.each do | year, gatherings | %>
@@ -9,25 +12,64 @@
       <% if current_user&.moderator %>
         <% if year == @gatherings.keys.first %>
           <button class="gatherings-PlusBox">
-            <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering") , new_gathering_path(@gathering), class:"gatherings-First-link" %>
+            <%= link_to (inline_svg_tag 'plus.svg', alt: "New Gathering"),
+              new_gathering_path(@gathering),
+              class:"gatherings-First-link"
+            %>
           </button>
         <% end %>
       <% end %>
 
       <% gatherings.each do | gathering |%>
-        <div class="gatherings-YearGridBox">
-          <button type="button" class="gatherings-YearGridBox-header collapsible-gathering">
-              <div class="gatherings-YearGridBox-headerMonth"> <%= show_date_month(gathering) %> </div>
-              <div class="gatherings-YearGridBox-headerSpecialPresentation"><%= gathering.special_presentation %> </div>
-              <%= inline_svg_tag('expand-arrow.svg', alt: "expand", class: "arrow-image") %>
-          </button>
-          <div class="collapsible-content">
-            <%= render 'gathering_collapsible', gathering: gathering %>
+        <div class="gatherings-YearGridBox" x-data="{ open: false }">
+          <div class="gatherings-YearGridBox-header" @click="open = !open">
+            <div class="gatherings-YearGridBox-headerMonth">
+              <%= show_date_month(gathering) %>
+            </div>
+            <div class="gatherings-YearGridBox-headerSpecialPresentation">
+              <%= gathering.special_presentation %>
+            </div>
+            <button
+              type="button"
+              class="gatherings-YearGridBox-toggle"
+              :class="{ 'isOpen': open }"
+            >
+              <%= inline_svg_tag('expand-arrow.svg', alt: "expand") %>
+            </button>
           </div>
+
+          <turbo-frame
+            x-cloak
+            x-show="open"
+            id="<%= dom_id(gathering) %>"
+            src="/gatherings/<%= gathering.id %>"
+          >
+            Loading...
+          </turbo-frame>
+
+          <button
+            class="gatherings-closeButton"
+            x-cloak
+            x-show="open"
+            @click="open = false">
+            Close
+          </button>
         </div>
       <% end %>
     </div>
   <% end %>
 </div>
 
-<button id="backToTop" title="Back to Top">	&uarr; Back To Top </button>
+
+<button
+  x-data="{ visible: false}"
+  x-cloak
+  x-on:scroll.window.passive="visible = (document.documentElement.scrollTop > 300)"
+  x-show="visible"
+  @click="window.scrollTo({ top: 0, behavior: 'smooth' });"
+  title="Back to Top"
+  class="gatherings-backToTop"
+>
+  &uarr; Back To Top
+</button>
+

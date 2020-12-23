@@ -10,15 +10,19 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import { Turbo } from "@hotwired/turbo-rails";
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
 
 require("@rails/ujs").start();
-require("turbolinks").start();
 require("@rails/activestorage").start();
 require("slim-select/dist/slimselect.css");
 require("../channels");
 require("../components");
+
+Turbo.start();
+require("../alpine-fix");
+require("alpinejs");
 
 const application = Application.start();
 const context = require.context("../controllers", true, /\.js$/);
