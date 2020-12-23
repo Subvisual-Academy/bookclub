@@ -12,4 +12,5 @@ class User < ApplicationRecord
 
   has_many :book_presentations, dependent: :destroy
   has_many :books, -> { distinct }, through: :book_presentations
+  has_many :gatherings, -> { distinct }, through: :book_presentations
 end

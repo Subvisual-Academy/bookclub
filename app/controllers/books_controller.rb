@@ -3,11 +3,10 @@ class BooksController < ApplicationController
   protect_from_forgery except: :show
 
   def index
-    @selected_user = User.find_by(id: params[:user_id])
     @search_param = params[:search]
-    @gatherings = Gathering.group_by_year
-    @books = retrieve_books(@selected_user, @search_param).includes(:users)
-    @users = User.order(:name).all.includes(:books)
+    @gatherings = eligible_gatherings(@search_param).group_by_year
+    @books_without_presentation = Book.without_book_presentation.search(@search_param)
+    @user_options = User.all.collect { |u| ["#{u.name} - #{u.books.length}", user_books_path(u.id)] }.prepend(["All users", books_path])
   end
 
   def show
@@ -67,13 +66,14 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :synopsis, :image)
   end
 
-  def retrieve_books(selected_user, search_param)
-    if search_param
-      Book.search(search_param)
-    elsif selected_user
-      selected_user.books
-    else
-      Book.by_creation_date
-    end
+  def eligible_gatherings(search)
+    return Gathering.all unless search
+
+    ids = BookPresentation.joins(:book).
+      where("books.title ILIKE ? OR books.synopsis ILIKE ? OR books.author ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%").
+      pluck(:gathering_id).
+      uniq
+
+    Gathering.where(id: ids)
   end
 end

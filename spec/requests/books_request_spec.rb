@@ -3,45 +3,6 @@ require "active_support/core_ext/string/filters"
 
 RSpec.describe "Books", type: :request do
   include ActionView::Helpers::SanitizeHelper
-  describe "GET #index" do
-    it "displays all books' parameters" do
-      list = create_list(:book, 3)
-
-      get books_path
-
-      list.each do |book|
-        expect(response_text).to include(book.title.truncate(40))
-        expect(response_text).to include(book.author.truncate(35))
-        expect(response.body).to include(book.image)
-      end
-    end
-
-    it "Only displays books associated with the filtered user" do
-      user = create(:user)
-      book_list = create_list(:book, 3)
-      gathering = create(:gathering)
-      book_presentation1 = BookPresentation.create(gathering_id: gathering.id, user_id: user.id, book_id: book_list[0].id)
-      book_presentation2 = BookPresentation.create(gathering_id: gathering.id, user_id: user.id, book_id: book_list[1].id)
-      gathering.book_presentations << [book_presentation1, book_presentation2]
-
-      get books_path(user_id: user.id)
-
-      expect(response_text).to include(book_list[0].title.truncate(40))
-      expect(response_text).to include(book_list[1].title.truncate(40))
-      expect(response_text).not_to include(book_list[2].title.truncate(40))
-    end
-
-    it "displays book when searched by title" do
-      book_list = create_list(:book, 3)
-
-      get books_path(search: book_list[0].title)
-      result_list = Book.search(book_list[0].title)
-
-      result_list.each do |book|
-        expect(response_text).to include(book.title.truncate(40))
-      end
-    end
-  end
 
   describe "POST #create", :vcr do
     before(:all) do

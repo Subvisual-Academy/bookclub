@@ -1,0 +1,5 @@
+<turbo-frame id="gathering_<%= @gathering.id %>_books">
+  <% @books.each do |book| %>
+    <%= render "books/book_item", book: book %>
+  <% end %>
+</turbo-frame>

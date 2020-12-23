@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   resources :books
 
   resources :gatherings do
+    resources :books, only: %i[index], module: :gatherings
     resources :notifications, only: %i[create], module: :gatherings
+  end
+
+  resources :users, only: %i[] do
+    resources :books, only: %i[index], module: :users
   end
 
   namespace :admin do
