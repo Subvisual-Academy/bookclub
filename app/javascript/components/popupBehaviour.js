@@ -1,7 +1,7 @@
-document.addEventListener("turbo:load", setupPopups);
+document.addEventListener("turbo:before-render", cleanupPopups);
 
 window.openPopup = async (url) => {
-  closeOtherPopups();
+  cleanupPopups();
 
   const response = await fetch(url);
   const html = await response.text();
@@ -9,22 +9,7 @@ window.openPopup = async (url) => {
   document.body.children[0].insertAdjacentHTML("afterend", html);
 };
 
-function setupPopups() {
-  const popupDivs = document.querySelectorAll(".u-popup");
-
-  popupDivs.forEach((popupDiv) => {
-    popupDiv.addEventListener("click", async () => {
-      closeOtherPopups();
-
-      const response = await fetch(popupDiv.dataset.url);
-      const html = await response.text();
-
-      document.body.children[0].insertAdjacentHTML("afterend", html);
-    });
-  });
-}
-
-function closeOtherPopups() {
+function cleanupPopups() {
   document
     .querySelectorAll(".u-popupContent")
     .forEach((popup) => popup.remove());
