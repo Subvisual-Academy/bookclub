@@ -1,0 +1,24 @@
+<div class="books-Main">
+  <h2> Showing books presented by: <%= @user.name %></h2>
+
+  <%= select_tag "users",
+    options_for_select(@user_options, user_books_path(@user.id)),
+    {
+      "x-data": {url: user_books_path(@user.id)}.to_json,
+      "x-model": "url",
+      "@change": "Turbo.visit(url)",
+      class: "books-UserFilter"
+    }
+  %>
+
+  <% @gatherings.each do | year, gatherings | %>
+    <% gatherings.each do | gathering |%>
+      <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
+
+      <turbo-frame
+        id="gathering_<%= gathering.id %>_books"
+        src="/gatherings/<%= gathering.id %>/books"
+      ></turbo-frame>
+    <% end %>
+  <% end %>
+</div>

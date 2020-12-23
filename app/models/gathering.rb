@@ -9,7 +9,7 @@ class Gathering < ApplicationRecord
                                                                                      }
   class << self
     def group_by_year
-      Gathering.select("extract(year from date) as year, *").
+      Gathering.select("extract(year from date) as year, gatherings.*").
         order("date desc").
         group_by(&:year).
         transform_keys(&:round)

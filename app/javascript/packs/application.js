@@ -21,6 +21,7 @@ require("../channels");
 require("../components");
 
 Turbo.start();
+window.Turbo = Turbo;
 require("../alpine-fix");
 require("alpinejs");
 

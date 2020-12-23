@@ -1,10 +1,14 @@
 <div class="books-Main">
   <div class="books-Header">
-    <%= form_with(url: books_path, method: "get") do |f| %>
-      <div class='form-group'>
-        <%= f.select :user_id, @users.map {|u| ["#{u.name} - #{u.books.length}",u.id]}.insert(0, ["All Users (#{Book.all.length})", 0]), {:selected => params[:user_id] || "0" } , {onchange: 'this.form.submit();', class: "books-UserFilter"} %>
-      </div>
-    <% end %>
+    <%= select_tag "users",
+      options_for_select(@user_options),
+      {
+        "x-data": "{url: null}",
+        "x-model": "url",
+        "@change": "Turbo.visit(url)",
+        class: "books-UserFilter"
+      }
+    %>
 
     <%= link_to 'Create New Book', new_book_path, class: "books-NewButton" %>
   </div>
@@ -13,32 +17,22 @@
     <h2> Showing the results for: <%= @search_param %></h2>
   <% end %>
 
-  <!-- Books who haven't been presented yet -->
-  <% if @selected_user.nil? %>
-    <% if @books.select { |book| book.users.length == 0 }.length != 0 %>
-      <p class="gatherings-MainYear">Books not presented</p>
+  <% if @books_without_presentation.length > 0 %>
+    <p class="gatherings-MainYear">Books not presented</p>
 
-      <% @books.select { |book| book.users.length == 0 }.each do |book| %>
-        <%= render "book_item", book: book %>
-      <% end %>
+    <% @books_without_presentation.each do |book| %>
+      <%= render "book_item", book: book %>
     <% end %>
-  <% end %>
-
-  <% if @selected_user %>
-    <h2> Showing books presented by: <%= @selected_user.name %></h2>
   <% end %>
 
   <% @gatherings.each do | year, gatherings | %>
     <% gatherings.each do | gathering |%>
-      <% if (@selected_user.nil?  && @search_param.blank?) || (gathering.books & @books).count > 0 %> <!-- To avoid empty months -->
-        <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
+      <p class="gatherings-MainYear"><%= show_date_month(gathering) %>&nbsp;&nbsp;<%= year %></p>
 
-        <% gathering.books.each do |book| %>
-          <% if (@selected_user.nil? || book.users.include?(@selected_user)) && (@books.include?(book)) %>
-            <%= render "book_item", book: book %>
-          <% end %>
-        <% end %>
-      <% end %>
+      <turbo-frame
+        id="gathering_<%= gathering.id %>_books"
+        src="<%= gathering_books_path(gathering, search: @search_param) %>"
+      ></turbo-frame>
     <% end %>
   <% end %>
 </div>
