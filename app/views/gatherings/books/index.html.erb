@@ -1,4 +1,6 @@
 <turbo-frame id="gathering_<%= @gathering.id %>_books">
+  <p class="gatherings-MainYear"><%= show_date_month(@gathering) %>&nbsp;&nbsp;<%= @gathering.date.year %></p>
+
   <% @books.each do |book| %>
     <%= render "books/book_item", book: book %>
   <% end %>
