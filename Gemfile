@@ -18,7 +18,7 @@ gem "sass-rails", ">= 6"
 gem "slack-notifier"
 gem "sorcery"
 gem "turbo-rails"
-gem "webpacker", "~> 5.0"
+gem "webpacker", "6.0.0.beta.2"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]

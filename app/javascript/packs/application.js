@@ -16,7 +16,6 @@ import { definitionsFromContext } from "stimulus/webpack-helpers";
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();
-require("slim-select/dist/slimselect.css");
 require("../channels");
 require("../components");
 

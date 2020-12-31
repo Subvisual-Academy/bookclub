@@ -5,16 +5,19 @@
     "lint-styles": "stylelint 'app/**/*.css' 'app/**/*.scss'"
   },
   "dependencies": {
-    "@hotwired/turbo-rails": "^7.0.0-beta.1",
+    "@hotwired/turbo-rails": "^7.0.0-beta.2",
     "@rails/actioncable": "^6.1.0",
     "@rails/activestorage": "^6.1.0",
     "@rails/ujs": "^6.1.0",
-    "@rails/webpacker": "^5.2.1",
+    "@rails/webpacker": "^6.0.0-beta.2",
     "alpinejs": "^2.8.0",
     "slim-select": "^1.26.2",
-    "stimulus": "^2.0.0"
+    "stimulus": "^2.0.0",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
   },
   "devDependencies": {
+    "@webpack-cli/serve": "^1.2.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -26,6 +29,12 @@
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-order": "^4.0.0",
     "stylelint-prettier": "^1.1.2",
-    "webpack-dev-server": "^3.11.0"
-  }
+    "webpack-dev-server": "^3.11.1"
+  },
+  "babel": {
+    "presets": ["./node_modules/@rails/webpacker/package/babel/preset.js"]
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }
