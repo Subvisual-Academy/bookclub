@@ -17,7 +17,7 @@
     "webpack-cli": "^4.2.0"
   },
   "devDependencies": {
-    "@webpack-cli/serve": "^1.2.0",
+    "@webpack-cli/serve": "^1.2.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -32,7 +32,9 @@
     "webpack-dev-server": "^3.11.1"
   },
   "babel": {
-    "presets": ["./node_modules/@rails/webpacker/package/babel/preset.js"]
+    "presets": [
+      "./node_modules/@rails/webpacker/package/babel/preset.js"
+    ]
   },
   "browserslist": [
     "defaults"

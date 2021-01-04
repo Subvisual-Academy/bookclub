@@ -363,6 +363,7 @@ DEPENDENCIES
   httparty (~> 0.17)
   inline_svg
   jbuilder (~> 2.7)
+  kaminari
   library_stdnums (~> 1.6)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)

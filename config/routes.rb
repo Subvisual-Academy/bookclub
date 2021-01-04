@@ -26,4 +26,9 @@ Rails.application.routes.draw do
 
     root to: "users#index"
   end
+
+  namespace :api do
+    resources :gatherings, only: %i[index show]
+    resources :books, only: %i[index create update destroy]
+  end
 end

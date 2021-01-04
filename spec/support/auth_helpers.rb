@@ -1,6 +1,6 @@
 module AuthHelpers
   module Request
-    def login_user(user)
+    def login_user(user = FactoryBot.create(:user))
       send(:post, login_path, params: { user: { email: user.email, password: "foobar" } })
     end
 
