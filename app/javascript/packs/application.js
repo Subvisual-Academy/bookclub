@@ -13,6 +13,7 @@
 import { Turbo } from "@hotwired/turbo-rails";
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
+import "../styles/tailwind.css";
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();
