@@ -1,0 +1,9 @@
+<%= form_tag books_path, method: "get", class: "inline-flex items-center" do %>
+  <%= text_field_tag :search,
+        params[:search],
+        placeholder: "Search...",
+        class: "p-2 border-2 border-gray rounded"
+  %>
+
+  <%= image_submit_tag("magnifier.svg", alt: "search", class: "w-auto ml-2") %>
+<% end %>
