@@ -4,45 +4,14 @@
     <title>Bookclub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= javascript_packs_with_chunks_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_packs_with_chunks_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= favicon_link_tag asset_path('logo-login.svg') %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_packs_with_chunks_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= stylesheet_packs_with_chunks_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= favicon_link_tag asset_path("logo-login.svg") %>
   </head>
 
   <body>
-    <div class="flex items-center justify-between max-w-4xl mx-auto py-12 px-4 md:flex-col md:space-y-8">
-      <%= link_to (inline_svg_tag "logo-navbar.svg", alt: "BookClub", class: "max-h-8"), root_path %>
-
-      <%= form_tag books_path, method: "get", class: "flex items-center" do %>
-        <%= text_field_tag :search,
-              params[:search],
-              placeholder: "Search...",
-              class: "p-2 border-2 border-gray rounded"
-        %>
-
-        <%= image_submit_tag("magnifier.svg", alt: "search", class: "w-auto h-full ml-2") %>
-      <% end %>
-
-      <ul class="flex items-center space-x-4">
-        <li class="hover:underline"><%= link_to "Gatherings", gatherings_path %></li>
-        <li class="hover:underline"><%= link_to "Books", books_path %></li>
-        <li class="hover:underline">
-          <% if current_user %>
-            <span class="header-LogOut-text">
-              Hello,
-              <span class="header-UserName">
-                <%= link_to current_user.name, user_books_path(current_user) %>
-              </span>
-              /
-              <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogOut" %>
-            </span>
-          <% else %>
-            <%= button_to 'Log In', login_path, class:"px-4 py-1 rounded-full bg-blue-600 text-white cursor-pointer", method: :get %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
+    <%= render "_components/navbar" %>
 
     <div class="u-noticeArea">
       <% flash.each do |_key, value| %>
