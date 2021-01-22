@@ -1,9 +1,8 @@
-<div class="u-floatingBack">
-  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "u-floatingBackImg" )+
-                  "Back", books_path, class: "u-floatingBackLink" %>
-</div>
-
 <div class="books-Main">
+  <div class="mb-8">
+    <%= render "_components/back_arrow" %>
+  </div>
+
   <h1>New Book - Using Google Books </h1>
   <div class="u-line"></div>
 

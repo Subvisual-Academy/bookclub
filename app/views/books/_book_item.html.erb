@@ -33,8 +33,21 @@
     <% end %>
 
     <div class="books-FlexContainer-footer">
-      <%= link_to (inline_svg_tag 'edit.svg', alt: "edit", class: "gatherings-Main-header-left-img") , edit_book_path(book) %>
-      <%= link_to (inline_svg_tag 'trash.svg', alt: "delete", class: "gatherings-Main-header-left-img"), book, method: :delete, data: {confirm: 'Are you sure you want to delete it?' } %>
+      <%= link_to (
+            inline_svg_tag 'edit.svg',
+            alt: "edit"
+          ),
+          edit_book_path(book)
+      %>
+
+      <%= link_to (
+            inline_svg_tag 'trash.svg',
+            alt: "delete"
+          ),
+          book,
+          method: :delete,
+          data: {confirm: 'Are you sure you want to delete it?' }
+      %>
     </div>
   </div>
 </div>

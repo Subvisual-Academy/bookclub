@@ -18,7 +18,10 @@
   <% end %>
 
   <% if @books_without_presentation.length > 0 %>
-    <p class="gatherings-MainYear">Books not presented</p>
+    <div class="flex items-center mt-4 text-gray-400">
+      Books not presented
+      <div class="ml-2 w-12 h-0.5 bg-current"></div>
+    </div>
 
     <% @books_without_presentation.each do |book| %>
       <%= render "book_item", book: book %>

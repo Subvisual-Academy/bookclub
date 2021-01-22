@@ -1,70 +1,7 @@
 @import "colors";
 
-.gatherings-Main {
-  max-width: 65rem;
-  padding: 3% 6.5% 1% 6.5%;
-  margin: 0 auto;
-
-  hr {
-    width: 100%;
-    margin: 3% 0 0 0;
-
-    border: 1px solid #edf0f7;
-  }
-
-  h1 {
-    color: $base-color;
-
-    font-family: "Playfair Display", serif;
-    font-size: 2em;
-  }
-
-  h2 {
-    color: $base-color;
-
-    font-family: Open Sans, serif;
-    font-size: 1.2em;
-    font-style: normal;
-    font-weight: 600;
-  }
-
-  h3 {
-    color: $base-color;
-
-    font-family: Open Sans, serif;
-    font-style: normal;
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  p {
-    margin-top: 6.2px;
-  }
-
-  .gatherings-SpecialPresentation {
-    margin-top: 2.5rem;
-  }
-}
-
 .u-helpText {
   color: $secondary-color;
-}
-
-.gatherings-Main-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.gatherings-Main-header-left {
-  display: flex;
-  align-items: center;
-}
-
-.gatherings-Main-header-left-img {
-  margin-right: 10px;
 }
 
 .u-floatingBack {
@@ -99,80 +36,6 @@
   color: $darker-secondary-color;
 }
 
-.gatherings-Main-header-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.gatherings-YearGrid {
-  flex-shrink: 1;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-
-  .gatherings-YearGridBox {
-    float: left;
-    padding: 20px 60px 20px 60px;
-    margin: 0.5em;
-
-    background: $tertiary-color;
-    border: none;
-    border-radius: 25px;
-    box-shadow: 0 0 50px rgba(27, 96, 243, 0.08);
-
-    font-family: Playfair Display, sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-
-    .gatherings-YearGridBox-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-
-      background-color: inherit;
-      border: none;
-      cursor: pointer;
-      user-select: none;
-
-      text-decoration: none;
-
-      .gatherings-YearGridBox-headerMonth {
-        width: 9ch;
-
-        color: $base-color;
-
-        font-family: "Playfair Display", serif;
-        font-size: 2em;
-        font-weight: bold;
-        text-align: left;
-      }
-
-      .gatherings-YearGridBox-headerSpecialPresentation {
-        flex-grow: 1;
-
-        color: $secondary-color;
-
-        font-family: "Open Sans", sans-serif;
-        font-size: 16px;
-        text-align: left;
-      }
-
-      .isOpen > svg {
-        transform: rotate(180deg);
-      }
-    }
-  }
-}
-
-.gatherings-YearGridBox-toggle {
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
-}
-
 .gatherings-PlusBox {
   float: left;
   padding: 20px 60px;
@@ -187,27 +50,6 @@
   font-size: 1.3em;
   font-weight: bold;
   text-decoration: none;
-}
-
-.gatherings-MainYear {
-  padding-top: 1em;
-
-  color: $secondary-color;
-
-  font-family: Open Sans, sans-serif;
-}
-
-.gatherings-MainYear::after {
-  content: "";
-
-  display: inline-block;
-  width: 3em;
-  margin-left: 0.5em;
-
-  border: 0.01em solid $secondary-color;
-
-  text-align: center;
-  vertical-align: middle;
 }
 
 .gatherings-Date select:nth-child(1) {
@@ -352,27 +194,6 @@
   border: 1px solid #edf0f7;
 }
 
-.gatherings-NextDate {
-  display: flex;
-  align-items: baseline;
-  margin-bottom: 1em;
-
-  color: $base-color;
-
-  font-family: Open Sans, sans-serif;
-  font-size: 0.9em;
-  font-weight: normal;
-}
-
-.gatherings-NextDateShow {
-  padding: 0.3em 0.7em 0.3em 0.7em;
-  margin-bottom: 0;
-  margin-left: 0.2em;
-
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
 .gatherings-ShowHeader {
   display: flex;
   align-items: center;
@@ -438,14 +259,4 @@
 .gatherings-backToTop:hover {
   background-color: $base-color;
   color: $tertiary-color;
-}
-
-@media all and (max-width: 1000px) {
-  .gatherings-YearGridBox-headerSpecialPresentation {
-    display: none;
-  }
-
-  .gatherings-Notification {
-    display: none;
-  }
 }
