@@ -4,34 +4,17 @@
     <title>Bookclub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= javascript_packs_with_chunks_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= favicon_link_tag asset_path('logo-login.svg') %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_packs_with_chunks_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= stylesheet_packs_with_chunks_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= favicon_link_tag asset_path("logo-login.svg") %>
   </head>
 
   <body>
-    <div class="header-Nav">
-      <div class="header-Brand">
-        <%= link_to (inline_svg_tag"logo-navbar.svg", alt: "BookClub", class:"header-BrandImg"), root_path %>
-      </div>
-      <div class="header-Search">
-        <%= form_tag books_path, :method => "get" do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "header-SearchText" %>
-          <%= image_submit_tag("magnifier.svg", alt: "search", class: "header-SearchImg") %>
-        <% end %>
-      </div>
-      <% if current_user %>
-        <span class="header-LogOut-text">
-          Hello,
-          <span class="header-UserName">
-            <%= link_to current_user.name, user_books_path(current_user) %>
-          </span>
-          /
-          <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogOut" %>
-        </span>
-      <% else %>
-        <%= button_to 'Log In', login_path, class:"header-LogIn", :method => "get" %>
-      <% end %>
+    <%= render "_components/navbar" %>
+
+    <div class="flex flex-col items-center">
+      <%= render "_components/search" %>
     </div>
 
     <div class="u-noticeArea">
@@ -42,43 +25,6 @@
       <% end %>
     </div>
 
-    <div class="Sidebar" onmouseover="toggleSidebar(event)" onmouseout="toggleSidebar(event)">
-      <div class="Sidebar-textList">
-        <% if controller_name === "gatherings"%>
-          <%= link_to (inline_svg_tag 'gatheringspage-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path, {:style=>'color:#f1f1f1;'} %>
-        <% else %>
-          <%= link_to (inline_svg_tag 'gatherings-navbar.svg', alt: "List", class:"Sidebar-list") + 'BookClub Gatherings', gatherings_path %>
-        <% end %>
-      </div>
-      <% if controller_name === "books" %>
-        <%= link_to (inline_svg_tag 'bookpage-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path, {:style=>'color:#f1f1f1;'} %>
-      <% else %>
-        <%= link_to (inline_svg_tag 'book-navbar.svg', alt: "Books", class:"Sidebar-book") + 'Books', books_path %>
-      <% end %>
-    </div>
-    <script type="text/javascript">
-    var hidden = true;
-    document.toggleSidebar = (event) => {
-        const sidebarElement = event.currentTarget;
-        if (hidden) {
-            if (window.innerWidth > 1000){
-              sidebarElement.style.width = "23%";
-            }else{
-              sidebarElement.style.width = "50%";
-            }
-            hidden = false;
-        } else {
-            if (window.innerWidth > 1000) {
-                sidebarElement.style.width = "5%";
-            }else{
-                sidebarElement.style.width = "8%";
-            }
-            sidebarElement.style.paddingLeft = "1.2%";
-            hidden = true;
-        }
-    }
-
-    </script>
     <%= yield %>
   </body>
 </html>

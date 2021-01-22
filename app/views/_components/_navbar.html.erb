@@ -1,0 +1,22 @@
+<div class="flex items-center justify-between max-w-6xl mx-auto py-12 px-4 md:flex-col md:space-y-8">
+  <%= link_to (inline_svg_tag "logo-navbar.svg", alt: "BookClub", class: "w-auto h-12"), root_path %>
+
+  <ul class="flex items-center">
+    <li class="text-gray-500 hover:underline"><%= link_to "Gatherings", gatherings_path %></li>
+    <li class="text-gray-500 ml-4 hover:underline"><%= link_to "Books", books_path %></li>
+    <li class="ml-12 hover:underline">
+      <% if current_user %>
+        <span class="header-LogOut-text">
+          Hello,
+          <span class="header-UserName">
+            <%= link_to current_user.name, user_books_path(current_user) %>
+          </span>
+          /
+          <%= link_to 'Log Out', logout_path, method: :delete, title: "logout", class: "logout header-LogOut" %>
+        </span>
+      <% else %>
+        <%= button_to 'Log In', login_path, class:"px-4 py-1 rounded-full bg-blue-600 text-white cursor-pointer", method: :get %>
+      <% end %>
+    </li>
+  </ul>
+</div>
