@@ -8,10 +8,9 @@
   </div>
 
   <% @gatherings.each do | year, gatherings | %>
-    <div class="flex items-center mt-4 text-gray-400">
+    <%= render "_components/section_title" do %>
       <%= year %>
-      <div class="ml-2 w-12 h-0.5 bg-current"></div>
-    </div>
+    <% end %>
 
     <div class="flex flex-col flex-wrap justify-start">
       <% if current_user&.moderator %>

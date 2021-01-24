@@ -1,10 +1,7 @@
 <turbo-frame id="gathering_<%= @gathering.id %>_books">
-  <div class="flex items-center mt-4 text-gray-400">
+  <%= render "_components/section_title" do %>
     <%= show_date_month(@gathering) %>&nbsp;&nbsp;<%= @gathering.date.year %>
-    <div class="ml-2 w-12 h-0.5 bg-current"></div>
-  </div>
-
-  <% @books.each do |book| %>
-    <%= render "books/book_item", book: book %>
   <% end %>
+
+  <%= render "books/book_list", books: @books %>
 </turbo-frame>
