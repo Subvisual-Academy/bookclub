@@ -1,4 +1,4 @@
-<div class="books-Main">
+<div class="books-Main max-w-4xl mx-auto px-6 py-0">
   <div class="books-Header">
     <%= select_tag "users",
       options_for_select(@user_options),
@@ -18,11 +18,11 @@
   <% end %>
 
   <% if @books_without_presentation.length > 0 %>
-    <p class="gatherings-MainYear">Books not presented</p>
-
-    <% @books_without_presentation.each do |book| %>
-      <%= render "book_item", book: book %>
+    <%= render "_components/section_title" do %>
+      Books not presented
     <% end %>
+
+    <%= render "book_list", books: @books_without_presentation %>
   <% end %>
 
   <% @gatherings.each do | year, gatherings | %>

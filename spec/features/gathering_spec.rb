@@ -40,7 +40,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".gatherings-YearGridBox-header", text: Date::MONTHNAMES[gathering.date.month]).click
+    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
 
     expect(page).to_not have_selector("input[value='Send Slack Notification']")
   end
@@ -50,7 +50,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".gatherings-YearGridBox-header", text: Date::MONTHNAMES[gathering.date.month]).click
+    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
 
     expect(page).to have_selector("input[value='Send Slack Notification']")
   end
@@ -69,7 +69,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".gatherings-YearGridBox-header", text: Date::MONTHNAMES[gathering.date.month]).click
+    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
 
     expect(page).to have_text(gathering.books.first.title)
   end
@@ -79,7 +79,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".gatherings-YearGridBox-header", text: Date::MONTHNAMES[gathering.date.month]).click
+    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
     click_on(class: "gatherings-closeButton")
 
     expect(page).to_not have_text(gathering.books.first.title)
@@ -90,7 +90,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations)
 
     visit gatherings_path
-    find(".gatherings-YearGridBox-header", text: Date::MONTHNAMES[gathering.date.month]).click
+    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month], match: :first).click
     find("span", class: "bookPresentation-title", text: gathering.book_presentations[0].book.title).click
 
     expect(page).to have_content(gathering.book_presentations[0].book.synopsis)

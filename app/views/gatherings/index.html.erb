@@ -1,14 +1,18 @@
-<div class="gatherings-Main">
-  <div class="gatherings-NextDate">
-    Next BookClub session:
-    <span class="gatherings-NextDate gatherings-NextDateShow">
+<div class="max-w-4xl mx-auto px-6">
+  <div class="flex align-baseline text-blue-600 text-lg">
+    <p>Next BookClub session:</p>
+
+    <span class="ml-2 font-bold">
       <%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %>
     </span>
   </div>
 
   <% @gatherings.each do | year, gatherings | %>
-    <p class="gatherings-MainYear"><%= year %></p>
-    <div class="gatherings-YearGrid">
+    <%= render "_components/section_title" do %>
+      <%= year %>
+    <% end %>
+
+    <div class="flex flex-col flex-wrap justify-start">
       <% if current_user&.moderator %>
         <% if year == @gatherings.keys.first %>
           <button class="gatherings-PlusBox">
@@ -21,17 +25,24 @@
       <% end %>
 
       <% gatherings.each do | gathering |%>
-        <div class="gatherings-YearGridBox" x-data="{ open: false }">
-          <div class="gatherings-YearGridBox-header" @click="open = !open">
-            <div class="gatherings-YearGridBox-headerMonth">
+        <div
+          class="bg-white shadow-2xl rounded-3xl px-16 py-7"
+          x-data="{ open: false }"
+        >
+          <div
+            class="flex items-center justify-between cursor-pointer space-x-2"
+            @click="open = !open"
+          >
+            <div class="font-serif text-4xl text-blue-600 font-bold">
               <%= show_date_month(gathering) %>
             </div>
-            <div class="gatherings-YearGridBox-headerSpecialPresentation">
+
+            <div class="text-base text-gray-600 font-semibold md:hidden">
               <%= gathering.special_presentation %>
             </div>
+
             <button
               type="button"
-              class="gatherings-YearGridBox-toggle"
               :class="{ 'isOpen': open }"
             >
               <%= inline_svg_tag('expand-arrow.svg', alt: "expand") %>
@@ -43,6 +54,7 @@
             x-show="open"
             id="<%= dom_id(gathering) %>"
             src="/gatherings/<%= gathering.id %>"
+            class="block mt-8"
           >
             Loading...
           </turbo-frame>

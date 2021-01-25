@@ -11,20 +11,24 @@
   </head>
 
   <body>
-    <%= render "_components/navbar" %>
+    <div class="py-12 px-6">
+      <%= render "_components/navbar" %>
+    </div>
 
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center pb-12">
       <%= render "_components/search" %>
     </div>
 
-    <div class="u-noticeArea">
+    <div class="flex flex-col items-center">
       <% flash.each do |_key, value| %>
-        <div class="u-notice">
+        <div class="-mt-6 pb-2 text-blue-600">
           <%= value %>
         </div>
       <% end %>
     </div>
 
-    <%= yield %>
+    <div class="relative mb-16">
+      <%= yield %>
+    </div>
   </body>
 </html>

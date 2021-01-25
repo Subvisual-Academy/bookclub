@@ -1,6 +1,6 @@
 module.exports = {
   purge: [],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     screens: {
       "2xl": { max: "1535px" },
@@ -8,6 +8,11 @@ module.exports = {
       lg: { max: "1023px" },
       md: { max: "767px" },
       sm: { max: "639px" },
+    },
+    fontFamily: {
+      sans: ["ui-sans-serif", "Open Sans"],
+      serif: ["ui-serif", "Playfair Display"],
+      mono: ["ui-monospace", "SFMono-Regular"],
     },
     extend: {},
   },

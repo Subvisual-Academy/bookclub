@@ -1,0 +1,76 @@
+<div class="grid gap-10 grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:max-w-xs sm:mx-auto">
+  <% books.each do |book| %>
+    <div class="relative shadow-2xl rounded-xl">
+      <div class="h-60">
+        <% if book.image %>
+          <img
+            src="<%= book.image %>"
+            loading="lazy"
+            alt="<%= book.title %> cover"
+            class="h-full mx-auto mt-6"
+          />
+        <% else %>
+          <%= inline_svg_tag "question-mark.svg",
+              alt: "Book cover not found for #{book.title}",
+              class: "w-3/4 mx-auto mt-6"
+          %>
+        <% end %>
+      </div>
+
+      <div class="flex flex-col p-6">
+        <div class="u-popup u-pointer u-underline" onclick="openPopup('<%= book_path(book) %>')">
+          <div class="text-lg font-semibold text-blue-800">
+            <%= truncate(book.title, length:40) %>
+          </div>
+        </div>
+
+        <div class="text-base text-gray-500 mt-4">
+          by <%= truncate(book.author, length:35) || "Unavailable" %>
+        </div>
+
+        <% if book.users.length > 0 %>
+          <div class="mt-4 text-base text-blue-500">Presented by:
+            <% if book.users.length <= 3 %>
+              <% book.users.each_with_index do |user, index| %>
+                <%= link_to user.name,
+                      books_path(:user_id => user.id),
+                      class: "font-semibold hover:underline" %>
+                <% if index < book.users.count - 1 %>,<% end %>
+              <% end %>
+            <% else %>
+              <% book.users[0..2].each_with_index do |user, index| %>
+                <%= link_to user.name,
+                      books_path(:user_id => user.id),
+                      class: "font-semibold hover:underline" %>
+                <% if index < 2 %>,<% end %>
+              <% end %>
+              + <%= book.users.length - 3 %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if current_user&.moderator %>
+          <div class="mt-12">
+            <%= link_to (
+                  inline_svg_tag "edit.svg",
+                  alt: "edit"
+                ),
+                edit_book_path(book),
+                class: "absolute bottom-4 left-6"
+            %>
+
+            <%= link_to (
+                  inline_svg_tag "trash.svg",
+                  alt: "delete"
+                ),
+                book,
+                method: :delete,
+                data: {confirm: "Are you sure you want to delete it?" },
+                class: "absolute bottom-4 right-6"
+            %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

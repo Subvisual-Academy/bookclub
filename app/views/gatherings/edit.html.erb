@@ -1,9 +1,8 @@
-<div class="u-floatingBack">
-  <%= link_to (inline_svg_tag 'back_arrow.svg', alt: "back arrow", class: "u-floatingBackImg" )+
-                  "Back", gatherings_path, class: "u-floatingBackLink" %>
-</div>
+<div class="max-w-4xl mx-auto px-6">
+  <div class="mb-8">
+    <%= render "_components/back_arrow" %>
+  </div>
 
-<div class="gatherings-Main">
   <h1>Editing Bookclub Gathering</h1>
   <div class="u-line"></div>
   <%= render "form", gathering: @gathering %>
