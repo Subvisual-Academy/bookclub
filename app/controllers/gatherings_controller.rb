@@ -8,10 +8,12 @@ class GatheringsController < ApplicationController
 
   def show
     @gathering = Gathering.find(params[:id])
+    @other_users_presentations = @gathering.book_presentations.reject(&:special).group_by(&:user_id)
+    @user_presentations = @gathering.book_presentations.select(&:special).group_by(&:user_id)
   end
 
   def new
-    @gathering = Gathering.new
+    @gathering = Gathering.new(date: Time.current)
   end
 
   def edit

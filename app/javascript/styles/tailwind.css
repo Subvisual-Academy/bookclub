@@ -1,3 +1,56 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  [x-cloak] {
+    display: none;
+  }
+
+  body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+  }
+}
+
+@layer components {
+  .comp-button {
+    @apply px-4 py-1 rounded-full bg-blue-600 text-white cursor-pointer hover:bg-blue-900;
+  }
+
+  .comp-button:hover {
+    @apply bg-blue-900;
+  }
+
+  .comp-button-alternative {
+    @apply px-4 py-1 rounded-full bg-transparent  text-gray-500 border border-gray-500 cursor-pointer;
+  }
+
+  .comp-button-alternative:hover {
+    @apply bg-blue-600 border-blue-600 text-white;
+  }
+
+  .comp-checkbox {
+    @apply w-4 h-4 border border-blue-500 rounded-full cursor-pointer outline-none;
+
+    appearance: none;
+  }
+
+  .comp-checkbox:checked {
+    @apply bg-blue-500;
+  }
+
+  .comp-checkbox:focus {
+    @apply border-blue-900;
+  }
+}

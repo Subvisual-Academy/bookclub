@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :book do
-    title { Faker::Book.title }
+    title { Faker::Book.title.first(10).strip }
     author { Faker::Book.author }
     synopsis { Faker::Lorem.paragraph_by_chars }
     image { Faker::LoremPixel.image }

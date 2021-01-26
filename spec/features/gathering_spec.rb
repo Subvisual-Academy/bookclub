@@ -7,8 +7,7 @@ RSpec.feature "Gathering", js: true do
     visit new_gathering_path
     click_on("Add Presentation")
 
-    expect(page).to have_content("User")
-    expect(page).to have_content("Book")
+    expect(page).to have_css(".SlimSelect")
   end
 
   it "displays the Gathering information when editing" do
@@ -17,9 +16,7 @@ RSpec.feature "Gathering", js: true do
 
     visit(edit_gathering_path(gathering))
 
-    expect(page.find("#gathering_date_1i").value).to eq gathering.date.year.to_s
-    expect(page.find("#gathering_date_2i").value).to eq gathering.date.month.to_s
-    expect(page.find("#gathering_date_3i").value).to eq gathering.date.day.to_s
+    expect(page.find("#gathering_date").value).to eq gathering.date.to_s
     expect(find_field("Special Presentation Title").value).to eq(gathering.special_presentation)
   end
 
@@ -40,7 +37,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
+    find("p", text: Date::MONTHNAMES[gathering.date.month]).click
 
     expect(page).to_not have_selector("input[value='Send Slack Notification']")
   end
@@ -50,7 +47,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
+    find("p", text: Date::MONTHNAMES[gathering.date.month]).click
 
     expect(page).to have_selector("input[value='Send Slack Notification']")
   end
@@ -69,7 +66,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
+    find("p", text: Date::MONTHNAMES[gathering.date.month]).click
 
     expect(page).to have_text(gathering.books.first.title)
   end
@@ -79,8 +76,8 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
-    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month]).click
-    click_on(class: "gatherings-closeButton")
+    find("p", text: Date::MONTHNAMES[gathering.date.month]).click
+    click_on("Close")
 
     expect(page).to_not have_text(gathering.books.first.title)
   end
@@ -90,7 +87,7 @@ RSpec.feature "Gathering", js: true do
     gathering = create(:gathering_with_book_presentations)
 
     visit gatherings_path
-    find(".flex.items-center", text: Date::MONTHNAMES[gathering.date.month], match: :first).click
+    find("p", text: Date::MONTHNAMES[gathering.date.month], match: :first).click
     find("span", class: "bookPresentation-title", text: gathering.book_presentations[0].book.title).click
 
     expect(page).to have_content(gathering.book_presentations[0].book.synopsis)

@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [],
+  purge: ["./app/**/*.rb", "./app/**/*.js", "./app/**/*.erb"],
   darkMode: false,
   theme: {
     screens: {

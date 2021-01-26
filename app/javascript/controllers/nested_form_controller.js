@@ -6,10 +6,15 @@ export default class extends Controller {
 
   connect() {
     this.initializeSlimSelect();
+
+    // initialize a association if not present
+    if (document.querySelectorAll(".SlimSelect").length === 0) {
+      this.addAssociation();
+    }
   }
 
   addAssociation(event) {
-    event.preventDefault();
+    event?.preventDefault();
     const content = this.templateTarget.innerHTML.replace(
       /TEMPLATE_RECORD/g,
       new Date().valueOf()
@@ -19,7 +24,7 @@ export default class extends Controller {
   }
 
   removeAssociation(event) {
-    event.preventDefault();
+    event?.preventDefault();
     const item = event.target.closest(".nested-fields");
     item.querySelector("input[name*='_destroy']").value = 1;
     item.style.display = "none";
