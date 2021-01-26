@@ -12,7 +12,7 @@
       <%= year %>
     <% end %>
 
-    <div class="flex flex-col flex-wrap justify-start">
+    <div class="flex flex-col flex-wrap justify-start space-y-14">
       <% if current_user&.moderator %>
         <% if year == @gatherings.keys.first %>
           <button class="gatherings-PlusBox">
