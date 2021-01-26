@@ -33,11 +33,11 @@
             class="flex items-center justify-between cursor-pointer space-x-2"
             @click="open = !open"
           >
-            <div class="font-serif text-4xl text-blue-600 font-bold">
+            <div class="font-serif text-4xl text-blue-600 font-bold w-1/3">
               <%= show_date_month(gathering) %>
             </div>
 
-            <div class="text-base text-gray-600 font-semibold md:hidden">
+            <div class="text-base text-gray-600 font-semibold w-2/3 md:hidden">
               <%= gathering.special_presentation %>
             </div>
 
