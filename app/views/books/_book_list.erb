@@ -1,7 +1,7 @@
 <div class="grid gap-10 grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:max-w-xs sm:mx-auto">
   <% books.each do |book| %>
     <div class="relative shadow-2xl rounded-xl">
-      <div class="h-60">
+      <div class="h-60 cursor-pointer" onclick="openPopup('<%= book_path(book) %>')">
         <% if book.image %>
           <img
             src="<%= book.image %>"
@@ -18,7 +18,7 @@
       </div>
 
       <div class="flex flex-col p-6">
-        <div class="u-popup u-pointer u-underline" onclick="openPopup('<%= book_path(book) %>')">
+        <div class="cursor-pointer hover:underline" onclick="openPopup('<%= book_path(book) %>')">
           <div class="text-lg font-semibold text-blue-800">
             <%= truncate(book.title, length:40) %>
           </div>

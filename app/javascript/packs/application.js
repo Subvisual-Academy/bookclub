@@ -22,7 +22,7 @@ require("../components");
 
 Turbo.start();
 window.Turbo = Turbo;
-require("../alpine-fix");
+require("alpine-turbo-drive-adapter");
 require("alpinejs");
 
 const application = Application.start();

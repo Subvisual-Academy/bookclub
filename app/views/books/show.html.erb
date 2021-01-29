@@ -1,31 +1,36 @@
 <span
-  class="popup-PopupFrame u-popupContent"
-  x-data
-  @click.away="$el.remove()"
+  class="comp-popup animate-fadein"
+  data-popup="true"
 >
-  <% if @book.image%>
-    <img src="<%= @book.image %>" alt="book cover" class="popup-PopupImage"/>
-  <% else %>
-    <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "popup-UnknownCover popup-PopupImage" %>
-  <% end %>
+  <div class="flex flex-row justify-between">
+    <% if @book.image%>
+      <img src="<%= @book.image %>" alt="book cover" class="float-left mr-8 sm:float-none sm:mb-4"/>
+    <% else %>
+      <%= inline_svg_tag "question-mark.svg", alt: "unknown book cover", class: "w-32" %>
+    <% end %>
+  </div>
 
-  <div class="popup-BookContent">
-    <%= goodreads_button(@book) %>
+  <div>
+    <div class="mt-4">
+      <%= goodreads_button(@book) %>
+    </div>
 
-    <div class="popup-Break"></div>
-
-    <div class="popup-BookSynopsis">
+    <div class="mt-4">
       <%= @book.synopsis || "Unavailable" %>
     </div>
 
     <% if @presenting_users.count > 0 %>
-      <h4> Presented by: </h4>
+      <p class="mt-4 text-blue-800 font-semibold">Presented by:</p>
 
-      <ul style="list-style: disc;padding-left: 2.5em;">
+      <ul class="list-disc pl-8">
         <% @presenting_users.each do |user| %>
-          <li> <%= link_to user.name, books_path(:user_id => user.id), class: "popup-UserName"%></li>
+          <li>
+            <%= link_to user.name, books_path(:user_id => user.id) %>
+          </li>
         <% end %>
       </ul>
     <% end %>
+
+    <button class="comp-button mt-4" onClick="window.cleanupPopups()">Close</button>
   </div>
 </span>

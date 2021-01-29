@@ -1,7 +1,7 @@
-<div class="flex align-baseline text-blue-600 text-lg">
+<div class="flex flex-wrap align-baseline text-blue-600 text-lg">
   <p>Next BookClub session:</p>
 
-  <span class="ml-2 font-bold">
+  <span class="font-bold">
     <%= Gathering.next_gathering_date.strftime("%A, %d %B %Y") %>
   </span>
 </div>
@@ -10,7 +10,7 @@
   <%= link_to new_gathering_path(@gathering),
     class: "block w-full p-3 mt-12 bg-gray-500 rounded-3xl shadow-2xl" do
   %>
-    <%= inline_svg_tag 'plus.svg', alt: "New Gathering", class: "mx-auto" %>
+    <%= inline_svg_tag "plus.svg", alt: "New Gathering", class: "mx-auto" %>
   <% end %>
 <% end %>
 
@@ -22,7 +22,7 @@
   <div class="flex flex-col flex-wrap justify-start space-y-14 break-all">
     <% gatherings.each do | gathering |%>
       <div
-        class="bg-white shadow-2xl rounded-3xl px-16 py-7"
+        class="bg-white shadow-2xl rounded-3xl px-16 sm:px-9 py-7"
         x-data="{ open: false }"
       >
         <div
@@ -30,7 +30,7 @@
           @click="open = !open"
         >
           <div class="flex items-center mr-6">
-            <p class="font-serif text-4xl text-blue-600 font-bold w-80 mr-6">
+            <p class="font-serif text-4xl sm:text-3xl text-blue-600 font-bold w-80 sm:w-auto mr-6 sm:mr-4">
               <%= show_date_month(gathering) %>
             </p>
 
@@ -43,7 +43,7 @@
             type="button"
             :class="{ 'isOpen': open }"
           >
-            <%= inline_svg_tag('expand-arrow.svg', alt: "expand") %>
+            <%= inline_svg_tag("expand-arrow.svg", alt: "expand") %>
           </button>
         </div>
 
@@ -58,7 +58,7 @@
         </turbo-frame>
 
         <button
-          class="block ml-auto comp-button-alternative"
+          class="block ml-auto mt-4 comp-button-alternative"
           x-cloak
           x-show="open"
           @click="open = false">

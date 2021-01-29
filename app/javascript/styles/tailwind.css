@@ -53,4 +53,52 @@
   .comp-checkbox:focus {
     @apply border-blue-900;
   }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fadein {
+    animation: fadein 0.25s ease-in;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fadeout {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  .animate-fadeout {
+    animation: fadeout 0.25s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  .comp-popup {
+    @apply fixed top-12 right-12 z-10;
+    @apply max-w-sm p-6 bg-white shadow-2xl rounded-2xl;
+  }
+
+  @screen sm {
+    .comp-popup {
+      right: 50%;
+
+      width: calc(100vw - theme("space.12"));
+      max-width: 100%;
+      max-height: 75vh;
+      overflow: auto;
+
+      transform: translateX(50%);
+    }
+  }
 }

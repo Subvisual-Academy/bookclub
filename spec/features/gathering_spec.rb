@@ -88,7 +88,7 @@ RSpec.feature "Gathering", js: true do
 
     visit gatherings_path
     find("p", text: Date::MONTHNAMES[gathering.date.month], match: :first).click
-    find("span", class: "bookPresentation-title", text: gathering.book_presentations[0].book.title).click
+    find("span", class: "cursor-pointer", text: gathering.book_presentations[0].book.title).click
 
     expect(page).to have_content(gathering.book_presentations[0].book.synopsis)
   end
