@@ -1,20 +1,33 @@
-<div class='nested-fields'>
-  <div class='form-group'>
+<div class="nested-fields mb-4">
+  <div class="flex flex-row items-center">
     <%= form.hidden_field :_destroy %>
-    
-    <div class="Gatherings-mentionsFirst">
-    <%= form.select :user_id, User.order(:name).all.map {|u| [u.name,u.id]}, {:prompt => "User"} , {:class => "SlimSelect bookPresentation-prompt"} %>
+
+    <div class="w-1/4">
+      <%= form.select :user_id,
+            User.order(:name).all.map { |u| [u.name,u.id] },
+            {prompt: "-"},
+            {class: "SlimSelect"}
+      %>
     </div>
+
     &nbsp; - &nbsp;
-    <div class="Gatherings-mentionsSecond">
-    <%= form.select :book_id, Book.order(:title).all.map {|b| [b.title, b.id]}, {:prompt => "Book (Create before inserting)"} , {:class => "SlimSelect bookPresentation-prompt"} %>
+
+    <div class="w-1/2">
+      <%= form.select :book_id,
+            Book.order(:title).all.map { |b| [b.title, b.id] },
+            {prompt: "-"},
+            {:class => "SlimSelect"}
+      %>
     </div>
-    &nbsp; &nbsp;
-    <div class="bookPresentation-Tooltip">
-      <%= form.check_box :special, class: "checkbox-round" %>
-      <span class="bookPresentation-TooltipText">Belongs to a special presentation?</span>
-    </div>
-    &nbsp;
-    <%= link_to (inline_svg_tag 'trash.svg', alt: "delete"), "#", data: { action: "click->nested-form#removeAssociation" }, class:"u-deleteButton" %>
+
+    <%= form.check_box :special, class: "ml-4 comp-checkbox",
+          title: "Belongs to a special presentation?"
+    %>
+
+    <%= link_to (inline_svg_tag 'trash.svg', alt: "delete"),
+          "#",
+          data: { action: "click->nested-form#removeAssociation" },
+          class: "ml-4 w-6"
+    %>
   </div>
 </div>

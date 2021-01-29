@@ -21,22 +21,3 @@
 @import "gathering";
 @import "users";
 @import "popup";
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-[x-cloak] {
-  display: none;
-}
-
-body {
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
-
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.2rem;
-}

@@ -1,7 +1,10 @@
 <%= form_with(model: gathering, local: true) do |form| %>
   <% if gathering.errors.any? %>
     <div>
-      <h2><%= pluralize(gathering.errors.count, "error") %> prohibited this gathering from being saved:</h2>
+      <h2>
+        <%= pluralize(gathering.errors.count, "error") %> prohibited this gathering from being saved:
+      </h2>
+
       <ul>
         <% gathering.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,44 +13,54 @@
     </div>
   <% end %>
 
-  <div class="gatherings-FormSeparation">
-    <div class="gatherings-SpaceDown">
-      <%= form.label :date, class: "gatherings-Titles gatherings-TitlesDate" %>
-    </div>
-    <div class="gatherings-Date"><%= form.date_select :date, :order => [:day, :month, :year] %></div>
+  <div class="flex flex-col w-52 pt-8">
+    <%= form.label :date, class: "mr-4 text-blue-800" %>
+
+    <%= form.date_field :date, class: "p-1 rounded border border-gray-200" %>
   </div>
 
-  <div class="gatherings-FormSeparation">
-    <div class="gatherings-SpaceUpDown">
-      <%= form.label(:special_presentation, "Special Presentation Title (optional)", class: "gatherings-Titles gatherings-TitlesSpecial") %>
-    </div>
-    <%= form.text_field :special_presentation, class:"gatherings-Special", placeholder: "Special Presentation Title"%>
+  <div class="flex flex-col mt-8">
+    <%= form.label :special_presentation,
+          "Special Presentation Title (optional)",
+          class: "text-blue-800"
+    %>
 
-    <p class="u-helpText"> If you want a book to belong to the special presentation, press the circle.
-      <br>If you don’t press it, it will belong to the normal book mentions.</p>
+    <%= form.text_field :special_presentation,
+          class: "p-1 w-96 rounded border border-gray-200",
+          placeholder: "Special Presentation Title"
+    %>
+
+    <p class="mt-2 text-gray-500">
+      If you want a book to belong to the special presentation, press the circle.
+      <br/>
+      If you don’t press it, it will belong to the normal book mentions.
+    </p>
   </div>
 
-  <h2>Book Mentions</h2>
+  <h2 class="text-blue-800 mt-8">Book Mentions</h2>
+
+  <div class="flex flex-row mt-4 mb-2 text-gray-500">
+    <p class="w-1/4">Reader</p>
+    <p class="ml-6">Book</p>
+  </div>
 
   <div data-controller="nested-form">
     <!-- template for form for creating a new book presentation -->
-    <template data-target='nested-form.template'>
-      <%= form.fields_for :book_presentations, BookPresentation.new, child_index: 'TEMPLATE_RECORD' do |book_presentation| %>
-        <%= render 'book_presentation_fields', form: book_presentation %>
+    <template data-target="nested-form.template">
+      <%= form.fields_for :book_presentations, BookPresentation.new, child_index: "TEMPLATE_RECORD" do |book_presentation| %>
+        <%= render "book_presentation_fields", form: book_presentation %>
       <% end %>
     </template>
 
     <!-- Displaying existing book presentations -->
-    <%= form.fields_for :book_presentations do |book_presentation2| %>
-      <%= render 'book_presentation_fields', form: book_presentation2 %>
+    <%= form.fields_for :book_presentations do |book_pres| %>
+      <%= render "book_presentation_fields", form: book_pres %>
     <% end %>
 
-    <div class="gatherings-SpaceButton">
-      <div data-target="nested-form.addItem">
-        <%= link_to "+ Add Presentation", "#", data: { action: "nested-form#addAssociation" }, class: "gatherings-Link" %>
-      </div>
+    <div class="block -mt-2" data-target="nested-form.addItem">
+      <%= link_to "+ Add Presentation", "#", data: { action: "nested-form#addAssociation" }, class: "text-blue-800 hover:underline" %>
     </div>
 
-    <%= form.submit 'Submit', :class => "gatherings-Submit" %>
+    <%= form.submit "Submit", class: "comp-button mt-6" %>
   </div>
 <% end %>

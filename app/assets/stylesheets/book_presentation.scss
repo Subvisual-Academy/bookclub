@@ -8,14 +8,6 @@
   }
 }
 
-.bookPresentation-Li {
-  padding-left: 5%;
-
-  color: $secondary-color;
-
-  font-family: Open Sans, serif;
-}
-
 .bookPresentation-name {
   color: $secondary-color;
 
@@ -52,101 +44,4 @@
   .bookPresentation-title:hover {
     text-decoration: underline;
   }
-}
-
-.form-group {
-  display: flex;
-  align-items: center;
-
-  padding: 0.5em 0;
-}
-
-.u-deleteButton {
-  display: none;
-}
-
-.form-group:hover .u-deleteButton {
-  display: block;
-  width: 0.7em;
-  height: 0.7em;
-  margin-bottom: 0.7em;
-}
-
-.checkbox-round {
-  width: 1.3em;
-  height: 1.3em;
-  min-width: 1.3em;
-  margin-right: 8px;
-
-  background-color: $tertiary-color;
-  border: 1px solid $lighter-secondary-color;
-  border-radius: 50%;
-  cursor: pointer;
-  outline: none;
-
-  vertical-align: middle;
-  -webkit-appearance: none;
-}
-
-.checkbox-round:checked {
-  background: $darker-base-color;
-}
-
-input[type="checkbox"] {
-  transform: scale(1.5);
-}
-
-.bookPresentation-prompt {
-  min-width: 200px;
-}
-
-.bookPresentation-Tooltip {
-  position: relative;
-
-  display: inline-block;
-}
-
-.bookPresentation-TooltipText {
-  position: absolute;
-
-  bottom: 110%;
-  left: 50%;
-  z-index: 1;
-
-  visibility: hidden;
-  width: 200px;
-  padding: 5px 0;
-  margin-left: -100px; /* Using half of the width (200/2 = 100), to center the tooltip */
-
-  background-color: $secondary-color;
-  border-radius: 6px;
-  color: $tertiary-color;
-
-  opacity: 0;
-
-  font-size: 0.6em;
-  text-align: center;
-
-  transition: opacity 0.75s;
-}
-.bookPresentation-Tooltip:hover .bookPresentation-TooltipText {
-  opacity: 1;
-}
-
-.bookPresentation-TooltipText::after {
-  content: " ";
-
-  position: absolute;
-  top: 100%; /* At the bottom of the tooltip */
-  left: 50%;
-
-  margin-left: -5px;
-
-  border-color: $secondary-color transparent transparent transparent;
-  border-style: solid;
-  border-width: 5px;
-}
-
-.bookPresentation-Tooltip:hover .bookPresentation-TooltipText {
-  visibility: visible;
 }

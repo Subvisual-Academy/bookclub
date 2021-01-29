@@ -8,7 +8,7 @@ module ApplicationHelper
 
     button_to "Send Slack Notification",
               gathering_notifications_path(gathering),
-              class: "gatherings-Notification",
+              class: "comp-button",
               data: { confirm: "Are you sure you want to send a notification to slack?" }
   end
 
