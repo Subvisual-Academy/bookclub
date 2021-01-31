@@ -21,6 +21,6 @@ module ApplicationHelper
   def goodreads_button(book)
     escaped_title = CGI.escape(book.title)
 
-    link_to "Goodreads", "https://www.goodreads.com/search?q=#{escaped_title}", class: "popup-Goodreads", target: "_blank", rel: "noopener"
+    link_to "Goodreads", "https://www.goodreads.com/search?q=#{escaped_title}", class: "comp-button", target: "_blank", rel: "noopener"
   end
 end

@@ -1,19 +1,28 @@
-<% presentations_hash.each do |user_id, book_presentations| %>
-  <div class="bookPresentation-box">
+<div class="space-y-8">
+  <% presentations_hash.each do |user_id, book_presentations| %>
     <ul>
-      <li><%= link_to book_presentations[0].user.name, books_path(:user_id => user_id), class: "bookPresentation-name" %></li>
-      <ul class="bookPresentation-titles">
+      <li>
+        <%= link_to book_presentations[0].user.name,
+              books_path(:user_id => user_id),
+              class: "text-blue-500 font-semibold hover:underline",
+              data: { "turbo-frame": "_top" }
+        %>
+      </li>
+
+      <ul class="list-disc list-inside space-y-1 text-blue-700">
         <% book_presentations.each do |presentation| %>
           <li>
-            <span class="u-popup" onclick="openPopup('<%= book_path(presentation.book) %>')">
-              &mdash; <span class="bookPresentation-title u-pointer"><%= presentation.book.title %></span>,
-                by <%= book_author(presentation.book) %>
+            <span onclick="openPopup('<%= book_path(presentation.book) %>')">
+              <span class="text-blue-700 font-semibold hover:underline cursor-pointer">
+                <%= presentation.book.title %>
+              </span>
+              <span class="text-black">
+                - by <%= book_author(presentation.book) %>
+              </span>
             </span>
           </li>
         <% end %>
       </ul>
     </ul>
-  </div>
-<% end %>
-
-
+  <% end %>
+</div>

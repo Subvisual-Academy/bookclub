@@ -5,5 +5,7 @@
         class: "p-2 border-2 border-gray rounded"
   %>
 
-  <%= image_submit_tag("magnifier.svg", alt: "search", class: "w-auto ml-2") %>
+  <button>
+    <%= inline_svg_tag("magnifier.svg", aria: true, title: "search", class: "w-auto ml-2") %>
+  </button>
 <% end %>
