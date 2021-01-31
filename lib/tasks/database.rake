@@ -15,6 +15,20 @@ namespace :database do
     end
   end
 
+  desc "Register a moderator given a name and an email"
+  task :add_user, %i[name email password] => %i[environment] do |_t, args|
+    password = args[:password] || SecureRandom.hex
+    user = User.new(name: args[:name], email: args[:email], password: password, password_confirmation: password, moderator: true)
+    if user.save
+      puts "Moderator created with the following params: \n"
+      puts "Name: #{user.name}"
+      puts "Email: #{user.email}"
+      puts "Password: #{password}"
+    else
+      puts "Error creating user: #{user.errors.messages}"
+    end
+  end
+
   desc "Update existing books with their google_id"
   task update_books_with_google_id: :environment do
     Book.all.each do |book|

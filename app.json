@@ -1,7 +1,7 @@
 {
   "name": "Bookclub",
   "scripts": {
-    "postdeploy": "bundle exec rake db:migrate && rake 'database:add_user[Admin User,admin@mail.com,foobar]'"
+    "postdeploy": "bundle exec rake db:migrate && rake 'database:add_moderator[Admin User,admin@mail.com,foobar]'"
   }
 }
 
