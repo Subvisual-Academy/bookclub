@@ -41,7 +41,8 @@
 
           <button
             type="button"
-            :class="{ 'isOpen': open }"
+            class="transition-transform ease-in-out duration-500"
+            :class="{ 'transform rotate-180': open }"
           >
             <%= inline_svg_tag("expand-arrow.svg", alt: "expand") %>
           </button>

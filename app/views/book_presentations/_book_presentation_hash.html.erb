@@ -1,13 +1,15 @@
-<% presentations_hash.each do |user_id, book_presentations| %>
-
+<div class="space-y-8">
+  <% presentations_hash.each do |user_id, book_presentations| %>
     <ul>
       <li>
         <%= link_to book_presentations[0].user.name,
               books_path(:user_id => user_id),
-              class: "text-blue-500 font-semibold hover:underline"
+              class: "text-blue-500 font-semibold hover:underline",
+              data: { "turbo-frame": "_top" }
         %>
       </li>
-      <ul class="list-disc list-inside text-blue-700">
+
+      <ul class="list-disc list-inside space-y-1 text-blue-700">
         <% book_presentations.each do |presentation| %>
           <li>
             <span onclick="openPopup('<%= book_path(presentation.book) %>')">
@@ -22,7 +24,5 @@
         <% end %>
       </ul>
     </ul>
-
-<% end %>
-
-
+  <% end %>
+</div>

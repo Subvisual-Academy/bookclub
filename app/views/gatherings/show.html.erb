@@ -16,7 +16,8 @@
               @gathering,
               method: :delete,
               data: { confirm: "Are you sure you want to delete it?" },
-              class: "w-6 sm:mt-4"
+              class: "w-6 sm:mt-4",
+              data: { "turbo-frame": "_top" }
           %>
         <% end %>
         <%= link_to (
