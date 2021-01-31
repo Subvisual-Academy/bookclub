@@ -1,6 +1,6 @@
 class GatheringsController < ApplicationController
-  before_action :require_login, only: %i[edit update]
-  before_action :require_moderator, only: %i[new create destroy]
+  before_action :require_login, only: %i[new create edit update destroy]
+  before_action :require_moderator, only: %i[new create edit update destroy]
 
   def index
     @gatherings = Gathering.group_by_year
@@ -57,11 +57,5 @@ class GatheringsController < ApplicationController
       permit(:date, :special_presentation,
              book_presentations_attributes: %i[_destroy id gathering_id
                                                user_id book_id special])
-  end
-
-  def require_moderator
-    return if current_user&.moderator
-
-    head :unauthorized
   end
 end

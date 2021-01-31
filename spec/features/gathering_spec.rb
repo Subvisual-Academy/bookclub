@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Gathering", js: true do
   it "displays a book presentation form when the button is clicked" do
-    login_user(create(:user, :is_moderator))
+    login_user(create(:user, :moderator))
 
     visit new_gathering_path
     click_on("Add Presentation")
@@ -10,8 +10,8 @@ RSpec.feature "Gathering", js: true do
     expect(page).to have_css(".SlimSelect")
   end
 
-  it "displays the Gathering information when editing" do
-    login_user(create(:user))
+  it "displays it's information when editing" do
+    login_user(create(:user, :moderator))
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit(edit_gathering_path(gathering))
@@ -21,7 +21,7 @@ RSpec.feature "Gathering", js: true do
   end
 
   it "creates a gathering" do
-    login_user(create(:user, :is_moderator))
+    login_user(create(:user, :moderator))
     allow(SlackNotifier).to receive(:notify_minute).and_return(nil)
 
     visit(new_gathering_path)
@@ -43,7 +43,7 @@ RSpec.feature "Gathering", js: true do
   end
 
   it "shows the notification button to moderators" do
-    login_user(create(:user, :is_moderator))
+    login_user(create(:user, :moderator))
     gathering = create(:gathering_with_book_presentations, :has_special_presentation)
 
     visit gatherings_path
