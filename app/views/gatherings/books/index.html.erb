@@ -1,4 +1,4 @@
-<turbo-frame id="gathering_<%= @gathering.id %>_books">
+<turbo-frame id="gathering_<%= @gathering.id %>_books" target="_top">
   <%= render "_components/section_title" do %>
     <%= show_date_month(@gathering) %>&nbsp;&nbsp;<%= @gathering.date.year %>
   <% end %>

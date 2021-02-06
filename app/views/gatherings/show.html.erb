@@ -1,4 +1,4 @@
-<turbo-frame id="<%= dom_id(@gathering) %>">
+<turbo-frame id="<%= dom_id(@gathering) %>" target="_top">
   <div class="flex items-center justify-between pt-4 pb-6 sm:flex-col sm:items-start">
     <h2 class="text-xl text-blue-600 font-sans">Book Mentions</h2>
 
@@ -26,7 +26,6 @@
               class: "sm:mt-4"
             ),
             edit_gathering_path(@gathering),
-            data: { "turbo-frame": "_top" }
         %>
       <% end %>
     </div>
