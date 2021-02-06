@@ -6,6 +6,6 @@ FactoryBot.define do
     password_confirmation { "foobar" }
     moderator { false }
 
-    trait(:is_moderator) { moderator { true } }
+    trait(:moderator) { moderator { true } }
   end
 end

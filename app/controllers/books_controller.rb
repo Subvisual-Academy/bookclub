@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
+  before_action :require_moderator, only: %i[new create edit update destroy]
   protect_from_forgery except: :show
 
   def index
@@ -20,10 +21,6 @@ class BooksController < ApplicationController
     @book = Book.new(title: params[:title], author: params[:author])
   end
 
-  def edit
-    @book = Book.find(params[:id])
-  end
-
   def create
     create_book = CreateBookFromTitleAndAuthor.new(params[:book])
     create_book.perform
@@ -35,6 +32,10 @@ class BooksController < ApplicationController
       flash[:notice] = create_book.reason_for_failure
       redirect_to new_book_path
     end
+  end
+
+  def edit
+    @book = Book.find(params[:id])
   end
 
   def update
