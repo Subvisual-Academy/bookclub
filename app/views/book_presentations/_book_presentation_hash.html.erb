@@ -3,7 +3,7 @@
     <ul>
       <li>
         <%= link_to book_presentations[0].user.name,
-              books_path(:user_id => user_id),
+              user_books_path(:user_id => user_id),
               class: "text-blue-500 font-semibold hover:underline",
               data: { "turbo-frame": "_top" }
         %>

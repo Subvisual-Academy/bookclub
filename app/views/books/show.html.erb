@@ -25,7 +25,7 @@
       <ul class="list-disc pl-8">
         <% @presenting_users.each do |user| %>
           <li>
-            <%= link_to user.name, books_path(:user_id => user.id) %>
+            <%= link_to user.name, user_books_path(:user_id => user.id) %>
           </li>
         <% end %>
       </ul>
