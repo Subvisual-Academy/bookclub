@@ -33,14 +33,14 @@
             <% if book.users.length <= 3 %>
               <% book.users.each_with_index do |user, index| %>
                 <%= link_to user.name,
-                      books_path(:user_id => user.id),
+                      user_books_path(:user_id => user.id),
                       class: "font-semibold hover:underline" %>
                 <% if index < book.users.count - 1 %>,<% end %>
               <% end %>
             <% else %>
               <% book.users[0..2].each_with_index do |user, index| %>
                 <%= link_to user.name,
-                      books_path(:user_id => user.id),
+                      user_books_path(:user_id => user.id),
                       class: "font-semibold hover:underline" %>
                 <% if index < 2 %>,<% end %>
               <% end %>

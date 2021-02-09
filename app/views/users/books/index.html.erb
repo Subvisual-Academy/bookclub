@@ -16,6 +16,7 @@
       <turbo-frame
         id="gathering_<%= gathering.id %>_books"
         src="<%= gathering_books_path(gathering, user_id: @user.id) %>"
+        target="_top"
       ></turbo-frame>
     <% end %>
   <% end %>
