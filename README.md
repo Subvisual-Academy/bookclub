@@ -21,7 +21,7 @@ Our `bin/setup` script will handle installing Ruby and Node if you have [asdf-vm
 
 Run `bundle exec rspec` for tests. We are testing heavily, from simple (but not crazy) unit tests to full integration tests.
 
-# Developing
+## Developing
 
 Just run `bin/server` to start hammering away at it. Access the server at `localhost:5000`
 
