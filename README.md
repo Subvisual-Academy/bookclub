@@ -24,7 +24,3 @@ Run `bundle exec rspec` for tests. We are testing heavily, from simple (but not 
 # Developing
 
 Just run `bin/server` to start hammering away at it. Access the server at `localhost:5000`
-
-Also don't forget to setup the default admin user with `rake populate:admin_user`. The default credentials are `admin`, the password being `foobar`.
-
-We are using `Guard` to live reload code. Most changes cause a full page refresh. CSS replaces code using a `hot loading` strategy, kinda like `react-hot-loader` for quick development
