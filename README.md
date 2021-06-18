@@ -24,3 +24,5 @@ Run `bundle exec rspec` for tests. We are testing heavily, from simple (but not 
 # Developing
 
 Just run `bin/server` to start hammering away at it. Access the server at `localhost:5000`
+
+The .env variables deal with connecting to a webhook for the bookclub channel in Subvisual's Slack space.
