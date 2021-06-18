@@ -1,6 +1,6 @@
 # Bookclub
 
-A Rails web app which serves as a repository for Subvisual's monthly Book club gathering. In each session each participant talks about one or more books they have been reading and, optionally, at the end, there's a special section where either one person presents a list of recommendations or there's a thematic book presentation (ex: childhood books).
+A Rails web app which serves as a repository for Subvisual's monthly book club gathering. In each session each participant talks about one or more books they have been reading. Ocasionally, there's, at the end, a special section where either one person presents a list of recommendations or there's a thematic book presentation (ex: childhood books).
 
 This project was developed in the scope of the 2020 Subvisual Summer Camp internship.
 
